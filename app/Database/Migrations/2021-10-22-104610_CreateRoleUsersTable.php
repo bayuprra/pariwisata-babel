@@ -20,13 +20,13 @@ class CreateRoleUsersTable extends Migration
                 'unsigned'       => true,
             ],
         ]);
-        $this->forge->createTable('roles');
-        $this->forge->addForeignKey('role_id','roles','id');
-        $this->forge->addForeignKey('user_id','users','id');
+        $this->forge->addForeignKey('role_id', 'roles', 'id');
+        $this->forge->addForeignKey('user_id', 'users', 'id');
+        $this->forge->createTable('role_users');
     }
 
     public function down()
     {
-        $this->forge->dropTable('roles');
+        $this->forge->dropTable('role_users');
     }
 }

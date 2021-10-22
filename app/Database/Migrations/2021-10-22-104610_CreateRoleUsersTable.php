@@ -21,6 +21,8 @@ class CreateRoleUsersTable extends Migration
             ],
         ]);
         $this->forge->createTable('roles');
+        $this->forge->addForeignKey('role_id','roles','id');
+        $this->forge->addForeignKey('user_id','users','id');
     }
 
     public function down()

@@ -35,6 +35,7 @@ class CreatePlaceReviewsTable extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->createTable('place_reviews');
     }
 

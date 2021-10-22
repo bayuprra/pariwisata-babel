@@ -51,8 +51,23 @@ class CreatePlacesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '250',
             ],
+            'picture'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '250',
+            ],
+            'user_id'       => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+                'auto_increment' => true,
+            ],
+            'is_approve'    => [
+                'type'          => 'BOOLEAN',
+                'default'       => 0,
+            ],
         ]);
         $this->forge->addKey('id', true);
+        $this->forge->addForeignKey('user_id', 'users', 'id');
         $this->forge->createTable('places');
     }
 

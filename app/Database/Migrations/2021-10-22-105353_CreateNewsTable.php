@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class CreateNewsTable extends Migration
 {
     public function up()
     {
@@ -15,15 +15,11 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name'       => [
+            'title'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'password'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '50',
-            ],
-            'email_address'       => [
+            'category'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
@@ -31,13 +27,19 @@ class CreateUsersTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'content'       => [
+                'type'       => 'TEXT',
+            ],
+            'preview'       => [
+                'type'       => 'TEXT',
+            ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users');
+        $this->forge->createTable('news');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('news');
     }
 }

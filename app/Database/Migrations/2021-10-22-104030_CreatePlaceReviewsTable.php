@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateUsersTable extends Migration
+class CreatePlaceReviewsTable extends Migration
 {
     public function up()
     {
@@ -15,29 +15,31 @@ class CreateUsersTable extends Migration
                 'unsigned'       => true,
                 'auto_increment' => true,
             ],
-            'name'       => [
+            'rating'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'password'       => [
+            'comment'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '50',
+                'constraint' => '250',
             ],
-            'email_address'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+            'place_id'          => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
             ],
-            'picture'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+            'user_id'          => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('users');
+        $this->forge->createTable('place_reviews');
     }
 
     public function down()
     {
-        $this->forge->dropTable('users');
+        $this->forge->dropTable('place_reviews');
     }
 }

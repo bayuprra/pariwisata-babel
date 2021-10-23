@@ -28,7 +28,8 @@ class CreateGuidesTable extends Migration
                 'constraint' => '100',
             ],
             'bio'       => [
-                'type'       => 'TEXT'
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
             ],
             'experience'       => [
                 'type'       => 'VARCHAR',

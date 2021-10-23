@@ -20,8 +20,7 @@ class CreatePlaceReviewsTable extends Migration
                 'constraint' => '100',
             ],
             'comment'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '250',
+                'type'       => 'TEXT',
             ],
             'place_id'          => [
                 'type'           => 'INT',

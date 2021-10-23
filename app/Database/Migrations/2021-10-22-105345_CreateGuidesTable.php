@@ -20,7 +20,7 @@ class CreateGuidesTable extends Migration
                 'constraint' => '100',
             ],
             'phone'       => [
-                'type'       => 'STRING',
+                'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
             'identity_picture'       => [
@@ -28,8 +28,7 @@ class CreateGuidesTable extends Migration
                 'constraint' => '100',
             ],
             'bio'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '500',
+                'type'       => 'TEXT'
             ],
             'experience'       => [
                 'type'       => 'VARCHAR',

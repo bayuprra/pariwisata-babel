@@ -34,11 +34,11 @@ class PlaceModel extends Model
         'village' => 'required',
         'rt/rw' => 'required',
         'emergency_number' => 'required',
-        'fee' => 'required',
+        'fee' => 'required|numeric',
         'operational_hour' => 'required',
-        'maps' => 'required',
-        'picture' => 'required',
-        'user_id' => 'required',
+        'maps' => 'required|valid_url',
+        'picture' => 'required|mime_in[picture,image/png,image/jpg]',
+        'user_id' => 'required|is_unique[users.id]',
         'is_approve' => 'required'
     ];
 }

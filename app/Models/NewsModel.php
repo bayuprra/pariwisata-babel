@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Entities\User;
+use App\Entities\News;
 use CodeIgniter\Model;
 
 class NewsModel extends Model

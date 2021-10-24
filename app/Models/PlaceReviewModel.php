@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace App\Models;
 
 use App\Entities\Place;
+use App\Entities\PlaceReview;
 use CodeIgniter\Model;
 
-class Place_ReviewModel extends Model
+class PlaceReviewModel extends Model
 {
     protected $table = 'place_reviews';
-    protected $returnType = Place_Review::class;
+    protected $returnType = PlaceReview::class;
     protected $allowedFields = [
         'rating',
         'comment',

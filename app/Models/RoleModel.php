@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Entities\Place;
+use App\Entities\Role;
 use CodeIgniter\Model;
 
 class RoleModel extends Model

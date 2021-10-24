@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Entities\Place;
+use App\Entities\Guide;
 use CodeIgniter\Model;
 
 class GuideModel extends Model

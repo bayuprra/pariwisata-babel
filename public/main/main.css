@@ -1,0 +1,46 @@
+.main{
+    box-shadow: 2px 2px 5px 2px rgba(209, 209, 209, 0.8);
+    border: 1px solid #d6d6d6;
+    border-radius: 3px;
+}
+
+/* Responsive layout */
+@media screen and (max-width: 600px){
+    .wrapper .container{
+        padding: 0 25px 0 25px;
+    }
+    .col-md-6.right{
+        margin-top: 30px;
+    }
+    .footer{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 767px){
+    .col-md-6.left{
+        margin-bottom: 30px;
+    }
+    .col-md-6.col-sm-12.pie{
+        margin-top: 50px;
+    }
+}
+/* end responsive layout*/
+
+input.form-control {
+    border: 1.5px solid #093259;
+    border-radius: 20px;
+}
+
+button.btn-outline-success {
+    border-radius: 20px;
+}
+
+.wrapper {
+    margin-top: 20px;
+}
+
+.form-inline .form-control {
+    width: 400px;
+}
+

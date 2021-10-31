@@ -1,0 +1,15 @@
+nav.navbar>li{
+    list-style: none;
+}
+
+nav.navbar>li>a{
+    text-decoration: none;
+    color: black;
+}
+
+nav.navbar>li>a.active{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-size: large;
+}

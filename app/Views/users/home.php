@@ -1,8 +1,8 @@
-<?= $this->extend('master_layout') ?>
+<?= $this->extend('layout/master_layout') ?>
 
 <?= $this->section('style') ?>
-    <!-- recomendation's style -->
-    <link rel="stylesheet" href="<?php echo base_url()?>/main/main.css">
+<!-- recomendation's style -->
+<link rel="stylesheet" href="<?php echo base_url() ?>/main/main.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
@@ -45,11 +45,13 @@
             </a>
         </div>
         <p></p>
-        <h4><pre>       Temukan Tempat Wisata yang Ingin
+        <h4>
+            <pre>       Temukan Tempat Wisata yang Ingin
 
-       Kamu Kunjungi di Bangka Belitung</pre></h4>
+       Kamu Kunjungi di Bangka Belitung</pre>
+        </h4>
     </div>
-    <div class="row col-md-6 mt-2 bg-light main"  id="listBarang">
+    <div class="row col-md-6 mt-2 bg-light main" id="listBarang">
     </div>
 </div>
 <?= $this->endSection() ?>
@@ -69,7 +71,7 @@
     function printItems(array) {
         var tampung = '';
 
-        for(var i=0; i <array.length; i++){
+        for (var i = 0; i < array.length; i++) {
             var tempatWisata = array[i]
             tampung += `
             <!-- Component Card dari Bootstrap -->
@@ -91,24 +93,23 @@
 
     function filter(kataKunci) {
         var filteredItems = []
-        for(var j=0; j<items.length; j++){
+        for (var j = 0; j < items.length; j++) {
             var barang = items[j]
             var namaitem = barang[2]
             var isMatch = namaitem.toLowerCase().includes(kataKunci.toLowerCase())
 
-            if(isMatch) filteredItems.push(barang);
+            if (isMatch) filteredItems.push(barang);
         }
         return filteredItems
     }
 
     var formSearch = document.getElementById('formItem')
-    formSearch.addEventListener('submit', function(event){
+    formSearch.addEventListener('submit', function(event) {
         event.preventDefault();
         var keyword = document.getElementById("keyword").value;
 
         var terfilter = filter(keyword)
         printItems(terfilter)
     })
-
 </script>
 <?= $this->endSection() ?>

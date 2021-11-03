@@ -1,15 +1,27 @@
-nav.navbar>li{
-    list-style: none;
+nav.navbar > li {
+  list-style: none;
 }
 
-nav.navbar>li>a{
-    text-decoration: none;
-    color: black;
+nav.navbar > li > a {
+  text-decoration: none;
+  color: black;
 }
 
-nav.navbar>li>a.active{
-    text-decoration: none;
-    color: black;
-    font-weight: bold;
-    font-size: large;
+nav.navbar > li > a.active {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  font-size: large;
+}
+
+/* pages news */
+/* .news-container {
+  display: table;
+  width: 100%;
+} */
+
+.news-container > row {
+  display: table-cell;
+  padding: 16px;
+  width: 100%;
 }

@@ -3,7 +3,7 @@
         <a class="navbar-brand">Traveloha</a>
 
         <li><a class="nav-link active" href="<?= base_url('users/index'); ?>">Home</a></li>
-        <li><a class="nav-link" href="<?= base_url('users/news'); ?>">Berita</a></li>
+        <li><a class="nav-link" href="<?= base_url('news/index'); ?>">Berita</a></li>
         <li><a class="nav-link" href="#">Tempat Wisata</a></li>
         <li><a class="nav-link" href="#">Partner</a></li>
 

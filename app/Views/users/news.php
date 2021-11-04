@@ -24,23 +24,30 @@
         <div class="row justify-content-left">
             <?php $a = 1; ?>
             <?php foreach ($news as $n) : ?>
-                <div class="col-md-4 mt-3 h-100">
-                    <div class="card shadow" style="width: 20rem;">
-                        <?php $a++; ?>
-                        <div class="row">
-                            <div class="col"></div>
-                            <div class="col-8">
-                                <div class="card-header bg-transparent">
-                                    <img src="/image/<?= $n->picture; ?>" class="card-img-top img-fluid rounded-start" alt="..." width="20%">
+                <div class="col-sm-4">
+                    <div class="col-md-4 mt-3 h-100">
+                        <div class="card shadow" style="width: 20rem; height: 50rem;">
+                            <?php $a++; ?>
+                            <div class="row" style="height: 30%;">
+                                <div class="col"></div>
+                                <div class="col-8">
+                                    <div class="card-header bg-transparent">
+                                        <img src="/image/<?= $n->picture; ?>" class="card-img-top img-fluid rounded-start" alt="..." width="20%">
+                                    </div>
+                                </div>
+                                <div class="col"></div>
+                            </div>
+                            <div class="row" style="height: 5%;">
+                                <div class="card-body text-center">
+                                    <h5 class="card-title"><?= $n->title; ?></a></h5>
                                 </div>
                             </div>
-                            <div class="col"></div>
-                        </div>
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><a href="<?= $n->content; ?>"> <?= $n->title; ?></a></h5>
-                        </div>
-                        <div class="card-footer bg-transparent">
-                            <p class="card-text"><?= $n->preview; ?></p>
+                            <div class="card-footer bg-transparent" style="height: 40%;">
+                                <p class="card-text"><?= $n->preview; ?></p>
+                            </div>
+                            <div class="card" style="width: 100%">
+                                <a href="<?= $n->content; ?>" class="btn btn-primary">Go somewhere</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -61,7 +68,4 @@
 
 </html>
 
-<!-- <?= $this->endSection() ?>
-
-<?= $this->section('script') ?>
-<?= $this->endSection() ?> -->
+<?= $this->endSection() ?>

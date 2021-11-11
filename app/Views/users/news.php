@@ -6,66 +6,45 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-<!doctype html>
-<html lang="en">
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-</head>
-
-<body>
-    <div class="news-container">
-        <div class="row justify-content-left">
-            <?php $a = 1; ?>
-            <?php foreach ($news as $n) : ?>
-                <div class="col-sm-4">
-                    <div class="col-md-4 mt-3 h-100">
-                        <div class="card shadow" style="width: 20rem; height: 50rem;">
-                            <?php $a++; ?>
-                            <div class="row" style="height: 30%;">
-                                <div class="col"></div>
-                                <div class="col-8">
-                                    <div class="card-header bg-transparent">
-                                        <img src="/image/<?= $n->picture; ?>" class="card-img-top img-fluid rounded-start" alt="..." width="20%">
-                                    </div>
-                                </div>
-                                <div class="col"></div>
-                            </div>
-                            <div class="row" style="height: 5%;">
-                                <div class="card-body text-center">
-                                    <h5 class="card-title"><?= $n->title; ?></a></h5>
-                                </div>
-                            </div>
-                            <div class="card-footer bg-transparent" style="height: 40%;">
-                                <p class="card-text"><?= $n->preview; ?></p>
-                            </div>
-                            <div class="card" style="width: 100%">
-                                <a href="<?= $n->content; ?>" class="btn btn-primary">Go somewhere</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+<!-- Berita Utama -->
+<div class="headline-news">
+    <div class="card bg-dark text-white">
+        <img src="/image/b.jpg" class="img-fluid" alt="...">
+        <div class="card-img-overlay">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+            <p class="card-text">Last updated 3 mins ago</p>
         </div>
     </div>
-    <!-- Optional JavaScript; choose one of the two! -->
+</div>
+<!-- Berita -->
+<div class="news">
+    <!-- Card -->
+    <div class="row row-cols-md-3 g-4">
+        <?php foreach ($news as $n) : ?>
+            <div class="col-4 mb-4 mt-4 ">
+                <div class="card h-100 border-0">
+                    <div class="view overlay">
+                        <img class="card-img-top img-fluid" src="/image/q.jpg">
+                    </div>
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title"><?= $n->title; ?></h4>
+                        <!--Text-->
+                        <p class="card-preview"><?= $n->preview; ?></p>
+                        <p class="card-create"><?= $n->created_at; ?></p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-success">Lanjutkan Membaca</button>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?= $this->endSection() ?>
 
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
-</body>
-
-</html>
+<?= $this->section('script') ?>
 
 <?= $this->endSection() ?>

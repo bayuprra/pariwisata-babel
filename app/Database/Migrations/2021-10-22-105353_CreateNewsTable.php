@@ -31,7 +31,16 @@ class CreateNewsTable extends Migration
                 'type'       => 'TEXT',
             ],
             'preview'       => [
-                'type'       => 'TEXT',
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
+            ],
+            'created_at'       => [
+                'type'       => 'DATETIME',
+                'null'       => TRUE,
+            ],
+            'updated_at'       => [
+                'type'       => 'DATETIME',
+                'null'       => TRUE,
             ],
         ]);
         $this->forge->addKey('id', true);

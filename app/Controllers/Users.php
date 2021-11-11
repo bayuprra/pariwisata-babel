@@ -10,6 +10,7 @@ class Users extends BaseController
             'title' => 'Home | '
         ];
 
-        return view('users/home', $data);
+        // return view('users/home', $data);
+        return view('layout/master_layout', $data);
     }
 }

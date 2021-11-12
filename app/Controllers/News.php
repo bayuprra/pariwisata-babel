@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\NewsModel;
+use ReflectionException;
 
 class News extends BaseController
 {
@@ -21,5 +22,23 @@ class News extends BaseController
         ];
 
         return view('users/news', $data);
+    }
+
+    /**
+     * @throws ReflectionException
+     */
+    public function store()
+    {
+        $data = [
+            'title'     => $this->request->getVar('title'),
+            'category'  => $this->request->getVar('category'),
+            'picture'   => $this->request->getVar('picture'), // TODO: proses data sebelum di store ke db
+            'content'   => $this->request->getVar('content'),
+            'preview'   => $this->request->getVar('preview')
+        ];
+
+        $this->newsModel->save($data);
+
+        return $this->response->setJSON($data);
     }
 }

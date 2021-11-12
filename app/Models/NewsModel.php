@@ -9,14 +9,14 @@ class NewsModel extends Model
 {
     protected $table = 'news';
     protected $returnType = News::class;
+    protected $createdField  = 'created_at';
+    protected $updatedField  = 'updated_at';
     protected $allowedFields = [
         'title',
         'category',
         'picture',
         'content',
-        'preview',
-        'created_at',
-        'updated_at'
+        'preview'
     ];
     protected $validationRules = [
         'title'         => 'required',
@@ -24,7 +24,5 @@ class NewsModel extends Model
         'picture'       => 'required|mime_in[picture,image/png,image/jpg]',
         'content'       => 'required',
         'preview'       => 'required',
-        'created_at'    => 'required',
-        'updated_at'    => 'required',
     ];
 }

@@ -11,24 +11,6 @@ class NewsSeeder extends Seeder
         // $faker = \Faker\Factory::create();
         $b = 3;
         for ($a = 0; $a < $b; $a++) {
-            // $data = [
-            //     'title'     => $faker->name(),
-            //     'category'  => $faker->cityPrefix(),
-            //     'picture'   => $faker->image(),
-            //     'content'   => $faker->text(),
-            //     'preview'   => $faker->paragraph(),
-            // ];
-            // $data = [
-            //     [
-            //         'title'     => $a,
-            //         'category'  => 'pantddddai',
-            //         'picture'   => 'cancel.jpg',
-            //         'content'   => 'lorem',
-            //         'preview'   => 'loremmm',
-            //     ]
-            // ];
-            // $this->db->table('news')->insert($data);
-
             $data = [
                 'title'     => static::faker()->name,
                 'category'  => static::faker()->cityPrefix(),

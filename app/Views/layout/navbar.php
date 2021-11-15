@@ -4,9 +4,9 @@
     </div>
 
     <ul class="activepage">
-        <li class="page active"><a href="#">Home</a></li>
+        <li class="page active"><a href="<?= base_url('users/index') ?>">Home</a></li>
         <li class="page"><a href="#">Destinasi</a></li>
-        <li class="page"><a href="#">Berita</a></li>
+        <li class="page"><a href="<?= base_url('news/index') ?>">Berita</a></li>
         <li class="page"><a href="#">Partner</a></li>
     </ul>
 

@@ -1,21 +1,21 @@
-<nav>
-    <div class="judul">
-        <h4>Sistem Informasi Pariwisata Bangka Belitung</h4>
+<header>
+
+    <a href="#" class="logo"><span>SI pariwisata</span>Bangka Belitung</a>
+
+    <nav class="navbar">
+        <a href="<?= base_url('users/index') ?>">home</a>
+        <a href="<?= base_url('news/index') ?>">News</a>
+        <a href="<?= base_url('partner/index') ?>">Partner</a>
+        <a href="<?= base_url('partner2/index') ?>">event</a>
+    </nav>
+
+    <div class="icons">
+        <a href="#" class="fas fa-user"></a>
     </div>
 
-    <ul class="activepage">
-        <li class="page active"><a href="<?= base_url('users/index') ?>">Home</a></li>
-        <li class="page"><a href="#">Destinasi</a></li>
-        <li class="page"><a href="<?= base_url('news/index') ?>">Berita</a></li>
-        <li class="page"><a href="#">Partner</a></li>
-    </ul>
+</header>
 
-    <div class="menu-toggle">
-        <input type="checkbox" />
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</nav>
 
-<script src="<?php echo base_url() ?>/main/js.js"></script>
+</body>
+
+</html>

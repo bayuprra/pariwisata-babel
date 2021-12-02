@@ -2,47 +2,61 @@
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
-<link rel="stylesheet" href="<?php echo base_url() ?>/main/main.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>/main/user.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
-
-<!-- Berita Utama -->
-<div class="headline-news">
-    <div class="card bg-dark text-white">
-        <img src="/image/b.jpg" class="img-fluid" alt="...">
-        <div class="card-img-overlay">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-            <p class="card-text">Last updated 3 mins ago</p>
-        </div>
-    </div>
-</div>
-<!-- Berita -->
-<div class="news">
-    <!-- Card -->
-    <div class="row row-cols-md-3 g-4">
-        <?php foreach ($news as $n) : ?>
-            <div class="col-4 mb-4 mt-4 ">
-                <div class="card h-100 border-0">
-                    <div class="view overlay">
-                        <img class="card-img-top img-fluid" src="/image/q.jpg">
-                    </div>
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title"><?= $n->title; ?></h4>
-                        <!--Text-->
-                        <p class="card-preview"><?= $n->preview; ?></p>
-                        <p class="card-create"><?= $n->created_at; ?></p>
-                    </div>
-                    <div class="card-footer">
-                        <button type="button" class="btn btn-success">Lanjutkan Membaca</button>
-                    </div>
+<section class="news" id="news">
+    <div class="news-container">
+        <div class="headline-box">
+            <div class="image-container">
+                <img src="/image/a.jpg" alt="headline news">
+                <div class="judul">
+                    <a href="#">
+                        <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
+                    </a>
+                </div>
+                <div class="detail">
+                    <p>4 jam yang lalu</p>
                 </div>
             </div>
-        <?php endforeach; ?>
+        </div>
+        <div class="title">
+            <p>terbaru</p>
+            <hr>
+        </div>
+        <div class="news-box">
+            <div class="image-container">
+                <img src="/image/a.jpg" alt="news">
+                <div class="judul">
+                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <p>4 jam yang lalu</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="news-box">
+            <div class="image-container">
+                <img src="/image/a.jpg" alt="news">
+                <div class="judul">
+                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <p>4 jam yang lalu</p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="news-box">
+            <div class="image-container">
+                <img src="/image/a.jpg" alt="news">
+                <div class="judul">
+                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <p>4 jam yang lalu</p>
+                </div>
+            </div>
+        </div>
+        <hr>
     </div>
-</div>
+</section>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

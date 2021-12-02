@@ -2,15 +2,15 @@
 
 namespace App\Controllers;
 
-class Users extends BaseController
+class Partner2 extends BaseController
 {
     public function index()
     {
         $data = [
-            'title' => 'Home | '
+            'title' => 'Partner2 | '
         ];
 
-        return view('users/home1', $data);
+        return view('users/news2', $data);
         // return view('layout/master_layout', $data);
     }
 }

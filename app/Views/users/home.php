@@ -8,12 +8,7 @@
 <?= $this->section('content') ?>
 <div class="wrapper row">
     <div class="col-md-6 mt-2"></div>
-    <div class="col-md-6 mt-2">
-        <form class="form-inline" id="formItem">
-            <input class="form-control" type="search" placeholder="Search" id="keyword" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" id="searchItem">Search</button>
-        </form>
-    </div>
+
 </div>
 
 <div class="wrapper row">

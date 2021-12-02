@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+
+:root {
+  --green: #2d491a;
+  --light-green: #4f7735;
+}
+
+* {
+  font-family: "Nunito", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+html {
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+body {
+  background: #f7f7f7;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 0.8rem 3.5rem;
+  border-radius: 0.5rem;
+  font-size: 1.7rem;
+  color: var(--green);
+  background: var(--light-green);
+  cursor: pointer;
+  text-align: center;
+}
+
+.btn:hover {
+  background: var(--green);
+  color: #fff;
+}
+
+.heading {
+  text-align: center;
+  color: #333;
+  font-size: 4rem;
+  padding-bottom: 3rem;
+}
+
+.heading span {
+  color: var(--green);
+  background: var(--light-green);
+  border-radius: 0.5rem;
+  padding: 0.2rem 1.5rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #fff;
+  padding: 1.5rem 9%;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header .logo {
+  font-weight: bolder;
+  font-size: 2rem;
+  color: #333;
+  text-decoration: none;
+}
+
+header .logo span {
+  color: var(--green);
+}
+
+header .navbar a {
+  color: #333;
+  font-size: 2rem;
+  padding: 0 1.5rem;
+}
+
+header .navbar a:hover {
+  color: var(--green);
+}
+
+header .icons {
+  height: 4.5rem;
+  line-height: 4.5rem;
+  width: 5rem;
+  font-size: 2rem;
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  color: var(--green);
+  background: var(--light-green);
+  text-align: center;
+}
+
+header .icons:hover {
+  color: var(--light-green);
+  background: var(--green);
+}
+
+/* media queries  */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+
+  header {
+    padding: 1.5rem 1rem;
+  }
+
+  section {
+    padding: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header .icons #menu-bars {
+    display: inline-block;
+  }
+
+  header .navbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    background: #f7f7f7;
+    border-top: 0.1rem solid #333;
+    border-bottom: 0.1rem solid #333;
+    transition: 0.2s linear;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  header .navbar a {
+    display: block;
+    padding: 1.5rem;
+    margin: 1.5rem;
+    background: #fff;
+    border: 0.1rem solid #333;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+  }
+}
+
+@media (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+}

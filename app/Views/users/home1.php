@@ -19,54 +19,59 @@
 
         <!-- rekomendation -->
         <div class="result">
-            <a href="#" class="fa fa-star" aria-hidden="true"></a>
-            <p>Rekomendasi</p>
-        </div>
-        <div class="recom-container">
-            <div class="recomendation">
-                <a href="#">Pantai Matras</a>
-                <p>kabupaten</p>
-                <div class="like">
-                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                    <p>disukai oleh 1023 orang</p>
+            <div class="det">
+                <a href="#" class="fa fa-star" aria-hidden="true"></a>
+                <p>Rekomendasi</p>
+            </div>
+            <div class="recom-container">
+                <div class="recomendation">
+                    <a href="#" id="modaltrigger">Pantai Matras</a>
+                    <p>kabupaten</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
+                </div>
+                <div class="recomendation">
+                    <a href="#">Pantai Sungailiat</a>
+                    <p>kabupaten</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
+                </div>
+                <div class="recomendation">
+                    <a href="#">Pantai Koba</a>
+                    <p>kabupaten</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
                 </div>
             </div>
-            <div class="recomendation">
-                <a href="#">Pantai Sungailiat</a>
-                <p>kabupaten</p>
-                <div class="like">
-                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                    <p>disukai oleh 1023 orang</p>
-                </div>
-            </div>
-            <div class="recomendation">
-                <a href="#">Pantai Koba</a>
-                <p>kabupaten</p>
-                <div class="like">
-                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                    <p>disukai oleh 1023 orang</p>
-                </div>
-            </div>
-
         </div>
 
         <!-- search -->
         <div class="result">
-            <a href="#" class="fa fa-search" aria-hidden="true"></a>
-            <p>hasil</p>
-        </div>
-        <div class="recom-container">
-            <div class="recomendation">
-                <a href="#">Pantai Matras</a>
-                <p>kabupaten</p>
-                <div class="like">
-                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                    <p>disukai oleh 1023 orang</p>
+            <div class="det">
+                <a href="#" class="fa fa-search" aria-hidden="true"></a>
+                <p>hasil</p>
+            </div>
+            <div class="recom-container">
+                <div class="recomendation">
+                    <a href="#" id="modaltrigger">Pantai Matras</a>
+                    <p>kabupaten</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+
+    <!-- modal -->
+
 
 </section>
 

@@ -29,10 +29,11 @@ class News extends BaseController
      */
     public function store()
     {
+        // TODO: ubah response JSON jadi redirect halaman home dengan menampilkan pesan sukses, buat balikan object didalam array yang isi errors jika gagal menginput data.
+
         $data = [
             'title'     => $this->request->getVar('title'),
             'category'  => $this->request->getVar('category'),
-            'picture'   => $this->request->getVar('picture'), // TODO: proses data sebelum di store ke db
             'content'   => $this->request->getVar('content'),
             'preview'   => $this->request->getVar('preview')
         ];
@@ -42,5 +43,14 @@ class News extends BaseController
         }
 
         return $this->response->setJSON($this->newsModel->errors());
+    }
+
+    public function readnews()
+    {
+        $data = [
+            'title' => 'News | '
+        ];
+
+        return view('users/readnews', $data);
     }
 }

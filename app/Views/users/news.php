@@ -12,7 +12,7 @@
             <div class="image-container">
                 <img src="/image/a.jpg" alt="headline news">
                 <div class="judul">
-                    <a href="#">
+                    <a href="<?= base_url('news/readnews') ?>">
                         <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
                     </a>
                 </div>

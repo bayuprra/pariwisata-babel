@@ -14,7 +14,6 @@ class NewsModel extends Model
     protected $allowedFields = [
         'title',
         'category',
-        'picture',
         'content',
         'preview'
     ];
@@ -23,6 +22,6 @@ class NewsModel extends Model
         'category'      => 'required',
         'picture'       => 'required|mime_in[picture,image/png,image/jpg]',
         'content'       => 'required',
-        'preview'       => 'required',
+        'preview'       => 'required|max_length[255]',
     ];
 }

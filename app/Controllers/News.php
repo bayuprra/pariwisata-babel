@@ -37,8 +37,10 @@ class News extends BaseController
             'preview'   => $this->request->getVar('preview')
         ];
 
-        $this->newsModel->save($data);
+        if($this->newsModel->save($data)) {
+            return $this->response->setJSON($data);
+        }
 
-        return $this->response->setJSON($data);
+        return $this->response->setJSON($this->newsModel->errors());
     }
 }

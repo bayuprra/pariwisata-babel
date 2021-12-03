@@ -41,4 +41,13 @@ class News extends BaseController
 
         return $this->response->setJSON($data);
     }
+
+    public function readnews()
+    {
+        $data = [
+            'title' => 'News | '
+        ];
+
+        return view('users/readnews', $data);
+    }
 }

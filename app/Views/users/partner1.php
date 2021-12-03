@@ -11,7 +11,7 @@
 <section class="partner" id="partner">
     <div class="content1">
         <h3>Tertarik menjadi tour guide ?</h3>
-        <input type="submit" value="Cari Guide" class="btn">
+        <input type="submit" value="daftar sekarang" class="btn">
     </div>
     <div class="content2">
         <div class="box-container">

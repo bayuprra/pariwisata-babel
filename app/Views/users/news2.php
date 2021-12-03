@@ -10,4 +10,6 @@
 
 <?= $this->section('script') ?>
 
+<script>
+</script>
 <?= $this->endSection() ?>

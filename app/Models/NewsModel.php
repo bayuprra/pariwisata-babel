@@ -21,6 +21,7 @@ class NewsModel extends Model
         'title'         => 'required',
         'category'      => 'required',
         'content'       => 'required',
+        'image'         => 'required|uploaded[image]',
         'preview'       => 'required|max_length[255]',
     ];
 }

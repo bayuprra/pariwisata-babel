@@ -29,7 +29,7 @@
             <div class="image-container">
                 <img src="/image/a.jpg" alt="news">
                 <div class="judul">
-                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
                     <p>4 jam yang lalu</p>
                 </div>
             </div>
@@ -39,7 +39,7 @@
             <div class="image-container">
                 <img src="/image/a.jpg" alt="news">
                 <div class="judul">
-                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
                     <p>4 jam yang lalu</p>
                 </div>
             </div>
@@ -49,7 +49,7 @@
             <div class="image-container">
                 <img src="/image/a.jpg" alt="news">
                 <div class="judul">
-                    <h3><a href="#">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
+                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
                     <p>4 jam yang lalu</p>
                 </div>
             </div>

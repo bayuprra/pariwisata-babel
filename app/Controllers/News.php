@@ -2,19 +2,39 @@
 
 namespace App\Controllers;
 
+use App\Helpers\ImageManager;
+use App\Models\NewsImageModel;
 use App\Models\NewsModel;
+use CodeIgniter\Exceptions\ModelException;
+use CodeIgniter\HTTP\ResponseInterface;
 use ReflectionException;
 
 class News extends BaseController
 {
-    protected $newsModel;
+    /** @var NewsModel */
+    private $newsModel;
+
+    /** @var ImageManager */
+    private $imageManager;
+
+    /** @var NewsImageModel */
+    private $newsImages;
+
     public function __construct()
     {
         $this->newsModel = new NewsModel();
+        $this->newsImages = new NewsImageModel();
+        $this->imageManager = new ImageManager();
     }
+
     public function index()
     {
         $news = $this->newsModel->findAll();
+
+        foreach ($news as $key => $value) {
+            $newsImages = $this->newsImages->where(['news_id' => $value->id])->findAll();
+            $value->news_images = $newsImages;
+        }
 
         $data = [
             'title' => 'News | ',
@@ -27,25 +47,34 @@ class News extends BaseController
     /**
      * @throws ReflectionException
      */
-    public function store()
+    public function store(): ResponseInterface
     {
-        // TODO: ubah response JSON jadi redirect halaman home dengan menampilkan pesan sukses, buat balikan object didalam array yang isi errors jika gagal menginput data.
-
         $data = [
             'title'     => $this->request->getVar('title'),
             'category'  => $this->request->getVar('category'),
             'content'   => $this->request->getVar('content'),
-            'preview'   => $this->request->getVar('preview')
+            'preview'   => $this->request->getVar('preview'),
+            'image'     => $this->request->getFile('image')
         ];
 
         if($this->newsModel->save($data)) {
-            return $this->response->setJSON($data);
+            $newsId = $this->newsModel->getInsertID();
+
+            if (!$newsId) {
+                throw ModelException::forNoPrimaryKey($this->newsModel);
+            }
+
+            if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
+                return $this->response->setJSON($this->newsModel->errors());
+            }
+
+            return redirect()->to('/news/index');;
         }
 
         return $this->response->setJSON($this->newsModel->errors());
     }
 
-    public function readnews()
+    public function readnews(): string
     {
         $data = [
             'title' => 'News | '

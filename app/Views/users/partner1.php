@@ -19,7 +19,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
+                <a href="#" class="name" id="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -27,14 +27,13 @@
                     <a href="#" class="fab fa-facebook-f"></a>
                     <a href="#" class="fab fa-twitter"></a>
                     <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
                 </div>
             </div>
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
+                <a href="#" class="name" id="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -42,14 +41,13 @@
                     <a href="#" class="fab fa-facebook-f"></a>
                     <a href="#" class="fab fa-twitter"></a>
                     <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
                 </div>
             </div>
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
+                <a href="#" class="name" id="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -57,14 +55,13 @@
                     <a href="#" class="fab fa-facebook-f"></a>
                     <a href="#" class="fab fa-twitter"></a>
                     <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
                 </div>
             </div>
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
+                <a href="#" class="name" id="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -72,14 +69,13 @@
                     <a href="#" class="fab fa-facebook-f"></a>
                     <a href="#" class="fab fa-twitter"></a>
                     <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
                 </div>
             </div>
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
+                <a href="#" class="name" id="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -87,7 +83,49 @@
                     <a href="#" class="fab fa-facebook-f"></a>
                     <a href="#" class="fab fa-twitter"></a>
                     <a href="#" class="fab fa-instagram"></a>
-                    <a href="#" class="fab fa-linkedin"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="partner-modal" id="partner-modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="box">
+                <div class="image">
+                    <img src="/image/a.jpg" alt="">
+                </div>
+                <div class="line"></div>
+                <div class="bio-medsos">
+                    <div class="biodata">
+                        <div class="bio">
+                            <p>nama</p>
+                            <p>jenis kelamin</p>
+                            <p>agama</p>
+                            <p>alamat</p>
+                            <p>umur</p>
+                        </div>
+                        <div>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                            <p>:</p>
+                        </div>
+                        <div>
+                            <p>john deo</p>
+                            <p>laki-laki</p>
+                            <p>islam</p>
+                            <p>sungailiat</p>
+                            <p>18 tahun</p>
+                        </div>
+                    </div>
+                    <div class="medsos">
+                        <a href="#" class="fas fa-envelope"></a>
+                        <a href="#" class="fas fa-phone"></a>
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -98,5 +136,28 @@
 
 
 <?= $this->section('script') ?>
+
+<script>
+    var modal = document.getElementById("partner-modal");
+    var btn = document.getElementById("name");
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 <?= $this->endSection() ?>

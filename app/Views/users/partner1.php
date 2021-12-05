@@ -19,7 +19,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name" id="name">
+                <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -33,7 +33,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name" id="name">
+                <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -47,7 +47,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name" id="name">
+                <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -61,7 +61,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name" id="name">
+                <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -75,7 +75,7 @@
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
                 <img src="/image/a.jpg" alt="">
-                <a href="#" class="name" id="name">
+                <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
                 <span>tour guide</span>
@@ -138,26 +138,62 @@
 <?= $this->section('script') ?>
 
 <script>
-    var modal = document.getElementById("partner-modal");
-    var btn = document.getElementById("name");
-    var span = document.getElementsByClassName("close")[0];
+    // Get the button that opens the modal
+    let btn = document.querySelectorAll(".name");
 
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
+    // TODO: uncomment this code when integrating this view with partner controller
+    // All page modals
+    // let modals = document.querySelectorAll('.partner-modal');
+
+    // TODO: remove this code when integrating this view with partner controller
+    let modal = document.getElementById("partner-modal");
+    let span = document.getElementsByClassName("close")[0];
+
+
+    // Get the <span> element that closes the modal
+    let spans = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal
+    for (let i = 0; i < btn.length; i++) {
+        btn[i].onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
     }
 
+    // TODO: change this code when integrating this view with partner controller
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
 
+    // TODO: remove this code when integrating this view with partner controller
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
+
+    // TODO: uncomment this code when integrating this view with partner controller
+    // When the user clicks on <span> (x), close the modal
+    // for (let i = 0; i < spans.length; i++) {
+    //     spans[i].onclick = function() {
+    //         for (let index in modals) {
+    //             if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+    //         }
+    //     }
+    // }
+
+    // TODO: uncomment this code when integrating this view with partner controller
+    // When the user clicks anywhere outside of the modal, close it
+    // window.onclick = function(event) {
+    //     if (event.target.classList.contains('modal')) {
+    //         for (let index in modals) {
+    //             if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
+    //         }
+    //     }
+    // }
 </script>
 
 <?= $this->endSection() ?>

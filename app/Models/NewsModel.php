@@ -14,15 +14,14 @@ class NewsModel extends Model
     protected $allowedFields = [
         'title',
         'category',
-        'picture',
         'content',
         'preview'
     ];
     protected $validationRules = [
         'title'         => 'required',
         'category'      => 'required',
-        'picture'       => 'required|mime_in[picture,image/png,image/jpg]',
         'content'       => 'required',
-        'preview'       => 'required',
+        'image'         => 'required|uploaded[image]',
+        'preview'       => 'required|max_length[255]',
     ];
 }

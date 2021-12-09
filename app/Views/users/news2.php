@@ -6,6 +6,11 @@
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>
+<section class="partner" id="partner">
+
+</section>
+
+</section>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

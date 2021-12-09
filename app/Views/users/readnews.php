@@ -2,7 +2,7 @@
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
-<link rel="stylesheet" href="<?php echo base_url() ?>/main/partner.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>/main/user.css">
 <?= $this->endSection() ?>
 
 <?= $this->section('content') ?>

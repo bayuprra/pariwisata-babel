@@ -52,22 +52,26 @@
   font-weight: bolder;
 }
 
-.home .result {
+.home .result-recom,
+.home .result-search {
   padding-top: 2rem;
 }
 
-.home .result .det {
+.home .result-recom .det,
+.home .result-search .det {
   display: flex;
   gap: 0.5rem;
 }
 
-.home .result .recom-container {
+.home .result-recom .recom-container,
+.home .result-search .recom-container {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
 }
 
-.home .result .recom-container .recomendation {
+.home .result-recom .recom-container .recomendation,
+.home .result-search .recom-container .recomendation {
   background: #fff;
   padding: 1.5rem;
   width: 32%;
@@ -77,11 +81,13 @@
   text-align: center;
 }
 
-.home .result .recom-container .recomendation:hover {
+.home .result-recom .recom-container .recomendation:hover,
+.home .result-search .recom-container .recomendation:hover {
   background: var(--green);
 }
 
-.home .result .recom-container .recomendation a {
+.home .result-recom .recom-container .recomendation a,
+.home .result-search .recom-container .recomendation a {
   padding-top: 1px;
   text-decoration: none;
   font-size: 2rem;
@@ -90,31 +96,260 @@
   font-weight: bolder;
 }
 
-.home .result .recom-container .recomendation:hover a,
-.home .result .recom-container .recomendation:hover p,
-.home .result .recom-container .recomendation:hover .like {
+.home .result-recom .recom-container .recomendation:hover a,
+.home .result-recom .recom-container .recomendation:hover p,
+.home .result-recom .recom-container .recomendation:hover .like,
+.home .result-search .recom-container .recomendation:hover a,
+.home .result-search .recom-container .recomendation:hover p,
+.home .result-search .recom-container .recomendation:hover .like {
   color: white;
 }
 
-.home .result .recom-container .recomendation p {
+.home .result-recom .recom-container .recomendation p,
+.home .result-search .recom-container .recomendation p {
   font-size: 1vw;
   color: #666;
   padding: 0.2rem 0;
 }
 
-.home .result .recom-container .recomendation .like {
+.home .result-recom .recom-container .recomendation .like,
+.home .result-search .recom-container .recomendation .like {
   display: flex;
   gap: 1rem;
   margin-bottom: -18px;
 }
 
-.home .result .recom-container .recomendation .like .fa-thumbs-up {
+.home .result-recom .recom-container .recomendation .like .fa-thumbs-up,
+.home .result-search .recom-container .recomendation .like .fa-thumbs-up {
   font-size: 20px;
 }
 
-.home .result .recom-container .recomendation .like p {
+.home .result-recom .recom-container .recomendation .like p,
+.home .result-search .recom-container .recomendation .like p {
   font-size: 0.5vw;
   margin-top: 1rem;
+}
+
+/* place modal */
+
+.home .place-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 9999999; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.home .place-modal .modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  border: none;
+  width: 70%;
+  height: 70vh;
+  margin-top: 3rem;
+}
+
+.home .place-modal .modal-content .close:hover,
+.home .place-modal .modal-content .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home .place-modal .modal-content .close {
+  color: red;
+  background-color: white;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  float: none;
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  z-index: 1;
+  opacity: 1;
+  font-weight: bolder;
+  font-size: 4rem;
+}
+.home .place-modal .modal-content .close:hover {
+  background-color: var(--light-green);
+  color: var(--green);
+}
+.home .place-modal .modal-content img {
+  position: absolute;
+  z-index: 1;
+  width: 55%;
+  height: 80%;
+  top: -30px;
+  left: 30px;
+  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+}
+.home .place-modal .modal-content .detail {
+  text-align: justify;
+  display: flex;
+  flex-direction: column;
+  margin-left: 570px;
+  margin-top: 40px;
+  margin-right: 50px;
+  padding: auto;
+}
+
+.home .place-modal .modal-content .detail hr {
+  border-bottom: 2px solid black;
+}
+.home .place-modal .modal-content .detail .nama h3 {
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 30px;
+}
+.home .place-modal .modal-content .detail .det tr,
+.home .place-modal .modal-content .detail .det td {
+  width: 80px;
+  font-size: 2.5vh;
+  height: 50px;
+  text-align: left;
+  border-bottom: 0.1rem solid black;
+}
+.home .place-modal .modal-content .detail .det tr td:nth-child(2) {
+  width: 5px;
+}
+.home .place-modal .modal-content .detail .det tr td:nth-child(3) {
+  font-size: 1.3vw;
+  width: 90px;
+}
+.home .place-modal .modal-content .more {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  width: 50%;
+  height: 20%;
+  align-items: center;
+  justify-content: space-around;
+}
+.home .place-modal .modal-content .more a {
+  height: 30%;
+  width: 150%;
+  font-size: 1vw;
+}
+.home .place-modal .modal-content .more .like,
+.home .place-modal .modal-content .more .coment,
+.home .place-modal .modal-content .more .map {
+  height: 100%;
+  width: 25%;
+  margin-left: 8rem;
+  display: flex;
+  gap: 0.7rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.home .place-modal .modal-content .more .like .fa-heart,
+.home .place-modal .modal-content .more .coment .fa-comment,
+.home .place-modal .modal-content .more .map .fa-map-marker {
+  width: 50%;
+  height: 40%;
+}
+
+/* review modal */
+
+/* review */
+.home .place-modal .modal-content .review {
+  display: none;
+  background-color: #fefefe;
+  margin: auto;
+  border: none;
+  width: 50%;
+  height: 70vh;
+  position: absolute;
+  z-index: 5;
+}
+
+.home .place-modal .modal-content .review .people-review {
+  width: 100%;
+  height: 80%;
+  align-items: center;
+  vertical-align: middle;
+
+  overflow: scroll;
+}
+
+.home .place-modal .modal-content .review .people-review .content {
+  height: auto;
+  width: 100%;
+  background-color: var(--light-green);
+  border-radius: 10%;
+  margin: 1.5rem 1.5rem 1.5rem 0;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  color: #fefefe;
+}
+
+.home .place-modal .modal-content .review .people-review .content h3 {
+  font-weight: bold;
+  background-color: var(--green);
+  margin-bottom: 0;
+}
+.home .place-modal .modal-content .review .people-review .content p {
+  font-size: 1vw;
+  text-align: justify;
+}
+
+.home .place-modal .modal-content .review .button1 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: var(--green);
+  opacity: 0.5;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 8px;
+  cursor: pointer;
+  align-items: center;
+}
+.home .place-modal .modal-content .review .button1:hover {
+  opacity: 1;
+}
+.home .place-modal .modal-content .review .button1 .add-coment {
+  width: 100%;
+}
+
+.home .place-modal .modal-content .review .button2 {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: red;
+  opacity: 0.5;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  margin-top: 8px;
+  cursor: pointer;
+  align-items: center;
+}
+
+.home .place-modal .modal-content .review .button2:hover {
+  opacity: 1;
+}
+.home .place-modal .modal-content .review .button2 .tutup {
+  width: 100%;
 }
 
 /* page news */

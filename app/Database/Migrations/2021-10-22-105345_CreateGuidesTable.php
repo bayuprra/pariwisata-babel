@@ -19,6 +19,10 @@ class CreateGuidesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'phone'       => [
+                'type'       => 'INT',
+                'constraint' => '100',
+            ],
             'identity_picture'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',

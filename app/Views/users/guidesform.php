@@ -2,10 +2,12 @@
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
-<link rel="stylesheet" href="<?php echo base_url() ?>/main/partner.css">
+<link rel="stylesheet" href="<?php echo base_url() ?>/main/form.css">
 <?= $this->endSection() ?>
 
+
 <?= $this->section('content') ?>
+
 <section class="partner" id="partner">
 
 
@@ -135,20 +137,19 @@
 
             <div class="row">
                 <input type="submit" value="Submit">
+
+                <input type="reset" value="Reset">
             </div>
+
         </form>
     </div>
 
-    <div class="footer">
-        <p>Footer</p>
-    </div>
 </section>
 
 </section>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-
 <script>
 </script>
 <?= $this->endSection() ?>

@@ -11,7 +11,9 @@
 <section class="partner" id="partner">
     <div class="content1">
         <h3>Tertarik menjadi tour guide ?</h3>
-        <input type="submit" value="daftar sekarang" class="btn">
+        <a href="<?= base_url('formguides/index') ?>">
+            <input type="submit" value="daftar sekarang" class="btn">
+        </a>
     </div>
     <div class="content2">
         <div class="box-container">

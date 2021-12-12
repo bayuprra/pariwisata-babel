@@ -18,5 +18,14 @@ class Guide extends Entity
         'video' => 'null',
         'user_id' => 'null',
         'is_approve' => 'null',
+        'gender' => 'null',
+        'religion' => 'null',
+        'address' => 'null',
+        'age' => 'null',
+        'email' => 'null',
+        'facebook' => 'null',
+        'instagram' => 'null',
+        'twitter' => 'null',
+
     ];
 }

@@ -20,7 +20,15 @@ class GuideModel extends Model
         'study',
         'video',
         'user_id',
-        'is_approve'
+        'is_approve',
+        'gender',
+        'religion',
+        'address',
+        'age',
+        'email',
+        'facebook',
+        'instagram',
+        'twitter'
     ];
 
     protected $validationRules = [
@@ -32,6 +40,14 @@ class GuideModel extends Model
         'study' => 'required',
         'video' => 'required|mime_in[video,video/mk4,video/3gp,video/mp4]',
         'user_id' => 'required|is_unique[users.id]',
-        'is_approve' => 'required'
+        'is_approve' => 'required',
+        'gender' => 'required',
+        'religion' => 'required',
+        'address' => 'required',
+        'age' => 'required',
+        'email' => 'required',
+        'facebook' => 'required',
+        'instagram' => 'required',
+        'twitter' => 'required'
     ];
 }

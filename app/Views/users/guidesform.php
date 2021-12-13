@@ -146,7 +146,6 @@
 
 </section>
 
-</section>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

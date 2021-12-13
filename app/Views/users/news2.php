@@ -7,14 +7,16 @@
 
 <?= $this->section('content') ?>
 
-<section class="home" id="home">
+
+<section class="partner" id="partner">
+
 
     <div class="content" action="">
 
     </div>
-    </div>
 
 </section>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>

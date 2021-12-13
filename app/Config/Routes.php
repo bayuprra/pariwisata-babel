@@ -34,6 +34,8 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Users::index');
 $routes->post('/news', 'News::store');
 
+$routes->get('admin', 'Admin::index');
+
 
 
 /*

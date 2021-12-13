@@ -1,0 +1,23 @@
+<?php
+
+namespace App\Controllers;
+
+class tesadmin extends BaseController
+{
+    public function index()
+    {
+        // return view('admin/create_news');
+        // return view('layout/master_layout', $data);
+    }
+
+    public function createnews()
+    {
+        return view('admin/create_news');
+        // return view('layout/master_layout', $data);
+    }
+
+    public function createplace()
+    {
+        return view('admin/create_places');
+    }
+}

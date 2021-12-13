@@ -1,4 +1,4 @@
-<?= $this->extend('layout/master_layout') ?>
+<?= $this->extend('admin/admin_layout') ?>
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->

@@ -14,7 +14,8 @@ body {
   background: var(--green);
   color: #fff;
 }
-.home {
+
+.login {
   min-height: 100vh;
   background: url(/image/a.jpg) no-repeat;
   background-size: cover;
@@ -25,7 +26,7 @@ body {
   justify-content: center;
 }
 
-.home .content {
+.login .content {
   margin-top: 7rem;
   background: #fff;
   border-radius: 0.5rem;

@@ -1,5 +1,4 @@
 <?= $this->extend('layout/master_layout') ?>
-
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
 <link rel="stylesheet" href="<?php echo base_url() ?>/main/partner.css">
@@ -8,15 +7,17 @@
 
 <?= $this->section('content') ?>
 
-<section class="#" id="#">
+<section class="home" id="home">
 
-</section>
+    <div class="content" action="">
+
+    </div>
+    </div>
 
 </section>
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-
 
 <script>
 </script>

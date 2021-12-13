@@ -44,7 +44,8 @@ input[type="submit"]:hover {
 input[type="reset"]:hover {
   background-color: #ab1515;
 }
-.partner {
+.partner,
+.create-news {
   min-height: 100vh;
   background: url(/image/a.jpg) no-repeat;
   background-size: cover;
@@ -57,7 +58,8 @@ input[type="reset"]:hover {
   font-size: 15px;
 }
 
-.partner .content {
+.partner .content,
+.create-news .content {
   width: 100%;
   border-radius: 5px;
   background-color: #f2f2f2;

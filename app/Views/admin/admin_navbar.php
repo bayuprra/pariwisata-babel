@@ -23,7 +23,7 @@
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Tempat Wisata</a></li>
                 <li><a href="#">Preview</a></li>
-                <li><a href="#">Data</a></li>
+                <li><a href="<?= base_url('tesadmin/dataplace') ?>">Data</a></li>
                 <li><a href="<?= base_url('tesadmin/createplace') ?>">Buat Tempat Wisata</a></li>
             </ul>
         </li>

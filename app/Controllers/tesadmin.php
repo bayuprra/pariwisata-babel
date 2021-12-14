@@ -20,4 +20,14 @@ class tesadmin extends BaseController
     {
         return view('admin/create_places');
     }
+
+    public function dataplace()
+    {
+        return view('admin/data_places');
+    }
+
+    public function editplace()
+    {
+        return view('admin/edit_places');
+    }
 }

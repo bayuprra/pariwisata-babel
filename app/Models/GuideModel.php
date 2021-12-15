@@ -15,12 +15,9 @@ class GuideModel extends Model
         'name',
         'phone',
         'identity_picture',
-        'bio',
         'experience',
         'study',
         'video',
-        'user_id',
-        'is_approve',
         'gender',
         'religion',
         'address',
@@ -28,7 +25,9 @@ class GuideModel extends Model
         'email',
         'facebook',
         'instagram',
-        'twitter'
+        'twitter',
+        'user_id',
+        'is_approve',
     ];
 
     protected $validationRules = [

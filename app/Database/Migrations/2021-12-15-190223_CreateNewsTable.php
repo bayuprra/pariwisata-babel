@@ -30,10 +30,6 @@ class CreateNewsTable extends Migration
             'content'       => [
                 'type'       => 'TEXT',
             ],
-            'preview'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '255',
-            ],
             'created_at'       => [
                 'type'       => 'DATETIME',
                 'null'       => TRUE,

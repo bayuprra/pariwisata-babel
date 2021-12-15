@@ -51,7 +51,7 @@
         </li>
         <li>
             <div class="iocn-link">
-                <a href="#">
+                <a href="<?= base_url('tesadmin/dataevent') ?>">
                     <i class='bx bx-calendar'></i>
                     <span class="link_name">Event</span>
                 </a>
@@ -59,26 +59,26 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Event</a></li>
-                <li><a href="#">Data</a></li>
-                <li><a href="#">Tambah Event</a></li>
+                <li><a href="<?= base_url('tesadmin/dataevent') ?>">Data</a></li>
+                <li><a href="<?= base_url('tesadmin/createevent') ?>">Tambah Event</a></li>
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="<?= base_url('tesadmin/datauser') ?>">
                 <i class='bx bx-pie-chart-alt-2'></i>
                 <span class="link_name">User Data</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">User Data</a></li>
+                <li><a class="link_name" href="<?= base_url('tesadmin/datauser') ?>">User Data</a></li>
             </ul>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bx-pie-chart-alt-2'></i>
+            <a href="<?= base_url('tesadmin/datareview') ?>">
+                <i class='bx bx-star'></i>
                 <span class="link_name">Review Data</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Review Data</a></li>
+                <li><a class="link_name" href="<?= base_url('tesadmin/datareview') ?>">Review Data</a></li>
             </ul>
         </li>
         <li>

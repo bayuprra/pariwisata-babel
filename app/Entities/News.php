@@ -11,8 +11,7 @@ class News extends Entity
     protected $attributes = [
         'title' => 'null',
         'category' => 'null',
-        'picture' => 'null',
         'content' => 'null',
-        'preview' => 'null',
+        'preview' => 'null'
     ];
 }

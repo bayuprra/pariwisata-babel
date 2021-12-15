@@ -1,5 +1,9 @@
 <?= $this->extend('layout/master_layout') ?>
 
+<?= $this->section('title') ?>
+    <?= $title ?>
+<?= $this->endSection() ?>
+
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
 <link rel="stylesheet" href="<?php echo base_url() ?>/main/user.css">
@@ -21,40 +25,30 @@
                 </div>
             </div>
         </div>
+
+        <!--    TODO: Change this button style    -->
+        <a href="<?= base_url('news/create') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Add News">CREATE</button></a>
+
         <div class="title">
             <p>terbaru</p>
             <hr>
         </div>
-        <div class="news-box">
-            <div class="image-container">
-                <img src="/image/a.jpg" alt="news">
-                <div class="judul">
-                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
-                    <p>4 jam yang lalu</p>
+
+        <?php foreach ($news as $item) : ?>
+
+            <div class="news-box">
+                <div class="image-container">
+                    <img src="<?= $item->news_images[0]->original ?>" alt="news">
+                    <div class="judul">
+                        <h3><a href="<?= base_url('news/readnews') ?>"><?= $item->preview ?></a></h3>
+                        <p>4 jam yang lalu</p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <hr>
-        <div class="news-box">
-            <div class="image-container">
-                <img src="/image/a.jpg" alt="news">
-                <div class="judul">
-                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
-                    <p>4 jam yang lalu</p>
-                </div>
-            </div>
-        </div>
-        <hr>
-        <div class="news-box">
-            <div class="image-container">
-                <img src="/image/a.jpg" alt="news">
-                <div class="judul">
-                    <h3><a href="<?= base_url('news/readnews') ?>">Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</a></h3>
-                    <p>4 jam yang lalu</p>
-                </div>
-            </div>
-        </div>
-        <hr>
+            <hr>
+
+        <?php endforeach ?>
+
     </div>
 </section>
 <?= $this->endSection() ?>

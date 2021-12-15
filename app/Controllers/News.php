@@ -6,7 +6,7 @@ use App\Helpers\ImageManager;
 use App\Models\NewsImageModel;
 use App\Models\NewsModel;
 use CodeIgniter\Exceptions\ModelException;
-use CodeIgniter\HTTP\ResponseInterface;
+use CodeIgniter\HTTP\RedirectResponse;
 use ReflectionException;
 
 class News extends BaseController
@@ -20,6 +20,7 @@ class News extends BaseController
     /** @var NewsImageModel */
     private $newsImages;
 
+
     public function __construct()
     {
         $this->newsModel = new NewsModel();
@@ -27,7 +28,7 @@ class News extends BaseController
         $this->imageManager = new ImageManager();
     }
 
-    public function index()
+    public function getNewsData(): array
     {
         $news = $this->newsModel->findAll();
 
@@ -36,18 +37,28 @@ class News extends BaseController
             $value->news_images = $newsImages;
         }
 
+        return $news;
+    }
+
+    public function index(): string
+    {
         $data = [
             'title' => 'News | ',
-            'news'  => $news
+            'news'  => $this->getNewsData()
         ];
 
         return view('users/news', $data);
     }
 
+    public function create(): string
+    {
+        return view('admin/create_news');
+    }
+
     /**
      * @throws ReflectionException
      */
-    public function store(): ResponseInterface
+    public function store(): RedirectResponse
     {
         $data = [
             'title'     => $this->request->getVar('title'),
@@ -65,13 +76,13 @@ class News extends BaseController
             }
 
             if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
-                return $this->response->setJSON($this->newsModel->errors());
+                return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
             }
 
-            return redirect()->to('/news/index');;
+            return redirect()->to('/news/index');
         }
 
-        return $this->response->setJSON($this->newsModel->errors());
+        return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
     }
 
     public function readnews(): string

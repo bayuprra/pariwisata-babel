@@ -30,4 +30,14 @@ class tesadmin extends BaseController
     {
         return view('admin/edit_places');
     }
+
+    public function datanews()
+    {
+        return view('admin/data_news');
+    }
+
+    public function editnews()
+    {
+        return view('admin/edit_news');
+    }
 }

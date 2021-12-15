@@ -9,11 +9,11 @@
 
 <?= $this->section('content') ?>
 
-<section class="place" id="place">
+<section class="data-news" id="data-news">
 
 
     <div class="content" action="">
-        <h3>Tabel Data Tempat Wisata</h3><br><br>
+        <h3>Tabel Data Berita</h3><br><br>
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>
@@ -21,13 +21,14 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Nama</th>
-                    <th>Jalan</th>
-                    <th>Desa/kelurahan</th>
-                    <th>Kecamatan</th>
-                    <th>Kabupaten/Kota</th>
-                    <th>Fee</th>
-                    <th>Acction</th>
+                    <th>Judul</th>
+                    <th>Konten</th>
+                    <th>Kategori</th>
+                    <th>Gambar</th>
+                    <th>Tanggal Posting</th>
+                    <th>Tanggal Update</th>
+                    <th>Action</th>
+
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +41,8 @@
                     <td>Bangka</td>
                     <td>4000</td>
                     <td>
-                        <a href="<?= base_url('tesadmin/editplace') ?>"> <button class="button-edit">Edit</button>
+                        <a href="<?= base_url('tesadmin/editnews') ?>">
+                            <button class="button-edit">Edit</button>
                         </a>
                         <button class="button-delete">Hapus</button>
                     </td>

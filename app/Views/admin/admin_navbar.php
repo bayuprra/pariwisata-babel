@@ -22,7 +22,6 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Tempat Wisata</a></li>
-                <li><a href="#">Preview</a></li>
                 <li><a href="<?= base_url('tesadmin/dataplace') ?>">Data</a></li>
                 <li><a href="<?= base_url('tesadmin/createplace') ?>">Buat Tempat Wisata</a></li>
             </ul>
@@ -37,24 +36,17 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Berita</a></li>
-                <li><a href="#">Preview</a></li>
-                <li><a href="#">Data</a></li>
+                <li><a href="<?= base_url('tesadmin/datanews') ?>">Data</a></li>
                 <li><a href="<?= base_url('tesadmin/createnews') ?>">Buat Berita</a></li>
             </ul>
         </li>
         <li>
-            <div class="iocn-link">
-                <a href="#">
-                    <i class='bx bx-user-pin'></i>
-                    <span class="link_name">Guide</span>
-                </a>
-                <i class='bx bxs-chevron-down arrow'></i>
-            </div>
-            <ul class="sub-menu">
+            <a href="#">
+                <i class='bx bx-user-pin'></i>
+                <span class="link_name">Guide</span>
+            </a>
+            <ul class="sub-menu blank">
                 <li><a class="link_name" href="#">Guide</a></li>
-                <li><a href="#">Preview</a></li>
-                <li><a href="#">Data</a></li>
-                <li><a href="#">Data Guide</a></li>
             </ul>
         </li>
         <li>
@@ -67,7 +59,6 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Event</a></li>
-                <li><a href="#">Preview</a></li>
                 <li><a href="#">Data</a></li>
                 <li><a href="#">Tambah Event</a></li>
             </ul>

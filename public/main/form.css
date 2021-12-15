@@ -48,7 +48,9 @@ input[type="reset"]:hover {
 }
 .partner,
 .place,
-.create-news {
+.create-news,
+.data-news,
+.add-news {
   min-height: auto;
   display: flex;
   align-items: center;
@@ -57,9 +59,7 @@ input[type="reset"]:hover {
   font-size: 15px;
 }
 
-.partner .content,
-.place .content,
-.create-news .content {
+.content {
   width: 80%;
   border-radius: 5px;
   background-color: #f2f2f2;
@@ -90,7 +90,7 @@ input[type="reset"]:hover {
   clear: both;
 }
 
-/* start css page data_place */
+/* start css page data_page */
 .search-container {
   float: right;
 }
@@ -104,8 +104,16 @@ input[type="reset"]:hover {
 
 td,
 th {
+  text-align: center;
   align-items: center;
   vertical-align: middle;
+}
+
+thead tr th:nth-child(1),
+tbody tr td:nth-child(1) {
+  width: 1%;
+  padding: 0;
+  font-weight: bold;
 }
 button {
   padding: 4px;

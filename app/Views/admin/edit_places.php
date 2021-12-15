@@ -89,7 +89,7 @@
                 </div>
             </div>
             <div class="row">
-                <input type="update" value="Update">
+                <input type="submit" value="Update">
                 <input type="reset" value="Batal">
             </div>
 

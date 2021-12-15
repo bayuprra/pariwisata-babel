@@ -35,6 +35,7 @@ $routes->get('/', 'Users::index');
 
 // news
 $routes->get('/news/create', 'News::create');
+$routes->get('/news/show/(:num)', 'News::show/$1');
 $routes->post('/news', 'News::store');
 
 $routes->get('admin', 'Admin::index');

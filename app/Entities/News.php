@@ -8,6 +8,7 @@ use CodeIgniter\Entity\Entity;
 
 class News extends Entity
 {
+    protected $dates = ['created_at', 'updated_at'];
     protected $attributes = [
         'title' => 'null',
         'category' => 'null',

@@ -43,7 +43,7 @@ class News extends BaseController
     public function index(): string
     {
         $data = [
-            'title' => 'News | ',
+            'title' => 'News | All',
             'news'  => $this->getNewsData()
         ];
 
@@ -85,10 +85,14 @@ class News extends BaseController
         return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
     }
 
-    public function readnews(): string
+    public function show(int $id): string
     {
+        $news = $this->newsModel->find($id);
+        $news->news_images = $this->newsImages->where(['news_id' => $id])->findAll();
+
         $data = [
-            'title' => 'News | '
+            'title' => 'News | Show',
+            'news'  => $news
         ];
 
         return view('users/readnews', $data);

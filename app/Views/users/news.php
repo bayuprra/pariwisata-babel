@@ -16,9 +16,10 @@
             <div class="image-container">
                 <img src="/image/a.jpg" alt="headline news">
                 <div class="judul">
-                    <a href="<?= base_url('news/readnews') ?>">
+                        <!-- TODO: Enable this when applying headline -->
+                        <!-- <a href="--><?//= base_url('news/readnews') ?><!--">-->
                         <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
-                    </a>
+                        <!-- </a> -->
                 </div>
                 <div class="detail">
                     <p>4 jam yang lalu</p>
@@ -40,7 +41,7 @@
                 <div class="image-container">
                     <img src="<?= $item->news_images[0]->original ?>" alt="news">
                     <div class="judul">
-                        <h3><a href="<?= base_url('news/readnews') ?>"><?= $item->preview ?></a></h3>
+                        <h3><a href="<?= base_url('news/show/'.$item->id) ?>"><?= $item->preview ?></a></h3>
                         <p>4 jam yang lalu</p>
                     </div>
                 </div>

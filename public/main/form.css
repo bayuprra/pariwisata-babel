@@ -50,6 +50,7 @@ input[type="reset"]:hover {
 .place,
 .create-news,
 .data-news,
+.data-guide,
 .add-news {
   min-height: auto;
   display: flex;
@@ -107,14 +108,15 @@ th {
   text-align: center;
   align-items: center;
   vertical-align: middle;
+
+  padding: 0;
 }
 
 thead tr th:nth-child(1),
 tbody tr td:nth-child(1) {
-  width: 1%;
-  padding: 0;
   font-weight: bold;
 }
+
 button {
   padding: 4px;
   border: none;

@@ -40,4 +40,9 @@ class tesadmin extends BaseController
     {
         return view('admin/edit_news');
     }
+
+    public function dataguide()
+    {
+        return view('admin/data_guides');
+    }
 }

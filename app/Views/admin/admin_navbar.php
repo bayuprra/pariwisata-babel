@@ -41,12 +41,12 @@
             </ul>
         </li>
         <li>
-            <a href="#">
+            <a href="<?= base_url('tesadmin/dataguide') ?>">
                 <i class='bx bx-user-pin'></i>
                 <span class="link_name">Guide</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="#">Guide</a></li>
+                <li><a class="link_name" href="<?= base_url('tesadmin/dataguide') ?>">Guide</a></li>
             </ul>
         </li>
         <li>

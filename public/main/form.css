@@ -49,8 +49,14 @@ input[type="reset"]:hover {
 .partner,
 .place,
 .create-news,
+.create-event,
+.edit-event,
+.edit-user,
 .data-news,
 .data-guide,
+.data-user,
+.data-review,
+.data-event,
 .add-news {
   min-height: auto;
   display: flex;
@@ -108,13 +114,12 @@ th {
   text-align: center;
   align-items: center;
   vertical-align: middle;
-
-  padding: 0;
 }
 
 thead tr th:nth-child(1),
 tbody tr td:nth-child(1) {
   font-weight: bold;
+  padding: 0;
 }
 
 button {

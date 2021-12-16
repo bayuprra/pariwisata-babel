@@ -13,6 +13,5 @@ class News extends Entity
         'title' => 'null',
         'category' => 'null',
         'content' => 'null',
-        'preview' => 'null'
     ];
 }

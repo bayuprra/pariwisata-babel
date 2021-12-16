@@ -45,4 +45,29 @@ class tesadmin extends BaseController
     {
         return view('admin/data_guides');
     }
+
+    public function datauser()
+    {
+        return view('admin/data_users');
+    }
+
+    public function datareview()
+    {
+        return view('admin/data_reviews');
+    }
+
+    public function dataevent()
+    {
+        return view('admin/data_events');
+    }
+
+    public function createevent()
+    {
+        return view('admin/create_events');
+    }
+
+    public function editevent()
+    {
+        return view('admin/edit_events');
+    }
 }

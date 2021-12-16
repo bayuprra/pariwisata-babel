@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateGuidesTable extends Migration
+class CreatePlacesTable extends Migration
 {
     public function up()
     {
@@ -19,29 +19,33 @@ class CreateGuidesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'phone'       => [
-                'type'       => 'INT',
-                'constraint' => '100',
-            ],
-            'identity_picture'       => [
+            'district'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'bio'       => [
+            'sub_district'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'experience'       => [
+            'village'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'study'       => [
+            'fee'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'video'       => [
+            'street' => [
+                'type'              => 'VARCHAR',
+                'constraint'        => '100',
+            ],
+            'maps'       => [
                 'type'       => 'VARCHAR',
-                'constraint' => '100',
+                'constraint' => '250',
+            ],
+            'picture'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '250',
             ],
             'user_id'       => [
                 'type'           => 'INT',
@@ -55,11 +59,11 @@ class CreateGuidesTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('user_id', 'users', 'id');
-        $this->forge->createTable('guides');
+        $this->forge->createTable('places');
     }
 
     public function down()
     {
-        $this->forge->dropTable('guides');
+        $this->forge->dropTable('places');
     }
 }

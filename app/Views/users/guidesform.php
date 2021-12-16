@@ -136,7 +136,8 @@
         <div class="row">
             <input type="submit" value="Daftar">
 
-            <input type="reset" value="Reset">
+
+            <input type="reset" value="Cancel">
         </div>
     </div>
 

@@ -4,7 +4,7 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreatePlacesTable extends Migration
+class CreateEventsTable extends Migration
 {
     public function up()
     {
@@ -31,23 +31,10 @@ class CreatePlacesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'rt/rw'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
+            'date'       => [
+                'type'       => 'DATETIME',
             ],
-            'emergency_number'       => [
-                'type'       => 'int',
-                'constraint' => '100',
-            ],
-            'fee'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ],
-            'operational_hour'       => [
-                'type'       => 'VARCHAR',
-                'constraint' => '100',
-            ],
-            'maps'       => [
+            'content'       => [
                 'type'       => 'VARCHAR',
                 'constraint' => '250',
             ],
@@ -55,23 +42,13 @@ class CreatePlacesTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '250',
             ],
-            'user_id'       => [
-                'type'           => 'INT',
-                'constraint'     => 5,
-                'unsigned'       => true,
-            ],
-            'is_approve'    => [
-                'type'          => 'BOOLEAN',
-                'default'       => 0,
-            ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('user_id', 'users', 'id');
-        $this->forge->createTable('places');
+        $this->forge->createTable('events');
     }
-
     public function down()
     {
-        $this->forge->dropTable('places');
+        //
+        $this->forge->dropTable('events');
     }
 }

@@ -12,12 +12,9 @@ class Guide extends Entity
         'name' => 'null',
         'phone' => 'null',
         'identity_picture' => 'null',
-        'bio' => 'null',
         'experience' => 'null',
         'study' => 'null',
         'video' => 'null',
-        'user_id' => 'null',
-        'is_approve' => 'null',
         'gender' => 'null',
         'religion' => 'null',
         'address' => 'null',
@@ -26,6 +23,8 @@ class Guide extends Entity
         'facebook' => 'null',
         'instagram' => 'null',
         'twitter' => 'null',
+        'user_id' => 'null',
+        'is_approve' => 'null',
 
     ];
 }

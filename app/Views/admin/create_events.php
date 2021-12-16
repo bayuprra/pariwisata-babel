@@ -34,7 +34,7 @@
                 <label for="date">Tanggal</label>
             </div>
             <div class="input">
-                <input type="text" id="date" name="date" placeholder="Tanggal Diadakan Acara">
+                <input type="date" id="date" name="date" placeholder="Tanggal Diadakan Acara">
             </div>
         </div>
         <div class="row">

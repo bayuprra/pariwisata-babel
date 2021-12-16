@@ -65,4 +65,9 @@ class tesadmin extends BaseController
     {
         return view('admin/create_events');
     }
+
+    public function editevent()
+    {
+        return view('admin/edit_events');
+    }
 }

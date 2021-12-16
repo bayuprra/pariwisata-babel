@@ -37,7 +37,9 @@
                     <td>#</td>
                     <td>#</td>
                     <td>
-                        <button class="button-edit">Edit</button>
+                        <a href="<?= base_url('tesadmin/editevent') ?>">
+                            <button class="button-edit">Edit</button>
+                        </a>
                         <button class="button-delete">Hapus</button>
                     </td>
                 </tr>

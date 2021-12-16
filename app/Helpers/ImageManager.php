@@ -10,13 +10,29 @@ use Config\Services;
 
 class ImageManager
 {
-    public function newsImageProcessor(UploadedFile $image, int $newsId): bool
+    private $newsImage;
+
+    /**
+     * ImageManager constructor.
+     */
+    public function __construct()
     {
-        $newsImage = new NewsImageModel();
+        $this->newsImage = new NewsImageModel();
+    }
+
+    public function newsImageProcessor(UploadedFile $image, int $newsId, bool $isExist = false): bool
+    {
+        $newsImage = $this->newsImage;
+
+        if ($isExist) {
+            $newsImage = $this->newsImage->where(['news_id' => $newsId])->first();
+            $this->delete($newsImage);
+        }
+
         $fileName = $image->getRandomName();
         $folderName = 'news';
 
-        $image->move(FCPATH . 'image/'. $folderName, $fileName);
+        $image->move(FCPATH . 'image/' . $folderName, $fileName);
         $path = $folderName . '/' . $image->getName();
 
         $images = $this->generateImages($path, $fileName, $newsImage, $folderName);
@@ -47,5 +63,13 @@ class ImageManager
         }
 
         return $images;
+    }
+
+    private function delete($imageModel): void
+    {
+        unlink($imageModel->original);
+        unlink($imageModel->large);
+        unlink($imageModel->medium);
+        unlink($imageModel->small);
     }
 }

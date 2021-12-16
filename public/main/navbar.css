@@ -96,23 +96,86 @@ header .navbar a {
 header .navbar a:hover {
   color: var(--green);
 }
-
 header .icons {
+  display: flex;
+  flex-direction: column;
+}
+
+header .icons .menu {
   height: 4.5rem;
   line-height: 4.5rem;
   width: 5rem;
   font-size: 2rem;
-  margin-right: 0.5rem;
   border-radius: 0.5rem;
   color: var(--green);
   background: var(--light-green);
   text-align: center;
 }
 
-header .icons:hover {
+header .icons .menu:hover {
   color: var(--light-green);
   background: var(--green);
 }
+
+.triangle-up {
+  position: absolute;
+  z-index: 1001;
+  right: 53px;
+  margin: 65px 60px 0 0;
+  width: 0;
+  height: 0;
+  border-left: 25px solid transparent;
+  border-right: 25px solid transparent;
+  border-bottom: 50px solid var(--light-green);
+}
+
+.kontainer {
+  display: none;
+}
+
+.dropmenu {
+  position: absolute;
+  z-index: 1001;
+  right: 0;
+  margin: 90px 60px 0 0;
+  background-color: var(--light-green);
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+}
+
+.dropmenu .icon {
+  width: 25%;
+  background-color: var(--green);
+  font-size: 22px;
+  padding: 7px;
+  padding-top: 15px;
+  color: #f7f7f7;
+}
+
+.dropmenu .usermenu {
+  width: 100%;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 20px 0 0 10px;
+}
+
+.dropmenu .icon ul,
+.dropmenu .usermenu ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dropmenu .usermenu ul li .text {
+  text-decoration: none;
+  color: #f7f7f7;
+}
+/* 
+header .icons .menu.togle.active .kontainer {
+  display: block;
+} */
 
 /* media queries  */
 @media (max-width: 991px) {

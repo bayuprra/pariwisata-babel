@@ -65,11 +65,11 @@ class ImageManager
         return $images;
     }
 
-    private function delete($imageModel): void
+    public function delete($imageModel): void
     {
-        unlink($imageModel->original);
-        unlink($imageModel->large);
-        unlink($imageModel->medium);
-        unlink($imageModel->small);
+        unlink(strstr($imageModel->original, 'image'));
+        unlink(strstr($imageModel->large, 'image'));
+        unlink(strstr($imageModel->medium, 'image'));
+        unlink(strstr($imageModel->small, 'image'));
     }
 }

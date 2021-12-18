@@ -85,7 +85,7 @@ class News extends BaseController
             $newsId = $this->newsModel->getInsertID();
 
             if (!$newsId) {
-                throw ModelException::forNoPrimaryKey($this->newsModel);
+                throw ModelException::forNoPrimaryKey('NewsModel');
             }
 
             if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
@@ -103,7 +103,7 @@ class News extends BaseController
         $news = $this->newsModel->find($id);
 
         if (!$news) {
-            throw ModelException::forNoPrimaryKey($this->newsModel);
+            throw ModelException::forNoPrimaryKey('NewsModel');
         }
 
         $data = [
@@ -123,5 +123,25 @@ class News extends BaseController
         }
 
         return redirect()->back()->withInput()->with('error', $news->errors());
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $news = $this->newsModel->find($id);
+
+        if (!$news) {
+            throw ModelException::forNoPrimaryKey('NewsModel');
+        }
+
+        $newsImages = $this->newsImages->where(['news_id' => $id])->first();
+
+        if ($newsImages) {
+            $this->imageManager->delete($newsImages);
+            $this->newsImages->delete($newsImages->id);
+        }
+
+        $this->newsModel->delete($news->id);
+
+        return redirect()->to('/news/index');
     }
 }

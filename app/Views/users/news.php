@@ -41,7 +41,7 @@
                 <div class="image-container">
                     <img src="<?= $item->news_images->original ?>" alt="news">
                     <div class="judul">
-                        <h3><a href="<?= base_url('news/show/'.$item->id) ?>"><?= $item->preview ?></a></h3>
+                        <h3><a href="<?= base_url('news/show/'.$item->id) ?>"><?= $item->title ?></a></h3>
                         <p>4 jam yang lalu</p>
                     </div>
                 </div>

@@ -37,7 +37,7 @@ $routes->get('/', 'Users::index');
 $routes->get('/news/create', 'News::create');
 $routes->get('/news/show/(:num)', 'News::show/$1');
 $routes->post('/news', 'News::store');
-$routes->put('/news/(:num)', 'News::store/$1');
+$routes->post('/news/(:num)', 'News::update/$1');
 $routes->delete('/news/(:num)', 'News::destroy/$1');
 
 $routes->get('admin', 'Admin::index');

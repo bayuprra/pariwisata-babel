@@ -98,6 +98,12 @@ class News extends BaseController
         return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
     }
 
+    /**
+     * @param int $id
+     *
+     * @return RedirectResponse
+     * @throws ReflectionException
+     */
     public function update(int $id): RedirectResponse
     {
         $news = $this->newsModel->find($id);
@@ -114,15 +120,15 @@ class News extends BaseController
             'image'     => $this->request->getFile('image')
         ];
 
-        if($news->save($data)) {
+        if($this->newsModel->update($id, $data)) {
             if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-                return redirect()->back()->withInput()->with('error', $news->errors());
+                return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
             }
 
             return redirect()->to('/news/index');
         }
 
-        return redirect()->back()->withInput()->with('error', $news->errors());
+        return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
     }
 
     public function destroy(int $id): RedirectResponse

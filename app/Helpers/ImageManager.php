@@ -7,9 +7,11 @@ namespace App\Helpers;
 use App\Models\NewsImageModel;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
+use ReflectionException;
 
 class ImageManager
 {
+    /** @var NewsImageModel */
     private $newsImage;
 
     /**
@@ -20,29 +22,37 @@ class ImageManager
         $this->newsImage = new NewsImageModel();
     }
 
+    /**
+     * @param UploadedFile  $image
+     * @param int           $newsId
+     * @param bool          $isExist
+     *
+     * @return bool
+     * @throws ReflectionException
+     */
     public function newsImageProcessor(UploadedFile $image, int $newsId, bool $isExist = false): bool
     {
-        $newsImage = $this->newsImage;
-
-        if ($isExist) {
-            $newsImage = $this->newsImage->where(['news_id' => $newsId])->first();
-            $this->delete($newsImage);
-        }
-
         $fileName = $image->getRandomName();
         $folderName = 'news';
 
         $image->move(FCPATH . 'image/' . $folderName, $fileName);
         $path = $folderName . '/' . $image->getName();
 
-        $images = $this->generateImages($path, $fileName, $newsImage, $folderName);
+        $images = $this->generateImages($path, $fileName, $this->newsImage, $folderName);
 
         $params = array_merge($images, [
             'news_id' => $newsId,
             'original' => $path,
         ]);
 
-        return $newsImage->save($params);
+        if ($isExist) {
+            $newsImage = $this->newsImage->where(['news_id' => $newsId])->first();
+            $this->delete($newsImage);
+
+            return $this->newsImage->update($newsImage->id, $params);
+        }
+
+        return $this->newsImage->save($params);
     }
 
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array

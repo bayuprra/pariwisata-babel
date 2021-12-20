@@ -7,19 +7,19 @@
 
 
 <?= $this->section('content') ?>
+<?= view('shared/flash_message') ?>
 
 <section class="create-news" id="create-news">
 
+    <div class="content">
 
-    <div class="content" action="">
-
-        <form action="#">
+        <form action="<?= base_url('news') ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
                     <label for="title">Judul Berita</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="title" name="title" placeholder="">
+                    <input type="text" id="title" name="title" placeholder="" value="<?= old('title') ?>">
                 </div>
             </div>
             <div class="row">
@@ -27,7 +27,7 @@
                     <label for="content">Isi Berita</label>
                 </div>
                 <div class="input">
-                    <textarea name="content" class="content"></textarea>
+                    <textarea name="content" class="content"><?= old('content') ?></textarea>
                 </div>
             </div>
             <div class="row">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="input">
                     <label for="image">Select a file:</label>
-                    <input type="file" id="image" name="image"><br><br>
+                    <input type="file" id="image" name="image" value="<?= old('image') ?>"><br><br>
                 </div>
             </div>
             <div class="row">

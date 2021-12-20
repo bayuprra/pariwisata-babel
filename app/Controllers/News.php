@@ -75,9 +75,9 @@ class News extends BaseController
     {
         $data = [
             'title'     => $this->request->getVar('title'),
-            'category'  => $this->request->getVar('category'),
+//            'category'  => $this->request->getVar('category'), TODO: ubah category setelah ditambahkan input fieldnya di view
+            'category'  => 'general',
             'content'   => $this->request->getVar('content'),
-            'preview'   => $this->request->getVar('preview'),
             'image'     => $this->request->getFile('image')
         ];
 
@@ -89,13 +89,13 @@ class News extends BaseController
             }
 
             if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
-                return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+                return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
             }
 
-            return redirect()->to('/news/index');
+            return redirect()->to('/news/index')->withInput()->with('success', 'News has been saved.');
         }
 
-        return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+        return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
     }
 
     /**
@@ -116,7 +116,6 @@ class News extends BaseController
             'title'     => $this->request->getVar('title'),
             'category'  => $this->request->getVar('category'),
             'content'   => $this->request->getVar('content'),
-            'preview'   => $this->request->getVar('preview'),
             'image'     => $this->request->getFile('image')
         ];
 

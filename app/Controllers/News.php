@@ -85,7 +85,7 @@ class News extends BaseController
             $newsId = $this->newsModel->getInsertID();
 
             if (!$newsId) {
-                throw ModelException::forNoPrimaryKey('NewsModel');
+                throw ModelException::forNoPrimaryKey(NewsModel::class);
             }
 
             if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
@@ -109,7 +109,7 @@ class News extends BaseController
         $news = $this->newsModel->find($id);
 
         if (!$news) {
-            throw ModelException::forNoPrimaryKey('NewsModel');
+            throw ModelException::forNoPrimaryKey(NewsModel::class);
         }
 
         $data = [
@@ -135,7 +135,7 @@ class News extends BaseController
         $news = $this->newsModel->find($id);
 
         if (!$news) {
-            throw ModelException::forNoPrimaryKey('NewsModel');
+            throw ModelException::forNoPrimaryKey(NewsModel::class);
         }
 
         $newsImages = $this->newsImages->where(['news_id' => $id])->first();

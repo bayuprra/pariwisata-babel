@@ -66,7 +66,7 @@ class ImageManager
         foreach ($imageModel::IMAGE_SIZES as $size => $sizeDetails) {
             $imagePath = $folderName . '/' . $name . '_' . $size . '.' . $extension;
             $imageLib->withFile($uploadDir . $originalPath)
-                ->fit($sizeDetails['width'], $sizeDetails['height'], 'center')
+                ->fit($sizeDetails['width'], $sizeDetails['height'])
                 ->save($uploadDir . $imagePath);
 
             $images[$size] = $imagePath;

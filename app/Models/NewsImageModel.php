@@ -30,16 +30,16 @@ class NewsImageModel extends Model
 
     const IMAGE_SIZES = [
         'large' => [
-            'width' => 800,
-            'height' => 1024,
+            'width' => 1024,
+            'height' => 800,
         ],
         'medium' => [
-            'width' => 275,
-            'height' => 400,
+            'width' => 400,
+            'height' => 275,
         ],
         'small' => [
-            'width' => 80,
-            'height' => 80,
+            'width' => 200,
+            'height' => 175,
         ],
     ];
 }

@@ -75,8 +75,7 @@ class News extends BaseController
     {
         $data = [
             'title'     => $this->request->getVar('title'),
-//            'category'  => $this->request->getVar('category'), TODO: ubah category setelah ditambahkan input fieldnya di view
-            'category'  => 'general',
+            'category'  => $this->request->getVar('category'),
             'content'   => $this->request->getVar('content'),
             'image'     => $this->request->getFile('image')
         ];

@@ -19,7 +19,19 @@
                     <label for="title">Judul Berita</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="title" name="title" placeholder="" value="<?= old('title') ?>">
+                    <input type="text" id="title" name="title" placeholder="" value="<?= !empty(session()->getFlashdata('errors')) ? old('title') : '' ?>">
+                </div>
+            </div>
+            <div class="row">
+                <div class="print">
+                    <label for="category">Kategori Berita</label>
+                </div>
+                <div class="input">
+                    <select id="category" name="category" required>
+                        <option selected disabled>Pilih</option>
+                        <option value="general">General</option>
+                        <option value="headline">Headline</option>
+                    </select>
                 </div>
             </div>
             <div class="row">
@@ -27,7 +39,7 @@
                     <label for="content">Isi Berita</label>
                 </div>
                 <div class="input">
-                    <textarea name="content" class="content"><?= old('content') ?></textarea>
+                    <textarea name="content" class="content"><?= !empty(session()->getFlashdata('errors')) ? old('content') : '' ?></textarea>
                 </div>
             </div>
             <div class="row">

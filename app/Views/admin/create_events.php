@@ -7,57 +7,62 @@
 
 
 <?= $this->section('content') ?>
+<?= view('shared/flash_message') ?>
 
 <section class="create-event" id="create-event">
 
 
     <div class="content" action="">
 
-        <div class="row">
-            <div class="print">
-                <label for="name">Nama Acara</label>
+        <form action="<?= base_url('event') ?>" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="print">
+                    <label for="name">Nama Acara</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="name" name="name" placeholder="" value="<?= !empty(session()->getFlashdata('errors')) ? old('name') : '' ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="name" name="name" placeholder="Nama Acara">
+            <div class="row">
+                <div class="print">
+                    <label for="location">Lokasi Acara</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="district" name="district" placeholder="Desa/kelurahan" value="<?= !empty(session()->getFlashdata('errors')) ? old('village') : '' ?>">
+                    <input type="text" id="district" name="district" placeholder="Kecamatan" value="<?= !empty(session()->getFlashdata('errors')) ? old('sub_district') : '' ?>">
+                    <input type="text" id="district" name="district" placeholder="Kabupaten" value="<?= !empty(session()->getFlashdata('errors')) ? old('district') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="location">Lokasi Acara</label>
+            <br>
+            <div class="row">
+                <div class="print">
+                    <label for="date">Tanggal</label>
+                </div>
+                <div class="input">
+                    <input type="date" id="date" name="date" placeholder="Tanggal Diadakan Acara">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="location" name="location" placeholder="Lokasi Acara Event">
+            <div class="row">
+                <div class="print">
+                    <label for="content">Penjelasan</label>
+                </div>
+                <div class="input">
+                    <textarea name="content" class="content"><?= !empty(session()->getFlashdata('errors')) ? old('content') : '' ?></textarea>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="date">Tanggal</label>
+            <div class="row">
+                <div class="print">
+                    <label for="image">Gambar</label>
+                </div>
+                <div class="input">
+                    <label for="image">Select a file:</label>
+                    <input type="file" id="image" name="image"><br><br>
+                </div>
             </div>
-            <div class="input">
-                <input type="date" id="date" name="date" placeholder="Tanggal Diadakan Acara">
+            <div class="row">
+                <input type="submit" value="Submit">
+                <input type="reset" value="Reset">
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="content">Penjelasan</label>
-            </div>
-            <div class="input">
-                <textarea name="content" class="content"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="image">Gambar</label>
-            </div>
-            <div class="input">
-                <label for="image">Select a file:</label>
-                <input type="file" id="image" name="image"><br><br>
-            </div>
-        </div>
-        <div class="row">
-            <input type="submit" value="Submit">
-            <input type="reset" value="Reset">
-        </div>
     </div>
 
 </section>

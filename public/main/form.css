@@ -1,5 +1,12 @@
 /* start css page create_places dan cereate news*/
 
+.data-news .content a .button-create {
+  background-color: var(--green);
+  width: auto;
+  height: auto;
+  font-size: 20px;
+}
+
 input[type="text"],
 select,
 textarea {

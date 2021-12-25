@@ -16,9 +16,19 @@ class News extends Entity
         'content' => 'null',
     ];
 
-    public function getTime()
+    public function getTime(): string
     {
         $dt = Carbon::parse($this->attributes['created_at']);
         return $dt->diffForHumans();
+    }
+
+    public function readableCreatedAt(): string
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d F Y , h:m');
+    }
+
+    public function readableUpdatedAt(): string
+    {
+        return Carbon::parse($this->attributes['created_at'])->format('d F Y , h:m');
     }
 }

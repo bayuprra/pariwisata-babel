@@ -42,8 +42,8 @@
                     <td><?= substr($item->content, 0, 100) ?></td>
                     <td><?= $item->category ?></td>
                     <td><?= $item->news_images->original ?></td>
-                    <td><?= $item->getTime() ?></td>
-                    <td>4000</td> <!-- TODO: sesuain di entity -->
+                    <td><?= $item->readableCreatedAt() ?></td>
+                    <td><?= $item->readableUpdatedAt() ?></td>
                     <td>
                         <a href="<?= base_url('tesadmin/editnews') ?>">
                             <button class="button-edit">Edit</button>

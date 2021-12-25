@@ -71,17 +71,14 @@ class Event extends BaseController
             'content'        => $this->request->getVar('content'),
             'picture'        => $this->request->getFile('picture')
         ];
-        dump($data);
+
+        $this->imageManager->eventImageProcessor($data);
 
         if ($this->eventModel->save($data)) {
             $eventId = $this->eventModel->getInsertID();
 
             if (!$eventId) {
                 throw ModelException::forNoPrimaryKey(EventModel::class);
-            }
-
-            if (!$this->imageManager->eventImageProcessor($data['picture'], $eventId)) {
-                return redirect()->to('tesadmin/dataevent')->withInput()->with('errors', $this->eventModel->errors());
             }
 
             return redirect()->to('/event/index')->withInput()->with('success', 'Event has been saved.');

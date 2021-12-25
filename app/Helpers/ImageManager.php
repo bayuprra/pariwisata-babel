@@ -60,24 +60,16 @@ class ImageManager
         return $this->newsImage->save($params);
     }
 
-
-    /**
-     * @param UploadedFile  $image
-     * @param int           $eventId
-     * @param bool          $isExist
-     *
-     * @return bool
-     * @throws ReflectionException
-     */
-    public function eventImageProcessor(UploadedFile $image, $eventModel): void
+    public function eventImageProcessor($eventRequest): void
     {
+        $image = $eventRequest->picture;
         $fileName = $image->getRandomName();
         $folderName = 'event';
 
         $image->move(FCPATH . 'image/' . $folderName, $fileName);
         $path = $folderName . '/' . $image->getName();
 
-        $eventModel->image = $path;
+        $eventRequest->picture = $path;
     }
 
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array

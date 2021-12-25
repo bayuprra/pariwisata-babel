@@ -137,13 +137,13 @@ class News extends BaseController
 
         if($this->newsModel->update($id, $data)) {
             if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-                return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+                return redirect()->back()->withInput()->with('errors', $this->newsModel->errors());
             }
 
-            return redirect()->to('/news/index');
+            return redirect()->to('/admin/news');
         }
 
-        return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+        return redirect()->back()->withInput()->with('errors', $this->newsModel->errors());
     }
 
     public function destroy(int $id): RedirectResponse

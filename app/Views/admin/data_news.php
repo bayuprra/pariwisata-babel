@@ -47,7 +47,7 @@
                     <td><?= $item->readableCreatedAt() ?></td>
                     <td><?= $item->readableUpdatedAt() ?></td>
                     <td>
-                        <a href="<?= base_url('tesadmin/editnews') ?>">
+                        <a href="<?= base_url('/news/edit/'.$item->id) ?>">
                             <button class="button-edit">Edit</button>
                         </a>
                         <form action="<?= base_url('news/'.$item->id) ?>" method="post" enctype="multipart/form-data">

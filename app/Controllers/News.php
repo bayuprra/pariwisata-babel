@@ -163,6 +163,6 @@ class News extends BaseController
 
         $this->newsModel->delete($news->id);
 
-        return redirect()->to('/news/index');
+        return redirect()->to('/admin/news');
     }
 }

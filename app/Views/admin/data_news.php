@@ -31,15 +31,19 @@
 
                 </tr>
             </thead>
+            <?php
+                $no = 1;
+            ?>
             <tbody>
+                <?php foreach ($news as $item) : ?>
                 <tr>
-                    <td>1</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
+                    <td><?= $no++ ?></td>
+                    <td><?= $item->title ?></td>
+                    <td><?= substr($item->content, 0, 100) ?></td>
+                    <td><?= $item->category ?></td>
+                    <td><?= $item->news_images->original ?></td>
+                    <td><?= $item->getTime() ?></td>
+                    <td>4000</td> <!-- TODO: sesuain di entity -->
                     <td>
                         <a href="<?= base_url('tesadmin/editnews') ?>">
                             <button class="button-edit">Edit</button>
@@ -47,32 +51,7 @@
                         <button class="button-delete">Hapus</button>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
     </div>

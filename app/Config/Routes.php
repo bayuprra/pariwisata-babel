@@ -34,13 +34,14 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Users::index');
 
 // news
+$routes->get('/admin/news', 'News::admin');
 $routes->get('/news/create', 'News::create');
 $routes->get('/news/show/(:num)', 'News::show/$1');
+$routes->get('/news/edit/(:num)', 'News::edit/$1');
 $routes->post('/news', 'News::store');
 $routes->post('/news/(:num)', 'News::update/$1');
 $routes->delete('/news/(:num)', 'News::destroy/$1');
 
-$routes->get('admin', 'Admin::index');
 
 
 

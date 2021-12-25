@@ -68,6 +68,23 @@ class News extends BaseController
         return view('admin/create_news');
     }
 
+    public function edit(int $id): string
+    {
+        $data['news'] = $this->newsModel->find($id);
+
+        return view('admin/edit_news', $data);
+    }
+
+    public function admin(): string
+    {
+        $data = [
+            'title' => 'News | Admin Index',
+            'news'  => $this->getNewsData()
+        ];
+
+        return view('admin/data_news', $data);
+    }
+
     /**
      * @throws ReflectionException
      */

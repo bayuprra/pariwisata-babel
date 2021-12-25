@@ -17,7 +17,7 @@
                 <label for="created_at">Tanggal Upload</label>
             </div>
             <div class="input">
-                <input type="text" id="created_at" name="created_at" value="12 Januari 2020" disabled>
+                <input type="text" id="created_at" value="<?= $news->created_at ?>" disabled>
             </div>
         </div>
         <div class="row">
@@ -25,7 +25,7 @@
                 <label for="title">Judul Berita</label>
             </div>
             <div class="input">
-                <input type="text" id="title" name="title" value="Judulnya Bla Bla">
+                <input type="text" id="title" name="title" value="<?= $news->title ?>">
             </div>
         </div>
         <div class="row">
@@ -33,7 +33,7 @@
                 <label for="content">Isi Berita</label>
             </div>
             <div class="input">
-                <textarea name="content" class="content">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sint quam iusto, ullam perferendis ducimus sequi tempore! Similique neque minima, ab velit harum, et repellendus sint quibusdam, nesciunt aperiam recusandae officia!</textarea>
+                <textarea name="content" class="content"><?= $news->content ?></textarea>
             </div>
         </div>
         <div class="row">
@@ -42,7 +42,7 @@
             </div>
             <div class="input">
                 <label for="image">Select a file:</label>
-                <input type="file" id="image" name="image" value="# "><br><br>
+                <input type="file" id="image" name="image" value="<?= $news->created_at ?>"><br><br>
             </div>
         </div>
 

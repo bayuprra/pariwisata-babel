@@ -29,8 +29,7 @@
             </div>
         </div>
 
-        <!--    TODO: Change this button style    -->
-        <a href="<?= base_url('news/create') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Add News">CREATE</button></a>
+        <a href="<?= base_url('tesadmin/datanews') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
 
         <div class="title">
             <p>terbaru</p>

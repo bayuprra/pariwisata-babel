@@ -36,7 +36,6 @@ class Event extends BaseController
             'event' => $this->eventModel->findAll()
         ];
 
-        dump($this->eventModel->findAll());
         return view('users/event', $data);
     }
 
@@ -49,7 +48,7 @@ class Event extends BaseController
             'event'  => $event
         ];
 
-        return view('users/readnews', $data);
+        return view('users/event', $data);
     }
 
 
@@ -80,9 +79,9 @@ class Event extends BaseController
                 throw ModelException::forNoPrimaryKey(EventModel::class);
             }
 
-            // if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
-            //     return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
-            // }
+            if (!$this->imageManager->newsImageProcessor($data['picture'], $eventId)) {
+                return redirect()->to('tesadmin/dataevent')->withInput()->with('errors', $this->eventModel->errors());
+            }
 
             return redirect()->to('/event/index')->withInput()->with('success', 'Event has been saved.');
         }

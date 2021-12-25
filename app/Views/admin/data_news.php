@@ -13,7 +13,9 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Berita</h3><br><br>
+        <h3>Tabel Data Berita</h3>
+        <a href="<?= base_url('tesadmin/createnews') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
+
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>

@@ -11,7 +11,6 @@ class EventModel extends Model
 {
     protected $table = 'events';
     protected $returnType = Event::class;
-
     protected $allowedFields = [
         'name',
         'district',
@@ -21,7 +20,6 @@ class EventModel extends Model
         'content',
         'picture'
     ];
-
     protected $validationRules = [
         'name'          => 'required',
         'district'      => 'required',
@@ -29,6 +27,6 @@ class EventModel extends Model
         'village'       => 'required',
         'date'          => 'required',
         'content'       => 'required',
-        'picture' => 'required|mime_in[picture,image/png,image/jpg]',
+        'picture'       => 'required|mime_in[picture,image/png,image/jpg]',
     ];
 }

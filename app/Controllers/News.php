@@ -37,6 +37,7 @@ class News extends BaseController
             $value->news_images = $newsImages;
         }
 
+
         return $news;
     }
 
@@ -80,7 +81,7 @@ class News extends BaseController
             'image'     => $this->request->getFile('image')
         ];
 
-        if($this->newsModel->save($data)) {
+        if ($this->newsModel->save($data)) {
             $newsId = $this->newsModel->getInsertID();
 
             if (!$newsId) {
@@ -118,7 +119,7 @@ class News extends BaseController
             'image'     => $this->request->getFile('image')
         ];
 
-        if($this->newsModel->update($id, $data)) {
+        if ($this->newsModel->update($id, $data)) {
             if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
                 return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
             }

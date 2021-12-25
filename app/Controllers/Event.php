@@ -71,6 +71,7 @@ class Event extends BaseController
             'content'        => $this->request->getVar('content'),
             'picture'        => $this->request->getFile('picture')
         ];
+        dump($data);
 
         if ($this->eventModel->save($data)) {
             $eventId = $this->eventModel->getInsertID();
@@ -79,7 +80,7 @@ class Event extends BaseController
                 throw ModelException::forNoPrimaryKey(EventModel::class);
             }
 
-            if (!$this->imageManager->newsImageProcessor($data['picture'], $eventId)) {
+            if (!$this->imageManager->eventImageProcessor($data['picture'], $eventId)) {
                 return redirect()->to('tesadmin/dataevent')->withInput()->with('errors', $this->eventModel->errors());
             }
 
@@ -90,58 +91,58 @@ class Event extends BaseController
     }
 
 
-    /**
-     * @param int $id
-     *
-     * @return RedirectResponse
-     * @throws ReflectionException
-     */
-    public function update(int $id): RedirectResponse
-    {
-        $event = $this->eventModel->find($id);
+    // /**
+    //  * @param int $id
+    //  *
+    //  * @return RedirectResponse
+    //  * @throws ReflectionException
+    //  */
+    // public function update(int $id): RedirectResponse
+    // {
+    //     $event = $this->eventModel->find($id);
 
-        if (!$event) {
-            throw ModelException::forNoPrimaryKey(EventModel::class);
-        }
+    //     if (!$event) {
+    //         throw ModelException::forNoPrimaryKey(EventModel::class);
+    //     }
 
-        $data = [
-            'name'           => $this->request->getVar('name'),
-            'district'       => $this->request->getVar('district'),
-            'sub_district'   => $this->request->getVar('sub_district'),
-            'village'        => $this->request->getVar('village'),
-            // 'date'           => $this->request->getVar('date'), TODO:rubah getVar untuk datetime
-            'content'        => $this->request->getVar('content'),
-            'picture'        => $this->request->getFile('picture')
-        ];
+    //     $data = [
+    //         'name'           => $this->request->getVar('name'),
+    //         'district'       => $this->request->getVar('district'),
+    //         'sub_district'   => $this->request->getVar('sub_district'),
+    //         'village'        => $this->request->getVar('village'),
+    //         // 'date'           => $this->request->getVar('date'), TODO:rubah getVar untuk datetime
+    //         'content'        => $this->request->getVar('content'),
+    //         'picture'        => $this->request->getFile('picture')
+    //     ];
 
-        if ($this->eventModel->update($id, $data)) {
-            // if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-            //     return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
-            // }
+    //     if ($this->eventModel->update($id, $data)) {
+    //         // if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
+    //         //     return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+    //         // }
 
-            return redirect()->to('/event/index');
-        }
+    //         return redirect()->to('/event/index');
+    //     }
 
-        return redirect()->back()->withInput()->with('error', $this->eventModel->errors());
-    }
+    //     return redirect()->back()->withInput()->with('error', $this->eventModel->errors());
+    // }
 
-    public function destroy(int $id): RedirectResponse
-    {
-        $event = $this->eventModel->find($id);
+    // public function destroy(int $id): RedirectResponse
+    // {
+    //     $event = $this->eventModel->find($id);
 
-        if (!$event) {
-            throw ModelException::forNoPrimaryKey(EventModel::class);
-        }
+    //     if (!$event) {
+    //         throw ModelException::forNoPrimaryKey(EventModel::class);
+    //     }
 
-        $newsImages = $this->newsImages->where(['news_id' => $id])->first();
+    //     $newsImages = $this->newsImages->where(['news_id' => $id])->first();
 
-        if ($newsImages) {
-            $this->imageManager->delete($newsImages);
-            $this->newsImages->delete($newsImages->id);
-        }
+    //     if ($newsImages) {
+    //         $this->imageManager->delete($newsImages);
+    //         $this->newsImages->delete($newsImages->id);
+    //     }
 
-        $this->newsModel->delete($news->id);
+    //     $this->newsModel->delete($news->id);
 
-        return redirect()->to('/news/index');
-    }
+    //     return redirect()->to('/news/index');
+    // }
 }

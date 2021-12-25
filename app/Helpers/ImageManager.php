@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Helpers;
 
 use App\Models\NewsImageModel;
+use App\Models\EventModel;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
 use ReflectionException;
@@ -14,12 +15,16 @@ class ImageManager
     /** @var NewsImageModel */
     private $newsImage;
 
+    /** @var EventModel */
+    private $event;
+
     /**
      * ImageManager constructor.
      */
     public function __construct()
     {
         $this->newsImage = new NewsImageModel();
+        $this->event = new EventModel();
     }
 
     /**
@@ -53,6 +58,26 @@ class ImageManager
         }
 
         return $this->newsImage->save($params);
+    }
+
+
+    /**
+     * @param UploadedFile  $image
+     * @param int           $eventId
+     * @param bool          $isExist
+     *
+     * @return bool
+     * @throws ReflectionException
+     */
+    public function eventImageProcessor(UploadedFile $image, $eventModel): void
+    {
+        $fileName = $image->getRandomName();
+        $folderName = 'event';
+
+        $image->move(FCPATH . 'image/' . $folderName, $fileName);
+        $path = $folderName . '/' . $image->getName();
+
+        $eventModel->image = $path;
     }
 
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array

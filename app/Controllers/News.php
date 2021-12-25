@@ -93,9 +93,13 @@ class News extends BaseController
         $data = [
             'title'     => $this->request->getVar('title'),
             'category'  => $this->request->getVar('category'),
-            'content'   => $this->request->getVar('content'),
-            'image'     => $this->request->getFile('image')
+            'content'   => $this->request->getVar('content')
         ];
+
+        $image = $this->request->getFile('image');
+        if (! $this->validate(['image' => 'required|uploaded[image]'])) {
+            return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
+        }
 
         if ($this->newsModel->save($data)) {
             $newsId = $this->newsModel->getInsertID();
@@ -104,7 +108,7 @@ class News extends BaseController
                 throw ModelException::forNoPrimaryKey(NewsModel::class);
             }
 
-            if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
+            if (!$this->imageManager->newsImageProcessor($image, $newsId)) {
                 return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
             }
 
@@ -136,8 +140,10 @@ class News extends BaseController
         ];
 
         if ($this->newsModel->update($id, $data)) {
-            if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-                return redirect()->back()->withInput()->with('errors', $this->newsModel->errors());
+            if (file_exists($data['image'])) {
+                if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
+                    return redirect()->back()->withInput()->with('errors', $this->newsModel->errors());
+                }
             }
 
             return redirect()->to('/admin/news');

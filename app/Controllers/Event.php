@@ -68,12 +68,10 @@ class Event extends BaseController
             'sub_district'   => $this->request->getVar('sub_district'),
             'village'        => $this->request->getVar('village'),
             'date'           => $this->request->getVar('date'),
-            'content'        => $this->request->getVar('content'),
-            'picture'        => $this->request->getFile('picture')
+            'content'        => $this->request->getVar('content')
         ];
 
-        // $this->imageManager->eventImageProcessor($data);
-        $this->imageManager->eventImageProcessor($data['picture'], $data);
+        $this->imageManager->eventImageProcessor($this->request->getFile('picture'), $data);
 
         if ($this->eventModel->save($data)) {
             $eventId = $this->eventModel->getInsertID();

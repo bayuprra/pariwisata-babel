@@ -27,6 +27,6 @@ class EventModel extends Model
         'village'       => 'required',
         'date'          => 'required',
         'content'       => 'required',
-        'picture'       => 'required|mime_in[picture,image/png,image/jpg]',
+        'picture'       => 'required',
     ];
 }

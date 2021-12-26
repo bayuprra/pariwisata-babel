@@ -28,8 +28,8 @@
                     <label for="location">Lokasi Acara</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="district" name="district" placeholder="Desa/kelurahan" value="<?= !empty(session()->getFlashdata('errors')) ? old('village') : '' ?>">
-                    <input type="text" id="district" name="district" placeholder="Kecamatan" value="<?= !empty(session()->getFlashdata('errors')) ? old('sub_district') : '' ?>">
+                    <input type="text" id="district" name="village" placeholder="Desa/kelurahan" value="<?= !empty(session()->getFlashdata('errors')) ? old('village') : '' ?>">
+                    <input type="text" id="district" name="sub_district" placeholder="Kecamatan" value="<?= !empty(session()->getFlashdata('errors')) ? old('sub_district') : '' ?>">
                     <input type="text" id="district" name="district" placeholder="Kabupaten" value="<?= !empty(session()->getFlashdata('errors')) ? old('district') : '' ?>">
                 </div>
             </div>

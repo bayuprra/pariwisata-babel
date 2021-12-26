@@ -60,7 +60,7 @@ class ImageManager
         return $this->newsImage->save($params);
     }
 
-    public function eventImageProcessor(UploadedFile $image, $data): void
+    public function eventImageProcessor(UploadedFile $image, &$data): void
     {
         // $image = $eventRequest->picture;
         $fileName = $image->getRandomName();
@@ -69,7 +69,7 @@ class ImageManager
         $image->move(FCPATH . 'image/' . $folderName, $fileName);
         $path = $folderName . '/' . $image->getName();
 
-        $data->picture = $path;
+        $data['picture'] = $path;
     }
 
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array

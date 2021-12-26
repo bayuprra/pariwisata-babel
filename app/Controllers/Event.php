@@ -72,7 +72,8 @@ class Event extends BaseController
             'picture'        => $this->request->getFile('picture')
         ];
 
-        $this->imageManager->eventImageProcessor($data);
+        // $this->imageManager->eventImageProcessor($data);
+        $this->imageManager->eventImageProcessor($data['picture'], $data);
 
         if ($this->eventModel->save($data)) {
             $eventId = $this->eventModel->getInsertID();

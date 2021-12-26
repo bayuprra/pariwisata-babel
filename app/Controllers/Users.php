@@ -14,8 +14,12 @@ class Users extends BaseController
         // return view('layout/master_layout', $data);
     }
 
+    public function signUp(): string
+    {
+        return view('layout/login');
+    }
 
-    public function edituser()
+    public function editUser(): string
     {
         return view('users/edit_user');
     }

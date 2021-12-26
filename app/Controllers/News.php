@@ -28,23 +28,11 @@ class News extends BaseController
         $this->imageManager = new ImageManager();
     }
 
-    public function getNewsData(): array
-    {
-        $news = $this->newsModel->findAll();
-
-        foreach ($news as $key => $value) {
-            $newsImages = $this->newsImages->where(['news_id' => $value->id])->first();
-            $value->news_images = $newsImages;
-        }
-
-        return $news;
-    }
-
     public function index(): string
     {
         $data = [
             'title' => 'News | All',
-            'news'  => $this->getNewsData()
+            'news'  => $this->newsModel->findAll()
         ];
 
         return view('users/news', $data);
@@ -53,7 +41,6 @@ class News extends BaseController
     public function show(int $id): string
     {
         $news = $this->newsModel->find($id);
-        $news->news_images = $this->newsImages->where(['news_id' => $id])->first();
 
         $data = [
             'title' => 'News | Show',
@@ -79,7 +66,7 @@ class News extends BaseController
     {
         $data = [
             'title' => 'News | Admin Index',
-            'news'  => $this->getNewsData()
+            'news'  => $this->newsModel->findAll()
         ];
 
         return view('admin/data_news', $data);

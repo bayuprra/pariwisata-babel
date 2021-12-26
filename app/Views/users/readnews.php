@@ -15,7 +15,7 @@
     <div class="read">
         <h3><?= $news->title ?></h3>
         <p><?= $news->created_at ?></p>
-        <img src="<?= $news->news_images->medium ?>" alt="news">
+        <img src="<?= $news->newsImage()->medium ?>" alt="news">
         <div class="content">
             <?= $news->content ?>
         </div>

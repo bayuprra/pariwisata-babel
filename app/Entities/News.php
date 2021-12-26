@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
+use App\Models\NewsImageModel;
 use CodeIgniter\Entity\Entity;
 use Carbon\Carbon;
 
@@ -30,5 +31,12 @@ class News extends Entity
     public function readableUpdatedAt(): string
     {
         return Carbon::parse($this->attributes['created_at'])->format('d F Y , h:m');
+    }
+
+    public function newsImage()
+    {
+        $newsImage = new NewsImageModel();
+
+        return $newsImage->where(['news_id' => $this->attributes['id']])->first();
     }
 }

@@ -40,7 +40,7 @@
 
             <div class="news-box">
                 <div class="image-container">
-                    <img src="<?= $item->news_images->original ?>" alt="news">
+                    <img src="<?= $item->newsImage()->original ?>" alt="news">
                     <div class="judul">
                         <h3><a href="<?= base_url('news/show/' . $item->id) ?>"><?= $item->title ?></a></h3>
                         <p><?= $item->getTime() ?></p>

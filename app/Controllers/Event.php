@@ -39,23 +39,31 @@ class Event extends BaseController
         return view('users/event', $data);
     }
 
-    public function show(int $id): string
-    {
-        $event = $this->eventModel->find($id);
-
-        $data = [
-            'title' => 'Event | Show',
-            'event'  => $event
-        ];
-
-        return view('users/event', $data);
-    }
 
 
     public function create(): string
     {
         return view('admin/create_events');
     }
+
+    public function edit(int $id): string
+    {
+        $data['events'] = $this->eventModel->find($id);
+
+        return view('admin/edit_events', $data);
+    }
+
+    public function admin(): string
+    {
+        $data = [
+            'title' => 'Event | Event Index',
+            'event'  => $this->eventModel->findAll()
+        ];
+
+        return view('admin/data_events', $data);
+    }
+
+
 
     /**
      * @throws ReflectionException
@@ -87,40 +95,39 @@ class Event extends BaseController
     }
 
 
-    // /**
-    //  * @param int $id
-    //  *
-    //  * @return RedirectResponse
-    //  * @throws ReflectionException
-    //  */
-    // public function update(int $id): RedirectResponse
-    // {
-    //     $event = $this->eventModel->find($id);
+    /**
+     * @param int $id
+     *
+     * @return RedirectResponse
+     * @throws ReflectionException
+     */
+    public function update(int $id): RedirectResponse
+    {
+        $event = $this->eventModel->find($id);
 
-    //     if (!$event) {
-    //         throw ModelException::forNoPrimaryKey(EventModel::class);
-    //     }
+        if (!$event) {
+            throw ModelException::forNoPrimaryKey(EventModel::class);
+        }
 
-    //     $data = [
-    //         'name'           => $this->request->getVar('name'),
-    //         'district'       => $this->request->getVar('district'),
-    //         'sub_district'   => $this->request->getVar('sub_district'),
-    //         'village'        => $this->request->getVar('village'),
-    //         // 'date'           => $this->request->getVar('date'), TODO:rubah getVar untuk datetime
-    //         'content'        => $this->request->getVar('content'),
-    //         'picture'        => $this->request->getFile('picture')
-    //     ];
+        $data = [
+            'name'           => $this->request->getVar('name'),
+            'district'       => $this->request->getVar('district'),
+            'sub_district'   => $this->request->getVar('sub_district'),
+            'village'        => $this->request->getVar('village'),
+            'date'           => $this->request->getVar('date'),
+            'content'        => $this->request->getVar('content')
+        ];
 
-    //     if ($this->eventModel->update($id, $data)) {
-    //         // if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-    //         //     return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
-    //         // }
+        if ($this->eventModel->update($id, $data)) {
+            // if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
+            //     return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+            // }
 
-    //         return redirect()->to('/event/index');
-    //     }
+            return redirect()->to('/event/index');
+        }
 
-    //     return redirect()->back()->withInput()->with('error', $this->eventModel->errors());
-    // }
+        return redirect()->back()->withInput()->with('error', $this->eventModel->errors());
+    }
 
     // public function destroy(int $id): RedirectResponse
     // {

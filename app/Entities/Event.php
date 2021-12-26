@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
+use App\Models\EventModel;
+use Carbon\Carbon;
 
 class Event extends Entity
 {
@@ -17,4 +19,34 @@ class Event extends Entity
         'content' => 'null',
         'picture'   => 'null'
     ];
+
+    public function eventImage()
+    {
+        $eventImage = new EventModel();
+
+        return $eventImage->where(['event_id' => $this->attributes['id']])->first();
+    }
+
+    // public function eventLocation()
+    // {
+
+    //     return $this->attributes['village']
+    // }
+
+    public function eventDate(): string
+    {
+        return Carbon::parse($this->attributes['date'])->format('d F');
+    }
+
+    public function eventDay(): string
+    {
+        return Carbon::parse($this->attributes['date'])->format('j');
+    }
+
+    public function eventMonth(): string
+    {
+        setlocale(LC_TIME, 'id_ID');
+        Carbon::setLocale('id');
+        return Carbon::parse($this->attributes['date'])->format('F');
+    }
 }

@@ -62,7 +62,6 @@ class ImageManager
 
     public function eventImageProcessor(UploadedFile $image, &$data): void
     {
-        // $image = $eventRequest->picture;
         $fileName = $image->getRandomName();
         $folderName = 'event';
 

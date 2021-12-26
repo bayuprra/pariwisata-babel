@@ -13,7 +13,9 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Event</h3><br><br>
+        <h3>Tabel Data Event</h3><br>
+        <a href="<?= base_url('/event/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
+
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>
@@ -24,47 +26,32 @@
                     <th>Nama</th>
                     <th>Lokasi</th>
                     <th>Tanggal</th>
-                    <th>Text</th>
+                    <th>Content</th>
+                    <th>Picture</th>
                     <th>Action</th>
 
                 </tr>
             </thead>
+            <?php
+            $no = 1;
+            ?>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <a href="<?= base_url('tesadmin/editevent') ?>">
-                            <button class="button-edit">Edit</button>
-                        </a>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
+                <?php foreach ($event as $item) : ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $item->name ?></td>
+                        <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
+                        <td><?= $item->eventDate() ?></td>
+                        <td><?= $item->content ?></td>
+                        <td>#</td>
+                        <td>
+                            <a href="<?= base_url('tesadmin/editevent') ?>">
+                                <button class="button-edit">Edit</button>
+                            </a>
+                            <button class="button-delete">Hapus</button>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

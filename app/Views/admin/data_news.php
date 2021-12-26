@@ -14,7 +14,7 @@
 
     <div class="content" action="">
         <h3>Tabel Data Berita</h3>
-        <a href="<?= base_url('tesadmin/createnews') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
+        <a href="<?= base_url('/news/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
 
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
@@ -50,7 +50,7 @@
                         <a href="<?= base_url('/news/edit/'.$item->id) ?>">
                             <button class="button-edit">Edit</button>
                         </a>
-                        <form action="<?= base_url('news/'.$item->id) ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= base_url('/news/'.$item->id) ?>" method="post" enctype="multipart/form-data">
                             <input name="_method" type="hidden" value="DELETE">
                             <button class="button-delete" type="submit">Hapus</button>
                         </form>

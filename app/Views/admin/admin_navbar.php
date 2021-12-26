@@ -36,8 +36,9 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Berita</a></li>
-                <li><a href="<?= base_url('tesadmin/datanews') ?>">Data</a></li>
-                <li><a href="<?= base_url('tesadmin/createnews') ?>">Buat Berita</a></li>
+
+                <li><a href="<?= base_url('/admin/news') ?>">Data</a></li>
+                <li><a href="<?= base_url('/news/create') ?>">Buat Berita</a></li>
             </ul>
         </li>
         <li>

@@ -56,8 +56,6 @@
                 <div class="input">
                     <label for="image">Select a file:</label>
                     <input type="file" id="image" name="image"><br><br>
-                    <input type="hidden" name="id" value="<?php echo $news->id ?>">
-                    <img src="<?= $news->news_image->original ?>" style="display: none;" />
                 </div>
             </div>
 

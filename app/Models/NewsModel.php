@@ -20,7 +20,6 @@ class NewsModel extends Model
     protected $validationRules = [
         'title'         => 'required',
         'category'      => 'required',
-        'content'       => 'required',
-        'image'         => 'required|uploaded[image]',
+        'content'       => 'required'
     ];
 }

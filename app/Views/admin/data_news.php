@@ -13,13 +13,13 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Berita</h3>
+        <h3>Tabel Data Berita</h3><br>
         <a href="<?= base_url('tesadmin/createnews') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
 
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>
-        <table id="example" class="table table-striped" style="width:100%">
+        <table id="example" class="table table-striped">
             <thead>
                 <tr>
                     <th>No.</th>
@@ -34,28 +34,28 @@
                 </tr>
             </thead>
             <?php
-                $no = 1;
+            $no = 1;
             ?>
             <tbody>
                 <?php foreach ($news as $item) : ?>
-                <tr>
-                    <td><?= $no++ ?></td>
-                    <td><?= $item->title ?></td>
-                    <td><?= substr($item->content, 0, 100) ?></td>
-                    <td><?= $item->category ?></td>
-                    <td><?= $item->news_images->original ?></td>
-                    <td><?= $item->readableCreatedAt() ?></td>
-                    <td><?= $item->readableUpdatedAt() ?></td>
-                    <td>
-                        <a href="<?= base_url('/news/edit/'.$item->id) ?>">
-                            <button class="button-edit">Edit</button>
-                        </a>
-                        <form action="<?= base_url('news/'.$item->id) ?>" method="post" enctype="multipart/form-data">
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="button-delete" type="submit">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $item->title ?></td>
+                        <td><?= substr($item->content, 0, 100) ?></td>
+                        <td><?= $item->category ?></td>
+                        <td><?= $item->news_images->original ?></td>
+                        <td><?= $item->readableCreatedAt() ?></td>
+                        <td><?= $item->readableUpdatedAt() ?></td>
+                        <td>
+                            <a href="<?= base_url('/news/edit/' . $item->id) ?>">
+                                <button class="button-edit">Edit</button>
+                            </a>
+                            <form action="<?= base_url('news/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="button-delete" type="submit">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
                 <?php endforeach ?>
             </tbody>
         </table>

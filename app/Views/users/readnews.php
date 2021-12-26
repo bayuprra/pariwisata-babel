@@ -1,7 +1,7 @@
 <?= $this->extend('layout/master_layout') ?>
 
 <?= $this->section('title') ?>
-    <?= $title ?>
+<?= $title ?>
 <?= $this->endSection() ?>
 
 <?= $this->section('style') ?>
@@ -17,7 +17,7 @@
         <p><?= $news->created_at ?></p>
         <img src="<?= $news->news_images->medium ?>" alt="news">
         <div class="content">
-            <p><?= $news->content ?></p>
+            <?= $news->content ?>
         </div>
     </div>
     <div class="recom">

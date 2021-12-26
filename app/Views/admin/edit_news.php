@@ -13,7 +13,7 @@
 
     <div class="content">
 
-        <form action="<?= base_url('news/'.$news->id) ?>" method="POST" enctype="multipart/form-data">
+        <form action="<?= base_url('news/' . $news->id) ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
                     <label for="created_at">Tanggal Upload</label>
@@ -77,7 +77,7 @@
 
 <script>
     let category = document.getElementById('category').getAttribute("data-category")
-    document.getElementById('category').value=category;
+    document.getElementById('category').value = category;
 </script>
 <!-- panggil ckeditor.js -->
 <script type="text/javascript" src="<?php echo base_url('ckeditor/ckeditor.js'); ?>"></script>

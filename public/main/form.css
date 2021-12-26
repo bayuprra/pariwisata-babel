@@ -1,12 +1,5 @@
 /* start css page create_places dan cereate news*/
 
-.data-news .content a .button-create {
-  background-color: var(--green);
-  width: auto;
-  height: auto;
-  font-size: 20px;
-}
-
 input[type="text"],
 select,
 textarea {
@@ -65,7 +58,6 @@ input[type="reset"]:hover {
 .data-review,
 .data-event,
 .add-news {
-  min-height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -143,6 +135,59 @@ button {
 
 .button-delete {
   background-color: red;
+}
+
+/* data news */
+.data-news .content a .button-create {
+  background-color: var(--green);
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  border-radius: 0;
+  padding: 2px;
+  float: left;
+}
+
+.data-news .content .search-container {
+  float: left;
+  margin: 100px 0 0 -73px;
+}
+
+.data-news .table tbody {
+  font-size: 13px;
+}
+
+.data-news .table {
+  width: 100%;
+}
+.data-news tr td {
+  max-height: 170px;
+  max-width: 200px;
+  text-align: justify;
+}
+
+.data-news td:nth-child(1) {
+  text-align: center;
+}
+
+.data-news td:nth-child(2) {
+  width: 250px;
+}
+
+.data-news td:nth-child(3) * {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.data-news td:nth-child(4) {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.data-news td:nth-child(5) {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

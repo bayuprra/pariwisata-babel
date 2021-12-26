@@ -55,7 +55,7 @@
                 </div>
                 <div class="input">
                     <label for="image">Select a file:</label>
-                    <input type="file" id="image" name="image" value="<?= $news->news_image->original ?>"><br><br>
+                    <input type="file" id="image" name="image" value="<?= $news->newsImage()->original ?>"><br><br>
                 </div>
             </div>
 

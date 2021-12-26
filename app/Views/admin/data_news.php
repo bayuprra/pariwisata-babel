@@ -43,7 +43,7 @@
                         <td><?= $item->title ?></td>
                         <td><?= substr($item->content, 0, 100) ?></td>
                         <td><?= $item->category ?></td>
-                        <td><?= $item->news_images->original ?></td>
+                        <td><?= $item->newsImage()->original ?></td>
                         <td><?= $item->readableCreatedAt() ?></td>
                         <td><?= $item->readableUpdatedAt() ?></td>
                         <td>

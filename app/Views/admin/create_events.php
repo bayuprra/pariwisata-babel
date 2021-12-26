@@ -52,11 +52,11 @@
             </div>
             <div class="row">
                 <div class="print">
-                    <label for="image">Gambar</label>
+                    <label for="picture">Gambar</label>
                 </div>
                 <div class="input">
-                    <label for="image">Select a file:</label>
-                    <input type="file" id="image" name="image"><br><br>
+                    <label for="picture">Select a file:</label>
+                    <input type="file" id="picture" name="picture"><br><br>
                 </div>
             </div>
             <div class="row">

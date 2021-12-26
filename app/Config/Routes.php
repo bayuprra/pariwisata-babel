@@ -42,7 +42,11 @@ $routes->post('/news', 'News::store');
 $routes->post('/news/(:num)', 'News::update/$1');
 $routes->delete('/news/(:num)', 'News::destroy/$1');
 
-
+// event
+$routes->get('/admin/event', 'Event::index');
+$routes->get('/event/show/(:num)', 'Event::show/$1');
+$routes->get('/event/create', 'Event::create');
+$routes->post('/event', 'Event::store');
 
 
 /*

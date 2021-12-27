@@ -48,7 +48,10 @@
                             <a href="<?= base_url('/event/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>
                             </a>
-                            <button class="button-delete">Hapus</button>
+                            <form action="<?= base_url('event/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="button-delete" type="submit">Hapus</button>
+                            </form>
                         </td>
                     </tr>
                 <?php endforeach; ?>

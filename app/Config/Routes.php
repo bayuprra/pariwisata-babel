@@ -49,7 +49,7 @@ $routes->get('/event/create', 'Event::create');
 $routes->post('/event', 'Event::store');
 $routes->get('/event/edit/(:num)', 'Event::edit/$1');
 $routes->post('/event/(:num)', 'Event::update/$1');
-// $routes->delete('/event/(:num)', 'Event::destroy/$1');
+$routes->delete('/event/(:num)', 'Event::destroy/$1');
 
 
 /*

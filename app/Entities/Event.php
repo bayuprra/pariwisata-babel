@@ -27,10 +27,9 @@ class Event extends Entity
         return $eventImage->where(['event_id' => $this->attributes['id']])->first();
     }
 
-    // public function eventLocation()
+    // public function getPicture()
     // {
-
-    //     return $this->attributes['village']
+    //     return base_url() . '/image/' . $this->attributes['picture'];
     // }
 
     public function eventDate(): string

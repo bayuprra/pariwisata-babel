@@ -7,57 +7,62 @@
 
 
 <?= $this->section('content') ?>
+<?= view('shared/flash_message') ?>
 
 <section class="edit-event" id="edit-event">
 
 
     <div class="content" action="">
+        <form action="<?= base_url('event/' . $event->id) ?>" method="POST" enctype="multipart/form-data">
 
-        <div class="row">
-            <div class="print">
-                <label for="name">Nama Acara</label>
+            <div class="row">
+                <div class="print">
+                    <label for="name">Nama Acara</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="name" name="name" value="<?= $event->name ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="name" name="name" value="Nama Acara">
+            <div class="row">
+                <div class="print">
+                    <label for="location">Lokasi Acara</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="location" name="village" value="<?= $event->village ?>">
+                    <input type="text" id="location" name="sub_district" value="<?= $event->sub_district ?>">
+                    <input type="text" id="location" name="district" value="<?= $event->district ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="location">Lokasi Acara</label>
+            <div class="row">
+                <div class="print">
+                    <label for="date">Tanggal</label>
+                </div>
+                <div class="input">
+                    <input type="date" id="date" name="date" value="<?= $event->date ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="location" name="location" value="Sungailiat">
+            <div class="row">
+                <div class="print">
+                    <label for="content">Penjelasan</label>
+                </div>
+                <div class="input">
+                    <textarea name="content" class="content"><?= $event->content ?></textarea>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="date">Tanggal</label>
+            <div class="row">
+                <div class="print">
+                    <label for="image">Gambar</label>
+                </div>
+                <div class="input">
+                    <label for="picture">Select a file:</label>
+                    <input type="file" id="picture" name="picture" value="<?= $event->picture ?>"><br><br>
+                </div>
             </div>
-            <div class="input">
-                <input type="date" id="date" name="date" value="21/07/1990">
+            <div class="row">
+                <input type="submit" value="Update">
+                <input type="reset" value="Batal">
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="content">Penjelasan</label>
-            </div>
-            <div class="input">
-                <textarea name="content" class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda quam totam sed nemo! Officiis modi exercitationem soluta dolorem molestias ullam error repudiandae animi, ad harum! Aliquid quo provident saepe porro!</textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="image">Gambar</label>
-            </div>
-            <div class="input">
-                <label for="image">Select a file:</label>
-                <input type="file" id="image" name="image"><br><br>
-            </div>
-        </div>
-        <div class="row">
-            <input type="submit" value="Update">
-            <input type="reset" value="Batal">
-        </div>
+        </form>
     </div>
 
 </section>

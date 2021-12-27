@@ -221,7 +221,7 @@ button {
   text-overflow: ellipsis;
 }
 
-.data-news td:nth-child(6) {
+.data-event td:nth-child(6) {
   overflow: hidden;
   text-overflow: ellipsis;
 }

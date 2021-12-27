@@ -61,10 +61,11 @@
             </div>
             <div class="row">
                 <input type="submit" value="Submit">
-                <input type="reset" value="Reset">
+                <a href="<?= base_url('admin/event') ?>">
+                    <input type="reset" value="Kembali">
+                </a>
             </div>
     </div>
-
 </section>
 
 <?= $this->endSection() ?>

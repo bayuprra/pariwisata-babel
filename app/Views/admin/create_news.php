@@ -53,10 +53,10 @@
             </div>
             <div class="row">
                 <input type="submit" value="Submit">
-
-                <input type="reset" value="Reset">
+                <a href="<?= base_url('admin/news') ?>">
+                    <input type="reset" value="Kembali">
+                </a>
             </div>
-
         </form>
     </div>
 

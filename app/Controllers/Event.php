@@ -48,7 +48,7 @@ class Event extends BaseController
 
     public function edit(int $id): string
     {
-        $data['events'] = $this->eventModel->find($id);
+        $data['event'] = $this->eventModel->find($id);
 
         return view('admin/edit_events', $data);
     }
@@ -119,10 +119,11 @@ class Event extends BaseController
         ];
 
         if ($this->eventModel->update($id, $data)) {
-            // if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-            //     return redirect()->back()->withInput()->with('error', $this->newsModel->errors());
+            // if (file_exists($data['picture'])) {
+            //     if (!$this->imageManager->eventImageProcessor($data['image'], $id, true)) {
+            //         return redirect()->back()->withInput()->with('errors', $this->eventModel->errors());
+            //     }
             // }
-
             return redirect()->to('/event/index');
         }
 

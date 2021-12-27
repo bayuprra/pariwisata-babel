@@ -38,7 +38,7 @@
                     <label for="date">Tanggal</label>
                 </div>
                 <div class="input">
-                    <input type="date" id="date" name="date" value="<?= $event->date ?>">
+                    <input type="date" id="date" name="date" value="<?= $event->eventTime() ?>">
                 </div>
             </div>
             <div class="row">

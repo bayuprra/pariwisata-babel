@@ -64,10 +64,9 @@ class ImageManager
     {
         $fileName = $image->getRandomName();
         $folderName = 'event';
-        $url = base_url();
 
         $image->move('image/' . $folderName, $fileName);
-        $path = $url . '/' . 'image/' . $folderName . '/' . $image->getName();
+        $path = 'image/' . $folderName . '/' . $image->getName();
 
         $data['picture'] = $path;
     }

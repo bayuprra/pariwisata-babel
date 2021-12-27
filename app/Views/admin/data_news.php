@@ -8,11 +8,12 @@
 
 
 <?= $this->section('content') ?>
+<?= view('shared/flash_message') ?>
 
 <section class="data-news" id="data-news">
 
 
-    <div class="content" action="">
+    <div class="content">
         <h3>Tabel Data Berita</h3>
         <a href="<?= base_url('/news/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
 

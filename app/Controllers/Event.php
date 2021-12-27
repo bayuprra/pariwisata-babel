@@ -119,11 +119,11 @@ class Event extends BaseController
         ];
 
         if ($this->eventModel->update($id, $data)) {
-            // if (file_exists($data['picture'])) {
-            //     if (!$this->imageManager->eventImageProcessor($data['image'], $id, true)) {
-            //         return redirect()->back()->withInput()->with('errors', $this->eventModel->errors());
-            //     }
-            // }
+            if (file_exists($data['picture'])) {
+                if (!$this->imageManager->eventImageProcessor($data['picture'], $id, true)) {
+                    return redirect()->back()->withInput()->with('errors', $this->eventModel->errors());
+                }
+            }
             return redirect()->to('/event/index');
         }
 

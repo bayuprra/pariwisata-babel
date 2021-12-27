@@ -7,10 +7,10 @@
 
 
 <?= $this->section('content') ?>
-
 <section class="login" id="login">
+    <?= view('shared/flash_message') ?>
 
-    <div class="content" action="">
+    <div class="content">
 
         <div class="title-text">
             <div class="title login">
@@ -47,15 +47,18 @@
                         Belum Punya Akun? <a href="">Daftar Sekarang</a>
                     </div>
                 </form>
-                <form action="#" class="signup">
+                <form action="<?= base_url('/register') ?>" class="signup" method="post" enctype="multipart/form-data">
                     <div class="field">
-                        <input type="text" placeholder="Alamat Email" required>
+                        <input type="text" name="name" placeholder="Nama" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Kata Sandi" required>
+                        <input type="text" name="email_address" placeholder="Alamat Email" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Masukkan Ulang Kata Sandi" required>
+                        <input type="password" name="password" placeholder="Kata Sandi" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" name="confirmPassword" placeholder="Masukkan Ulang Kata Sandi" required>
                     </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>

@@ -66,7 +66,7 @@ class ImageManager
         $folderName = 'event';
 
         $image->move('image/' . $folderName, $fileName);
-        $path = 'image/' . $folderName . '/' . $image->getName();
+        $path = $image->getName();
 
         $data['picture'] = $path;
     }

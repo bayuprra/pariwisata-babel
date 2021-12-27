@@ -116,15 +116,20 @@ class Event extends BaseController
             'sub_district'   => $this->request->getVar('sub_district'),
             'village'        => $this->request->getVar('village'),
             'date'           => $this->request->getVar('date'),
-            'content'        => $this->request->getVar('content'),
+            'content'        => $this->request->getVar('content')
         ];
-        $this->imageManager->eventImageProcessor($this->request->getFile('picture'), $data);
+
+        if (file_exists($this->request->getFile('picture'))) {
+            $this->imageManager->eventImageProcessor($this->request->getFile('picture'), $data);
+        } else {
+            $data['picture'] = $event->picture;
+        }
 
         if ($this->eventModel->update($id, $data)) {
             return redirect()->to('/admin/event')->withInput()->with('success', 'Event has been saved.');
         }
 
-        return redirect()->to('/event/create')->withInput()->with('errors', $this->eventModel->errors());
+        return redirect()->back()->withInput()->with('errors', $this->eventModel->errors());
     }
 
     public function destroy(int $id): RedirectResponse

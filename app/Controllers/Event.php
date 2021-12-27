@@ -127,7 +127,7 @@ class Event extends BaseController
             return redirect()->to('/event/index');
         }
 
-        return redirect()->back()->withInput()->with('error', $this->eventModel->errors());
+        return redirect()->back()->withInput()->with('errors', $this->eventModel->errors());
     }
 
     // public function destroy(int $id): RedirectResponse

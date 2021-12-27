@@ -92,7 +92,7 @@ class News extends BaseController
             }
 
             if (!$this->imageManager->newsImageProcessor($data['image'], $newsId)) {
-                return redirect()->to('/news/create')->withInput()->with('errors', $this->newsModel->errors());
+                return redirect()->to('/news/create')->withInput()->with('error', 'failed processing the image');
             }
 
             return redirect()->to('/news/index')->withInput()->with('success', 'News has been saved.');
@@ -125,7 +125,7 @@ class News extends BaseController
         if ($this->newsModel->update($id, $data)) {
             if (file_exists($data['image'])) {
                 if (!$this->imageManager->newsImageProcessor($data['image'], $id, true)) {
-                    return redirect()->back()->withInput()->with('errors', $this->newsModel->errors());
+                    return redirect()->back()->withInput()->with('error', 'failed processing the image');
                 }
             }
 

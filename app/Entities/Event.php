@@ -27,11 +27,16 @@ class Event extends Entity
         return $eventImage->where(['event_id' => $this->attributes['id']])->first();
     }
 
-    // public function getPicture()
-    // {
-    //     return base_url() . '/image/' . $this->attributes['picture'];
-    // }
+    public function eventPicture()
+    {
+        return base_url() .  $this->attributes['picture'];
+    }
 
+
+    public function eventTime(): string
+    {
+        return Carbon::parse($this->attributes['date'])->format('Y-m-d')->locale('id');
+    }
     public function eventDate(): string
     {
         return Carbon::parse($this->attributes['date'])->format('d F');

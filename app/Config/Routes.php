@@ -54,6 +54,7 @@ $routes->post('/event/(:num)', 'Event::update/$1');
 $routes->delete('/event/(:num)', 'Event::destroy/$1');
 
 
+$routes->get('/hehe', 'Users::signUp');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

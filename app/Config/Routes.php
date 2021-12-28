@@ -34,15 +34,16 @@ $routes->setAutoRoute(true);
 $routes->get('/', 'Users::index');
 $routes->get('/login', 'Users::signUp');
 $routes->post('/register', 'Users::store');
+$routes->post('/authenticate', 'Users::authenticate');
 
 // news
-$routes->get('/admin/news', 'News::admin');
-$routes->get('/news/create', 'News::create');
-$routes->get('/news/show/(:num)', 'News::show/$1');
-$routes->get('/news/edit/(:num)', 'News::edit/$1');
-$routes->post('/news', 'News::store');
-$routes->post('/news/(:num)', 'News::update/$1');
-$routes->delete('/news/(:num)', 'News::destroy/$1');
+$routes->get('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
+$routes->get('/news/create', 'News::create', ['filter' => 'adminGuard']);
+$routes->get('/news/show/(:num)', 'News::show/$1', ['filter' => 'adminGuard']);
+$routes->get('/news/edit/(:num)', 'News::edit/$1', ['filter' => 'adminGuard']);
+$routes->post('/news', 'News::store', ['filter' => 'adminGuard']);
+$routes->post('/news/(:num)', 'News::update/$1', ['filter' => 'adminGuard']);
+$routes->delete('/news/(:num)', 'News::destroy/$1', ['filter' => 'adminGuard']);
 
 // event
 $routes->get('/admin/event', 'Event::admin');

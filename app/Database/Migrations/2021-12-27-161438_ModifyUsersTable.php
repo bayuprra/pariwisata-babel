@@ -13,6 +13,10 @@ class ModifyUsersTable extends Migration
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
                 'null'       => true
+            ],
+            'password'       => [
+                'type'       => 'VARCHAR',
+                'constraint' => '255',
             ]
         );
 

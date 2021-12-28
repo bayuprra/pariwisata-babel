@@ -29,12 +29,12 @@
                 <div class="slider-tab"></div>
             </div>
             <div class="form-inner">
-                <form action="#" class="login">
+                <form action="<?= base_url('/authenticate') ?>" class="login" method="post" enctype="multipart/form-data">
                     <div class="field">
-                        <input type="text" placeholder="Alamat Email" required>
+                        <input type="text" name="email_address" placeholder="Alamat Email" required>
                     </div>
                     <div class="field">
-                        <input type="password" placeholder="Kata Sandi" required>
+                        <input type="password" name="password" placeholder="Kata Sandi" required>
                     </div>
                     <div class="pass-link">
                         <a href="#">Lupa Kata Sandi?</a>

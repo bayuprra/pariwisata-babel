@@ -37,22 +37,26 @@ $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
 
 // news
+$routes->get('/news/show/(:num)', 'News::show/$1');
 $routes->get('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
-$routes->get('/news/create', 'News::create', ['filter' => 'adminGuard']);
-$routes->get('/news/show/(:num)', 'News::show/$1', ['filter' => 'adminGuard']);
-$routes->get('/news/edit/(:num)', 'News::edit/$1', ['filter' => 'adminGuard']);
-$routes->post('/news', 'News::store', ['filter' => 'adminGuard']);
-$routes->post('/news/(:num)', 'News::update/$1', ['filter' => 'adminGuard']);
-$routes->delete('/news/(:num)', 'News::destroy/$1', ['filter' => 'adminGuard']);
+$routes->group('/news', ['filter' => 'adminGuard'], function ($routes) {
+    $routes->get('/create', 'News::create');
+    $routes->get('/edit/(:num)', 'News::edit/$1');
+    $routes->post('/', 'News::store');
+    $routes->post('/(:num)', 'News::update/$1');
+    $routes->delete('/(:num)', 'News::destroy/$1');
+});
 
 // event
-$routes->get('/admin/event', 'Event::admin');
-$routes->get('/event/create', 'Event::create');
-$routes->post('/event', 'Event::store');
-$routes->get('/event/edit/(:num)', 'Event::edit/$1');
-$routes->post('/event/(:num)', 'Event::update/$1');
-$routes->delete('/event/(:num)', 'Event::destroy/$1');
 
+$routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
+$routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
+    $routes->get('/create', 'Event::create');
+    $routes->post('/', 'Event::store');
+    $routes->get('/edit/(:num)', 'Event::edit/$1');
+    $routes->post('/(:num)', 'Event::update/$1');
+    $routes->delete('/(:num)', 'Event::destroy/$1');
+});
 
 $routes->get('/hehe', 'Users::signUp');
 /*

@@ -8,10 +8,6 @@ use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
 use ReflectionException;
 
-
-
-
-
 class Event extends BaseController
 {
     /** @var EventModel */
@@ -27,8 +23,6 @@ class Event extends BaseController
         $this->imageManager = new ImageManager();
     }
 
-
-
     public function index(): string
     {
         $data = [
@@ -38,8 +32,6 @@ class Event extends BaseController
 
         return view('users/event', $data);
     }
-
-
 
     public function create(): string
     {
@@ -62,8 +54,6 @@ class Event extends BaseController
 
         return view('admin/data_events', $data);
     }
-
-
 
     /**
      * @throws ReflectionException

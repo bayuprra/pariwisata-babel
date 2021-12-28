@@ -9,15 +9,16 @@
 <?= $this->section('content') ?>
 
 <section class="home" id="home">
+    <?= view('shared/flash_message') ?>
 
-    <div class="content" action="">
+    <div class="content">
         <h3>Cari tempat yang ingin kamu kunjungi</h3>
         <div class="inputBox">
             <input type="search" name="search" placeholder="cari" id="search">
         </div>
         <input type="submit" value="Cari lokasi" class="btn">
 
-        <!-- rekomendation -->
+        <!-- recommendation -->
         <div class="result-recom">
             <div class="det">
                 <a href="#" class="fa fa-star" aria-hidden="true"></a>

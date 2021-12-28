@@ -35,7 +35,7 @@ class Event extends Entity
 
     public function eventTime(): string
     {
-        return Carbon::parse($this->attributes['date'])->format('Y-m-d');
+        return Carbon::parse($this->attributes['date'])->format('Y-m-d')->locale('id');
     }
     public function eventDate(): string
     {

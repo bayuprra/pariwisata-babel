@@ -140,7 +140,10 @@ class Event extends BaseController
             throw ModelException::forNoPrimaryKey(EventModel::class);
         }
 
+        unlink('image/' . $event->picture);
         $this->eventModel->delete($event->id);
+
+
 
         return redirect()->to('/admin/event ');
     }

@@ -16,7 +16,7 @@ class Users extends BaseController
 
     public function signUp(): string
     {
-        return view('layout/login');
+        return view('layout/login2');
     }
 
     public function editUser(): string

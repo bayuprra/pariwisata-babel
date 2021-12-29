@@ -7,9 +7,9 @@
 
 
 <?= $this->section('content') ?>
-<section class="login" id="login">
-    <?= view('shared/flash_message') ?>
+<?= view('shared/flash_message') ?>
 
+<section class="login" id="login">
     <div class="content">
 
         <div class="title-text">

@@ -35,7 +35,7 @@ $routes->get('/', 'Users::index');
 $routes->get('/login', 'Users::signUp');
 $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
-$routes->post('/logout', 'Users::logout', ['filter' => 'authGuard']);
+$routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
 
 // news
 $routes->get('/news/show/(:num)', 'News::show/$1');
@@ -49,7 +49,6 @@ $routes->group('/news', ['filter' => 'adminGuard'], function ($routes) {
 });
 
 // event
-
 $routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->get('/create', 'Event::create');

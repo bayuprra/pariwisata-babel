@@ -33,9 +33,9 @@
             <ul>
                 <?php if (session()->get('isLoggedIn')): ?>
                 <li>Edit Profil</li>
-                <li>Logout</li>
+                <li><a href="<?= base_url('/logout') ?>">Logout</a></li>
                 <?php else: ?>
-                <li>Login</li>
+                <li><a href="<?= base_url('/login') ?>">Login</a></li>
                 <?php endif; ?>
             </ul>
         </div>

@@ -7,8 +7,9 @@
 
 
 <?= $this->section('content') ?>
-
 <div class="wrapper">
+    <?= view('shared/flash_message') ?>
+
     <div class="title-text">
         <div class="title login">
             Login Form
@@ -26,12 +27,12 @@
             <div class="slider-tab"></div>
         </div>
         <div class="form-inner">
-            <form action="#" class="login">
+            <form action="<?= base_url('/authenticate') ?>" class="login" method="post" enctype="multipart/form-data">
                 <div class="field">
-                    <input type="text" placeholder="Email Address" required>
+                    <input type="text" name="email_address" placeholder="Email Address" required>
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="pass-link">
                     <a href="#">Forgot password?</a>
@@ -44,15 +45,18 @@
                     Not a member? <a href="">Signup now</a>
                 </div>
             </form>
-            <form action="#" class="signup">
+            <form action="<?= base_url('/register') ?>" class="signup" method="post" enctype="multipart/form-data">
                 <div class="field">
-                    <input type="text" placeholder="Email Address" required>
+                    <input type="text" name="name" placeholder="Name" required>
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Password" required>
+                    <input type="text" name="email_address" placeholder="Email Address" required>
                 </div>
                 <div class="field">
-                    <input type="password" placeholder="Confirm password" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="field">
+                    <input type="password" name="confirmPassword" placeholder="Confirm password" required>
                 </div>
                 <div class="field btn">
                     <div class="btn-layer"></div>

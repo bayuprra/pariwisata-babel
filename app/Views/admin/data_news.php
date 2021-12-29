@@ -12,7 +12,7 @@
 
 <section class="data-news" id="data-news">
 
-
+<?php dump(session()->get('isAdmin')); ?>
     <div class="content">
         <h3>Tabel Data Berita</h3>
         <a href="<?= base_url('/news/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>

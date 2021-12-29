@@ -7,138 +7,140 @@
 
 
 <?= $this->section('content') ?>
+<?= view('shared/flash_message') ?>
 
 <section class="partner" id="partner">
 
 
     <div class="content" action="">
-        <div class="row">
-            <div class="print">
-                <label for="name">Nama Lengkap</label>
+        <form action="<?= base_url('guide') ?>" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                <div class="print">
+                    <label for="name">Nama Lengkap</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="name" name="name" value="<?= !empty(session()->getFlashdata('errors')) ? old('name') : '' ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="name" name="name" placeholder="Nama Kamu..">
+            <div class="row">
+                <div class="print">
+                    <label for="phone">Nomor Telepon</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="phone" name="phone" value="<?= !empty(session()->getFlashdata('errors')) ? old('phone') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="phone">Nomor Telepon</label>
+            <div class="row">
+                <div class="print">
+                    <label for="gender">Jenis Kelamin</label>
+                </div>
+                <div class="input">
+                    <select id="gender" name="gender" required>
+                        <option selected disabled>Jenis Kelamin</option>
+                        <option value="male">Laki - Laki</option>
+                        <option value="female">Wanita</option>
+                    </select>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="phone" name="phone" placeholder="Nomor Telepon Aktif">
+            <div class="row">
+                <div class="print">
+                    <label for="address">Alamat</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="address" name="address" value="<?= !empty(session()->getFlashdata('errors')) ? old('address') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="gender">Jenis Kelamin</label>
+            <div class="row">
+                <div class="print">
+                    <label for="age">Umur</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="age" name="age" value="<?= !empty(session()->getFlashdata('errors')) ? old('age') : '' ?>">
+                </div>
             </div>
-            <div class="input">
-                <select id="gender" name="gender">
-                    <option selected>Jenis Kelamin</option>
-                    <option value="male">Laki - Laki</option>
-                    <option value="female">Wanita</option>
-                </select>
+            <div class="row">
+                <div class="print">
+                    <label for="religion">Agama</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="religion" name="religion" <?= !empty(session()->getFlashdata('errors')) ? old('religion') : '' ?>>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="address">Alamat</label>
+            <div class="row">
+                <div class="print">
+                    <label for="experience">Pengalaman</label>
+                </div>
+                <div class="input">
+                    <textarea id="experience" name="experience" value="<?= !empty(session()->getFlashdata('errors')) ? old('experience') : '' ?>"></textarea>
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="address" name="address" placeholder="Alamat Domisili">
+            <div class="row">
+                <div class="print">
+                    <label for="study">Sekolah</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="study" name="study" value="<?= !empty(session()->getFlashdata('errors')) ? old('study') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="age">Umur</label>
+            <div class="row">
+                <div class="print">
+                    <label for="email">E-mail</label>
+                </div>
+                <div class="input">
+                    <input type="email" id="email" name="email" value="<?= !empty(session()->getFlashdata('errors')) ? old('email') : '' ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="age" name="age" placeholder="Umur">
+            <div class="row">
+                <div class="print">
+                    <label for="facebook">Akun Facebook</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="facebook" name="facebook" value="<?= !empty(session()->getFlashdata('errors')) ? old('facebook') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="religion">Agama</label>
+            <div class="row">
+                <div class="print">
+                    <label for="instagram">Akun Instagram</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="instagram" name="instagram" value="<?= !empty(session()->getFlashdata('errors')) ? old('instagram') : '' ?>">
+                </div>
             </div>
-            <div class="input">
-                <input type="text" id="religion" name="religion" placeholder="Agama">
+            <div class="row">
+                <div class="print">
+                    <label for="twitter">Akun Twitter</label>
+                </div>
+                <div class="input">
+                    <input type="text" id="twitter" name="twitter" value="<?= !empty(session()->getFlashdata('errors')) ? old('twitter') : '' ?>">
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="experience">Pengalaman</label>
-            </div>
-            <div class="input">
-                <textarea id="experience" name="experience" placeholder="Tuliskan Pengalamanmu Dalam Bidang Pariwisata
-                     Jika Tidak Ada, Tuliskan Apa Saja yang Kamu Tahu Tentang Pariwisata di Bangka Belitung"></textarea>
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="study">Sekolah</label>
-            </div>
-            <div class="input">
-                <input type="text" id="study" name="study" placeholder="Ijazah Terakhir">
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="email">E-mail</label>
-            </div>
-            <div class="input">
-                <input type="text" id="email" name="email" placeholder="email">
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="facebook">Akun Facebook</label>
-            </div>
-            <div class="input">
-                <input type="text" id="facebook" name="facebook" placeholder="Akun facebook">
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="instagram">Akun Instagram</label>
-            </div>
-            <div class="input">
-                <input type="text" id="instagram" name="instagram" placeholder="Akun Instagram">
-            </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="twitter">Akun Twitter</label>
-            </div>
-            <div class="input">
-                <input type="text" id="twitter" name="twitter" placeholder="Akun Twitter">
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="print">
-                <label for="identity_picture">Foto Diri</label>
+            <div class="row">
+                <div class="print">
+                    <label for="identity_picture">Foto Diri</label>
+                </div>
+                <div class="input">
+                    <label for="identity_picture">Select a file:</label>
+                    <input type="file" id="identity_picture" name="identity_picture"><br><br>
+                </div>
             </div>
-            <div class="input">
-                <label for="identity_picture">Select a file:</label>
-                <input type="file" id="identity_picture" name="identity_picture"><br><br>
+            <div class="row">
+                <div class="print">
+                    <label for="video">Video Perkenalan Diri</label>
+                </div>
+                <div class="input">
+                    <label for="video">Select a file:</label>
+                    <input type="file" id="video" name="video"><br><br>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="print">
-                <label for="video">Video Perkenalan Diri</label>
-            </div>
-            <div class="input">
-                <label for="video">Select a file:</label>
-                <input type="file" id="video" name="video"><br><br>
-            </div>
-        </div>
 
-        <div class="row">
-            <input type="submit" value="Daftar">
+            <div class="row">
+                <input type="submit" value="Daftar">
 
 
-            <input type="reset" value="Cancel">
-        </div>
+                <input type="reset" value="Cancel">
+            </div>
+        </form>
     </div>
 
 </section>

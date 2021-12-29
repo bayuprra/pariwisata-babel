@@ -59,6 +59,11 @@ $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->delete('/(:num)', 'Event::destroy/$1');
 });
 
+// Guides
+$routes->get('/admin/guide', 'Guide::admin');
+$routes->get('/formguides/index', 'Guide::create');
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

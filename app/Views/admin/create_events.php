@@ -65,6 +65,7 @@
                     <input type="reset" value="Kembali">
                 </a>
             </div>
+        </form>
     </div>
 </section>
 

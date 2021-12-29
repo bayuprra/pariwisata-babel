@@ -8,16 +8,14 @@
 
 <?= $this->section('content') ?>
 <section class="login" id="login">
-    <?= view('shared/flash_message') ?>
 
-    <div class="content">
-
+    <div class="wrapper">
         <div class="title-text">
             <div class="title login">
-                Login / Masuk
+                Login
             </div>
             <div class="title signup">
-                Pendaftaran
+                Daftar
             </div>
         </div>
         <div class="form-container">
@@ -49,16 +47,13 @@
                 </form>
                 <form action="<?= base_url('/register') ?>" class="signup" method="post" enctype="multipart/form-data">
                     <div class="field">
-                        <input type="text" name="name" placeholder="Nama" required>
-                    </div>
-                    <div class="field">
                         <input type="text" name="email_address" placeholder="Alamat Email" required>
                     </div>
                     <div class="field">
                         <input type="password" name="password" placeholder="Kata Sandi" required>
                     </div>
                     <div class="field">
-                        <input type="password" name="confirmPassword" placeholder="Masukkan Ulang Kata Sandi" required>
+                        <input type="password" name="confirmPassword" placeholder="Ulang Kata Sandi" required>
                     </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>
@@ -68,12 +63,11 @@
             </div>
         </div>
     </div>
-
 </section>
+
 <?= $this->endSection() ?>
 
 <?= $this->section('script') ?>
-
 <script>
     const loginText = document.querySelector(".title-text .login");
     const loginForm = document.querySelector("form.login");

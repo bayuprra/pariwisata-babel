@@ -6,6 +6,7 @@ namespace App\Helpers;
 
 use App\Models\NewsImageModel;
 use App\Models\EventModel;
+use App\Models\GuideModel;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
 use ReflectionException;
@@ -18,6 +19,8 @@ class ImageManager
     /** @var EventModel */
     private $event;
 
+    /** @var GuideModel */
+    private $guide;
     /**
      * ImageManager constructor.
      */
@@ -25,6 +28,7 @@ class ImageManager
     {
         $this->newsImage = new NewsImageModel();
         $this->event = new EventModel();
+        $this->guide = new GuideModel();
     }
 
     /**

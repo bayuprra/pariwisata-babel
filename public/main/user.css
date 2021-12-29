@@ -1,5 +1,10 @@
 /* home page */
 
+.alert-success {
+  background-color: red;
+  float: left;
+}
+
 .home {
   min-height: 100vh;
   background: url(/image/a.jpg) no-repeat;

@@ -7,6 +7,10 @@
         background-color: red;
         width: 40%;
     }
+
+    .alert-success {
+        display: block;
+    }
 </style>
 
 
@@ -24,9 +28,16 @@
 <?php endif ?>
 
 <?php if (!empty(session()->getFlashdata('success'))) : ?>
-    <div class="alert alert-success">
-        <?= session()->getFlashdata('success') ?>
+    <div class="alert alert-success" id="sukses">
     </div>
+
+    <script>
+        const appear = setTimeout(appears, 5000);
+
+        function appears() {
+            document.getElementById("sukses").innerHTML = <?= session()->getFlashdata('success') ?>
+        }
+    </script>
 <?php endif; ?>
 
 <?php if (!empty(session()->getFlashdata('error'))) : ?>

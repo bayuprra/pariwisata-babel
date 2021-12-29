@@ -46,7 +46,7 @@ class Users extends BaseController
 
     public function signUp(): string
     {
-        return view('layout/login2');
+        return view('layout/login');
     }
 
 
@@ -71,7 +71,7 @@ class Users extends BaseController
             'confirmPassword'   => 'matches[password]'
         ]);
 
-        if ($this->validation->withRequest($this->request)->run()){
+        if ($this->validation->withRequest($this->request)->run()) {
             if ($this->userModel->save($data)) {
 
                 $role = $this->roleUser->table('role_users')->insert(['user_id' => $this->userModel->getInsertID(), 'role_id' => 3]);
@@ -110,7 +110,7 @@ class Users extends BaseController
                 ];
 
                 $session->set($session_data);
-                return redirect()->to('/')->with('success', 'Welcome back '.$data->name);
+                return redirect()->to('/')->with('success', 'Welcome back ' . $data->name);
             }
 
             return redirect()->back()->with('error', 'Password is incorrect.');

@@ -84,10 +84,10 @@ class Users extends BaseController
                 }
             }
 
-            return redirect()->back()->with('errors', $this->validation->getErrors());
+            return redirect()->back()->with('errors', $this->userModel->errors());
         }
 
-        return redirect()->back()->with('errors', $this->userModel->errors());
+        return redirect()->back()->with('errors', $this->validation->getErrors());
     }
 
 

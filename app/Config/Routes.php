@@ -59,9 +59,11 @@ $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
 });
 
 // Guides
-$routes->get('/admin/guide', 'Guide::admin');
-$routes->get('/formguides/index', 'Guide::create');
-
+$routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
+$routes->group('/guide', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('/create', 'Guide::create');
+    $routes->post('/', 'Guide::store');
+});
 
 /*
  * --------------------------------------------------------------------

@@ -15,11 +15,11 @@
         <?php foreach ($event as $item) : ?>
             <div class="box">
                 <div class="content-image">
-                    <img src="/image/a.jpg" alt="event image">
+                    <img src="<?= base_url() . '/image/' . $item->picture ?>" alt="event image">
                 </div>
                 <div class="content-date">
-                    <h5 class="label-date"><?= $item->eventDay() ?></h5>
-                    <p class="label-month"><?= $item->eventMonth() ?></p>
+                    <h5 class="label-date"><?= Carbon\Carbon::parse($item->date)->format('j') ?></h5>
+                    <p class="label-month"><?= App\Helpers\DateTimeManager::eventMonth($item->date) ?></p>
                 </div>
                 <div class="content-detail">
                     <div class="title">

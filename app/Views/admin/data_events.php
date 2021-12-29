@@ -41,7 +41,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $item->name ?></td>
                         <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
-                        <td><?= $item->eventDate() ?></td>
+                        <td><?= Carbon\Carbon::parse($event->date)->format('d F') ?></td>
                         <td><?= $item->content ?></td>
                         <td> <a href="<?= $item->picture ?>"> <?= $item->picture ?></a></td>
                         <td>

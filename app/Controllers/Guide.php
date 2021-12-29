@@ -92,8 +92,9 @@ class Guide extends BaseController
                     throw ModelException::forNoPrimaryKey(GuideModel::class);
                 }
 
-                return redirect()->to('/guide/index')->withInput()->with('success', 'Guide has been saved.');
+                return redirect()->to('/guide/index')->with('success', 'Guide has been saved.');
             }
+
             return redirect()->back()->withInput()->with('errors', $this->guideModel->errors());
         }
 

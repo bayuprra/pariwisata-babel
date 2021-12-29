@@ -60,17 +60,6 @@ class ImageManager
         return $this->newsImage->save($params);
     }
 
-    public function eventImageProcessor(UploadedFile $image, &$data): void
-    {
-        $fileName = $image->getRandomName();
-        $folderName = 'event';
-
-        $image->move('image/' . $folderName, $fileName);
-        $path = $folderName . '/' . $image->getName();
-
-        $data['picture'] = $path;
-    }
-
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array
     {
         $imageLib = Services::image();
@@ -97,5 +86,27 @@ class ImageManager
         unlink(strstr($imageModel->large, 'image'));
         unlink(strstr($imageModel->medium, 'image'));
         unlink(strstr($imageModel->small, 'image'));
+    }
+
+    public function eventImageProcessor(UploadedFile $image, &$data): void
+    {
+        $fileName = $image->getRandomName();
+        $folderName = 'event';
+
+        $image->move('image/' . $folderName, $fileName);
+        $path = $folderName . '/' . $image->getName();
+
+        $data['picture'] = $path;
+    }
+
+    public function guideImageProcessor(UploadedFile $image, &$data): void
+    {
+        $fileName = $image->getRandomName();
+        $folderName = 'guide';
+
+        $image->move('image/' . $folderName, $fileName);
+        $path = $folderName . '/' . $image->getName();
+
+        $data['	identity_picture'] = $path;
     }
 }

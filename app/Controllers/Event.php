@@ -33,6 +33,8 @@ class Event extends BaseController
         return view('users/event', $data);
     }
 
+
+
     public function create(): string
     {
         return view('admin/create_events');
@@ -54,6 +56,8 @@ class Event extends BaseController
 
         return view('admin/data_events', $data);
     }
+
+
 
     /**
      * @throws ReflectionException
@@ -130,7 +134,7 @@ class Event extends BaseController
             throw ModelException::forNoPrimaryKey(EventModel::class);
         }
 
-        unlink('image/' . $event->picture);
+        unlink('image/  ' . $event->picture);
         $this->eventModel->delete($event->id);
 
 

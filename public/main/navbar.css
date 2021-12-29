@@ -168,7 +168,8 @@ header .icons .menu:hover {
   gap: 7px;
 }
 
-.dropmenu .usermenu ul li .text {
+.dropmenu .usermenu ul li a,
+.dropmenu .usermenu ul li {
   text-decoration: none;
   color: #f7f7f7;
 }

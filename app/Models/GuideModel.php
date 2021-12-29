@@ -31,22 +31,20 @@ class GuideModel extends Model
     ];
 
     protected $validationRules = [
-        'name' => 'required',
-        'phone' => 'required|numeric',
-        'identity_picture' => 'required',
-        'bio' => 'required',
-        'experience' => 'required',
-        'study' => 'required',
-        'video' => 'required|mime_in[video,video/mk4,video/3gp,video/mp4]',
-        'user_id' => 'required|is_unique[users.id]',
-        'is_approve' => 'required',
-        'gender' => 'required',
-        'religion' => 'required',
-        'address' => 'required',
-        'age' => 'required',
-        'email' => 'required',
-        'facebook' => 'required',
-        'instagram' => 'required',
-        'twitter' => 'required'
+        'name'              => 'required',
+        'phone'             => 'required|numeric',
+        'identity_picture'  => 'required',
+        'experience'        => 'required',
+        'study'             => 'required',
+        'video'             => 'required',
+        'user_id'           => 'required|is_unique[guides.user_id,id,{id}]',
+        'gender'            => 'required',
+        'religion'          => 'required',
+        'address'           => 'required',
+        'age'               => 'required',
+        'email'             => 'required',
+        'facebook'          => 'required',
+        'instagram'         => 'required',
+        'twitter'           => 'required'
     ];
 }

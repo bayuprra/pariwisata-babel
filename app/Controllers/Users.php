@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\Session\Session;
 use CodeIgniter\Validation\Validation;
 use Config\Database;
 use Config\Services;
@@ -21,6 +22,8 @@ class Users extends BaseController
     /** @var BaseConnection */
     private $roleUser;
 
+    /** @var Session|mixed|null */
+    private $session;
 
     /**
      * Users constructor.
@@ -30,6 +33,7 @@ class Users extends BaseController
         $this->userModel = new UserModel();
         $this->validation = Services::validation();
         $this->roleUser = Database::connect();
+        $this->session = session();
     }
 
 
@@ -80,28 +84,26 @@ class Users extends BaseController
                 }
             }
 
-            return redirect()->back()->with('errors', $this->validation->getErrors());
+            return redirect()->back()->with('errors', $this->userModel->errors());
         }
 
-        return redirect()->back()->with('errors', $this->userModel->errors());
+        return redirect()->back()->with('errors', $this->validation->getErrors());
     }
 
 
     public function authenticate(): RedirectResponse
     {
-        $session = session();
-
         $email = $this->request->getVar('email_address');
         $password = $this->request->getVar('password');
 
         $data = $this->userModel->where('email_address', $email)->first();
-        $isAdmin = $this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->countAll() !== 0;
+        $isAdmin = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->get()->getResult()) !== 0;
 
         if ($data) {
             $authenticatePassword = password_verify($password, $data->password);
 
             if ($authenticatePassword) {
-                $session_data = [
+                $sessionData = [
                     'id'         => $data->id,
                     'name'       => $data->name,
                     'email'      => $data->email_address,
@@ -109,7 +111,7 @@ class Users extends BaseController
                     'isAdmin'    => $isAdmin
                 ];
 
-                $session->set($session_data);
+                $this->session->set($sessionData);
                 return redirect()->to('/')->with('success', 'Welcome back ' . $data->name);
             }
 
@@ -117,5 +119,12 @@ class Users extends BaseController
         }
 
         return redirect()->back()->with('error', 'Email does not exist.');
+    }
+
+    public function logout(): RedirectResponse
+    {
+        $this->session->destroy();
+
+        return redirect()->back()->with('success', "You have logged out");
     }
 }

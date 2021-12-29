@@ -103,14 +103,12 @@ class ImageManager
         $data['picture'] = $path;
     }
 
-    public function guideImageProcessor(UploadedFile $image, &$data): void
+    public function guideImageProcessor(UploadedFile $image): string
     {
         $fileName = $image->getRandomName();
         $folderName = 'guide';
 
         $image->move('image/' . $folderName, $fileName);
-        $path = $folderName . '/' . $image->getName();
-
-        $data['	identity_picture'] = $path;
+        return $folderName . '/' . $image->getName();
     }
 }

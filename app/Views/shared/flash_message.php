@@ -29,14 +29,11 @@
 
 <?php if (!empty(session()->getFlashdata('success'))) : ?>
     <div class="alert alert-success" id="sukses">
+        <?= session()->getFlashdata('success') ?>
     </div>
 
     <script>
-        const appear = setTimeout(appears, 5000);
-
-        function appears() {
-            document.getElementById("sukses").innerHTML = <?= session()->getFlashdata('success') ?>
-        }
+        const appear = setTimeout(appears, 5000)
     </script>
 <?php endif; ?>
 

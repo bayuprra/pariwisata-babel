@@ -12,7 +12,7 @@
 <section class="partner" id="partner">
 
 
-    <div class="content" action="">
+    <div class="content">
         <form action="<?= base_url('guide') ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
@@ -35,7 +35,7 @@
                     <label for="gender">Jenis Kelamin</label>
                 </div>
                 <div class="input">
-                    <select id="gender" name="gender" required>
+                    <select id="gender" data-gender="<?= !empty(session()->getFlashdata('errors')) ? old('gender') : '' ?>" name="gender" required>
                         <option selected disabled>Jenis Kelamin</option>
                         <option value="male">Laki - Laki</option>
                         <option value="female">Wanita</option>
@@ -71,7 +71,7 @@
                     <label for="experience">Pengalaman</label>
                 </div>
                 <div class="input">
-                    <textarea id="experience" name="experience" value="<?= !empty(session()->getFlashdata('errors')) ? old('experience') : '' ?>"></textarea>
+                    <textarea id="experience" name="experience"><?= !empty(session()->getFlashdata('errors')) ? old('experience') : '' ?></textarea>
                 </div>
             </div>
             <div class="row">
@@ -87,7 +87,7 @@
                     <label for="email">E-mail</label>
                 </div>
                 <div class="input">
-                    <input type="email" id="email" name="email" value="<?= !empty(session()->getFlashdata('errors')) ? old('email') : '' ?>">
+                    <input type="email" id="email" name="email" value="<?= session()->get('email') ?>">
                 </div>
             </div>
             <div class="row">
@@ -149,5 +149,7 @@
 
 <?= $this->section('script') ?>
 <script>
+    let gender = document.getElementById('gender').getAttribute("data-gender")
+    document.getElementById('gender').value = gender;
 </script>
 <?= $this->endSection() ?>

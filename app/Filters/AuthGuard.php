@@ -6,17 +6,16 @@ namespace App\Filters;
 
 
 use CodeIgniter\Filters\FilterInterface;
-use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\RequestInterface;
 use CodeIgniter\HTTP\ResponseInterface;
 
 class AuthGuard implements FilterInterface
 {
-    public function before(RequestInterface $request, $arguments = null): RedirectResponse
+    public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('isLoggedIn'))
         {
-            return redirect()->to('/login')->with('error', 'You have to login to access the page');
+            return redirect()->back()->with('error', 'You have to login to access the page');
         }
     }
 

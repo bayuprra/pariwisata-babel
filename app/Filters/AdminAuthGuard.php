@@ -13,9 +13,9 @@ class AdminAuthGuard implements FilterInterface
 {
     public function before(RequestInterface $request, $arguments = null)
     {
-        if (!session()->get('isLoggedIn') && !session()->get('isAdmin'))
+        if (!session()->get('isLoggedIn') || !session()->get('isAdmin'))
         {
-            return redirect()->to('/login')->with('error', 'You have to login as admin to access the page');
+            return redirect()->back()->with('error', 'You have to login as admin to access the page');
         }
     }
 

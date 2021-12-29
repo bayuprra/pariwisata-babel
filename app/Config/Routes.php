@@ -35,6 +35,7 @@ $routes->get('/', 'Users::index');
 $routes->get('/login', 'Users::signUp');
 $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
+$routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
 
 // news
 $routes->get('/news/show/(:num)', 'News::show/$1');
@@ -48,7 +49,6 @@ $routes->group('/news', ['filter' => 'adminGuard'], function ($routes) {
 });
 
 // event
-
 $routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->get('/create', 'Event::create');
@@ -59,10 +59,11 @@ $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
 });
 
 // Guides
-$routes->get('/admin/guide', 'Guide::admin');
-$routes->get('/formguides/index', 'Guide::create');
-$routes->post('/formguides/index/', 'Guide::store');
-
+$routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
+$routes->group('/guide', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('/create', 'Guide::create');
+    $routes->post('/', 'Guide::store');
+});
 
 /*
  * --------------------------------------------------------------------

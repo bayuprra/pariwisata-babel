@@ -21,16 +21,22 @@
     <div class="dropmenu">
         <div class="icon">
             <ul>
+                <?php if (session()->get('isLoggedIn')): ?>
                 <li class="fa fa-user"></li>
-                <li class="fa fa-sign-in"></li>
                 <li class="fa fa-sign-out"></li>
+                <?php else: ?>
+                <li class="fa fa-sign-in"></li>
+                <?php endif; ?>
             </ul>
         </div>
         <div class="usermenu">
             <ul>
+                <?php if (session()->get('isLoggedIn')): ?>
                 <li>Edit Profil</li>
-                <li>Login</li>
                 <li>Logout</li>
+                <?php else: ?>
+                <li>Login</li>
+                <?php endif; ?>
             </ul>
         </div>
     </div>

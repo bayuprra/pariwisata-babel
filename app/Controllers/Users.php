@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\Session\Session;
 use CodeIgniter\Validation\Validation;
 use Config\Database;
 use Config\Services;
@@ -21,6 +22,8 @@ class Users extends BaseController
     /** @var BaseConnection */
     private $roleUser;
 
+    /** @var Session|mixed|null */
+    private $session;
 
     /**
      * Users constructor.
@@ -30,6 +33,7 @@ class Users extends BaseController
         $this->userModel = new UserModel();
         $this->validation = Services::validation();
         $this->roleUser = Database::connect();
+        $this->session = session();
     }
 
 
@@ -89,8 +93,6 @@ class Users extends BaseController
 
     public function authenticate(): RedirectResponse
     {
-        $session = session();
-
         $email = $this->request->getVar('email_address');
         $password = $this->request->getVar('password');
 
@@ -101,7 +103,7 @@ class Users extends BaseController
             $authenticatePassword = password_verify($password, $data->password);
 
             if ($authenticatePassword) {
-                $session_data = [
+                $sessionData = [
                     'id'         => $data->id,
                     'name'       => $data->name,
                     'email'      => $data->email_address,
@@ -109,7 +111,7 @@ class Users extends BaseController
                     'isAdmin'    => $isAdmin
                 ];
 
-                $session->set($session_data);
+                $this->session->set($sessionData);
                 return redirect()->to('/')->with('success', 'Welcome back '.$data->name);
             }
 
@@ -117,5 +119,12 @@ class Users extends BaseController
         }
 
         return redirect()->back()->with('error', 'Email does not exist.');
+    }
+
+    public function logout(): RedirectResponse
+    {
+        $this->session->destroy();
+
+        return redirect()->back()->with('success', "You have logged out");
     }
 }

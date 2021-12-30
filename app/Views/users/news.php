@@ -43,7 +43,7 @@
                     <img src="<?= $item->newsImage()->original ?>" alt="news">
                     <div class="judul">
                         <h3><a href="<?= base_url('news/show/' . $item->id) ?>"><?= $item->title ?></a></h3>
-                        <p><?= $item->getTime() ?></p>
+                        <p><?= Carbon\Carbon::parse($item->created_at)->diffForHumans() ?></p>
                     </div>
                 </div>
             </div>

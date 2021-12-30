@@ -44,8 +44,8 @@
                         <td><?= substr($item->content, 0, 100) ?></td>
                         <td><?= $item->category ?></td>
                         <td> <a href="<?= $item->newsImage()->original ?>"><?= $item->newsImage()->original ?></a> </td>
-                        <td><?= $item->readableCreatedAt() ?></td>
-                        <td><?= $item->readableUpdatedAt() ?></td>
+                        <td><?= Carbon\Carbon::parse($item->created_at)->format('d F Y , h:m') ?></td>
+                        <td><?= Carbon\Carbon::parse($item->updated_at)->format('d F Y , h:m') ?></td>
                         <td>
                             <a href="<?= base_url('/news/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>

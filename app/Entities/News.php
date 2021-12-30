@@ -6,7 +6,6 @@ namespace App\Entities;
 
 use App\Models\NewsImageModel;
 use CodeIgniter\Entity\Entity;
-use Carbon\Carbon;
 
 class News extends Entity
 {
@@ -16,22 +15,6 @@ class News extends Entity
         'category' => 'null',
         'content' => 'null',
     ];
-
-    public function getTime(): string
-    {
-        $dt = Carbon::parse($this->attributes['created_at']);
-        return $dt->diffForHumans();
-    }
-
-    public function readableCreatedAt(): string
-    {
-        return Carbon::parse($this->attributes['created_at'])->format('d F Y , h:m');
-    }
-
-    public function readableUpdatedAt(): string
-    {
-        return Carbon::parse($this->attributes['created_at'])->format('d F Y , h:m');
-    }
 
     public function newsImage()
     {

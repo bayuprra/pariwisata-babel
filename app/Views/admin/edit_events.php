@@ -38,7 +38,7 @@
                     <label for="date">Tanggal</label>
                 </div>
                 <div class="input">
-                    <input type="date" id="date" name="date" value="<?= $event->eventTime() ?>">
+                    <input type="date" id="date" name="date" value="<?= Carbon\Carbon::parse($event->date)->format('Y-m-d')->locale('id') ?>">
                 </div>
             </div>
             <div class="row">

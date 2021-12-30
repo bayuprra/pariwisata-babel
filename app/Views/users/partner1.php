@@ -10,10 +10,16 @@
 
 <section class="partner" id="partner">
     <div class="content1">
-        <h3>Tertarik menjadi tour guide ?</h3>
-        <a href="<?= base_url('formguides/index') ?>">
-            <input type="submit" value="daftar sekarang" class="btn">
-        </a>
+        <div class="content11">
+            <h3>Tertarik menjadi tour guide ?</h3>
+            <a href="<?= base_url('formguides/index') ?>">
+                <input type="submit" value="daftar sekarang" class="btn">
+            </a>
+        </div>
+        <br>
+        <div class="content12">
+            <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+        </div>
     </div>
     <div class="content2">
         <div class="box-container">

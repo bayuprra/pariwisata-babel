@@ -1,10 +1,5 @@
 /* home page */
 
-.alert-success {
-  background-color: red;
-  float: left;
-}
-
 .home {
   min-height: 100vh;
   background: url(/image/a.jpg) no-repeat;
@@ -611,7 +606,7 @@
   position: sticky;
 }
 
-.partner .content1 h3 {
+.partner .content11 h3 {
   padding: 2.5rem;
   font-size: 2vw;
   font-weight: bolder;

@@ -43,7 +43,7 @@
                         <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
                         <td><?= $item->eventDate() ?></td>
                         <td><?= $item->content ?></td>
-                        <td> <a href="<?= $item->picture ?>"> <?= $item->picture ?></a></td>
+                        <td> <a href="/image/<?= $item->picture ?>"> <?= $item->eventPicture() ?></a></td>
                         <td>
                             <a href="<?= base_url('/event/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>

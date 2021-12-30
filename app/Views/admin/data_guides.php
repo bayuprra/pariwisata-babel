@@ -41,78 +41,37 @@
 
                 </tr>
             </thead>
+            <?php
+            $no = 1;
+            ?>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <a href="#">
-                            <button class="button-edit">Ya</button>
-                        </a>
-                        <button class="button-delete">Tidak</button>
-                    </td>
-                    <td>#</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                    <td>#</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>#</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                    <td>#</td>
-                </tr>
+                <?php foreach ($guide as $item) : ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $item->user_id ?></td>
+                        <td><?= $item->name ?></td>
+                        <td><?= $item->age ?></td>
+                        <td><?= $item->phone ?></td>
+                        <td><?= $item->gender ?></td>
+                        <td><?= $item->religion ?></td>
+                        <td><?= $item->address ?></td>
+                        <td><?= $item->study ?></td>
+                        <td><?= $item->experience ?></td>
+                        <td><?= $item->email ?></td>
+                        <td><?= $item->facebook ?></td>
+                        <td><?= $item->instagram ?></td>
+                        <td><?= $item->twitter ?></td>
+                        <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->guidePicture() ?></a></td>
+                        <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
+                        <td>
+                            <a href="#">
+                                <button class="button-edit">Ya</button>
+                            </a>
+                            <button class="button-delete">Tidak</button>
+                        </td>
+                        <td>#</td>
+                    </tr>
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>

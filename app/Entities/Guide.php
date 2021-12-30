@@ -27,4 +27,13 @@ class Guide extends Entity
         'is_approve' => 'null',
 
     ];
+
+    public function guidePicture()
+    {
+        return base_url() . '/image/' .  $this->attributes['identity_picture'];
+    }
+    public function guideVideo()
+    {
+        return base_url() . '/image/' .  $this->attributes['video'];
+    }
 }

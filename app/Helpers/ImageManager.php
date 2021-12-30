@@ -109,6 +109,6 @@ class ImageManager
         $folderName = 'guide';
 
         $image->move('image/' . $folderName, $fileName);
-        return $folderName . '/' . $image->getName();
+        return base_url() . $folderName . '/' . $image->getName();
     }
 }

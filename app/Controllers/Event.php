@@ -141,4 +141,9 @@ class Event extends BaseController
 
         return redirect()->to('/admin/event ');
     }
+
+    public function eventPicture()
+    {
+        return base_url() .  $this->eventModel->picture;
+    }
 }

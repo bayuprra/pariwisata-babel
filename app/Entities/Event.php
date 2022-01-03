@@ -17,4 +17,9 @@ class Event extends Entity
         'content'       => 'null',
         'picture'       => 'null'
     ];
+
+    public function eventPicture()
+    {
+        return base_url() .  $this->attributes['picture'];
+    }
 }

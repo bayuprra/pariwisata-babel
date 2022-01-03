@@ -42,17 +42,17 @@
             </ul>
         </li>
         <li>
-            <a href="<?= base_url('tesadmin/dataguide') ?>">
+            <a href="<?= base_url('/admin/guide') ?>">
                 <i class='bx bx-user-pin'></i>
                 <span class="link_name">Guide</span>
             </a>
             <ul class="sub-menu blank">
-                <li><a class="link_name" href="<?= base_url('tesadmin/dataguide') ?>">Guide</a></li>
+                <li><a class="link_name" href="<?= base_url('/admin/guide') ?>">Guide</a></li>
             </ul>
         </li>
         <li>
             <div class="iocn-link">
-                <a href="<?= base_url('tesadmin/dataevent') ?>">
+                <a href="<?= base_url('/admin/event') ?>">
                     <i class='bx bx-calendar'></i>
                     <span class="link_name">Event</span>
                 </a>
@@ -60,8 +60,8 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Event</a></li>
-                <li><a href="<?= base_url('tesadmin/dataevent') ?>">Data</a></li>
-                <li><a href="<?= base_url('tesadmin/createevent') ?>">Tambah Event</a></li>
+                <li><a href="<?= base_url('/admin/event') ?>">Data</a></li>
+                <li><a href="<?= base_url('/event/create') ?>">Tambah Event</a></li>
             </ul>
         </li>
         <li>

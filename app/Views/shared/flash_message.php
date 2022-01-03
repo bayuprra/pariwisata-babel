@@ -1,15 +1,17 @@
 <style>
+    .alert-danger {}
+
+
+    .alert-success,
     .alert-danger {
-        margin-left: 150px;
-    }
-
-    p {
-        background-color: red;
-        width: 40%;
-    }
-
-    .alert-success {
-        display: block;
+        position: absolute;
+        width: 20%;
+        height: auto;
+        font-weight: bold;
+        font-size: 15px;
+        left: 0;
+        top: 20%;
+        padding: 15px;
     }
 </style>
 

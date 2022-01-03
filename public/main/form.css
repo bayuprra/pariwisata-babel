@@ -150,7 +150,8 @@ button {
 }
 
 .data-news .content .search-container,
-.data-event .content .search-container {
+.data-event .content .search-container,
+.data-guide .content .search-container {
   float: left;
   margin: 100px 0 0 -73px;
 }
@@ -224,6 +225,22 @@ button {
 .data-event td:nth-child(6) {
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+/* data guide */
+.data-guide .table tbody {
+  font-size: 13px;
+}
+
+.data-guide .table {
+  width: 100%;
+}
+.data-guide tr td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 170px;
+  max-width: 400px;
+  text-align: justify;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

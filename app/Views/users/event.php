@@ -9,7 +9,11 @@
 <?= $this->section('content') ?>
 
 <section class="event" id="event">
-    <a href="<?= base_url('admin/event') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+    <?php
+    $session = session()->get('email');
+    if ($session) : ?>
+        <a href="<?= base_url('admin/event') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+    <?php endif; ?>
     <br><br><br>
     <div class="content-box">
         <?php foreach ($event as $item) : ?>

@@ -7,12 +7,12 @@
 
 
 <?= $this->section('content') ?>
-<?= view('shared/flash_message') ?>
 
 <section class="partner" id="partner">
 
 
     <div class="content">
+        <?= view('shared/flash_message') ?>
         <form action="<?= base_url('guide') ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
@@ -37,8 +37,8 @@
                 <div class="input">
                     <select id="gender" data-gender="<?= !empty(session()->getFlashdata('errors')) ? old('gender') : '' ?>" name="gender" required>
                         <option selected disabled>Jenis Kelamin</option>
-                        <option value="male">Laki - Laki</option>
-                        <option value="female">Wanita</option>
+                        <option value="Laki-Laki">Laki - Laki</option>
+                        <option value="Wanita">Wanita</option>
                     </select>
                 </div>
             </div>

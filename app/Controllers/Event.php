@@ -137,8 +137,6 @@ class Event extends BaseController
         unlink('image/  ' . $event->picture);
         $this->eventModel->delete($event->id);
 
-
-
         return redirect()->to('/admin/event ');
     }
 

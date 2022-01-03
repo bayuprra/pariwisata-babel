@@ -32,9 +32,10 @@ class News extends BaseController
     {
         $data = [
             'title' => 'News | All',
-            'news'  => $this->newsModel->findAll()
+            'news'  => $this->newsModel->where('category', 'general')
+                ->findAll(),
+            'headlines' => $this->newsModel->where('category', 'headline')->findAll()
         ];
-
         return view('users/news', $data);
     }
 

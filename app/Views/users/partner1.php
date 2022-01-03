@@ -18,7 +18,11 @@
         </div>
         <br>
         <div class="content12">
-            <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+            <?php
+            $session = session()->get('email');
+            if ($session) : ?>
+                <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+            <?php endif; ?>
         </div>
     </div>
     <div class="content2">
@@ -26,7 +30,7 @@
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
-                <img src="/image/a.jpg" alt="">
+                <img src="/image/b.jpg" alt="">
                 <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
@@ -40,9 +44,9 @@
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
-                <img src="/image/a.jpg" alt="">
+                <img src="/image/b.jpg" alt="">
                 <a href="#" class="name">
-                    <h3>john deo</h3>
+                    <h3>Ahmat</h3>
                 </a>
                 <span>tour guide</span>
                 <div class="share">
@@ -54,7 +58,21 @@
             <div class="box">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
-                <img src="/image/a.jpg" alt="">
+                <img src="/image/b.jpg" alt="">
+                <a href="#" class="name">
+                    <h3>Dedi</h3>
+                </a>
+                <span>tour guide</span>
+                <div class="share">
+                    <a href="#" class="fab fa-facebook-f"></a>
+                    <a href="#" class="fab fa-twitter"></a>
+                    <a href="#" class="fab fa-instagram"></a>
+                </div>
+            </div>
+            <div class="box" style="display: none;">
+                <a href="#" class="fas fa-envelope"></a>
+                <a href="#" class="fas fa-phone"></a>
+                <img src="/image/b.jpg" alt="">
                 <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
@@ -65,24 +83,10 @@
                     <a href="#" class="fab fa-instagram"></a>
                 </div>
             </div>
-            <div class="box">
+            <div class="box" style="display: none;">
                 <a href="#" class="fas fa-envelope"></a>
                 <a href="#" class="fas fa-phone"></a>
-                <img src="/image/a.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>john deo</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-            <div class="box">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/a.jpg" alt="">
+                <img src="/image/b.jpg" alt="">
                 <a href="#" class="name">
                     <h3>john deo</h3>
                 </a>
@@ -100,7 +104,7 @@
             <span class="close">&times;</span>
             <div class="box">
                 <div class="image">
-                    <img src="/image/a.jpg" alt="">
+                    <img src="/image/b.jpg" alt="">
                 </div>
                 <div class="line"></div>
                 <div class="bio-medsos">

@@ -77,7 +77,7 @@
     <div class="place-modal" id="place-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <img src="/image/a.jpg" alt="tempat wisata">
+            <img src="/image/c.jpg" alt="tempat wisata">
             <div class="detail">
                 <div class="nama">
                     <h3>pantai matras</h3>
@@ -132,17 +132,17 @@
                     <div class="content">
                         <h3>bayu pratama</h3>
 
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit commodi nobis sed inventore, rem reiciendis autem cumque a deleniti eos provident voluptates facere sint laborum eius sequi facilis quaerat ipsum?</p>
+                        <p>Tempatnya sangat bersih</p>
                     </div>
                     <div class="content">
-                        <h3>bayu pratama</h3>
+                        <h3>Julianto</h3>
 
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit commodi nobis sed inventore, rem reiciendis autem cumque a deleniti eos provident voluptates facere sint laborum eius sequi facilis quaerat ipsum?</p>
+                        <p>Suasanya sangat nyaman juga sangat bersih</p>
                     </div>
                     <div class="content">
-                        <h3>bayu pratama</h3>
+                        <h3>abun</h3>
 
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit commodi nobis sed inventore, rem reiciendis autem cumque a deleniti eos provident voluptates facere sint laborum eius sequi facilis quaerat ipsum?</p>
+                        <p>warung disekitar pantai masih belum banyak</p>
                     </div>
                     <div class="content">
                         <h3>bayu pratama</h3>

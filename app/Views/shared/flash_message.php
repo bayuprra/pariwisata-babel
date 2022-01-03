@@ -2,10 +2,11 @@
     .alert-danger {}
 
 
-    .alert-success {
+    .alert-success,
+    .alert-danger {
         position: absolute;
         width: 20%;
-        height: 50px;
+        height: auto;
         font-weight: bold;
         font-size: 15px;
         left: 0;

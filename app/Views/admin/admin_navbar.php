@@ -36,18 +36,22 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Berita</a></li>
-
                 <li><a href="<?= base_url('/admin/news') ?>">Data</a></li>
                 <li><a href="<?= base_url('/news/create') ?>">Buat Berita</a></li>
             </ul>
         </li>
         <li>
-            <a href="<?= base_url('/admin/guide') ?>">
-                <i class='bx bx-user-pin'></i>
-                <span class="link_name">Guide</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="<?= base_url('/admin/guide') ?>">Guide</a></li>
+            <div class="iocn-link">
+                <a href="#">
+                    <i class='bx bx-user-pin'></i>
+                    <span class="link_name">Guide</span>
+                </a>
+                <i class='bx bxs-chevron-down arrow'></i>
+            </div>
+            <ul class="sub-menu">
+                <li><a class="link_name" href="#">Guide</a></li>
+                <li><a href="<?= base_url('/admin/guide') ?>">Pendaftaran</a></li>
+                <li><a href="<?= base_url('/admin/vguide') ?>">Terverifikasi</a></li>
             </ul>
         </li>
         <li>

@@ -115,8 +115,10 @@
                             <p>agama</p>
                             <p>alamat</p>
                             <p>umur</p>
+                            <p>Pengalaman</p>
                         </div>
                         <div>
+                            <p>:</p>
                             <p>:</p>
                             <p>:</p>
                             <p>:</p>
@@ -129,14 +131,8 @@
                             <p>islam</p>
                             <p>sungailiat</p>
                             <p>18 tahun</p>
+                            <p>1 Tahun</p>
                         </div>
-                    </div>
-                    <div class="medsos">
-                        <a href="#" class="fas fa-envelope"></a>
-                        <a href="#" class="fas fa-phone"></a>
-                        <a href="#" class="fab fa-facebook-f"></a>
-                        <a href="#" class="fab fa-twitter"></a>
-                        <a href="#" class="fab fa-instagram"></a>
                     </div>
                 </div>
             </div>

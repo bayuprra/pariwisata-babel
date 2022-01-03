@@ -13,7 +13,7 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Pendaftaran Guide</h3>
+        <h3>Tabel Data Verified Guide</h3>
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>
@@ -36,7 +36,7 @@
                     <th>Twitter</th>
                     <th>Foto Diri</th>
                     <th>Video</th>
-                    <th>Disetujui</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <?php
@@ -61,15 +61,8 @@
                         <td><?= $item->twitter ?></td>
                         <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->guidePicture() ?></a></td>
                         <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
-                        <td>
-                            <a href="#">
-                                <button class="button-edit">Ya</button>
-                            </a>
-                            <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="button-delete" type="submit">Hapus</button>
-                            </form>
-                        </td>
+
+                        <td>#</td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

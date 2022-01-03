@@ -150,10 +150,13 @@ button {
 }
 
 .data-news .content .search-container,
-.data-event .content .search-container,
-.data-guide .content .search-container {
+.data-event .content .search-container {
   float: left;
   margin: 100px 0 0 -73px;
+}
+.data-guide .content .search-container {
+  float: left;
+  margin: auto;
 }
 
 .data-news .table tbody {

@@ -60,9 +60,11 @@ $routes->group('/event', ['filter' => 'adminGuard'], function ($routes) {
 
 // Guides
 $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
+$routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
 $routes->group('/guide', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('/create', 'Guide::create');
     $routes->post('/', 'Guide::store');
+    $routes->delete('/(:num)', 'Guide::destroy/$1');
 });
 
 /*

@@ -49,6 +49,16 @@ class Guide extends BaseController
         return view('admin/data_guides', $data);
     }
 
+    public function adminv(): string
+    {
+        $data = [
+            'title' => 'Guide | ',
+            'guide' => $this->guideModel->findAll()
+        ];
+
+        return view('admin/data_guides_verified', $data);
+    }
+
     public function create(): string
     {
         return view('users/guidesform');
@@ -99,5 +109,23 @@ class Guide extends BaseController
         }
 
         return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
+    }
+
+    public function destroy(int $id): RedirectResponse
+    {
+        $guide = $this->guideModel->find($id);
+
+        if (!$guide) {
+            throw ModelException::forNoPrimaryKey(GuideModel::class);
+        }
+
+        unlink('image/  ' . $guide->identity_picture);
+        unlink('image/  ' . $guide->video);
+
+        $this->guideModel->delete($guide->id);
+
+
+
+        return redirect()->to('/admin/guide ');
     }
 }

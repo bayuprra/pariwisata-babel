@@ -197,6 +197,9 @@ button {
 }
 
 /* data event */
+.data-event .content .button-create {
+  display: block;
+}
 
 .data-event .table tbody {
   font-size: 13px;
@@ -219,7 +222,7 @@ button {
   width: 150px;
 }
 
-.data-event td:nth-child(5) * {
+.data-event td:nth-child(5) {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;

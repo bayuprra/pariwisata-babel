@@ -97,9 +97,9 @@ class Users extends BaseController
         $password = $this->request->getVar('password');
 
         $data = $this->userModel->where('email_address', $email)->first();
-        $isAdmin = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->get()->getResult()) !== 0;
 
         if ($data) {
+            $isAdmin = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->get()->getResult()) !== 0;
             $authenticatePassword = password_verify($password, $data->password);
 
             if ($authenticatePassword) {

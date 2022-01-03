@@ -40,9 +40,10 @@
                 </tr>
             </thead>
             <?php
-            $no = 1;
+            $no = 1 + (1 * ($currentPage - 1));
             ?>
             <tbody>
+
                 <?php foreach ($guide as $item) : ?>
                     <tr>
                         <td><?= $no++ ?></td>
@@ -73,7 +74,9 @@
                     </tr>
                 <?php endforeach; ?>
             </tbody>
+
         </table>
+        <?= $pager->links('guide', 'pagination'); ?>
     </div>
 
 </section>

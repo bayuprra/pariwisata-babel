@@ -49,9 +49,20 @@ class Event extends BaseController
 
     public function admin(): string
     {
+        $currentPage = $this->request->getVar('page_event') ? $this->request->getVar('page_event') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $event = $this->eventModel->search($keyword);
+        } else {
+            $event = $this->eventModel;
+        }
+
         $data = [
             'title' => 'Event | Event Index',
-            'event'  => $this->eventModel->findAll()
+            'event' => $event->paginate(1, 'event'),
+            'pager' => $this->eventModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/data_events', $data);

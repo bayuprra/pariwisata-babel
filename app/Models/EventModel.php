@@ -29,4 +29,9 @@ class EventModel extends Model
         'content'       => 'required',
         'picture'       => 'required',
     ];
+
+    public function search($keyword)
+    {
+        return $this->table('event')->like('name', $keyword);
+    }
 }

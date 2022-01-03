@@ -50,6 +50,7 @@ $routes->group('news', ['filter' => 'adminGuard'], function ($routes) {
 
 // event
 $routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
+$routes->post('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->get('create', 'Event::create');
     $routes->post('/', 'Event::store');
@@ -61,10 +62,10 @@ $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
 // Guides
 $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
-$routes->group('/guide', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('/create', 'Guide::create');
+$routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('create', 'Guide::create');
     $routes->post('/', 'Guide::store');
-    $routes->delete('/(:num)', 'Guide::destroy/$1');
+    $routes->delete('(:num)', 'Guide::destroy/$1');
 });
 
 /*

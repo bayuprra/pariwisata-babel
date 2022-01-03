@@ -8,6 +8,7 @@
 
 <?= $this->section('content') ?>
 <section class="login" id="login">
+    <?= view('shared/flash_message') ?>
 
     <div class="wrapper">
         <div class="title-text">

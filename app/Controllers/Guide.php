@@ -41,9 +41,12 @@ class Guide extends BaseController
 
     public function admin(): string
     {
+        $currentPage = $this->request->getVar('page_guide') ? $this->request->getVar('page_guide') : 1;
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->findAll()
+            'guide' => $this->guideModel->paginate(1, 'guide'),
+            'pager' => $this->guideModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/data_guides', $data);
@@ -119,8 +122,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink('image/  ' . $guide->identity_picture);
-        unlink('image/  ' . $guide->video);
+        unlink('image/' . $guide->identity_picture);
+        unlink('image/' . $guide->video);
 
         $this->guideModel->delete($guide->id);
 

@@ -38,7 +38,7 @@ class News extends BaseController
         $data = [
             'title' => 'News | All',
             'news'  => $this->newsModel->where('category', 'general')->findAll(),
-            'headlines' => $this->newsModel->where('category', 'headline')->orderBy('id', 'desc')->findAll()
+            'headlines' => $this->newsModel->where('category', 'headline')->orderBy('id', 'desc')->first()
         ];
 
         // $length = count($data['headlines']);

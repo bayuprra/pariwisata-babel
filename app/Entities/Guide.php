@@ -30,10 +30,10 @@ class Guide extends Entity
 
     public function guidePicture()
     {
-        return base_url() . '/image/' .  $this->attributes['identity_picture'];
+        return $this->attributes['identity_picture'];
     }
     public function guideVideo()
     {
-        return base_url() . '/image/' .  $this->attributes['video'];
+        return $this->attributes['video'];
     }
 }

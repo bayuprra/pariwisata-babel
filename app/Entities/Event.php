@@ -20,6 +20,6 @@ class Event extends Entity
 
     public function eventPicture()
     {
-        return base_url() .  $this->attributes['picture'];
+        return $this->attributes['picture'];
     }
 }

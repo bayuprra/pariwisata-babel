@@ -14,8 +14,16 @@
 
     <div class="content" action="">
         <h3>Tabel Data Pendaftaran Guide</h3>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
+        <br><br>
+        <div class="row">
+            <div class="col-6">
+                <form action="" method="post">
+                    <div class="input-group mb-2 mt-5">
+                        <input type="text" class="form-control" placeholder="Cari Data" name="keyword">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
@@ -64,7 +72,9 @@
                         <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
                         <td>
                             <a href="#">
-                                <button class="button-edit">Ya</button>
+                                <form action="<?= base_url('guide/setujui/' . $item->id) ?>" method="POST">
+                                    <button type="submit" class="button-edit">Ya</button>
+                                </form>
                             </a>
                             <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
                                 <input name="_method" type="hidden" value="DELETE">

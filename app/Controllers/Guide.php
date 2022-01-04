@@ -42,9 +42,16 @@ class Guide extends BaseController
     public function admin(): string
     {
         $currentPage = $this->request->getVar('page_guide') ? $this->request->getVar('page_guide') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $guide = $this->guideModel->search($keyword)->where('is_approve', 0);
+        } else {
+            $guide = $this->guideModel->where('is_approve', 0);
+        }
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->paginate(1, 'guide'),
+            'guide' => $guide->paginate(1, 'guide'),
             'pager' => $this->guideModel->pager,
             'currentPage' => $currentPage
         ];
@@ -54,9 +61,19 @@ class Guide extends BaseController
 
     public function adminv(): string
     {
+        $currentPage = $this->request->getVar('page_vguide') ? $this->request->getVar('page_vguide') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $guide = $this->guideModel->search($keyword)->where('is_approve', 1);
+        } else {
+            $guide = $this->guideModel->where('is_approve', 1);
+        }
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->findAll()
+            'guide' => $guide->paginate(1, 'guide'),
+            'pager' => $this->guideModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/data_guides_verified', $data);
@@ -112,6 +129,15 @@ class Guide extends BaseController
         }
 
         return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
+    }
+
+    public function setujui($id)
+    {
+        $data = [
+            'is_approve' => 1,
+        ];
+        $this->guideModel->update($id, $data);
+        return redirect()->to('/admin/vguide')->with('success', 'Guide has been saved.');
     }
 
     public function destroy(int $id): RedirectResponse

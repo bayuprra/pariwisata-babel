@@ -15,9 +15,16 @@
     <div class="content">
         <h3>Tabel Data Berita</h3>
         <a href="<?= base_url('/news/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
-
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
+        <br><br>
+        <div class="row">
+            <div class="col-6">
+                <form action="" method="post">
+                    <div class="input-group mb-2 mt-5">
+                        <input type="text" class="form-control" placeholder="Cari Data" name="keyword">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <table id="example" class="table table-striped">
             <thead>
@@ -34,7 +41,7 @@
                 </tr>
             </thead>
             <?php
-            $no = 1;
+            $no = 1 + (1 * ($currentPage - 1));
             ?>
             <tbody>
                 <?php foreach ($news as $item) : ?>
@@ -59,6 +66,7 @@
                 <?php endforeach ?>
             </tbody>
         </table>
+        <?= $pager->links('news', 'pagination'); ?>
     </div>
 
 </section>

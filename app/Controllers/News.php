@@ -65,9 +65,20 @@ class News extends BaseController
 
     public function admin(): string
     {
+        $currentPage = $this->request->getVar('page_news') ? $this->request->getVar('page_news') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $news = $this->newsModel->search($keyword);
+        } else {
+            $news = $this->newsModel;
+        }
+
         $data = [
             'title' => 'News | Admin Index',
-            'news'  => $this->newsModel->findAll()
+            'news' => $news->paginate(1, 'news'),
+            'pager' => $this->newsModel->pager,
+            'currentPage' => $currentPage
         ];
 
         return view('admin/data_news', $data);

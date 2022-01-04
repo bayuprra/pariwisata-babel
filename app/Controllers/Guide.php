@@ -12,7 +12,6 @@ use ReflectionException;
 
 class Guide extends BaseController
 {
-
     /** @var GuideModel */
     private $guideModel;
 
@@ -50,9 +49,9 @@ class Guide extends BaseController
             $guide = $this->guideModel->where('is_approve', 0);
         }
         $data = [
-            'title' => 'Guide | ',
-            'guide' => $guide->paginate(1, 'guide'),
-            'pager' => $this->guideModel->pager,
+            'title'       => 'Guide | ',
+            'guide'       => $this->guideModel->paginate(1, 'guide'),
+            'pager'       => $this->guideModel->pager,
             'currentPage' => $currentPage
         ];
 
@@ -87,7 +86,7 @@ class Guide extends BaseController
     /**
      * @throws ReflectionException
      */
-    public function store() //: RedirectResponse
+    public function store(): RedirectResponse
     {
         $data = [
             'name'              => $this->request->getVar('name'),
@@ -112,8 +111,8 @@ class Guide extends BaseController
 
         if ($this->validation->withRequest($this->request)->run()) {
 
-            $data['identity_picture'] = $this->imageManager->guideImageProcessor($this->request->getFile('identity_picture'));
-            $data['video'] = $this->imageManager->guideImageProcessor($this->request->getFile('video'));
+            $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
+            $data['video'] = $this->imageManager->imageProcessor($this->request->getFile('video'), 'guide');
 
             if ($this->guideModel->save($data)) {
                 $guideId = $this->guideModel->getInsertID();

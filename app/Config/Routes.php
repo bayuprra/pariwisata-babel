@@ -37,7 +37,7 @@ $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
 $routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
 
-// news
+// News
 $routes->get('/news/show/(:num)', 'News::show/$1');
 $routes->get('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
 $routes->post('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
@@ -49,7 +49,7 @@ $routes->group('news', ['filter' => 'adminGuard'], function ($routes) {
     $routes->delete('(:num)', 'News::destroy/$1');
 });
 
-// event
+// Event
 $routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->post('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
@@ -60,7 +60,7 @@ $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->delete('(:num)', 'Event::destroy/$1');
 });
 
-// Guides
+// Guide
 $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
 $routes->post('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
@@ -70,6 +70,13 @@ $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('create', 'Guide::create');
     $routes->post('/', 'Guide::store');
     $routes->delete('(:num)', 'Guide::destroy/$1');
+});
+
+// Place
+$routes->get('/admin/place', 'PlaceController::index', ['filter' => 'adminGuard']);
+$routes->group('place', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('create', 'PlaceController::create');
+    $routes->post('/', 'PlaceController::store');
 });
 
 /*

@@ -14,12 +14,11 @@ class Event extends Entity
         'sub_district'  => 'null',
         'village'       => 'null',
         'date'          => 'null',
-        'content'       => 'null',
-        'picture'       => 'null'
+        'content'       => 'null'
     ];
 
-    public function eventPicture()
+    public function getPicture()
     {
-        return $this->attributes['picture'];
+        return base_url() . '/image/' . $this->attributes['picture'];
     }
 }

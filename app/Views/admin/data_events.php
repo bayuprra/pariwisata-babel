@@ -26,6 +26,7 @@
                 </form>
             </div>
         </div>
+        <?= view('shared/flash_message') ?>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>

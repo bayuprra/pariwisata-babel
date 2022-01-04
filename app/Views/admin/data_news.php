@@ -8,7 +8,6 @@
 
 
 <?= $this->section('content') ?>
-<?= view('shared/flash_message') ?>
 
 <section class="data-news" id="data-news">
 
@@ -26,6 +25,7 @@
                 </form>
             </div>
         </div>
+        <?= view('shared/flash_message') ?>
         <table id="example" class="table table-striped">
             <thead>
                 <tr>

@@ -12,7 +12,7 @@
 
 
     <div class="content" action="">
-
+        <?= view('shared/flash_message') ?>
         <form action="#">
             <div class="row">
                 <div class="print">

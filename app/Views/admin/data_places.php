@@ -17,6 +17,7 @@
         <div class="search-container">
             <input type="text" placeholder="Search.." name="search">
         </div>
+        <?= view('shared/flash_message') ?>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>

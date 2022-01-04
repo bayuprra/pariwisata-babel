@@ -265,3 +265,8 @@ button {
     margin-top: 80px;
   }
 }
+
+.alert-success,
+.alert-danger {
+  position: unset;
+}

@@ -25,6 +25,7 @@
                 </form>
             </div>
         </div>
+        <?= view('shared/flash_message') ?>
         <table id="example" class="table table-striped" style="width:100%">
             <thead>
                 <tr>
@@ -45,6 +46,7 @@
                     <th>Foto Diri</th>
                     <th>Video</th>
                     <th>Status</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <?php
@@ -69,8 +71,13 @@
                         <td><?= $item->twitter ?></td>
                         <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->guidePicture() ?></a></td>
                         <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
-
                         <td>terverifikasi</td>
+                        <td>
+                            <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="button-delete" type="submit">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

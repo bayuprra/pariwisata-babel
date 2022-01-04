@@ -13,6 +13,7 @@
 <section class="news" id="news">
     <div class="news-container">
         <div class="headline-box">
+
             <?php foreach ($headlines as $item) : ?>
                 <div class="image-container">
                     <a href="<?= base_url('news/show/' . $item->id) ?>">

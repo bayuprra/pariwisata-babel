@@ -48,6 +48,9 @@
                 </form>
                 <form action="<?= base_url('/register') ?>" class="signup" method="post" enctype="multipart/form-data">
                     <div class="field">
+                        <input type="text" name="name" placeholder="Nama" required>
+                    </div>
+                    <div class="field">
                         <input type="text" name="email_address" placeholder="Alamat Email" required>
                     </div>
                     <div class="field">

@@ -28,50 +28,33 @@
                     <th>Kecamatan</th>
                     <th>Kabupaten/Kota</th>
                     <th>Fee</th>
-                    <th>Acction</th>
+                    <th>Action</th>
                 </tr>
             </thead>
+            <?php
+            $no = 1;
+            ?>
             <tbody>
+            <?php foreach ($places as $item) : ?>
                 <tr>
-                    <td>1</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
+                    <td><?= $no++ ?></td>
+                    <td><?= $item->name ?></td>
+                    <td><?= $item->street ?></td>
+                    <td><?= $item->village ?></td>
+                    <td><?= $item->sub_district ?></td>
+                    <td><?= $item->district ?></td>
+                    <td><?= $item->fee ?></td>
                     <td>
-                        <a href="<?= base_url('tesadmin/editplace') ?>"> <button class="button-edit">Edit</button>
+                        <a href="<?= base_url('/news/edit/' . $item->id) ?>">
+                            <button class="button-edit">Edit</button>
                         </a>
-                        <button class="button-delete">Hapus</button>
+                        <form action="<?= base_url('news/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                            <input name="_method" type="hidden" value="DELETE">
+                            <button class="button-delete" type="submit">Hapus</button>
+                        </form>
                     </td>
                 </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Pantai Matras</td>
-                    <td>Jalan Pantai Matras</td>
-                    <td>Sinar Baru</td>
-                    <td>Sungailiat</td>
-                    <td>Bangka</td>
-                    <td>4000</td>
-                    <td>
-                        <button class="button-edit">Edit</button>
-                        <button class="button-delete">Hapus</button>
-                    </td>
-                </tr>
+            <?php endforeach ?>
             </tbody>
         </table>
     </div>

@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\PlaceModel;
 use App\Models\UserModel;
 use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\HTTP\RedirectResponse;
@@ -15,6 +16,9 @@ class Users extends BaseController
 {
     /** @var UserModel */
     private $userModel;
+
+    /** @var PlaceModel */
+    private $placeModel;
 
     /** @var Validation */
     private $validation;
@@ -31,6 +35,7 @@ class Users extends BaseController
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->placeModel = new PlaceModel();
         $this->validation = Services::validation();
         $this->roleUser = Database::connect();
         $this->session = session();
@@ -40,7 +45,8 @@ class Users extends BaseController
     public function index(): string
     {
         $data = [
-            'title' => 'Home | '
+            'title'  => 'Home | ',
+            'places' => $this->placeModel->where('is_approve', 1)->findAll()
         ];
 
         return view('users/home1', $data);

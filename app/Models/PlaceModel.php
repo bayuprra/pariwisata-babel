@@ -26,15 +26,13 @@ class PlaceModel extends Model
     ];
 
     protected $validationRules = [
-        'name' => 'required',
-        'district' => 'required',
+        'name'         => 'required',
+        'district'     => 'required',
         'sub_district' => 'required',
-        'village' => 'required',
-        'fee' => 'required|numeric',
-        'street' => 'required',
-        'maps' => 'required|valid_url',
-        'picture' => 'required|mime_in[picture,image/png,image/jpg]',
-        'user_id' => 'required|is_unique[users.id]',
-        'is_approve' => 'required'
+        'village'      => 'required',
+        'fee'          => 'required|numeric',
+        'street'       => 'required',
+        'maps'         => 'required|valid_url',
+        'picture'      => 'required'
     ];
 }

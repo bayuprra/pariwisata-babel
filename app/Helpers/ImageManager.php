@@ -21,6 +21,7 @@ class ImageManager
 
     /** @var GuideModel */
     private $guide;
+
     /**
      * ImageManager constructor.
      */
@@ -92,21 +93,9 @@ class ImageManager
         unlink(strstr($imageModel->small, 'image'));
     }
 
-    public function eventImageProcessor(UploadedFile $image, &$data): void
+    public function imageProcessor(UploadedFile $image, string $folderName): string
     {
         $fileName = $image->getRandomName();
-        $folderName = 'event';
-
-        $image->move('image/' . $folderName, $fileName);
-        $path = $folderName . '/' . $image->getName();
-
-        $data['picture'] = $path;
-    }
-
-    public function guideImageProcessor(UploadedFile $image): string
-    {
-        $fileName = $image->getRandomName();
-        $folderName = 'guide';
 
         $image->move('image/' . $folderName, $fileName);
         return $folderName . '/' . $image->getName();

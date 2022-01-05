@@ -12,7 +12,6 @@ use ReflectionException;
 
 class Guide extends BaseController
 {
-
     /** @var GuideModel */
     private $guideModel;
 
@@ -50,9 +49,9 @@ class Guide extends BaseController
             $guide = $this->guideModel->where('is_approve', 0);
         }
         $data = [
-            'title' => 'Guide | ',
-            'guide' => $guide->paginate(1, 'guide'),
-            'pager' => $this->guideModel->pager,
+            'title'       => 'Guide | ',
+            'guide'       => $this->guideModel->paginate(1, 'guide'),
+            'pager'       => $this->guideModel->pager,
             'currentPage' => $currentPage
         ];
 
@@ -87,22 +86,22 @@ class Guide extends BaseController
     /**
      * @throws ReflectionException
      */
-    public function store() //: RedirectResponse
+    public function store(): RedirectResponse
     {
         $data = [
-            'name'              => $this->request->getVar('name'),
-            'phone'             => $this->request->getVar('phone'),
-            'experience'        => $this->request->getVar('experience'),
-            'study'             => $this->request->getVar('study'),
-            'gender'            => $this->request->getVar('gender'),
-            'religion'          => $this->request->getVar('religion'),
-            'address'           => $this->request->getVar('address'),
-            'age'               => $this->request->getVar('age'),
-            'email'             => $this->request->getVar('email'),
-            'facebook'          => $this->request->getVar('facebook'),
-            'instagram'         => $this->request->getVar('instagram'),
-            'twitter'           => $this->request->getVar('twitter'),
-            'user_id'           => session()->get('id')
+            'name'        => $this->request->getVar('name'),
+            'phone'       => $this->request->getVar('phone'),
+            'experience'  => $this->request->getVar('experience'),
+            'study'       => $this->request->getVar('study'),
+            'gender'      => $this->request->getVar('gender'),
+            'religion'    => $this->request->getVar('religion'),
+            'address'     => $this->request->getVar('address'),
+            'age'         => $this->request->getVar('age'),
+            'email'       => $this->request->getVar('email'),
+            'facebook'    => $this->request->getVar('facebook'),
+            'instagram'   => $this->request->getVar('instagram'),
+            'twitter'     => $this->request->getVar('twitter'),
+            'user_id'     => session()->get('id')
         ];
 
         $this->validation->setRules([
@@ -112,8 +111,8 @@ class Guide extends BaseController
 
         if ($this->validation->withRequest($this->request)->run()) {
 
-            $data['identity_picture'] = $this->imageManager->guideImageProcessor($this->request->getFile('identity_picture'));
-            $data['video'] = $this->imageManager->guideImageProcessor($this->request->getFile('video'));
+            $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
+            $data['video'] = $this->imageManager->imageProcessor($this->request->getFile('video'), 'guide');
 
             if ($this->guideModel->save($data)) {
                 $guideId = $this->guideModel->getInsertID();
@@ -148,8 +147,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink('image/' . $guide->identity_picture);
-        unlink('image/' . $guide->video);
+        unlink(strstr($guide->identity_picture, 'image'));
+        unlink(strstr($guide->video, 'image'));
 
         $this->guideModel->delete($guide->id);
 

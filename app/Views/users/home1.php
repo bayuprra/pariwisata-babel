@@ -13,10 +13,12 @@
 
     <div class="content">
         <h3>Cari tempat yang ingin kamu kunjungi</h3>
+        <form id="formPlace">
         <div class="inputBox">
             <input type="search" name="search" placeholder="cari" id="search">
         </div>
         <input type="submit" value="Cari lokasi" class="btn">
+        </form>
 
         <!-- recommendation -->
         <div class="result-recom">
@@ -58,15 +60,8 @@
                 <a href="#" class="fa fa-search" aria-hidden="true"></a>
                 <p>hasil</p>
             </div>
-            <div class="recom-container">
-                <div class="recomendation">
-                    <a href="#" class="modaltrigger">Pantai Matras</a>
-                    <p>kabupaten</p>
-                    <div class="like">
-                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                        <p>disukai oleh 1023 orang</p>
-                    </div>
-                </div>
+
+            <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places),ENT_QUOTES,'UTF-8') ?>">
             </div>
         </div>
     </div>
@@ -181,11 +176,49 @@
 <?= $this->section('script') ?>
 <script>
     // search
+    var resultContainer = document.getElementById('places');
+    var placeData = document.getElementById('places').getAttribute("data-place");
+    placeData = JSON.parse(placeData)
 
+    function printItems(array) {
+        var tampung = '';
 
+        for (var i = 0; i < array.length; i++) {
+            var place = array[i]
+            tampung += `
+            <div class="recomendation">
+                <a href="#" class="modaltrigger">${place.name}</a>
+                <p>${place.district}</p>
+                <div class="like">
+                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                    <p>disukai oleh 1023 orang</p>
+                </div>
+            </div>`
+        }
+        resultContainer.innerHTML = tampung
+    }
 
+    function filter(kataKunci) {
+        var filteredItems = []
+        for (var j = 0; j < placeData.length; j++) {
+            var place = placeData[j]
+            console.log(place)
+            var placeName = place.name
+            var isMatch = placeName.toLowerCase().includes(kataKunci.toLowerCase())
 
+            if (isMatch) filteredItems.push(place);
+        }
+        return filteredItems
+    }
 
+    var formSearch = document.getElementById('formPlace')
+    formSearch.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var keyword = document.getElementById("search").value;
+
+        var terfilter = filter(keyword)
+        printItems(terfilter)
+    })
 
 
 

@@ -89,19 +89,19 @@ class Guide extends BaseController
     public function store(): RedirectResponse
     {
         $data = [
-            'name'              => $this->request->getVar('name'),
-            'phone'             => $this->request->getVar('phone'),
-            'experience'        => $this->request->getVar('experience'),
-            'study'             => $this->request->getVar('study'),
-            'gender'            => $this->request->getVar('gender'),
-            'religion'          => $this->request->getVar('religion'),
-            'address'           => $this->request->getVar('address'),
-            'age'               => $this->request->getVar('age'),
-            'email'             => $this->request->getVar('email'),
-            'facebook'          => $this->request->getVar('facebook'),
-            'instagram'         => $this->request->getVar('instagram'),
-            'twitter'           => $this->request->getVar('twitter'),
-            'user_id'           => session()->get('id')
+            'name'        => $this->request->getVar('name'),
+            'phone'       => $this->request->getVar('phone'),
+            'experience'  => $this->request->getVar('experience'),
+            'study'       => $this->request->getVar('study'),
+            'gender'      => $this->request->getVar('gender'),
+            'religion'    => $this->request->getVar('religion'),
+            'address'     => $this->request->getVar('address'),
+            'age'         => $this->request->getVar('age'),
+            'email'       => $this->request->getVar('email'),
+            'facebook'    => $this->request->getVar('facebook'),
+            'instagram'   => $this->request->getVar('instagram'),
+            'twitter'     => $this->request->getVar('twitter'),
+            'user_id'     => session()->get('id')
         ];
 
         $this->validation->setRules([
@@ -147,8 +147,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink('image/' . $guide->identity_picture);
-        unlink('image/' . $guide->video);
+        unlink(strstr($guide->identity_picture, 'image'));
+        unlink(strstr($guide->video, 'image'));
 
         $this->guideModel->delete($guide->id);
 

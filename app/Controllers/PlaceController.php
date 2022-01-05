@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use App\Helpers\ImageManager;
 use App\Models\PlaceModel;
-use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Validation\Validation;
 use Config\Services;

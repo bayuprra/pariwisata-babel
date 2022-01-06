@@ -44,7 +44,7 @@
                         <img src="<?= $item->newsImage()->original ?>" alt="news">
                         <div class="judul">
                             <h3><?= $item->title ?></h3>
-                            <p><?= Carbon\Carbon::parse($item->created_at)->diffForHumans() ?></p>
+                            <p><?= \CodeIgniter\I18n\Time::parse($item->created_at)->humanize() ?></p>
                         </div>
                     </div>
                 </a>

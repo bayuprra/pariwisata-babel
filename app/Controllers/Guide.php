@@ -32,7 +32,9 @@ class Guide extends BaseController
     {
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->where('is_approve', 1)->findAll()
+            'guide' => $this->guideModel->where('is_approve', 1)->findAll(),
+            'guide2' => $this->guideModel->where('is_approve', 1)->findAll()
+
         ];
 
         return view('users/partner1', $data);

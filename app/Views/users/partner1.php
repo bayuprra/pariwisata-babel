@@ -45,10 +45,10 @@
                 </div>
             <?php endforeach; ?>
         </div>
-        <div class="partner-modal" id="partner-modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <?php foreach ($guide as $item) : ?>
+        <?php foreach ($guide as $item) : ?>
+            <div class="partner-modal" id="partner-modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
                     <div class="box">
                         <div class="image">
                             <img src="<?= $item->getIdentityPicture()  ?>" alt="">
@@ -83,9 +83,9 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                </div>
             </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 
 </section>

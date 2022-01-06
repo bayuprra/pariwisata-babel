@@ -12,7 +12,7 @@
 <section class="data-guide" id="data-guide">
 
 
-    <div class="content" action="">
+    <div class="content">
         <h3>Tabel Data Pendaftaran Guide</h3>
         <br><br>
         <div class="row">
@@ -69,8 +69,8 @@
                         <td><?= $item->facebook ?></td>
                         <td><?= $item->instagram ?></td>
                         <td><?= $item->twitter ?></td>
-                        <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->guidePicture() ?></a></td>
-                        <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
+                        <td><a href="<?= $item->identity_picture ?>"> <?= $item->identity_picture ?></a></td>
+                        <td><a href="<?= $item->video ?>"><?= $item->video ?></a></td>
                         <td>
                             <a href="#">
                                 <form action="<?= base_url('guide/approve/' . $item->id) ?>" method="POST">

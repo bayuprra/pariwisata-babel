@@ -84,7 +84,7 @@ class Event extends BaseController
             'content'        => $this->request->getVar('content')
         ];
 
-        $this->imageManager->eventImageProcessor($this->request->getFile('picture'), $data);
+        $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'event');
 
         if ($this->eventModel->save($data)) {
             $eventId = $this->eventModel->getInsertID();
@@ -125,7 +125,7 @@ class Event extends BaseController
         ];
 
         if (file_exists($this->request->getFile('picture'))) {
-            $this->imageManager->eventImageProcessor($this->request->getFile('picture'), $data);
+            $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'event');
         } else {
             $data['picture'] = $event->picture;
         }
@@ -145,14 +145,9 @@ class Event extends BaseController
             throw ModelException::forNoPrimaryKey(EventModel::class);
         }
 
-        unlink('image/  ' . $event->picture);
+        unlink(strstr($event->picture, 'image'));
         $this->eventModel->delete($event->id);
 
         return redirect()->to('/admin/event ');
-    }
-
-    public function eventPicture()
-    {
-        return base_url() .  $this->eventModel->picture;
     }
 }

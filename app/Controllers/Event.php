@@ -60,7 +60,7 @@ class Event extends BaseController
 
         $data = [
             'title' => 'Event | Event Index',
-            'event' => $event->paginate(1, 'event'),
+            'event' => $event->paginate(5, 'event'),
             'pager' => $this->eventModel->pager,
             'currentPage' => $currentPage
         ];

@@ -940,6 +940,19 @@
   font-size: 12px;
   text-transform: capitalize;
 }
+
+/* flash massage */
+.alert-success,
+.alert-danger {
+  position: absolute;
+  width: 20%;
+  height: auto;
+  font-weight: bold;
+  font-size: 15px;
+  left: 0;
+  top: 20%;
+  padding: 15px;
+}
 /* media queries  */
 @media (max-width: 768px) {
   .partner .box-container {

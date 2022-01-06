@@ -49,7 +49,7 @@
                 </tr>
             </thead>
             <?php
-            $no = 1 + (1 * ($currentPage - 1));
+            $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
 
@@ -73,7 +73,7 @@
                         <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
                         <td>
                             <a href="#">
-                                <form action="<?= base_url('guide/setujui/' . $item->id) ?>" method="POST">
+                                <form action="<?= base_url('guide/approve/' . $item->id) ?>" method="POST">
                                     <button type="submit" class="button-edit">Ya</button>
                                 </form>
                             </a>

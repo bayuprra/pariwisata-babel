@@ -269,4 +269,11 @@ button {
 .alert-success,
 .alert-danger {
   position: unset;
+  width: auto;
+  height: auto;
+  font-weight: bold;
+  font-size: 15px;
+  left: 0;
+  top: 20%;
+  padding: 15px;
 }

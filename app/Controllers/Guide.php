@@ -33,7 +33,7 @@ class Guide extends BaseController
     {
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->findAll()
+            'guide' => $this->guideModel->where('is_approve', 1)->findAll()
         ];
 
         return view('users/partner1', $data);
@@ -51,7 +51,7 @@ class Guide extends BaseController
         }
         $data = [
             'title' => 'Guide | ',
-            'guide' => $guide->paginate(1, 'guide'),
+            'guide' => $guide->paginate(5, 'guide'),
             'pager' => $this->guideModel->pager,
             'currentPage' => $currentPage
         ];
@@ -71,7 +71,7 @@ class Guide extends BaseController
         }
         $data = [
             'title' => 'Guide | ',
-            'guide' => $guide->paginate(1, 'guide'),
+            'guide' => $guide->paginate(5, 'guide'),
             'pager' => $this->guideModel->pager,
             'currentPage' => $currentPage
         ];
@@ -131,13 +131,13 @@ class Guide extends BaseController
         return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
     }
 
-    public function setujui($id)
+    public function approve($id)
     {
         $data = [
             'is_approve' => 1,
         ];
         $this->guideModel->update($id, $data);
-        return redirect()->to('/admin/vguide')->with('success', 'Guide has been saved.');
+        return redirect()->to('/admin/vguide')->with('success', 'Data  Guide has been saved.');
     }
 
     public function destroy(int $id): RedirectResponse

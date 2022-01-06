@@ -14,19 +14,17 @@
     <div class="news-container">
         <div class="headline-box">
 
-            <?php foreach ($headlines as $item) : ?>
-                <div class="image-container">
-                    <a href="<?= base_url('news/show/' . $item->id) ?>">
-                        <img src="<?= $item->newsImage()->original ?>" alt="headline news">
-                        <div class="judul">
-                            <h3><?= $item->title ?></h3>
-                        </div>
-                        <div class="detail">
-                            <p><?= Carbon\Carbon::parse($item->created_at)->diffForHumans() ?></p>
-                        </div>
-                    </a>
-                </div>
-            <?php endforeach ?>
+            <div class="image-container">
+                <a href="<?= base_url('news/show/' . $headlines->id) ?>">
+                    <img src="<?= $headlines->newsImage()->original ?>" alt="headline news">
+                    <div class="judul">
+                        <h3><?= $headlines->title ?></h3>
+                    </div>
+                    <div class="detail">
+                        <p><?= Carbon\Carbon::parse($headlines->created_at)->diffForHumans() ?></p>
+                    </div>
+                </a>
+            </div>
         </div>
 
         <?php

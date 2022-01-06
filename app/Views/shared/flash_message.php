@@ -1,23 +1,3 @@
-<style>
-    .alert-danger {}
-
-
-    .alert-success,
-    .alert-danger {
-        position: absolute;
-        width: 20%;
-        height: auto;
-        font-weight: bold;
-        font-size: 15px;
-        left: 0;
-        top: 20%;
-        padding: 15px;
-    }
-</style>
-
-
-
-
 <?php if (!empty(session()->getFlashdata('errors'))) : ?>
     <div class="alert alert-danger" role="alert">
         <p><strong>Whoops!</strong> There are some problems with your input.</p>

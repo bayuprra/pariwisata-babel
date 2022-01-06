@@ -41,7 +41,7 @@
                 </tr>
             </thead>
             <?php
-            $no = 1 + (1 * ($currentPage - 1));
+            $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
                 <?php foreach ($news as $item) : ?>

@@ -30,29 +30,11 @@ class News extends BaseController
 
     public function index(): string
     {
-        // $length = count($headlines);
-
-        // $dataheadlines = $headlines[$length - 1];
-        // dump($dataheadlines);
-
         $data = [
             'title' => 'News | All',
             'news'  => $this->newsModel->where('category', 'general')->findAll(),
             'headlines' => $this->newsModel->where('category', 'headline')->orderBy('id', 'desc')->first()
         ];
-
-        // $length = count($data['headlines']);
-        // $index = $data['headlines'][$length - 1];
-
-        // if ($length > 0) {
-        //     $data['headlines']->$index;
-        // }
-        // dump($data['headlines']); 
-        // end($data['headlines']);
-        // $key = key($data['headlines']);
-
-        // $data['headlines' => ]
-        // dump($key);
 
         return view('users/news', $data);
     }
@@ -94,7 +76,7 @@ class News extends BaseController
 
         $data = [
             'title' => 'News | Admin Index',
-            'news' => $news->paginate(1, 'news'),
+            'news' => $news->paginate(5, 'news'),
             'pager' => $this->newsModel->pager,
             'currentPage' => $currentPage
         ];

@@ -9,6 +9,7 @@
 <?= $this->section('content') ?>
 
 <section class="partner" id="partner">
+
     <div class="content1">
         <div class="content11">
             <h3>Tertarik menjadi tour guide ?</h3>
@@ -27,114 +28,63 @@
     </div>
     <div class="content2">
         <div class="box-container">
-            <div class="box">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/b.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>john deo</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-            <div class="box">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/b.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>Ahmat</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-            <div class="box">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/b.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>Dedi</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-            <div class="box" style="display: none;">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/b.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>john deo</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-            <div class="box" style="display: none;">
-                <a href="#" class="fas fa-envelope"></a>
-                <a href="#" class="fas fa-phone"></a>
-                <img src="/image/b.jpg" alt="">
-                <a href="#" class="name">
-                    <h3>john deo</h3>
-                </a>
-                <span>tour guide</span>
-                <div class="share">
-                    <a href="#" class="fab fa-facebook-f"></a>
-                    <a href="#" class="fab fa-twitter"></a>
-                    <a href="#" class="fab fa-instagram"></a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="partner-modal" id="partner-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="box">
-                <div class="image">
-                    <img src="/image/b.jpg" alt="">
-                </div>
-                <div class="line"></div>
-                <div class="bio-medsos">
-                    <div class="biodata">
-                        <div class="bio">
-                            <p>nama</p>
-                            <p>jenis kelamin</p>
-                            <p>agama</p>
-                            <p>alamat</p>
-                            <p>umur</p>
-                            <p>Pengalaman</p>
-                        </div>
-                        <div>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                            <p>:</p>
-                        </div>
-                        <div>
-                            <p>john deo</p>
-                            <p>laki-laki</p>
-                            <p>islam</p>
-                            <p>sungailiat</p>
-                            <p>18 tahun</p>
-                            <p>1 Tahun</p>
-                        </div>
+            <?php foreach ($guide as $item) : ?>
+                <div class="box">
+                    <a href="#" class="fas fa-envelope"></a>
+                    <a href="#" class="fas fa-phone"></a>
+                    <img src="<?= base_url() . '/image/' . $item->identity_picture ?>" alt="guide image">
+                    <a href="#" class="name">
+                        <h3><?= $item->name ?></h3>
+                    </a>
+                    <span>tour guide</span>
+                    <div class="share">
+                        <a href="#" class="fab fa-facebook-f"></a>
+                        <a href="#" class="fab fa-twitter"></a>
+                        <a href="#" class="fab fa-instagram"></a>
                     </div>
                 </div>
+            <?php endforeach; ?>
+
+        </div>
+        <div class="partner-modal" id="partner-modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <?php foreach ($guide as $item) : ?>
+                    <div class="box">
+                        <div class="image">
+                            <img src="<?= base_url() . '/image/' . $item->identity_picture ?>" alt="">
+                        </div>
+                        <div class="line"></div>
+                        <div class="bio-medsos">
+                            <div class="biodata">
+                                <div class="bio">
+                                    <p>nama</p>
+                                    <p>jenis kelamin</p>
+                                    <p>agama</p>
+                                    <p>alamat</p>
+                                    <p>umur</p>
+                                    <p>Pengalaman</p>
+                                </div>
+                                <div>
+                                    <p>:</p>
+                                    <p>:</p>
+                                    <p>:</p>
+                                    <p>:</p>
+                                    <p>:</p>
+                                    <p>:</p>
+                                </div>
+                                <div>
+                                    <p><?= $item->name ?></p>
+                                    <p><?= $item->gender ?></p>
+                                    <p><?= $item->religion ?></p>
+                                    <p><?= $item->address ?></p>
+                                    <p><?= $item->age ?></p>
+                                    <p><?= $item->experience ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php endforeach; ?>
             </div>
         </div>
     </div>

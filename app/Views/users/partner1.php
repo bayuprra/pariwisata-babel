@@ -32,7 +32,7 @@
                 <div class="box">
                     <a href="#" class="fas fa-envelope"></a>
                     <a href="#" class="fas fa-phone"></a>
-                    <img src="<?= base_url() . '/image/' . $item->identity_picture ?>" alt="guide image">
+                    <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
                     <a href="#" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
@@ -44,7 +44,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-
         </div>
         <div class="partner-modal" id="partner-modal">
             <div class="modal-content">
@@ -52,7 +51,7 @@
                 <?php foreach ($guide as $item) : ?>
                     <div class="box">
                         <div class="image">
-                            <img src="<?= base_url() . '/image/' . $item->identity_picture ?>" alt="">
+                            <img src="<?= $item->getIdentityPicture()  ?>" alt="">
                         </div>
                         <div class="line"></div>
                         <div class="bio-medsos">

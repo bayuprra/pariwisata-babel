@@ -19,7 +19,7 @@
         <?php foreach ($event as $item) : ?>
             <div class="box">
                 <div class="content-image">
-                    <img src="<?= base_url() . '/image/' . $item->picture ?>" alt="event image">
+                    <img src="<?= $item->getPicture() ?>" alt="event image">
                 </div>
                 <div class="content-date">
                     <h5 class="label-date"><?= Carbon\Carbon::parse($item->date)->format('j') ?></h5>

@@ -27,11 +27,11 @@ class Guide extends Entity
 
     public function getIdentityPicture()
     {
-        return $this->attributes['identity_picture'];
+        return base_url() . '/image/' . $this->attributes['identity_picture'];
     }
 
     public function getVideo()
     {
-        return $this->attributes['video'];
+        return base_url() . '/image/' . $this->attributes['video'];
     }
 }

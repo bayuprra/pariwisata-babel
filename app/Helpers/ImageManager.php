@@ -96,8 +96,8 @@ class ImageManager
     public function imageProcessor(UploadedFile $image, string $folderName): string
     {
         $fileName = $image->getRandomName();
-
         $image->move('image/' . $folderName, $fileName);
+
         return $folderName . '/' . $image->getName();
     }
 }

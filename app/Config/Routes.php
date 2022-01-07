@@ -65,10 +65,11 @@ $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
 $routes->post('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->post('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
-
 $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('create', 'Guide::create');
     $routes->post('/', 'Guide::store');
+    $routes->get('edit/(:num)', 'Guide::edit/$1');
+    $routes->post('(:num)', 'Guide::update/$1');
     $routes->delete('(:num)', 'Guide::destroy/$1');
 });
 

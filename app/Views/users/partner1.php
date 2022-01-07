@@ -33,7 +33,7 @@
                     <a href="#" class="fas fa-envelope"></a>
                     <a href="#" class="fas fa-phone"></a>
                     <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
-                    <a href="#" class="name">
+                    <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
                     <span>tour guide</span>
@@ -46,7 +46,7 @@
             <?php endforeach; ?>
         </div>
         <?php foreach ($guide as $item) : ?>
-            <div class="partner-modal" id="partner-modal">
+            <div class="partner-modal" id="partner-modal-<?= $item->id ?>">
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <div class="box">
@@ -95,62 +95,33 @@
 <?= $this->section('script') ?>
 
 <script>
-    // Get the button that opens the modal
     let btn = document.querySelectorAll(".name");
-
-    // TODO: uncomment this code when integrating this view with partner controller
-    // All page modals
-    // let modals = document.querySelectorAll('.partner-modal');
-
-    // TODO: remove this code when integrating this view with partner controller
-    let modal = document.getElementById("partner-modal");
-    let span = document.getElementsByClassName("close")[0];
-
-
-    // Get the <span> element that closes the modal
     let spans = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal
+
     for (let i = 0; i < btn.length; i++) {
+        let span = document.getElementsByClassName("close")[i];
+        let dataId = btn[i].getAttribute("data-id");
+        let modal = document.getElementById(`partner-modal-${dataId}`);
+
+        // When the user clicks the button, open the modal
         btn[i].onclick = function(e) {
             e.preventDefault();
             modal.style.display = "block";
         }
-    }
 
-    // TODO: change this code when integrating this view with partner controller
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // TODO: remove this code when integrating this view with partner controller
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // When the user clicks the button, close the modal
+        span.onclick = function() {
             modal.style.display = "none";
         }
+
+        // When the user clicks out of modal, close the modal
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
     }
-
-    // TODO: uncomment this code when integrating this view with partner controller
-    // When the user clicks on <span> (x), close the modal
-    // for (let i = 0; i < spans.length; i++) {
-    //     spans[i].onclick = function() {
-    //         for (let index in modals) {
-    //             if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
-    //         }
-    //     }
-    // }
-
-    // TODO: uncomment this code when integrating this view with partner controller
-    // When the user clicks anywhere outside of the modal, close it
-    // window.onclick = function(event) {
-    //     if (event.target.classList.contains('modal')) {
-    //         for (let index in modals) {
-    //             if (typeof modals[index].style !== 'undefined') modals[index].style.display = "none";
-    //         }
-    //     }
-    // }
 </script>
 
 <?= $this->endSection() ?>

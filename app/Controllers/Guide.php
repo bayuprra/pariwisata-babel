@@ -40,6 +40,13 @@ class Guide extends BaseController
         return view('users/partner1', $data);
     }
 
+    public function edit(int $id): string
+    {
+        $data['guide'] = $this->guideModel->find($id);
+
+        return view('admin/edit_guides', $data);
+    }
+
     public function admin(): string
     {
         $currentPage = $this->request->getVar('page_guide') ? $this->request->getVar('page_guide') : 1;
@@ -157,5 +164,37 @@ class Guide extends BaseController
 
 
         return redirect()->to('/admin/guide ');
+    }
+
+    public function update(int $id): RedirectResponse
+    {
+        $guide = $this->guideModel->find($id);
+
+        if (!$guide) {
+            throw ModelException::forNoPrimaryKey(GuideModel::class);
+        }
+
+        $data = [
+            'id'          => $id,
+            'name'        => $this->request->getVar('name'),
+            'phone'       => $this->request->getVar('phone'),
+            'address'     => $this->request->getVar('address'),
+            'facebook'    => $this->request->getVar('facebook'),
+            'instagram'   => $this->request->getVar('instagram'),
+            'twitter'     => $this->request->getVar('twitter'),
+        ];
+
+
+        if (file_exists($this->request->getFile('identity_picture'))) {
+            $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
+        } else {
+            $data['identity_picture'] = $guide->identity_picture;
+        }
+
+        if ($this->guideModel->update($id, $data)) {
+            return redirect()->to('/admin/vguide')->withInput()->with('success', 'Data Guide has been saved.');
+        }
+
+        return redirect()->back()->withInput()->with('errors', $this->guideModel->errors());
     }
 }

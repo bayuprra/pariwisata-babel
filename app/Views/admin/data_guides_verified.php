@@ -69,10 +69,13 @@
                         <td><?= $item->facebook ?></td>
                         <td><?= $item->instagram ?></td>
                         <td><?= $item->twitter ?></td>
-                        <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->guidePicture() ?></a></td>
-                        <td><a href="/image/<?= $item->video ?>"><?= $item->guideVideo() ?></a></td>
+                        <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->identity_picture ?></a></td>
+                        <td><a href="/image/<?= $item->video ?>"><?= $item->video ?></a></td>
                         <td>terverifikasi</td>
-                        <td>
+                        <td><a href="<?= base_url('/guide/edit/' . $item->id) ?>">
+                                <button class="button-edit">Edit</button>
+                            </a>
+
                             <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
                                 <input name="_method" type="hidden" value="DELETE">
                                 <button class="button-delete" type="submit">Hapus</button>

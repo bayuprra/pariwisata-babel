@@ -57,7 +57,8 @@ input[type="reset"]:hover {
 .data-user,
 .data-review,
 .data-event,
-.add-news {
+.add-news,
+.edit-guide {
   display: flex;
   align-items: center;
   justify-content: center;

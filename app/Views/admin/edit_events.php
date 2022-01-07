@@ -55,7 +55,7 @@
                 </div>
                 <div class="input">
                     <label for="picture">Select a file:</label>
-                    <input type="file" id="picture" name="picture" value="<?= $event->picture ?>"><br><br>
+                    <input type="file" id="picture" name="picture"><br><br>
                 </div>
             </div>
             <div class="row">

@@ -21,7 +21,7 @@
                         <h3><?= $headlines->title ?></h3>
                     </div>
                     <div class="detail">
-                        <p><?= Carbon\Carbon::parse($headlines->created_at)->diffForHumans() ?></p>
+                        <p><?= \CodeIgniter\I18n\Time::parse($headlines->created_at)->humanize() ?></p>
                     </div>
                 </a>
             </div>

@@ -51,7 +51,7 @@
                     <span class="close">&times;</span>
                     <div class="box">
                         <div class="image">
-                            <img src="<?= $item->getIdentityPicture()  ?>" alt="">
+                            <img src="/image/<?= $item->identity_picture ?>" alt="">
                         </div>
                         <div class="line"></div>
                         <div class="bio-medsos">

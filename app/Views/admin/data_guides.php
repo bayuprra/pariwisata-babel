@@ -19,7 +19,7 @@
             <div class="col-6">
                 <form action="" method="post">
                     <div class="input-group mb-2 mt-5">
-                        <input type="text" class="form-control" placeholder="Cari Data" name="keyword">
+                        <input type="text" class="form-control" placeholder="Cari Data" name="keyword" autocomplete="off">
                         <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
                     </div>
                 </form>

@@ -32,7 +32,7 @@
                 <div class="box">
                     <a href="#" class="fas fa-envelope"></a>
                     <a href="#" class="fas fa-phone"></a>
-                    <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
+                    <img src="/image/<?= $item->identity_picture ?>" alt="guide image">
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>

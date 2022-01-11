@@ -49,7 +49,7 @@
                         <td><?= $no++ ?></td>
                         <td><?= $item->name ?></td>
                         <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
-                        <td><?= Carbon\Carbon::parse($item->date)->format('d F') ?></td>
+                        <td><?= \CodeIgniter\I18n\Time::parse($item->date)->toLocalizedString('dd MMMM yyyy') ?></td>
                         <td><?= $item->content ?></td>
                         <td> <a href="<?= $item->picture ?>"> <?= $item->picture ?></a></td>
                         <td>

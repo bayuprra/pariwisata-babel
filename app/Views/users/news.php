@@ -21,7 +21,7 @@
                         <h3><?= $headlines->title ?></h3>
                     </div>
                     <div class="detail">
-                        <p><?= Carbon\Carbon::parse($headlines->created_at)->diffForHumans() ?></p>
+                        <p><?= \CodeIgniter\I18n\Time::parse($headlines->created_at)->humanize() ?></p>
                     </div>
                 </a>
             </div>
@@ -44,7 +44,7 @@
                         <img src="<?= $item->newsImage()->original ?>" alt="news">
                         <div class="judul">
                             <h3><?= $item->title ?></h3>
-                            <p><?= Carbon\Carbon::parse($item->created_at)->diffForHumans() ?></p>
+                            <p><?= \CodeIgniter\I18n\Time::parse($item->created_at)->humanize() ?></p>
                         </div>
                     </div>
                 </a>

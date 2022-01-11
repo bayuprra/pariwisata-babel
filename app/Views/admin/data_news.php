@@ -51,8 +51,8 @@
                         <td><?= substr($item->content, 0, 100) ?></td>
                         <td><?= $item->category ?></td>
                         <td> <a href="<?= $item->newsImage()->original ?>"><?= $item->newsImage()->original ?></a> </td>
-                        <td><?= Carbon\Carbon::parse($item->created_at)->format('d F Y , h:m') ?></td>
-                        <td><?= Carbon\Carbon::parse($item->updated_at)->format('d F Y , h:m') ?></td>
+                        <td><?= \CodeIgniter\I18n\Time::parse($item->created_at)->toLocalizedString('dd MMMM yyyy , HH:mm') ?></td>
+                        <td><?= \CodeIgniter\I18n\Time::parse($item->updated_at)->toLocalizedString('dd MMMM yyyy , HH:mm') ?></td>
                         <td>
                             <a href="<?= base_url('/news/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>

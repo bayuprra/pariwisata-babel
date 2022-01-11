@@ -14,8 +14,16 @@
 
     <div class="content" action="">
         <h3>Tabel Data Tempat Wisata</h3><br><br>
-        <div class="search-container">
-            <input type="text" placeholder="Search.." name="search">
+        <br><br>
+        <div class="row">
+            <div class="col-6">
+                <form action="" method="post">
+                    <div class="input-group mb-2 mt-5">
+                        <input type="text" class="form-control" placeholder="Cari Data" name="keyword">
+                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                    </div>
+                </form>
+            </div>
         </div>
         <?= view('shared/flash_message') ?>
         <table id="example" class="table table-striped" style="width:100%">
@@ -28,35 +36,41 @@
                     <th>Kecamatan</th>
                     <th>Kabupaten/Kota</th>
                     <th>Fee</th>
+                    <th>Maps</th>
+                    <th>Gambar</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <?php
-            $no = 1;
+            $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
-            <?php foreach ($places as $item) : ?>
-                <tr>
-                    <td><?= $no++ ?></td>
-                    <td><?= $item->name ?></td>
-                    <td><?= $item->street ?></td>
-                    <td><?= $item->village ?></td>
-                    <td><?= $item->sub_district ?></td>
-                    <td><?= $item->district ?></td>
-                    <td><?= $item->fee ?></td>
-                    <td>
-                        <a href="<?= base_url('/news/edit/' . $item->id) ?>">
-                            <button class="button-edit">Edit</button>
-                        </a>
-                        <form action="<?= base_url('news/' . $item->id) ?>" method="post" enctype="multipart/form-data">
-                            <input name="_method" type="hidden" value="DELETE">
-                            <button class="button-delete" type="submit">Hapus</button>
-                        </form>
-                    </td>
-                </tr>
-            <?php endforeach ?>
+                <?php foreach ($places as $item) : ?>
+                    <tr>
+                        <td><?= $no++ ?></td>
+                        <td><?= $item->name ?></td>
+                        <td><?= $item->street ?></td>
+                        <td><?= $item->village ?></td>
+                        <td><?= $item->sub_district ?></td>
+                        <td><?= $item->district ?></td>
+                        <td><?= $item->fee ?></td>
+                        <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
+                        <td><a href="/image/<?= $item->picture ?>"><?= $item->picture ?></a></td>
+                        <td>
+                            <a href="<?= base_url('/place/edit/' . $item->id) ?>">
+                                <button class="button-edit">Edit</button>
+                            </a>
+                            <form action="<?= base_url('place/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                <input name="_method" type="hidden" value="DELETE">
+                                <button class="button-delete" type="submit">Hapus</button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach ?>
             </tbody>
         </table>
+
+        <?= $pager->links('places', 'pagination'); ?>
     </div>
 
 </section>

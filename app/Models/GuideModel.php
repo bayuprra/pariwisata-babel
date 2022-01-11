@@ -47,4 +47,9 @@ class GuideModel extends Model
         'instagram'         => 'required',
         'twitter'           => 'required'
     ];
+
+    public function search($keyword)
+    {
+        return $this->table('guides')->like('name', $keyword);
+    }
 }

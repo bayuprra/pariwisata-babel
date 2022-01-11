@@ -35,4 +35,9 @@ class PlaceModel extends Model
         'maps'         => 'required|valid_url',
         'picture'      => 'required'
     ];
+
+    public function search($keyword)
+    {
+        return $this->table('places')->like('name', $keyword);
+    }
 }

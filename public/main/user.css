@@ -11,6 +11,11 @@
   justify-content: center;
 }
 
+.home .content2 a .btn {
+  position: absolute;
+  left: 0;
+}
+
 .home .content {
   margin-top: 7rem;
   background: #fff;

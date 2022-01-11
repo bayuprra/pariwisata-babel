@@ -22,8 +22,8 @@
             </div>
             <ul class="sub-menu">
                 <li><a class="link_name" href="#">Tempat Wisata</a></li>
-                <li><a href="<?= base_url('tesadmin/dataplace') ?>">Data</a></li>
-                <li><a href="<?= base_url('tesadmin/createplace') ?>">Buat Tempat Wisata</a></li>
+                <li><a href="<?= base_url('/admin/place') ?>">Data</a></li>
+                <li><a href="<?= base_url('/placecontroller/create') ?>">Buat Tempat Wisata</a></li>
             </ul>
         </li>
         <li>

@@ -11,14 +11,8 @@
 <section class="place" id="place">
 
 
-<<<<<<< HEAD
-    <div class="content" action="">
-        <?= view('shared/flash_message') ?>
-        <form action="#">
-=======
     <div class="content">
         <form action="<?= base_url('place') ?>" method="POST" enctype="multipart/form-data">
->>>>>>> add place store handler
             <div class="row">
                 <div class="print">
                     <label for="name">Nama Tempat Wisata</label>

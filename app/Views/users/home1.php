@@ -11,13 +11,21 @@
 <section class="home" id="home">
     <?= view('shared/flash_message') ?>
 
+    <div class="content2">
+        <?php
+        $session = session()->get('email');
+        if ($session) : ?>
+            <a href="<?= base_url('admin/place') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+        <?php endif; ?>
+        <br><br><br>
+    </div>
     <div class="content">
         <h3>Cari tempat yang ingin kamu kunjungi</h3>
         <form id="formPlace">
-        <div class="inputBox">
-            <input type="search" name="search" placeholder="cari" id="search">
-        </div>
-        <input type="submit" value="Cari lokasi" class="btn">
+            <div class="inputBox">
+                <input type="search" name="search" placeholder="cari" id="search">
+            </div>
+            <input type="submit" value="Cari lokasi" class="btn">
         </form>
 
         <!-- recommendation -->
@@ -61,9 +69,10 @@
                 <p>hasil</p>
             </div>
 
-            <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places),ENT_QUOTES,'UTF-8') ?>">
+            <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places), ENT_QUOTES, 'UTF-8') ?>">
             </div>
         </div>
+
     </div>
 
     <!-- modal -->

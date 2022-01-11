@@ -23,4 +23,9 @@ class NewsModel extends Model
         'content'       => 'required',
         'image'         => 'required',
     ];
+
+    public function search($keyword)
+    {
+        return $this->table('news')->like('title', $keyword);
+    }
 }

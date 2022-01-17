@@ -13,15 +13,15 @@
     <div class="content1">
         <div class="content11">
             <h3>Tertarik menjadi tour guide ?</h3>
-            <a href="<?= base_url('formguides/index') ?>">
+            <a href="<?= base_url('formforuser/guide') ?>">
                 <input type="submit" value="daftar sekarang" class="btn">
             </a>
         </div>
         <br>
         <div class="content12">
             <?php
-            $session = session()->get('email');
-            if ($session) : ?>
+            $session = session()->get('id');
+            if ($session == 1) : ?>
                 <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
             <?php endif; ?>
         </div>

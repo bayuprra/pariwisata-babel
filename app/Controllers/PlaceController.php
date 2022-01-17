@@ -48,9 +48,31 @@ class PlaceController extends BaseController
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $place = $this->placeModel->search($keyword);
+            $place = $this->placeModel->search($keyword)->where('is_approve', 0);
         } else {
-            $place = $this->placeModel;
+            $place = $this->placeModel->where('is_approve', 0);
+        }
+
+        $data = [
+            'title' => 'Place | ',
+            'places' => $place->paginate(5, 'places'),
+            'pager' => $this->placeModel->pager,
+            'currentPage' => $currentPage
+        ];
+
+
+        return view('admin/data_places', $data);
+    }
+
+    public function adminv(): string
+    {
+        $currentPage = $this->request->getVar('page_vplace') ? $this->request->getVar('page_vplace') : 1;
+
+        $keyword = $this->request->getVar('keyword');
+        if ($keyword) {
+            $place = $this->placeModel->search($keyword)->where('is_approve', 1);
+        } else {
+            $place = $this->placeModel->where('is_approve', 1);
         }
 
         $data = [
@@ -61,7 +83,16 @@ class PlaceController extends BaseController
         ];
 
 
-        return view('admin/data_places', $data);
+        return view('admin/data_places_verified', $data);
+    }
+
+    public function approve($id)
+    {
+        $data = [
+            'is_approve' => 1,
+        ];
+        $this->placeModel->update($id, $data);
+        return redirect()->to('/admin/vplace')->with('success', 'Data  Places has been saved.');
     }
 
     public function edit(int $id): string
@@ -81,6 +112,13 @@ class PlaceController extends BaseController
      */
     public function store(): RedirectResponse
     {
+        $userId = session()->get('id');
+        if ($userId == 1) {
+            $approve = 1;
+        } else {
+            $approve = 0;
+        }
+
         $data = [
             'name'          => $this->request->getVar('name'),
             'district'      => $this->request->getVar('district'),
@@ -89,7 +127,8 @@ class PlaceController extends BaseController
             'fee'           => $this->request->getVar('fee'),
             'street'        => $this->request->getVar('street'),
             'maps'          => $this->request->getVar('maps'),
-            'user_id'       => session()->get('id')
+            'user_id'       => $userId,
+            'is_approve'    => $approve
         ];
 
         $this->validation->setRules([
@@ -101,8 +140,10 @@ class PlaceController extends BaseController
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'place');
 
             if ($this->placeModel->save($data)) {
-
-                return redirect()->to('/')->withInput()->with('success', 'Place has been added and will be reviewed by admin.');
+                if ($userId == 1) {
+                    return redirect()->to('/admin/vplace')->withInput()->with('success', 'Data Telah Disimpan');
+                }
+                return redirect()->to('/')->withInput()->with('success', 'Data Telah Dikirimkan ke Admin dan Akan diVerifikasi');
             }
 
             return redirect()->back()->withInput()->with('errors', $this->placeModel->errors());

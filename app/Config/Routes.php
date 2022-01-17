@@ -75,7 +75,9 @@ $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
 
 // Place
 $routes->get('/admin/place', 'PlaceController::admin', ['filter' => 'adminGuard']);
+$routes->get('/admin/vplace', 'PlaceController::adminv', ['filter' => 'adminGuard']);
 $routes->post('/admin/place', 'PlaceController::admin', ['filter' => 'adminGuard']);
+$routes->post('/admin/vplace', 'PlaceController::adminv', ['filter' => 'adminGuard']);
 $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('create', 'PlaceController::create');
     $routes->post('/', 'PlaceController::store');

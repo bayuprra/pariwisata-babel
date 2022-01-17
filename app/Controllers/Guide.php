@@ -156,8 +156,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink(strstr($guide->identity_picture, 'image'));
-        unlink(strstr($guide->video, 'image'));
+        unlink("image/$guide->identity_picture");
+        unlink("image/$guide->video");
 
         $this->guideModel->delete($guide->id);
 

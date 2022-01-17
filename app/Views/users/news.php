@@ -28,8 +28,8 @@
         </div>
 
         <?php
-        $session = session()->get('email');  //masih testing
-        if ($session) : ?>
+        $session = session()->get('id');  //masih testing
+        if ($session == 1) : ?>
             <a href="<?= base_url('admin/news') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
         <?php endif ?>
 

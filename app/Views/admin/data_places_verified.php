@@ -13,7 +13,7 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Tempat Wisata</h3><br><br>
+        <h3>Tabel Data Tempat Wisata Terverifikasi</h3><br><br>
         <br><br>
         <div class="row">
             <div class="col-6">
@@ -57,10 +57,8 @@
                         <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
                         <td><a href="/image/<?= $item->picture ?>"><?= $item->picture ?></a></td>
                         <td>
-                            <a href="#">
-                                <form action="<?= base_url('placecontroller/approve/' . $item->id) ?>" method="POST">
-                                    <button type="submit" class="button-edit">Ya</button>
-                                </form>
+                            <a href="<?= base_url('/place/edit/' . $item->id) ?>">
+                                <button class="button-edit">Edit</button>
                             </a>
                             <form action="<?= base_url('place/' . $item->id) ?>" method="post" enctype="multipart/form-data">
                                 <input name="_method" type="hidden" value="DELETE">

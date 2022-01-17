@@ -10,8 +10,8 @@
 
 <section class="event" id="event">
     <?php
-    $session = session()->get('email');
-    if ($session) : ?>
+    $session = session()->get('id');
+    if ($session == 1) : ?>
         <a href="<?= base_url('admin/event') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
     <?php endif; ?>
     <br><br><br>

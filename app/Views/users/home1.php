@@ -13,8 +13,8 @@
 
     <div class="content2">
         <?php
-        $session = session()->get('email');
-        if ($session) : ?>
+        $session = session()->get('id');
+        if ($session == 1) : ?>
             <a href="<?= base_url('admin/place') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
         <?php endif; ?>
         <br><br><br>
@@ -27,6 +27,10 @@
             </div>
             <input type="submit" value="Cari lokasi" class="btn">
         </form>
+        <br>
+        <a href="<?= base_url('formforuser/place') ?>" class="addplace">
+            <h5>Tempat yang anda cari tidak ada? tambahkan data</h5>
+        </a>
 
         <!-- recommendation -->
         <div class="result-recom">

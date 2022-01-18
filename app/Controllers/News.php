@@ -32,7 +32,8 @@ class News extends BaseController
     {
         $data = [
             'title' => 'News | All',
-            'news'  => $this->newsModel->where('category', 'general')->findAll(),
+            'news' => $this->newsModel->paginate(5, 'news'),
+            'pager' => $this->newsModel->pager,
             'headlines' => $this->newsModel->where('category', 'headline')->orderBy('id', 'desc')->first()
         ];
 

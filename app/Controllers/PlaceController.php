@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\ImageManager;
 use App\Models\PlaceModel;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\Header;
 use CodeIgniter\Validation\Validation;
 use Config\Services;
 use CodeIgniter\Exceptions\ModelException;
@@ -36,7 +37,7 @@ class PlaceController extends BaseController
     {
         $data = [
             'title'  => 'Place | All',
-            'places' => $this->placeModel->findAll()
+            'places' => $this->placeModel->where('is_approve', 1)->findAll()
         ];
 
         return view('users/index', $data);
@@ -163,7 +164,7 @@ class PlaceController extends BaseController
         unlink('image/' . $place->picture);
         $this->placeModel->delete($place->id);
 
-        return redirect()->to('/admin/place ');
+        return redirect()->back()->with('success', 'Data Telah Dihapus');
     }
 
     public function update(int $id): RedirectResponse

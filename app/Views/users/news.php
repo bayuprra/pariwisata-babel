@@ -51,6 +51,7 @@
             </div>
             <hr>
         <?php endforeach ?>
+        <?= $pager->links('news', 'pagination'); ?>
     </div>
 </section>
 <?= $this->endSection() ?>

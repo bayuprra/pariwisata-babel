@@ -23,7 +23,7 @@
         <h3>Cari tempat yang ingin kamu kunjungi</h3>
         <form id="formPlace">
             <div class="inputBox">
-                <input type="search" name="search" placeholder="cari" id="search">
+                <input type="search" name="search" placeholder="cari" id="search" autocomplete="off">
             </div>
             <input type="submit" value="Cari lokasi" class="btn">
         </form>
@@ -33,36 +33,22 @@
         </a>
 
         <!-- recommendation -->
-        <div class="result-recom">
+        <div class="result-recom" id="result-recom">
             <div class="det">
                 <a href="#" class="fa fa-star" aria-hidden="true"></a>
                 <p>Rekomendasi</p>
             </div>
             <div class="recom-container">
-                <div class="recomendation">
-                    <a href="#" class="modaltrigger">Pantai Matras</a>
-                    <p>kabupaten</p>
-                    <div class="like">
-                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                        <p>disukai oleh 1023 orang</p>
+                <?php foreach ($places as $item) : ?>
+                    <div class="recomendation">
+                        <a href="#" class="modaltrigger">Pantai Matras</a>
+                        <p>kabupaten</p>
+                        <div class="like">
+                            <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                            <p>disukai oleh 1023 orang</p>
+                        </div>
                     </div>
-                </div>
-                <div class="recomendation">
-                    <a href="#" class="modaltrigger">Pantai Sungailiat</a>
-                    <p>kabupaten</p>
-                    <div class="like">
-                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                        <p>disukai oleh 1023 orang</p>
-                    </div>
-                </div>
-                <div class="recomendation">
-                    <a href="#" class="modaltrigger">Pantai Koba</a>
-                    <p>kabupaten</p>
-                    <div class="like">
-                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                        <p>disukai oleh 1023 orang</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
 
@@ -85,89 +71,70 @@
     <div class="place-modal" id="place-modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <img src="/image/c.jpg" alt="tempat wisata">
-            <div class="detail">
-                <div class="nama">
-                    <h3>pantai matras</h3>
-                </div>
-                <hr>
-                <table class="det">
-                    <tr>
-                        <td>nama jalan</td>
-                        <td>:</td>
-                        <td>Jalan Pantai Matras</td>
-                    </tr>
-                    <tr>
-                        <td>desa / kelurahan</td>
-                        <td>:</td>
-                        <td>Sinar Baru</td>
-                    </tr>
-                    <tr>
-                        <td>kecamatan</td>
-                        <td>:</td>
-                        <td>Sungai Liat</td>
-                    </tr>
-                    <tr>
-                        <td>kabupaten / kota</td>
-                        <td>:</td>
-                        <td>Bangka</td>
-                    </tr>
-                    <tr>
-                        <td>tiket masuk</td>
-                        <td>:</td>
-                        <td>Rp. 5000</td>
-                    </tr>
-                </table>
-            </div>
-            <div class="more">
-                <div class="like">
-                    <a href="#" class="fa fa-heart" aria-hidden="true"></a>
-                    <a>2019 like</a>
-                </div>
-                <div class="coment">
-                    <a href="#" class="fa fa-comment" aria-hidden="true"></a>
-                    <a href="#" class="comment">komentar</a>
-                </div>
-                <div class="map">
-                    <a href="#" class="fa fa-map-marker" aria-hidden="true"></a>
-                    <a href="#">petunjuk jalan</a>
-                </div>
-            </div>
-
-            <!-- review modal -->
-            <div class="review" id="review-modal">
-                <div class="people-review">
-                    <div class="content">
-                        <h3>bayu pratama</h3>
-
-                        <p>Tempatnya sangat bersih</p>
+            <?php foreach ($places as $item) : ?>
+                <img src="/image/c.jpg" alt="tempat wisata">
+                <div class="detail">
+                    <div class="nama">
+                        <h3>pantai matras</h3>
                     </div>
-                    <div class="content">
-                        <h3>Julianto</h3>
-
-                        <p>Suasanya sangat nyaman juga sangat bersih</p>
+                    <hr>
+                    <table class="det">
+                        <tr>
+                            <td>nama jalan</td>
+                            <td>:</td>
+                            <td>Jalan Pantai Matras</td>
+                        </tr>
+                        <tr>
+                            <td>desa / kelurahan</td>
+                            <td>:</td>
+                            <td>Sinar Baru</td>
+                        </tr>
+                        <tr>
+                            <td>kecamatan</td>
+                            <td>:</td>
+                            <td>Sungai Liat</td>
+                        </tr>
+                        <tr>
+                            <td>kabupaten / kota</td>
+                            <td>:</td>
+                            <td>Bangka</td>
+                        </tr>
+                        <tr>
+                            <td>tiket masuk</td>
+                            <td>:</td>
+                            <td>Rp. 5000</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="more">
+                    <div class="like">
+                        <a href="#" class="fa fa-heart" aria-hidden="true"></a>
+                        <a>2019 like</a>
                     </div>
-                    <div class="content">
-                        <h3>abun</h3>
-
-                        <p>warung disekitar pantai masih belum banyak</p>
+                    <div class="coment">
+                        <a href="#" class="fa fa-comment" aria-hidden="true"></a>
+                        <a href="#" class="comment">komentar</a>
                     </div>
-                    <div class="content">
-                        <h3>bayu pratama</h3>
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit commodi nobis sed inventore, rem reiciendis autem cumque a deleniti eos provident voluptates facere sint laborum eius sequi facilis quaerat ipsum?</p>
-                    </div>
-                    <div class="content">
-                        <h3>bayu pratama</h3>
-
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit commodi nobis sed inventore, rem reiciendis autem cumque a deleniti eos provident voluptates facere sint laborum eius sequi facilis quaerat ipsum?</p>
+                    <div class="map">
+                        <a href="#" class="fa fa-map-marker" aria-hidden="true"></a>
+                        <a href="#">petunjuk jalan</a>
                     </div>
                 </div>
-                <button class="button1 add-coment">Tambahkan Komentar Anda</button>
-                <button class="button2 tutup">Tutup</button>
 
-                <div class="fillreview">
-                    <!-- <form action="#">
+                <!-- review modal -->
+                <div class="review" id="review-modal">
+                    <div class="people-review">
+                        <div class="content">
+                            <h3>bayu pratama</h3>
+
+                            <p>Tempatnya sangat bersih</p>
+                        </div>
+                    </div>
+                    <button class="button1 add-coment">Tambahkan Komentar Anda</button>
+                    <button class="button2 tutup">Tutup</button>
+
+                    <div class="fillreview">
+                        <!-- <form action="#">
                         <div class="textarea">
                             <textarea cols="30" placeholder=""></textarea>
                         </div>
@@ -176,9 +143,10 @@
                         </div>
                     </form> -->
 
-                </div>
+                    </div>
 
-            </div>
+                </div>
+            <?php endforeach; ?>
         </div>
     </div>
 </section>
@@ -225,12 +193,17 @@
     }
 
     var formSearch = document.getElementById('formPlace')
+    let recom = document.getElementById("result-recom")
     formSearch.addEventListener('submit', function(event) {
-        event.preventDefault();
         var keyword = document.getElementById("search").value;
 
         var terfilter = filter(keyword)
-        printItems(terfilter)
+
+        if (terfilter) {
+            printItems(terfilter)
+            event.preventDefault();
+            recom.style.display = "none";
+        }
     })
 
 

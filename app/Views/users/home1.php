@@ -164,18 +164,23 @@
     function printItems(array) {
         var tampung = '';
 
-        for (var i = 0; i < array.length; i++) {
-            var place = array[i]
-            tampung += `
-            <div class="recomendation">
-                <a href="#" class="modaltrigger">${place.name}</a>
-                <p>${place.district}</p>
-                <div class="like">
-                    <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                    <p>disukai oleh 1023 orang</p>
-                </div>
-            </div>`
+        if (array.length > 0) {
+            for (var i = 0; i < array.length; i++) {
+                var place = array[i]
+                tampung += `
+                <div class="recomendation">
+                    <a href="#" class="modaltrigger">${place.name}</a>
+                    <p>${place.district}</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
+                </div>`
+            }
+        } else {
+            tampung = '<p>Data tidak ditemukan</p>'
         }
+
         resultContainer.innerHTML = tampung
     }
 
@@ -183,9 +188,14 @@
         var filteredItems = []
         for (var j = 0; j < placeData.length; j++) {
             var place = placeData[j]
-            console.log(place)
-            var placeName = place.name
-            var isMatch = placeName.toLowerCase().includes(kataKunci.toLowerCase())
+            let isMatch = false
+
+            for (let i in place) {
+                if (place[i].toLowerCase().includes(kataKunci.toLowerCase())){
+                    isMatch = true
+                    break;
+                }
+            }
 
             if (isMatch) filteredItems.push(place);
         }
@@ -195,13 +205,12 @@
     var formSearch = document.getElementById('formPlace')
     let recom = document.getElementById("result-recom")
     formSearch.addEventListener('submit', function(event) {
+        event.preventDefault();
         var keyword = document.getElementById("search").value;
-
-        var terfilter = filter(keyword)
+        var terfilter = keyword ? filter(keyword) : null;
 
         if (terfilter) {
             printItems(terfilter)
-            event.preventDefault();
             recom.style.display = "none";
         }
     })

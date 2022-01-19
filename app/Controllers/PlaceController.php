@@ -161,7 +161,7 @@ class PlaceController extends BaseController
             throw ModelException::forNoPrimaryKey(PlaceModel::class);
         }
 
-        unlink('image/' . $place->picture);
+        unlink(strstr($place->picture, 'image'));
         $this->placeModel->delete($place->id);
 
         return redirect()->back()->with('success', 'Data Telah Dihapus');
@@ -187,13 +187,15 @@ class PlaceController extends BaseController
         ];
 
         if (file_exists($this->request->getFile('picture'))) {
+
+            unlink(strstr($place->picture, 'image'));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'place');
         } else {
             $data['picture'] = $place->picture;
         }
 
         if ($this->placeModel->update($id, $data)) {
-            return redirect()->to('/admin/place')->withInput()->with('success', 'Place has been saved.');
+            return redirect()->to('/admin/vplace')->withInput()->with('success', 'Place has been saved.');
         }
 
         return redirect()->back()->withInput()->with('errors', $this->placeModel->errors());

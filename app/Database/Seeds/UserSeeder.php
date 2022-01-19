@@ -16,8 +16,6 @@ class UserSeeder extends Seeder
             'password' => password_hash('user1', PASSWORD_DEFAULT)
         ]);
 
-        $result = $this->db->table('role_users')->insert(['user_id' => $userModel->getInsertID(), 'role_id' => 1]);
-
-        dump($result);
+        $result = $this->db->table('role_users')->insert(['user_id' => $userModel->getInsertID(), 'role_id' => 2]);
     }
 }

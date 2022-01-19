@@ -25,6 +25,9 @@
                 <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
             <?php endif; ?>
         </div>
+        <div class="content12">
+            <?= view('shared/flash_message') ?>
+        </div>
     </div>
     <div class="content2">
         <div class="box-container">

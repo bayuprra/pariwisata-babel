@@ -54,10 +54,7 @@
 
         <!-- search -->
         <div class="result-search">
-            <div class="det">
-                <a href="#" class="fa fa-search" aria-hidden="true"></a>
-                <p>hasil</p>
-            </div>
+
 
             <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places), ENT_QUOTES, 'UTF-8') ?>">
             </div>
@@ -164,9 +161,10 @@
     function printItems(array) {
         var tampung = '';
 
-        for (var i = 0; i < array.length; i++) {
-            var place = array[i]
-            tampung += `
+        if (array.length !== 0) {
+            for (var i = 0; i < array.length; i++) {
+                var place = array[i]
+                tampung += `
             <div class="recomendation">
                 <a href="#" class="modaltrigger">${place.name}</a>
                 <p>${place.district}</p>
@@ -175,6 +173,9 @@
                     <p>disukai oleh 1023 orang</p>
                 </div>
             </div>`
+            }
+        } else {
+            tampung = "Data Tidak Ditemukan"
         }
         resultContainer.innerHTML = tampung
     }
@@ -203,6 +204,8 @@
             printItems(terfilter)
             event.preventDefault();
             recom.style.display = "none";
+        } else {
+            "Data tidak"
         }
     })
 

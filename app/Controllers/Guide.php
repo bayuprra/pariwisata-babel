@@ -8,6 +8,7 @@ use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Validation\Validation;
 use Config\Services;
+use Config\Database;
 use ReflectionException;
 
 class Guide extends BaseController
@@ -21,11 +22,15 @@ class Guide extends BaseController
     /** @var Validation */
     private $validation;
 
+    /** @var BaseConnection */
+    private $roleUser;
+
     public function __construct()
     {
         $this->guideModel = new GuideModel();
         $this->imageManager = new ImageManager();
         $this->validation = Services::validation();
+        $this->roleUser = Database::connect();
     }
 
     public function index(): string
@@ -57,6 +62,7 @@ class Guide extends BaseController
         } else {
             $guide = $this->guideModel->where('is_approve', 0);
         }
+
         $data = [
             'title' => 'Guide | ',
             'guide' => $guide->paginate(5, 'guide'),
@@ -69,6 +75,7 @@ class Guide extends BaseController
 
     public function adminv(): string
     {
+
         $currentPage = $this->request->getVar('page_vguide') ? $this->request->getVar('page_vguide') : 1;
 
         $keyword = $this->request->getVar('keyword');
@@ -130,7 +137,7 @@ class Guide extends BaseController
                     throw ModelException::forNoPrimaryKey(GuideModel::class);
                 }
 
-                return redirect()->to('/guide/index')->with('success', 'Guide has been saved.');
+                return redirect()->to('/guide/index')->with('success', 'Pendaftaran Anda Telah Direkam dan Akan ditinjau oleh Admin');
             }
 
             return redirect()->back()->withInput()->with('errors', $this->guideModel->errors());
@@ -139,13 +146,26 @@ class Guide extends BaseController
         return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
     }
 
-    public function approve($id)
+    public function approve(int $id): RedirectResponse
     {
+        $guide = $this->guideModel->find($id);
+        if (!$guide) {
+            throw ModelException::forNoPrimaryKey(GuideModel::class);
+        }
+        // $role = $this->roleUser->table('role_users')->select('role_id')->first();
+
         $data = [
             'is_approve' => 1,
         ];
-        $this->guideModel->update($id, $data);
-        return redirect()->to('/admin/vguide')->with('success', 'Data  Guide has been saved.');
+
+        $userId = $this->roleUser->table('role_users')->where('user_id', $guide->user_id)->get();
+
+        if ($userId) {
+            $this->roleUser->table('role_users')->update('role_id', 2);
+            $this->guideModel->update($id, $data);
+            return redirect()->to('/admin/vguide')->with('success', 'Data  Guide has been saved.');
+        }
+        return redirect()->back();
     }
 
     public function destroy(int $id): RedirectResponse
@@ -156,8 +176,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink("image/$guide->identity_picture");
-        unlink("image/$guide->video");
+        unlink(strstr($guide->identity_picture, 'image'));
+        unlink(strstr($guide->video, 'image'));
 
         $this->guideModel->delete($guide->id);
 
@@ -186,6 +206,7 @@ class Guide extends BaseController
 
 
         if (file_exists($this->request->getFile('identity_picture'))) {
+            unlink(strstr($guide->identity_picture, 'image'));
             $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
         } else {
             $data['identity_picture'] = $guide->identity_picture;

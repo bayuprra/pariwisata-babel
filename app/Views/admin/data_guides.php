@@ -17,10 +17,10 @@
         <br><br>
         <div class="row">
             <div class="col-6">
-                <form action="" method="post">
+                <form action="" method="get">
                     <div class="input-group mb-2 mt-5">
                         <input type="text" class="form-control" placeholder="Cari Data" name="keyword" autocomplete="off">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
@@ -69,8 +69,8 @@
                         <td><?= $item->facebook ?></td>
                         <td><?= $item->instagram ?></td>
                         <td><?= $item->twitter ?></td>
-                        <td><a href="/image/<?= $item->identity_picture ?>"> <?= $item->identity_picture ?></a></td>
-                        <td><a href="/image/<?= $item->video ?>"><?= $item->video ?></a></td>
+                        <td><a href="<?= $item->getIdentityPicture() ?>"> <?= $item->getIdentityPicture() ?></a></td>
+                        <td><a href="<?= $item->getVideo() ?>"><?= $item->getVideo() ?></a></td>
                         <td>
                             <a href="#">
                                 <form action="<?= base_url('guide/approve/' . $item->id) ?>" method="POST">

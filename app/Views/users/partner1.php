@@ -35,7 +35,7 @@
                 <div class="box">
                     <a href="#" class="fas fa-envelope"></a>
                     <a href="#" class="fas fa-phone"></a>
-                    <img src="/image/<?= $item->identity_picture ?>" alt="guide image">
+                    <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
@@ -54,7 +54,7 @@
                     <span class="close">&times;</span>
                     <div class="box">
                         <div class="image">
-                            <img src="/image/<?= $item->identity_picture ?>" alt="">
+                            <img src="<?= $item->getIdentityPicture() ?>" alt="">
                         </div>
                         <div class="line"></div>
                         <div class="bio-medsos">

@@ -161,7 +161,7 @@ class Guide extends BaseController
         $userId = $this->roleUser->table('role_users')->where('user_id', $guide->user_id)->get();
 
         if ($userId) {
-            $this->roleUser->table('role_users')->update('role_id', 2);
+            $this->roleUser->table('role_users')->insert(['user_id' => $guide->user_id, 'role_id' => 2]);
             $this->guideModel->update($id, $data);
             return redirect()->to('/admin/vguide')->with('success', 'Data  Guide has been saved.');
         }

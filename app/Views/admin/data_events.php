@@ -15,6 +15,7 @@
     <div class="content" action="">
         <h3>Tabel Data Event</h3><br>
         <a href="<?= base_url('/event/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
+        <a href="<?= base_url('/event/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
         <br><br>
         <div class="row">
             <div class="col-6">

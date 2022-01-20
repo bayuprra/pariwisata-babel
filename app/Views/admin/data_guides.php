@@ -14,6 +14,8 @@
 
     <div class="content">
         <h3>Tabel Data Pendaftaran Guide</h3>
+        <a href="<?= base_url('/guide/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
+
         <br><br>
         <div class="row">
             <div class="col-6">

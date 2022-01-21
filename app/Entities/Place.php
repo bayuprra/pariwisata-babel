@@ -20,4 +20,9 @@ class Place extends Entity
         'user_id' => null,
         'is_approve' => null,
     ];
+
+    public function getPicture()
+    {
+        return base_url() . '/image/' . $this->attributes['picture'];
+    }
 }

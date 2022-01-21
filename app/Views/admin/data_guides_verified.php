@@ -14,13 +14,14 @@
 
     <div class="content" action="">
         <h3>Tabel Data Verified Guide</h3>
+        <a href="<?= base_url('/guide/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
         <br><br>
         <div class="row">
             <div class="col-6">
-                <form action="" method="post">
+                <form action="" method="get">
                     <div class="input-group mb-2 mt-5">
                         <input type="text" class="form-control" placeholder="Cari Data" name="keyword" autocomplete="off">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
@@ -69,8 +70,8 @@
                         <td><?= $item->facebook ?></td>
                         <td><?= $item->instagram ?></td>
                         <td><?= $item->twitter ?></td>
-                        <td> <a href="/image/<?= $item->identity_picture ?>"> <?= $item->identity_picture ?></a></td>
-                        <td><a href="/image/<?= $item->video ?>"><?= $item->video ?></a></td>
+                        <td> <a href="<?= $item->getIdentityPicture() ?>"> <?= $item->getIdentityPicture() ?></a></td>
+                        <td><a href="/image/<?= $item->getVideo() ?>"><?= $item->getVideo() ?></a></td>
                         <td>terverifikasi</td>
                         <td><a href="<?= base_url('/guide/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>

@@ -137,7 +137,15 @@ button {
 .button-delete {
   background-color: red;
 }
-
+.button-home {
+  width: auto;
+  height: auto;
+  font-size: 20px;
+  border-radius: 0;
+  padding: 2px;
+  margin-left: 10px;
+  background-color: var(--light-green);
+}
 /* data news */
 .data-news .content a .button-create,
 .data-event .content a .button-create {

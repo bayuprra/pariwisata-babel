@@ -14,13 +14,14 @@
     <div class="content">
         <h3>Tabel Data Berita</h3>
         <a href="<?= base_url('/news/create') ?>"><button type="button" class="button-create" data-tooltip="tooltip" data-placement="top" title="Create">CREATE</button></a>
+        <a href="<?= base_url('/news/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
         <br><br>
         <div class="row">
             <div class="col-6">
-                <form action="" method="post">
+                <form action="" method="get">
                     <div class="input-group mb-2 mt-5">
                         <input type="text" class="form-control" placeholder="Cari Data" name="keyword" autocomplete="off">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
                     </div>
                 </form>
             </div>

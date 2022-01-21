@@ -54,10 +54,7 @@
 
         <!-- search -->
         <div class="result-search">
-            <div class="det">
-                <a href="#" class="fa fa-search" aria-hidden="true"></a>
-                <p>hasil</p>
-            </div>
+
 
             <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places), ENT_QUOTES, 'UTF-8') ?>">
             </div>
@@ -217,6 +214,8 @@
         if (terfilter) {
             printItems(terfilter)
             recom.style.display = "none";
+        } else {
+            "Data tidak"
         }
     })
 

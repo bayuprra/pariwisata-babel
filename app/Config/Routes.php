@@ -40,7 +40,6 @@ $routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
 // News
 $routes->get('/news/show/(:num)', 'News::show/$1');
 $routes->get('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
-$routes->post('/admin/news', 'News::admin', ['filter' => 'adminGuard']);
 $routes->group('news', ['filter' => 'adminGuard'], function ($routes) {
     $routes->get('create', 'News::create');
     $routes->get('edit/(:num)', 'News::edit/$1');
@@ -51,7 +50,6 @@ $routes->group('news', ['filter' => 'adminGuard'], function ($routes) {
 
 // Event
 $routes->get('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
-$routes->post('/admin/event', 'Event::admin', ['filter' => 'adminGuard']);
 $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
     $routes->get('create', 'Event::create');
     $routes->post('/', 'Event::store');
@@ -63,8 +61,6 @@ $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
 // Guide
 $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
-$routes->post('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
-$routes->post('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
 $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('create', 'Guide::create');
     $routes->post('/', 'Guide::store');
@@ -76,8 +72,6 @@ $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {
 // Place
 $routes->get('/admin/place', 'PlaceController::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vplace', 'PlaceController::adminv', ['filter' => 'adminGuard']);
-$routes->post('/admin/place', 'PlaceController::admin', ['filter' => 'adminGuard']);
-$routes->post('/admin/vplace', 'PlaceController::adminv', ['filter' => 'adminGuard']);
 $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('create', 'PlaceController::create');
     $routes->post('/', 'PlaceController::store');

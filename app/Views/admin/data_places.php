@@ -13,14 +13,16 @@
 
 
     <div class="content" action="">
-        <h3>Tabel Data Tempat Wisata</h3><br><br>
+        <h3>Tabel Data Tempat Wisata</h3>
+        <a href="<?= base_url('/users/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
+
         <br><br>
         <div class="row">
             <div class="col-6">
-                <form action="" method="post">
+                <form action="" method="get">
                     <div class="input-group mb-2 mt-5">
                         <input type="text" class="form-control" placeholder="Cari Data" name="keyword" autocomplete="off">
-                        <button class="btn btn-outline-secondary" type="submit" name="submit">Cari</button>
+                        <button class="btn btn-outline-secondary" type="submit">Cari</button>
                     </div>
                 </form>
             </div>
@@ -55,7 +57,7 @@
                         <td><?= $item->district ?></td>
                         <td><?= $item->fee ?></td>
                         <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
-                        <td><a href="/image/<?= $item->picture ?>"><?= $item->picture ?></a></td>
+                        <td><a href="<?= $item->getPicture() ?>"><?= $item->getPicture() ?></a></td>
                         <td>
                             <a href="#">
                                 <form action="<?= base_url('placecontroller/approve/' . $item->id) ?>" method="POST">

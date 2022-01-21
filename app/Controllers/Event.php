@@ -125,6 +125,7 @@ class Event extends BaseController
         ];
 
         if (file_exists($this->request->getFile('picture'))) {
+            unlink(strstr($event->picture, 'image'));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'event');
         } else {
             $data['picture'] = $event->picture;

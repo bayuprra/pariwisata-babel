@@ -48,6 +48,30 @@ class PlaceController extends BaseController
 
         return view('users/home1', $data);
     }
+    public function rate()
+    {
+        $userId = session()->get('id');
+        if (!$userId) {
+            throw ModelException::forNoPrimaryKey(PlaceReviewModel::class);
+        }
+
+        $data = [
+            'title'     => 'Place | ',
+            'comment'   => $this->request->getVar('comment'),
+            'rating'    => $this->request->getVar('rating'),
+            'place_id'  => $this->request->getVar('place_id'),
+            'user_id'   => $userId
+        ];
+
+
+        if ($this->validation->withRequest($this->request)->run()) {
+            if ($this->reviewModel->save($data)) {
+                return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
+            }
+            return redirect()->back()->withInput()->with('errors', $this->reviewModel->errors());
+        }
+        return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
+    }
 
     public function admin(): string
     {
@@ -113,6 +137,9 @@ class PlaceController extends BaseController
     {
         return view('admin/create_places');
     }
+
+
+
 
     /**
      * @throws ReflectionException

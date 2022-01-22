@@ -22,7 +22,7 @@ class PlaceReviewModel extends Model
     protected $validationRules = [
         'rating' => 'required',
         'comment' => 'required',
-        'user_id' => 'required|is_unique[users.id]',
-        'place_id' => 'required|is_unique[places.id]',
+        'user_id' => 'required|is_unique[place_reviews.user_id,id,{id}]',
+        'place_id' => 'required|is_unique[place_reviews.place_id,id,{id}]',
     ];
 }

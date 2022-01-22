@@ -2,6 +2,7 @@
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 <link rel="stylesheet" href="<?php echo base_url() ?>/main/user.css">
 <?= $this->endSection() ?>
 
@@ -41,8 +42,8 @@
             <div class="recom-container">
                 <?php foreach ($places as $item) : ?>
                     <div class="recomendation">
-                        <a href="#" class="modaltrigger">Pantai Matras</a>
-                        <p>kabupaten</p>
+                        <a href="#" class="modaltrigger" data-id="<?= $item->id ?>"><?= $item->name ?></a>
+                        <p><?= $item->district ?></p>
                         <div class="like">
                             <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
                             <p>disukai oleh 1023 orang</p>
@@ -54,8 +55,6 @@
 
         <!-- search -->
         <div class="result-search">
-
-
             <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places), ENT_QUOTES, 'UTF-8') ?>">
             </div>
         </div>
@@ -63,13 +62,11 @@
     </div>
 
     <!-- modal -->
-
-
-    <div class="place-modal" id="place-modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <?php foreach ($places as $item) : ?>
-                <img src="/image/c.jpg" alt="tempat wisata">
+    <?php foreach ($places as $item) : ?>
+        <div class="place-modal" id="place-modal-<?= $item->id ?>">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <img src="<?= $item->getPicture() ?>" alt="tempat wisata">
                 <div class="detail">
                     <div class="nama">
                         <h3>pantai matras</h3>
@@ -79,27 +76,27 @@
                         <tr>
                             <td>nama jalan</td>
                             <td>:</td>
-                            <td>Jalan Pantai Matras</td>
+                            <td><?= $item->street ?></td>
                         </tr>
                         <tr>
                             <td>desa / kelurahan</td>
                             <td>:</td>
-                            <td>Sinar Baru</td>
+                            <td><?= $item->village ?></td>
                         </tr>
                         <tr>
                             <td>kecamatan</td>
                             <td>:</td>
-                            <td>Sungai Liat</td>
+                            <td><?= $item->sub_district ?></td>
                         </tr>
                         <tr>
                             <td>kabupaten / kota</td>
                             <td>:</td>
-                            <td>Bangka</td>
+                            <td><?= $item->district ?></td>
                         </tr>
                         <tr>
                             <td>tiket masuk</td>
                             <td>:</td>
-                            <td>Rp. 5000</td>
+                            <td>Rp. <?= $item->fee ?></td>
                         </tr>
                     </table>
                 </div>
@@ -114,12 +111,12 @@
                     </div>
                     <div class="map">
                         <a href="#" class="fa fa-map-marker" aria-hidden="true"></a>
-                        <a href="#">petunjuk jalan</a>
+                        <a href="<?= $item->maps ?>">petunjuk jalan</a>
                     </div>
                 </div>
 
                 <!-- review modal -->
-                <div class="review" id="review-modal">
+                <!-- <div class="review" id="review-modal">
                     <div class="people-review">
                         <div class="content">
                             <h3>bayu pratama</h3>
@@ -131,21 +128,124 @@
                     <button class="button2 tutup">Tutup</button>
 
                     <div class="fillreview">
-                        <!-- <form action="#">
+                        <form action="#">
                         <div class="textarea">
                             <textarea cols="30" placeholder=""></textarea>
                         </div>
                         <div class="btn">
                             <button type="submit">Post</button>
                         </div>
-                    </form> -->
+                    </form>
 
                     </div>
 
-                </div>
-            <?php endforeach; ?>
+                </div> -->
+            </div>
         </div>
-    </div>
+        <div class="review" id="review-modal">
+            <div class="container">
+                <div class="col-md-12">
+                    <div class="offer-dedicated-body-left">
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
+                                <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
+                                    <div class="reviews-members pt-4 pb-4">
+                                        <div class="media">
+                                            <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                                            <div class="media-body">
+                                                <div class="reviews-members-header">
+                                                    <span class="star-rating float-right">
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating"></i></a>
+                                                    </span>
+                                                    <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
+
+                                                </div>
+                                                <div class="reviews-members-body">
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+                                                </div>
+                                                <div class="reviews-members-footer">
+                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> Rating</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> ROLE</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="reviews-members pt-4 pb-4">
+                                        <div class="media">
+                                            <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                                            <div class="media-body">
+                                                <div class="reviews-members-header">
+                                                    <span class="star-rating float-right">
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                        <a href="#"><i class="icofont-ui-rating"></i></a>
+                                                    </span>
+                                                    <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
+
+                                                </div>
+                                                <div class="reviews-members-body">
+                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
+                                                </div>
+                                                <div class="reviews-members-footer">
+                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 856M</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 158K</a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+
+                                    <hr>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rate">
+
+                    <div class="container-form">
+                        <div class="post">
+                            <div class="text">Thanks for rating us!</div>
+                            <div class="edit">EDIT</div>
+                        </div>
+                        <div class="star-widget">
+                            <input type="radio" name="rate" id="rate-5">
+                            <label for="rate-5" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-4">
+                            <label for="rate-4" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-3">
+                            <label for="rate-3" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-2">
+                            <label for="rate-2" class="fas fa-star"></label>
+                            <input type="radio" name="rate" id="rate-1">
+                            <label for="rate-1" class="fas fa-star"></label>
+                            <form action="#">
+                                <div class="textarea">
+                                    <textarea cols="30" placeholder="Describe your experience.."></textarea>
+                                </div>
+                                <div class="btn">
+                                    <button type="submit">Posting</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="button1 add-coment">Tambahkan Komentar Anda</button>
+            <button class="button2 tutup">Tutup</button>
+        </div>
+
+    <?php endforeach; ?>
 </section>
 
 <?= $this->endSection() ?>
@@ -219,40 +319,35 @@
     // modal
 
     // Get the button that opens the modal
-    let btn = document.querySelectorAll(".modaltrigger");
+    // let btn = document.querySelectorAll(".modaltrigger");
 
     // TODO: uncomment this code when integrating this view with partner controller
     // All page modals
-    // let modals = document.querySelectorAll('.partner-modal');
-
-    // TODO: remove this code when integrating this view with partner controller
-    let modal = document.getElementById("place-modal");
-    let span = document.getElementsByClassName("close")[0];
-
-
-    // Get the <span> element that closes the modal
-    let spans = document.getElementsByClassName("close")[0];
+    let btn = document.querySelectorAll(".modaltrigger");
 
     // When the user clicks the button, open the modal
     for (let i = 0; i < btn.length; i++) {
+        let span = document.getElementsByClassName("close")[i];
+        let dataId = btn[i].getAttribute("data-id");
+        let modal = document.getElementById(`place-modal-${dataId}`);
+
+        // when the user clicks the button, open the modal
         btn[i].onclick = function(e) {
             e.preventDefault();
             modal.style.display = "block";
         }
-    }
 
-    // TODO: change this code when integrating this view with partner controller
-    // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
-        modal.style.display = "none";
-    }
-
-    // TODO: remove this code when integrating this view with partner controller
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
-        if (event.target == modal) {
+        // close the modal
+        span.onclick = function() {
             modal.style.display = "none";
         }
+
+        // close the modal when click out of modal
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
     }
 
 
@@ -270,7 +365,6 @@
 
 
     // Get the <span> element that closes the modal
-    let spansreview = document.getElementsByClassName("close")[0];
 
     // When the user clicks the button, open the modal
     for (let i = 0; i < btnreview.length; i++) {

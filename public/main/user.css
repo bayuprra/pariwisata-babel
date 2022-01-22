@@ -268,7 +268,7 @@
 /* review modal */
 
 /* review */
-.home .place-modal .modal-content .review {
+.home .review {
   display: none;
   background-color: #fefefe;
   margin: auto;
@@ -276,50 +276,109 @@
   width: 50%;
   height: 70vh;
   position: absolute;
-  z-index: 5;
+  z-index: 99999999;
 }
 
-.home .place-modal .modal-content .review .people-review {
-  width: 100%;
-  height: 80%;
-  align-items: center;
-  vertical-align: middle;
-
+.home .review .container {
   overflow: scroll;
+  height: 80%;
 }
 
-.home .place-modal .modal-content .review .people-review .content {
-  height: auto;
+.home .review .container .rate {
   width: 100%;
-  background-color: var(--light-green);
-  border-radius: 10%;
-  margin: 1.5rem 1.5rem 1.5rem 0;
-  padding-top: 1rem;
-  padding-bottom: 1.5rem;
+  height: 100%;
+  background: var(--green);
+  padding: 20px 30px;
+  border: 1px solid #444;
+  border-radius: 5px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   flex-direction: column;
-  gap: 0.1rem;
-  color: #fefefe;
+}
+.home .review .container .rate .container-form {
+  width: 400px;
+  background: #111;
+  padding: 20px 30px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.home .review .container .rate .container-form .post {
+  display: none;
+}
+.home .review .container .rate .container-form .text {
+  font-size: 25px;
+  color: #666;
+  font-weight: 500;
+}
+.home .review .container .rate .container-form .edit {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+  cursor: pointer;
+}
+.home .review .container .rate .container-form .edit:hover {
+  text-decoration: underline;
+}
+.home .review .container .rate .container-form .star-widget input {
+  display: none;
+}
+.home .review .container .rate .star-widget .fa-star {
+  font-size: 40px;
+  color: #444;
+  padding: 10px;
+  float: left;
+  transition: all 0.2s ease;
+}
+.home .review .container .rate form .textarea {
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+.home .review .container .rate form .textarea textarea {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  color: #eee;
+  border: 1px solid #333;
+  background: #222;
+  padding: 10px;
+  font-size: 17px;
+  resize: none;
+}
+.home .review .container .rate .textarea textarea:focus {
+  border-color: #444;
+}
+.home .review .container .rate form .btn {
+  height: 45px;
+  width: 100%;
+  margin: 15px 0;
+}
+.home .review .container .rate form .btn button {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  background: var(--light-green);
+}
+.home .review .container .rate form .btn:hover button {
+  background: var(--green);
 }
 
-.home .place-modal .modal-content .review .people-review .content h3 {
-  font-weight: bold;
-  background-color: var(--green);
-  margin-bottom: 0;
-}
-.home .place-modal .modal-content .review .people-review .content p {
-  font-size: 1vw;
-  text-align: justify;
-}
-
-.home .place-modal .modal-content .review .button1 {
+.home .review .button1 {
   display: flex;
   flex-direction: column;
   width: 100%;
   border: none;
   color: white;
   background-color: var(--green);
-  opacity: 0.5;
+  opacity: 0.9;
   text-align: center;
   text-decoration: none;
   font-size: 20px;
@@ -327,21 +386,14 @@
   cursor: pointer;
   align-items: center;
 }
-.home .place-modal .modal-content .review .button1:hover {
-  opacity: 1;
-}
-.home .place-modal .modal-content .review .button1 .add-coment {
-  width: 100%;
-}
-
-.home .place-modal .modal-content .review .button2 {
+.home .review .button2 {
   display: flex;
   flex-direction: column;
   width: 100%;
   border: none;
   color: white;
   background-color: red;
-  opacity: 0.5;
+  opacity: 0.8;
   text-align: center;
   text-decoration: none;
   font-size: 20px;
@@ -350,13 +402,25 @@
   align-items: center;
 }
 
-.home .place-modal .modal-content .review .button2:hover {
-  opacity: 1;
-}
-.home .place-modal .modal-content .review .button2 .tutup {
-  width: 100%;
+/*  */
+.total-like {
+  border: 1px solid;
+  border-radius: 50px;
+  display: inline-block;
+  font-weight: 500;
+  height: 34px;
+  line-height: 33px;
+  padding: 0 13px;
+  vertical-align: top;
 }
 
+.reviews-members .media .mr-3 {
+  width: 56px;
+  height: 56px;
+  object-fit: cover;
+}
+
+/*  */
 /* page news */
 .news {
   margin-top: 7rem;

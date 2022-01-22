@@ -28,7 +28,7 @@
             <?php if ($a < 3) : ?>
                 <div class="terbaru">
                     <img src="<?= $item->newsImage()->small ?>" alt="news">
-                    <a href="#">
+                    <a href="<?= base_url('news/show/' . $item->id) ?>">
                         <h3><?= $item->title ?></h3>
                     </a>
                 </div>

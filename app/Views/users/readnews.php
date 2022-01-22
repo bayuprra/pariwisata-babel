@@ -21,21 +21,19 @@
         </div>
     </div>
     <div class="recom">
-        <p>Rekomendasi</p>
+        <p>Terbaru</p>
         <hr>
-        <?php $a = 0; ?>
-        <?php foreach ($reco as $item) : ?>
-            <?php if ($a < 3) : ?>
-                <div class="terbaru">
-                    <img src="<?= $item->newsImage()->small ?>" alt="news">
-                    <a href="#">
-                        <h3><?= $item->title ?></h3>
-                    </a>
-                </div>
-                <hr>
-                <?php $a++; ?>
-            <?php endif; ?>
+        <?php if (count($recent)) : ?>
+        <?php foreach ($recent as $item) : ?>
+            <div class="terbaru">
+                <img src="<?= $item->newsImage()->small ?>" alt="news">
+                <a href="<?= base_url('news/show/' . $item->id) ?>">
+                    <h3><?= $item->title ?></h3>
+                </a>
+            </div>
+            <hr>
         <?php endforeach; ?>
+        <?php endif; ?>
     </div>
 
 </section>

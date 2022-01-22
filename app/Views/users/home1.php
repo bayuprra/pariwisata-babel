@@ -286,11 +286,16 @@
         for (var j = 0; j < placeData.length; j++) {
             var place = placeData[j]
             let isMatch = false
+            let searchBy = ['district', 'sub_district', 'village', 'street']
 
-            for (let i in place) {
-                if (place[i].toLowerCase().includes(kataKunci.toLowerCase())) {
-                    isMatch = true
-                    break;
+            if (place['name'].toLowerCase().includes(kataKunci.toLowerCase())){
+                isMatch = true
+            }
+
+            if (!isMatch) {
+                for (let i = 0; i < searchBy.length; i++) {
+                    isMatch = place[searchBy[i]].toLowerCase() === kataKunci.toLowerCase();
+                    if (isMatch) break;
                 }
             }
 

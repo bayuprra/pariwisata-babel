@@ -313,7 +313,7 @@
 
         // close the modal when click out of modal
         window.addEventListener("click", function(event) {
-            if (event.target == modal) {
+            if (event.target == modalreview) {
                 modalreview.style.display = "none";
             }
         });

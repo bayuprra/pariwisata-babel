@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ImageManager;
 use App\Models\PlaceModel;
+use App\Models\PlaceReviewModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\Header;
 use CodeIgniter\Validation\Validation;
@@ -15,6 +16,9 @@ class PlaceController extends BaseController
 {
     /** @var PlaceModel */
     private $placeModel;
+
+    /** @var PlaceReviewModel */
+    private $reviewModel;
 
     /** @var ImageManager */
     private $imageManager;
@@ -29,6 +33,7 @@ class PlaceController extends BaseController
     public function __construct()
     {
         $this->placeModel = new PlaceModel();
+        $this->reviewModel = new PlaceReviewModel();
         $this->imageManager = new ImageManager();
         $this->validation = Services::validation();
     }
@@ -36,11 +41,12 @@ class PlaceController extends BaseController
     public function index(): string
     {
         $data = [
-            'title'  => 'Place | All',
-            'places' => $this->placeModel->where('is_approve', 1)->findAll()
+            'title'     => 'Place | All',
+            'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
+            'reviews'   => $this->reviewModel->findAll()
         ];
 
-        return view('users/index', $data);
+        return view('users/home1', $data);
     }
 
     public function admin(): string

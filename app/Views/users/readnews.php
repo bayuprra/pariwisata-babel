@@ -21,29 +21,21 @@
         </div>
     </div>
     <div class="recom">
-        <p>terbaru</p>
+        <p>Rekomendasi</p>
         <hr>
-        <div class="terbaru">
-            <img src="/image/a.jpg" alt="news">
-            <a href="#">
-                <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
-            </a>
-        </div>
-        <hr>
-        <div class="terbaru">
-            <img src="/image/a.jpg" alt="news">
-            <a href="#">
-                <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
-            </a>
-        </div>
-        <hr>
-        <div class="terbaru">
-            <img src="/image/a.jpg" alt="news">
-            <a href="#">
-                <h3>Jebakan Utang China Makan Korban, Negara Ini Hilang Bandara?</h3>
-            </a>
-        </div>
-        <hr>
+        <?php $a = 0; ?>
+        <?php foreach ($reco as $item) : ?>
+            <?php if ($a < 3) : ?>
+                <div class="terbaru">
+                    <img src="<?= $item->newsImage()->small ?>" alt="news">
+                    <a href="#">
+                        <h3><?= $item->title ?></h3>
+                    </a>
+                </div>
+                <hr>
+                <?php $a++; ?>
+            <?php endif; ?>
+        <?php endforeach; ?>
     </div>
 
 </section>

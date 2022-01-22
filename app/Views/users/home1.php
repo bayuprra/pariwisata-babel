@@ -1,4 +1,7 @@
 <?= $this->extend('layout/master_layout') ?>
+<?= $this->section('title') ?>
+<?= $title ?>
+<?= $this->endSection() ?>
 
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
@@ -107,7 +110,7 @@
                     </div>
                     <div class="coment">
                         <a href="#" class="fa fa-comment" aria-hidden="true"></a>
-                        <a href="#" class="comment">komentar</a>
+                        <a href="#" class="comment">Pengalaman</a>
                     </div>
                     <div class="map">
                         <a href="#" class="fa fa-map-marker" aria-hidden="true"></a>
@@ -115,33 +118,9 @@
                     </div>
                 </div>
 
-                <!-- review modal -->
-                <!-- <div class="review" id="review-modal">
-                    <div class="people-review">
-                        <div class="content">
-                            <h3>bayu pratama</h3>
-
-                            <p>Tempatnya sangat bersih</p>
-                        </div>
-                    </div>
-                    <button class="button1 add-coment">Tambahkan Komentar Anda</button>
-                    <button class="button2 tutup">Tutup</button>
-
-                    <div class="fillreview">
-                        <form action="#">
-                        <div class="textarea">
-                            <textarea cols="30" placeholder=""></textarea>
-                        </div>
-                        <div class="btn">
-                            <button type="submit">Post</button>
-                        </div>
-                    </form>
-
-                    </div>
-
-                </div> -->
             </div>
         </div>
+        <!-- review modal -->
         <div class="review" id="review-modal">
             <div class="container">
                 <div class="col-md-12">
@@ -149,74 +128,41 @@
                         <div class="tab-content" id="pills-tabContent">
                             <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
                                 <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                                    <div class="reviews-members pt-4 pb-4">
-                                        <div class="media">
-                                            <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
-                                            <div class="media-body">
-                                                <div class="reviews-members-header">
-                                                    <span class="star-rating float-right">
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating"></i></a>
-                                                    </span>
-                                                    <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
+                                    <?php foreach ($reviews as $item) : ?>
+                                        <div class="reviews-members pt-4 pb-4">
+                                            <div class="media">
+                                                <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                                                <div class="media-body">
+                                                    <div class="reviews-members-header">
+                                                        <span class="star-rating float-right">
+                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                                            <a href="#"><i class="icofont-ui-rating"></i></a>
+                                                        </span>
+                                                        <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
+                                                    </div>
+                                                    <div class="reviews-members-body">
+                                                        <p><?= $item->comment ?></p>
+                                                    </div>
+                                                    <div class="reviews-members-footer">
+                                                        <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> Rating</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> ROLE</a>
 
-                                                </div>
-                                                <div class="reviews-members-body">
-                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
-                                                </div>
-                                                <div class="reviews-members-footer">
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> Rating</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> ROLE</a>
-
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <hr>
-                                    <div class="reviews-members pt-4 pb-4">
-                                        <div class="media">
-                                            <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
-                                            <div class="media-body">
-                                                <div class="reviews-members-header">
-                                                    <span class="star-rating float-right">
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                        <a href="#"><i class="icofont-ui-rating"></i></a>
-                                                    </span>
-                                                    <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
-
-                                                </div>
-                                                <div class="reviews-members-body">
-                                                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections </p>
-                                                </div>
-                                                <div class="reviews-members-footer">
-                                                    <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> 856M</a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> 158K</a>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-
-                                    <hr>
+                                        <hr>
+                                    <?php endforeach; ?>
                                 </div>
-
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="rate">
-
                     <div class="container-form">
-                        <div class="post">
-                            <div class="text">Thanks for rating us!</div>
-                            <div class="edit">EDIT</div>
-                        </div>
                         <div class="star-widget">
                             <input type="radio" name="rate" id="rate-5">
                             <label for="rate-5" class="fas fa-star"></label>
@@ -288,7 +234,7 @@
             let isMatch = false
             let searchBy = ['district', 'sub_district', 'village', 'street']
 
-            if (place['name'].toLowerCase().includes(kataKunci.toLowerCase())){
+            if (place['name'].toLowerCase().includes(kataKunci.toLowerCase())) {
                 isMatch = true
             }
 

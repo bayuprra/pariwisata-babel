@@ -31,9 +31,9 @@ class News extends BaseController
     public function index(): string
     {
         $data = [
-            'title' => 'News | All',
-            'news' => $this->newsModel->paginate(5, 'news'),
-            'pager' => $this->newsModel->pager,
+            'title'     => 'News | All',
+            'news'      => $this->newsModel->where('category', 'general')->orderBy('updated_at', 'desc')->paginate(5, 'news'),
+            'pager'     => $this->newsModel->pager,
             'headlines' => $this->newsModel->where('category', 'headline')->orderBy('id', 'desc')->first()
         ];
 
@@ -45,8 +45,9 @@ class News extends BaseController
         $news = $this->newsModel->find($id);
 
         $data = [
-            'title' => 'News | Show',
-            'news'  => $news
+            'title'     => 'News | Show',
+            'news'      => $news,
+            'reco'      => $this->newsModel->where('category', 'general')->orderBy('updated_at', 'desc')->findAll()
         ];
 
         return view('users/readnews', $data);

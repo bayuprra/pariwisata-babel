@@ -64,13 +64,10 @@ class PlaceController extends BaseController
         ];
 
 
-        if ($this->validation->withRequest($this->request)->run()) {
-            if ($this->reviewModel->save($data)) {
-                return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
-            }
-            return redirect()->back()->withInput()->with('errors', $this->reviewModel->errors());
+        if ($this->reviewModel->save($data)) {
+            return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
         }
-        return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
+        return redirect()->back()->withInput()->with('errors', $this->reviewModel->errors());
     }
 
     public function admin(): string

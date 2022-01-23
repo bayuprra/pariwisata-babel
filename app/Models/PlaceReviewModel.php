@@ -24,7 +24,17 @@ class PlaceReviewModel extends Model
         'comment' => 'required',
     ];
 
-    public function validation()
+    public function cekUserRating($user_id, $id_place)
     {
+        return $this->table('place_reviews')->where("place_id", $id_place)
+            ->where("user_id", $user_id)
+            ->get()->getRowArray();
+    }
+    public function joinUser()
+    {
+        return $this->table('place_reviews')->join('users', 'place_reviews.user_id=users.id')
+            ->join("role_users", "place_reviews.user_id=role_users.user_id")
+            ->join("roles", "role_users.role_id=roles.id")
+            ->get()->getResultArray();
     }
 }

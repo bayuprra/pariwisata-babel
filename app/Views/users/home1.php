@@ -69,7 +69,7 @@
     <?php foreach ($places as $item) : ?>
         <div class="place-modal" id="place-modal-<?= $item->id ?>">
             <div class="modal-content">
-                <span class="close">&times;</span>
+                <span class="close" id="place-modal-close-<?= $item->id ?>">&times;</span>
                 <img src="<?= $item->getPicture() ?>" alt="tempat wisata">
                 <div class="detail">
                     <div class="nama">
@@ -261,8 +261,8 @@
         console.log(btn)
         // When the user clicks the button, open the modal
         for (let i = 0; i < btn.length; i++) {
-            let span = document.getElementsByClassName("close")[i];
             let dataId = btn[i].getAttribute("data-id");
+            let span = document.getElementById(`place-modal-close-${dataId}`);
             let modal = document.getElementById(`place-modal-${dataId}`);
 
             // when the user clicks the button, open the modal

@@ -51,10 +51,9 @@ class PlaceController extends BaseController
             'title'     => 'Place | All',
             'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
             'reviews'   => $this->reviewModel->findAll(),
-            'join'   => $this->reviewModel->joinUser(),
-            'role'   => $this->roleModel->joinRole($userId)
+            'join'      => $this->reviewModel->joinUser(),
+            'role'      => $this->roleModel->joinRole($userId)
         ];
-        // dd($data['join']);
         return view('users/home1', $data);
     }
 
@@ -100,10 +99,10 @@ class PlaceController extends BaseController
         }
 
         $data = [
-            'title' => 'Place | ',
-            'places' => $place->paginate(5, 'places'),
-            'pager' => $this->placeModel->pager,
-            'currentPage' => $currentPage
+            'title'          => 'Place | ',
+            'places'         => $place->paginate(5, 'places'),
+            'pager'          => $this->placeModel->pager,
+            'currentPage'    => $currentPage
         ];
 
 

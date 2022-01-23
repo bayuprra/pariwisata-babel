@@ -143,7 +143,7 @@
                                     <p><?= $ite['comment']; ?></p>
                                 </div>
                                 <div class="reviews-members-footer">
-                                    <a class="total-like" href="#"><?= $role['name']; ?></a>
+                                    <a class="total-like" href="#"><?= $ite['name']; ?></a>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +175,6 @@
                 </div>
             </div>
 
-            <button class="button1 add-coment">Tambahkan Komentar Anda</button>
             <button class="button2 tutup">Tutup</button>
         </div>
 

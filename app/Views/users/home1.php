@@ -208,7 +208,6 @@
                     </div>
                 </div>`
             }
-            console.log(tampung);
         } else {
             tampung = '<p>Data tidak ditemukan</p>'
         }
@@ -293,6 +292,7 @@
         let spanreview = document.getElementsByClassName("tutup")[i];
         let dataIdReview = bbtn[i].getAttribute("data-id");
         let modalreview = document.getElementById(`review-modal-${dataIdReview}`);
+        let rate = document.getElementById
         // when the user clicks the button, open the modal
         bbtn[i].onclick = function(e) {
             e.preventDefault();

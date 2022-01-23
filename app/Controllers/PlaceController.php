@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Helpers\ImageManager;
 use App\Models\PlaceModel;
 use App\Models\PlaceReviewModel;
+use App\Models\UserModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\Header;
 use CodeIgniter\Validation\Validation;
@@ -48,11 +49,12 @@ class PlaceController extends BaseController
 
         return view('users/home1', $data);
     }
-    public function rate()
+
+    public function rate(): RedirectResponse
     {
         $userId = session()->get('id');
         if (!$userId) {
-            throw ModelException::forNoPrimaryKey(PlaceReviewModel::class);
+            throw ModelException::forNoPrimaryKey(UserModel::class);
         }
 
         $data = [
@@ -63,10 +65,10 @@ class PlaceController extends BaseController
             'user_id'   => $userId
         ];
 
-
         if ($this->reviewModel->save($data)) {
             return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
         }
+
         return redirect()->back()->withInput()->with('errors', $this->reviewModel->errors());
     }
 
@@ -104,9 +106,9 @@ class PlaceController extends BaseController
         }
 
         $data = [
-            'title' => 'Place | Admin',
-            'places' => $place->paginate(5, 'places'),
-            'pager' => $this->placeModel->pager,
+            'title'       => 'Place | Admin',
+            'places'      => $place->paginate(5, 'places'),
+            'pager'       => $this->placeModel->pager,
             'currentPage' => $currentPage
         ];
 
@@ -114,12 +116,14 @@ class PlaceController extends BaseController
         return view('admin/data_places_verified', $data);
     }
 
-    public function approve($id)
+    public function approve($id): RedirectResponse
     {
         $data = [
             'is_approve' => 1,
         ];
+
         $this->placeModel->update($id, $data);
+
         return redirect()->to('/admin/vplace')->with('success', 'Data  Places has been saved.');
     }
 
@@ -134,8 +138,6 @@ class PlaceController extends BaseController
     {
         return view('admin/create_places');
     }
-
-
 
 
     /**

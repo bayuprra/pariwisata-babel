@@ -7,6 +7,7 @@ use App\Models\NewsImageModel;
 use App\Models\NewsModel;
 use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\I18n\Time;
 use ReflectionException;
 
 class News extends BaseController
@@ -43,11 +44,12 @@ class News extends BaseController
     public function show(int $id): string
     {
         $news = $this->newsModel->find($id);
+        $lastThirtyDays = Time::now()->subMonths(1);
 
         $data = [
             'title'     => 'News | Show',
             'news'      => $news,
-            'reco'      => $this->newsModel->where('category', 'general')->orderBy('updated_at', 'desc')->findAll()
+            'recent'    => $this->newsModel->where('category', 'general')->where('created_at >=', $lastThirtyDays)->orderBy('created_at', 'desc')->findAll(5)
         ];
 
         return view('users/readnews', $data);

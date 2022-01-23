@@ -55,7 +55,6 @@ class PlaceController extends BaseController
             'role'      => $this->roleModel->joinRole($userId)
         ];
         return view('users/home1', $data);
-        dd($data['join']);
     }
 
     public function rate(): RedirectResponse

@@ -23,8 +23,8 @@
         <br>
         <div class="content12">
             <?php
-            $session = session()->get('id');
-            if ($session == 1) : ?>
+            $session = session()->get('isAdmin');
+            if ($session) : ?>
                 <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
             <?php endif; ?>
         </div>

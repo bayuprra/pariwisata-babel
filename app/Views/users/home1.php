@@ -110,7 +110,7 @@
                     </div>
                     <div class="coment">
                         <a href="#" class="fa fa-comment" aria-hidden="true"></a>
-                        <a href="#" class="comment" data-id="<?= $item->id ?>">Pengalaman </a>
+                        <a href="#" class="comment" data-review="<?= $item->id ?>">Pengalaman </a>
                     </div>
                     <div class="map">
                         <a href="#" class="fa fa-map-marker" aria-hidden="true"></a>
@@ -257,68 +257,70 @@
             printItems(terfilter)
             recom.style.display = "none";
         } else {
-            "Data tidak"
+            "Data tidak ditemukan"
         }
+
+        reviewModal()
     })
 
+    reviewModal()
 
 
-    // modal
+    function reviewModal() {
+        // modal
+        let btn = document.querySelectorAll(".modaltrigger");
+        console.log(btn)
+        // When the user clicks the button, open the modal
+        for (let i = 0; i < btn.length; i++) {
+            let span = document.getElementsByClassName("close")[i];
+            let dataId = btn[i].getAttribute("data-id");
+            let modal = document.getElementById(`place-modal-${dataId}`);
 
-    let btn = document.querySelectorAll(".modaltrigger");
+            // when the user clicks the button, open the modal
+            btn[i].onclick = function (e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
 
-    // When the user clicks the button, open the modal
-    for (let i = 0; i < btn.length; i++) {
-        let span = document.getElementsByClassName("close")[i];
-        let dataId = btn[i].getAttribute("data-id");
-        let modal = document.getElementById(`place-modal-${dataId}`);
-
-        // when the user clicks the button, open the modal
-        btn[i].onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = "block";
-        }
-
-        // close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // close the modal when click out of modal
-        window.addEventListener("click", function(event) {
-            if (event.target == modal) {
+            // close the modal
+            span.onclick = function () {
                 modal.style.display = "none";
             }
-        });
-    }
 
-    // modal
-
-    let bbtn = document.querySelectorAll(".comment");
-    // When the user clicks the button, open the modal
-    for (let i = 0; i < bbtn.length; i++) {
-        let spanreview = document.getElementsByClassName("tutup")[i];
-        let dataIdReview = bbtn[i].getAttribute("data-id");
-        let modalreview = document.getElementById(`review-modal-${dataIdReview}`);
-        // when the user clicks the button, open the modal
-        bbtn[i].onclick = function(e) {
-            e.preventDefault();
-            modalreview.style.display = "block";
-        }
-        // close the modal
-        console.log(modalreview);
-        spanreview.onclick = function() {
-            modalreview.style.display = "none";
+            // close the modal when click out of modal
+            window.addEventListener("click", function (event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
         }
 
-        // close the modal when click out of modal
-        window.addEventListener("click", function(event) {
-            if (event.target == modalreview) {
+        // modal
+
+        let bbtn = document.querySelectorAll(".comment");
+        // When the user clicks the button, open the modal
+        for (let i = 0; i < bbtn.length; i++) {
+            let spanreview = document.getElementsByClassName("tutup")[i];
+            let dataIdReview = bbtn[i].getAttribute("data-review");
+            let modalreview = document.getElementById(`review-modal-${dataIdReview}`);
+            // when the user clicks the button, open the modal
+            bbtn[i].onclick = function (e) {
+                e.preventDefault();
+                modalreview.style.display = "block";
+            }
+            // close the modal
+            spanreview.onclick = function () {
                 modalreview.style.display = "none";
             }
-        });
-    }
 
+            // close the modal when click out of modal
+            window.addEventListener("click", function (event) {
+                if (event.target == modalreview) {
+                    modalreview.style.display = "none";
+                }
+            });
+        }
+    }
 
     // modal review
     // Get the button that opens the modal

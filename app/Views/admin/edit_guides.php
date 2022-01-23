@@ -1,7 +1,21 @@
-<?= $this->extend('admin/admin_layout') ?>
+<?php if (session()->get('dataGuide')) : ?>
+    <?= $this->extend('layout/master_layout') ?>
+<?php endif; ?>
+<?php
+$session = session()->get('id');
+if ($session == 1) : ?>
+    ?>
+    <?= $this->extend('admin/admin_layout') ?>
+    <style>
+        .edit-guide {
+            margin-top: 100px;
+        }
+    </style>
+<?php endif; ?>
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
 <link rel="stylesheet" href="<?php echo base_url() ?>/main/form.css">
+
 <?= $this->endSection() ?>
 
 

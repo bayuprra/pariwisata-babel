@@ -14,7 +14,7 @@
 
     <div class="content" action="">
         <h3>Tabel Data Tempat Wisata Terverifikasi</h3>
-        <a href="<?= base_url('/users/index') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
+        <a href="<?= base_url('/') ?>"><button type="button" class="button-home" data-tooltip="tooltip" data-placement="top" title="Home">HOME</button></a>
 
         <br><br>
         <div class="row">

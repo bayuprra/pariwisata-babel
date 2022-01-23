@@ -133,6 +133,11 @@ button {
 .button-edit {
   background-color: var(--light-green);
 }
+.edit-user .content12 a .btn {
+  position: absolute;
+  left: 0;
+  width: 150px;
+}
 
 .button-delete {
   background-color: red;
@@ -246,7 +251,9 @@ button {
 .data-guide .table tbody {
   font-size: 13px;
 }
-
+.edit-guide {
+  margin-top: 100px;
+}
 .data-guide .table {
   width: 100%;
 }
@@ -256,6 +263,14 @@ button {
   max-height: 170px;
   max-width: 400px;
   text-align: justify;
+}
+
+.edit-user .content {
+  margin-top: 90px;
+}
+
+.edit-user .content12 button {
+  float: left;
 }
 
 /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */

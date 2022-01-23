@@ -70,24 +70,6 @@
             </ul>
         </li>
         <li>
-            <a href="<?= base_url('tesadmin/datauser') ?>">
-                <i class='bx bx-pie-chart-alt-2'></i>
-                <span class="link_name">User Data</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="<?= base_url('tesadmin/datauser') ?>">User Data</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="<?= base_url('tesadmin/datareview') ?>">
-                <i class='bx bx-star'></i>
-                <span class="link_name">Review Data</span>
-            </a>
-            <ul class="sub-menu blank">
-                <li><a class="link_name" href="<?= base_url('tesadmin/datareview') ?>">Review Data</a></li>
-            </ul>
-        </li>
-        <li>
             <div class="profile-details">
                 <div class="profile-content">
                     <!-- <img src="/image/a.jpg" alt=""> -->

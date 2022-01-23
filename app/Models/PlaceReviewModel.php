@@ -22,8 +22,6 @@ class PlaceReviewModel extends Model
     protected $validationRules = [
         'rating' => 'required',
         'comment' => 'required',
-        'user_id' => 'required',
-        'place_id' => 'required',
     ];
 
     public function validation()

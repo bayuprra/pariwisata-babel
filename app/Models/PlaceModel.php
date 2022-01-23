@@ -40,4 +40,8 @@ class PlaceModel extends Model
     {
         return $this->table('places')->like('name', $keyword);
     }
+
+    public function reco()
+    {
+    }
 }

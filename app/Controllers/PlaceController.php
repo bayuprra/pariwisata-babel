@@ -6,6 +6,7 @@ use App\Helpers\ImageManager;
 use App\Models\PlaceModel;
 use App\Models\PlaceReviewModel;
 use App\Models\UserModel;
+use App\Models\RoleModel;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\HTTP\Header;
 use CodeIgniter\Validation\Validation;
@@ -21,6 +22,9 @@ class PlaceController extends BaseController
     /** @var PlaceReviewModel */
     private $reviewModel;
 
+    /** @var RoleModel */
+    private $roleModel;
+
     /** @var ImageManager */
     private $imageManager;
     /**
@@ -34,6 +38,7 @@ class PlaceController extends BaseController
     public function __construct()
     {
         $this->placeModel = new PlaceModel();
+        $this->roleModel = new RoleModel();
         $this->reviewModel = new PlaceReviewModel();
         $this->imageManager = new ImageManager();
         $this->validation = Services::validation();
@@ -41,12 +46,15 @@ class PlaceController extends BaseController
 
     public function index(): string
     {
+        $userId = session()->get('id');
         $data = [
             'title'     => 'Place | All',
             'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
-            'reviews'   => $this->reviewModel->findAll()
+            'reviews'   => $this->reviewModel->findAll(),
+            'join'   => $this->reviewModel->joinUser(),
+            'role'   => $this->roleModel->joinRole($userId)
         ];
-
+        // dd($data['join']);
         return view('users/home1', $data);
     }
 
@@ -56,7 +64,10 @@ class PlaceController extends BaseController
         if (!$userId) {
             throw ModelException::forNoPrimaryKey(UserModel::class);
         }
-
+        $cekRatingUser = $this->reviewModel->cekUserRating($userId, $this->request->getVar('place_id'));
+        if (!$cekRatingUser == null) {
+            return redirect()->to('/')->withInput()->with('success', 'Anda Sudah merating tempat ini');
+        }
         $data = [
             'title'     => 'Place | ',
             'comment'   => $this->request->getVar('comment'),
@@ -65,8 +76,13 @@ class PlaceController extends BaseController
             'user_id'   => $userId
         ];
 
+        $this->validation->setRules([
+            'place_id'  => 'required|',
+            'user_id'   => 'required'
+        ]);
+
         if ($this->reviewModel->save($data)) {
-            return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
+            return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');
         }
 
         return redirect()->back()->withInput()->with('errors', $this->reviewModel->errors());

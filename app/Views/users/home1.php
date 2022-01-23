@@ -60,6 +60,7 @@
         <div class="result-search">
             <div class="recom-container result-container" id="places" data-place="<?= htmlspecialchars(json_encode($places), ENT_QUOTES, 'UTF-8') ?>">
             </div>
+
         </div>
 
     </div>
@@ -72,7 +73,7 @@
                 <img src="<?= $item->getPicture() ?>" alt="tempat wisata">
                 <div class="detail">
                     <div class="nama">
-                        <h3>pantai matras</h3>
+                        <h3><?= $item->name ?></h3>
                     </div>
                     <hr>
                     <table class="det">
@@ -120,44 +121,35 @@
             </div>
         </div>
         <!-- review modal -->
+
         <div class="review" id="review-modal-<?= $item->id ?>">
             <div class="container">
-                <div class="col-md-12">
-                    <div class="offer-dedicated-body-left">
-                        <div class="tab-content" id="pills-tabContent">
-                            <div class="tab-pane fade active show" id="pills-reviews" role="tabpanel" aria-labelledby="pills-reviews-tab">
-                                <div class="bg-white rounded shadow-sm p-4 mb-4 restaurant-detailed-ratings-and-reviews">
-                                    <?php foreach ($reviews as $ite) : ?>
-                                        <div class="reviews-members pt-4 pb-4">
-                                            <div class="media">
-                                                <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
-                                                <div class="media-body">
-                                                    <div class="reviews-members-header">
-                                                        <span class="star-rating float-right">
-                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                            <a href="#"><i class="icofont-ui-rating active"></i></a>
-                                                            <a href="#"><i class="icofont-ui-rating"></i></a>
-                                                        </span>
-                                                        <h6 class="mb-1"><a class="text-black" href="#">Singh Osahan</a></h6>
-                                                    </div>
-                                                    <div class="reviews-members-body">
-                                                        <p>vds</p>
-                                                    </div>
-                                                    <div class="reviews-members-footer">
-                                                        <a class="total-like" href="#"><i class="icofont-thumbs-up"></i> </a> <a class="total-like" href="#"><i class="icofont-thumbs-down"></i> ROLE</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                    <?php endforeach; ?>
+                <?php foreach ($join as $ite) : ?>
+                    <div class="reviews-members pt-4 pb-4">
+                        <div class="media">
+                            <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
+                            <div class="media-body">
+                                <div class="reviews-members-header">
+                                    <span class="star-rating float-right">
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating active"></i></a>
+                                        <a href="#"><i class="icofont-ui-rating"></i></a>
+                                    </span>
+                                    <h6 class="mb-1"><a class="text-black" href="#"><?= $ite['name']; ?></a></h6>
+                                </div>
+                                <div class="reviews-members-body">
+                                    <p><?= $ite['comment']; ?></p>
+                                </div>
+                                <div class="reviews-members-footer">
+                                    <a class="total-like" href="#"><?= $role['name']; ?></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <hr>
+                <?php endforeach; ?>
 
                 <div class="rate">
                     <div class="container-form">
@@ -277,18 +269,18 @@
             let modal = document.getElementById(`place-modal-${dataId}`);
 
             // when the user clicks the button, open the modal
-            btn[i].onclick = function (e) {
+            btn[i].onclick = function(e) {
                 e.preventDefault();
                 modal.style.display = "block";
             }
 
             // close the modal
-            span.onclick = function () {
+            span.onclick = function() {
                 modal.style.display = "none";
             }
 
             // close the modal when click out of modal
-            window.addEventListener("click", function (event) {
+            window.addEventListener("click", function(event) {
                 if (event.target == modal) {
                     modal.style.display = "none";
                 }
@@ -303,17 +295,17 @@
             let dataIdReview = bbtn[i].getAttribute("data-review");
             let modalreview = document.getElementById(`review-modal-${dataIdReview}`);
             // when the user clicks the button, open the modal
-            bbtn[i].onclick = function (e) {
+            bbtn[i].onclick = function(e) {
                 e.preventDefault();
                 modalreview.style.display = "block";
             }
             // close the modal
-            spanreview.onclick = function () {
+            spanreview.onclick = function() {
                 modalreview.style.display = "none";
             }
 
             // close the modal when click out of modal
-            window.addEventListener("click", function (event) {
+            window.addEventListener("click", function(event) {
                 if (event.target == modalreview) {
                     modalreview.style.display = "none";
                 }
@@ -321,42 +313,11 @@
         }
     }
 
-    // modal review
-    // Get the button that opens the modal
-    // let btnreview = document.querySelectorAll(".comment");
-
-    // TODO: uncomment this code when integrating this view with partner controller
-    // All page modals
-    // let modals = document.querySelectorAll('.partner-modal');
-
-    // TODO: remove this code when integrating this view with partner controller
-
-
-
-    // Get the <span> element that closes the modal
-
-    // When the user clicks the button, open the modal
-    // for (let i = 0; i < btnreview.length; i++) {
-    //     btnreview[i].onclick = function(e) {
-    //         e.preventDefault();
-    //         modalreview.style.display = "block";
-    //     }
-    // }
-
-    // TODO: change this code when integrating this view with partner controller
-    // When the user clicks on <span> (x), close the modal
-
-
-    // TODO: remove this code when integrating this view with partner controller
-    // When the user clicks anywhere outside of the modal, close it
-
-
-
 
     // rating
     $(document).ready(function() {
         $("form#ratingForm").submit(function(e) {
-            e.preventDefault(); // prevent the default click action from being performed
+            e.preventDefault();
             if ($("#ratingForm :radio:checked").length == 0) {
                 $('#status').html("nothing checked");
                 return false;
@@ -366,4 +327,5 @@
         });
     });
 </script>
+
 <?= $this->endSection() ?>

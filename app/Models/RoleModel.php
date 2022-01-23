@@ -18,4 +18,11 @@ class RoleModel extends Model
     protected $validationRules = [
         'name' => 'required',
     ];
+
+    public function joinRole($id)
+    {
+        return $this->db->table('role_users')->join('roles', 'role_users.role_id=roles.id')
+            ->where("user_id", $id)
+            ->get()->getRowArray();
+    }
 }

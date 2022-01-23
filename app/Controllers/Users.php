@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\GuideModel;
 use App\Models\PlaceModel;
 use App\Models\UserModel;
 use CodeIgniter\Database\BaseConnection;
@@ -29,16 +30,20 @@ class Users extends BaseController
     /** @var Session|mixed|null */
     private $session;
 
+    /** @var GuideModel */
+    private $guideModel;
+
     /**
      * Users constructor.
      */
     public function __construct()
     {
-        $this->userModel = new UserModel();
+        $this->userModel  = new UserModel();
         $this->placeModel = new PlaceModel();
+        $this->guideModel = new GuideModel();
         $this->validation = Services::validation();
-        $this->roleUser = Database::connect();
-        $this->session = session();
+        $this->roleUser   = Database::connect();
+        $this->session    = session();
     }
 
 
@@ -108,6 +113,7 @@ class Users extends BaseController
 
         if ($data) {
             $isAdmin = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->get()->getResult()) !== 0;
+            $dataGuide = $this->guideModel->where('user_id', $data->id)->first();
             $authenticatePassword = password_verify($password, $data->password);
 
             if ($authenticatePassword) {
@@ -116,7 +122,8 @@ class Users extends BaseController
                     'name'       => $data->name,
                     'email'      => $data->email_address,
                     'isLoggedIn' => true,
-                    'isAdmin'    => $isAdmin
+                    'isAdmin'    => $isAdmin,
+                    'dataGuide'  => $dataGuide
                 ];
 
                 $this->session->set($sessionData);

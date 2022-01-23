@@ -9,7 +9,11 @@
 <?= $this->section('content') ?>
 
 <section class="edit-user" id="edit-user">
-
+    <div class="content12">
+        <?php if (session()->get('dataGuide')) : ?>
+            <a href="<?= base_url('guide/edit/'.session()->get('dataGuide')->id) ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
+        <?php endif; ?>
+    </div>
 
     <div class="content">
         <?= view('shared/flash_message') ?>

@@ -60,7 +60,7 @@ class Users extends BaseController
     }
 
 
-    public function editUser(): string
+        public function editUser(): string
     {
         return view('users/edit_user');
     }
@@ -78,6 +78,8 @@ class Users extends BaseController
         ];
 
         $this->validation->setRules([
+            'email_address'     => 'required|valid_email|is_unique[users.email_address]',
+            'password'          => 'required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/]',
             'confirmPassword'   => 'matches[password]'
         ]);
 
@@ -132,5 +134,38 @@ class Users extends BaseController
         $this->session->destroy();
 
         return redirect()->back()->with('success', "You have logged out");
+    }
+
+    public function update(int $id): RedirectResponse
+    {
+        $data = [
+            'name'            => $this->request->getVar('name'),
+            'picture'         => $this->request->getFile('picture'),
+        ];
+
+        if ($this->request->getVar('email_address')) {
+            $data['email_address'] = $this->request->getVar('email_address');
+        }
+
+        if ($this->request->getVar('password')) {
+            $data['password'] = password_hash($this->request->getVar('password'), PASSWORD_DEFAULT);
+
+            $this->validation->setRules([
+                'confirmPassword'   => 'matches[password]'
+            ]);
+        }
+
+        if ($this->validation->withRequest($this->request)->run()) {
+            if ($this->userModel->update($id, $data)) {
+
+                $this->session->remove(['id', 'name', 'email', 'isLoggedIn', 'isAdmin']);
+
+                return redirect()->to('/login')->with('success', 'User updated successfully');
+            }
+
+            return redirect()->back()->with('errors', $this->userModel->errors());
+        }
+
+        return redirect()->back()->with('errors', $this->validation->getErrors());
     }
 }

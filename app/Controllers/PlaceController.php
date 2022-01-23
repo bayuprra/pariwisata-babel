@@ -223,7 +223,7 @@ class PlaceController extends BaseController
             unlink(strstr($place->picture, 'image'));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'place');
         } else {
-            $data['picture'] = $place->picture;
+            $data['picture'] = strstr($place->picture, 'place');
         }
 
         if ($this->placeModel->update($id, $data)) {

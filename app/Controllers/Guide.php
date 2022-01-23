@@ -209,7 +209,7 @@ class Guide extends BaseController
             unlink(strstr($guide->identity_picture, 'image'));
             $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
         } else {
-            $data['identity_picture'] = $guide->identity_picture;
+            $data['identity_picture'] = strstr($guide->identity_picture, 'guide');
         }
 
         if ($this->guideModel->update($id, $data)) {

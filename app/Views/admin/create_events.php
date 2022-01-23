@@ -11,7 +11,7 @@
 <section class="create-event" id="create-event">
 
 
-    <div class="content" action="">
+    <div class="content">
         <?= view('shared/flash_message') ?>
 
         <form action="<?= base_url('event') ?>" method="POST" enctype="multipart/form-data">

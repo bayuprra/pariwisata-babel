@@ -49,7 +49,7 @@ class News extends BaseController
         $data = [
             'title'     => 'News | Show',
             'news'      => $news,
-            'recent'    => $this->newsModel->where('category', 'general')->where('created_at >=', $lastThirtyDays)->orderBy('created_at', 'desc')->findAll(5)
+            'recent'    => $this->newsModel->where('category', 'general')->where('created_at >=', $lastThirtyDays)->orderBy('created_at', 'desc')->findAll(3)
         ];
 
         return view('users/readnews', $data);

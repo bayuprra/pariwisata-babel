@@ -180,7 +180,7 @@ class PlaceController extends BaseController
         ];
 
         $this->validation->setRules([
-            'picture' => 'uploaded[picture]|mime_in[picture,image/png,image/jpg]'
+            'picture' => 'uploaded[picture]|mime_in[picture,image/png,image/jpg,image/jpeg]'
         ]);
 
         if ($this->validation->withRequest($this->request)->run()) {

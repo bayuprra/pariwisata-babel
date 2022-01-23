@@ -36,17 +36,17 @@
         <div class="box-container">
             <?php foreach ($guide as $item) : ?>
                 <div class="box">
-                    <a href="#" class="fas fa-envelope"></a>
-                    <a href="#" class="fas fa-phone"></a>
+                    <a href="mailto:<?= $item->email ?>"><button class="fas fa-envelope"></button></a>
+                    <a href="https://wa.me/<?= $item->phone ?>"><button class="fas fa-phone"></button></a>
                     <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
                     <span>tour guide</span>
                     <div class="share">
-                        <a href="#" class="fab fa-facebook-f"></a>
-                        <a href="#" class="fab fa-twitter"></a>
-                        <a href="#" class="fab fa-instagram"></a>
+                        <a href="https://m.facebook.com/<?= $item->facebook ?>"><button class="fab fa-facebook-f"></button></a>
+                        <a href="https://www.twitter.com/<?= $item->twitter ?>"><button class="fab fa-twitter"></button></a>
+                        <a href="https://www.instagram.com/<?= $item->instagram ?>"><button class="fab fa-instagram"></button></a>
                     </div>
                 </div>
             <?php endforeach; ?>

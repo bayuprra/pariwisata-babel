@@ -48,8 +48,6 @@
                         <a href="#" class="modaltrigger" data-id="<?= $item->id ?>"><?= $item->name ?></a>
                         <p><?= $item->district ?></p>
                         <div class="like">
-                            <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                            <p>disukai oleh 1023 orang</p>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -107,7 +105,7 @@
                 <div class="more">
                     <div class="like">
                         <a href="#" class="fa fa-heart" aria-hidden="true"></a>
-                        <a>2019 like</a>
+                        <!-- <a>2019 like</a> -->
                     </div>
                     <div class="coment">
                         <a href="#" class="fa fa-comment" aria-hidden="true"></a>
@@ -137,13 +135,13 @@
                                         <a href="#"><i class="icofont-ui-rating active"></i></a>
                                         <a href="#"><i class="icofont-ui-rating"></i></a>
                                     </span>
-                                    <h6 class="mb-1"><a class="text-black" href="#"><?= count($ite->user()->roles()) > 1 ? $ite->user()->roles()[1]->name : $ite->user()->roles()[0]->name ; ?></a></h6>
+                                    <h6 class="mb-1"><a class="text-black" href="#"><?= $ite->user()->name; ?></a></h6>
                                 </div>
                                 <div class="reviews-members-body">
                                     <p><?= $ite->comment; ?></p>
                                 </div>
                                 <div class="reviews-members-footer">
-                                    <a class="total-like" href="#"><?= $ite->user()->name; ?></a>
+                                    <a class="total-like" href="#"><?= count($ite->user()->roles()) > 1 ? $ite->user()->roles()[1]->name : $ite->user()->roles()[0]->name; ?></a>
                                 </div>
                             </div>
                         </div>
@@ -202,8 +200,6 @@
                     <a href="#" class="modaltrigger" data-id="${place.id}">${place.name}</a>
                     <p>${place.district}</p>
                     <div class="like">
-                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
-                        <p>disukai oleh 1023 orang</p>
                     </div>
                 </div>`
             }

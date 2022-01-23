@@ -7,11 +7,12 @@
 
 
 <?= $this->section('content') ?>
-<?= view('shared/flash_message') ?>
 <section class="place" id="place">
 
 
     <div class="content">
+        <?= view('shared/flash_message') ?>
+
         <form action="<?= base_url('place') ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">

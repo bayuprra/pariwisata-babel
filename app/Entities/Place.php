@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
+use App\Models\PlaceReviewModel;
 use CodeIgniter\Entity\Entity;
 
 class Place extends Entity
@@ -24,5 +25,12 @@ class Place extends Entity
     public function getPicture()
     {
         return base_url() . '/image/' . $this->attributes['picture'];
+    }
+
+    public function placeReviews()
+    {
+        $reviews = new PlaceReviewModel();
+
+        return $reviews->where(['place_id' => $this->attributes['id']])->findAll();
     }
 }

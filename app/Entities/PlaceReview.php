@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Entities;
 
+use App\Models\UserModel;
 use CodeIgniter\Entity\Entity;
 
 class PlaceReview extends Entity
@@ -14,4 +15,11 @@ class PlaceReview extends Entity
         'place_id' => 'null',
         'user_id' => 'null',
     ];
+
+    public function user()
+    {
+        $user = new UserModel();
+
+        return $user->where(['id' => $this->attributes['user_id']])->first();
+    }
 }

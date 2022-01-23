@@ -46,14 +46,11 @@ class PlaceController extends BaseController
 
     public function index(): string
     {
-        $userId = session()->get('id');
         $data = [
             'title'     => 'Place | All',
             'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
-            'reviews'   => $this->reviewModel->findAll(),
-            'join'      => $this->reviewModel->joinUser(),
-            'role'      => $this->roleModel->joinRole($userId)
         ];
+
         return view('users/home1', $data);
     }
 
@@ -64,9 +61,11 @@ class PlaceController extends BaseController
             throw ModelException::forNoPrimaryKey(UserModel::class);
         }
         $cekRatingUser = $this->reviewModel->cekUserRating($userId, $this->request->getVar('place_id'));
+
         if (!$cekRatingUser == null) {
             return redirect()->to('/')->withInput()->with('success', 'Anda Sudah merating tempat ini');
         }
+
         $data = [
             'title'     => 'Place | ',
             'comment'   => $this->request->getVar('comment'),

@@ -124,7 +124,7 @@
 
         <div class="review" id="review-modal-<?= $item->id ?>">
             <div class="container">
-                <?php foreach ($join as $ite) : ?>
+                <?php foreach ($item->placeReviews() as $ite) : ?>
                     <div class="reviews-members pt-4 pb-4">
                         <div class="media">
                             <a href="#"><img alt="Generic placeholder image" src="http://bootdey.com/img/Content/avatar/avatar1.png" class="mr-3 rounded-pill"></a>
@@ -137,13 +137,13 @@
                                         <a href="#"><i class="icofont-ui-rating active"></i></a>
                                         <a href="#"><i class="icofont-ui-rating"></i></a>
                                     </span>
-                                    <h6 class="mb-1"><a class="text-black" href="#"><?= $ite['name']; ?></a></h6>
+                                    <h6 class="mb-1"><a class="text-black" href="#"><?= count($ite->user()->roles()) > 1 ? $ite->user()->roles()[1]->name : $ite->user()->roles()[0]->name ; ?></a></h6>
                                 </div>
                                 <div class="reviews-members-body">
-                                    <p><?= $ite['comment']; ?></p>
+                                    <p><?= $ite->comment; ?></p>
                                 </div>
                                 <div class="reviews-members-footer">
-                                    <a class="total-like" href="#"><?= $ite['name']; ?></a>
+                                    <a class="total-like" href="#"><?= $ite->user()->name; ?></a>
                                 </div>
                             </div>
                         </div>

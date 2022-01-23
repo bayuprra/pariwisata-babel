@@ -36,6 +36,8 @@ $routes->get('/login', 'Users::signUp');
 $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
 $routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
+$routes->get('/edit-profile', 'Users::editUser', ['filter' => 'authGuard']);
+$routes->post('/user/update/(:num)', 'Users::update/$1', ['filter' => 'authGuard']);
 
 // News
 $routes->get('/news/show/(:num)', 'News::show/$1');

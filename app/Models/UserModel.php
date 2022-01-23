@@ -16,9 +16,7 @@ class UserModel extends Model
         'picture'
     ];
     protected $validationRules = [
-        'name'              => 'required',
-        'password'          => 'required|min_length[8]|regex_match[/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/]',
-        'email_address'     => 'required|valid_email|is_unique[users.email_address,id,{id}]',
-        'picture'           => 'permit_empty|mime_in[picture,image/png,image/jpg]'
+        'name'          => 'required',
+        'picture'       => 'permit_empty|mime_in[picture,image/png,image/jpg]'
     ];
 }

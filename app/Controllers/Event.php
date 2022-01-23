@@ -128,7 +128,7 @@ class Event extends BaseController
             unlink(strstr($event->picture, 'image'));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'event');
         } else {
-            $data['picture'] = $event->picture;
+            $data['picture'] = strstr($event->picture, 'event');
         }
 
         if ($this->eventModel->update($id, $data)) {

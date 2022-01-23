@@ -32,7 +32,7 @@
         <div class="usermenu">
             <ul>
                 <?php if (session()->get('isLoggedIn')) : ?>
-                    <li>Edit Profil</li>
+                    <li><a href="<?= base_url('/edit-profile') ?>">Edit Profil</a></li>
                     <li><a href="<?= base_url('/logout') ?>">Logout</a></li>
                 <?php else : ?>
                     <li><a href="<?= base_url('/login') ?>">Login</a></li>

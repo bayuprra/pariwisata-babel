@@ -187,6 +187,146 @@
 
 <?= $this->section('script') ?>
 <script>
+    // search
+    var resultContainer = document.getElementById('places');
+    var placeData = document.getElementById('places').getAttribute("data-place");
+    placeData = JSON.parse(placeData)
 
+    function printItems(array) {
+        var tampung = '';
+
+        if (array.length > 0) {
+            for (var i = 0; i < array.length; i++) {
+                var place = array[i]
+                tampung += `
+                <div class="recomendation">
+                    <a href="#" class="modaltrigger" data-id="${place.id}">${place.name}</a>
+                    <p>${place.district}</p>
+                    <div class="like">
+                        <a href="#" class="fa fa-thumbs-up" aria-hidden="true"></a>
+                        <p>disukai oleh 1023 orang</p>
+                    </div>
+                </div>`
+            }
+        } else {
+            tampung = '<p>Data tidak ditemukan</p>'
+        }
+
+        resultContainer.innerHTML = tampung
+    }
+
+    function filter(kataKunci) {
+        var filteredItems = []
+        for (var j = 0; j < placeData.length; j++) {
+            var place = placeData[j]
+            let isMatch = false
+            let searchBy = ['district', 'sub_district', 'village', 'street']
+
+            if (place['name'].toLowerCase().includes(kataKunci.toLowerCase())) {
+                isMatch = true
+            }
+
+            if (!isMatch) {
+                for (let i = 0; i < searchBy.length; i++) {
+                    isMatch = place[searchBy[i]].toLowerCase() === kataKunci.toLowerCase();
+                    if (isMatch) break;
+                }
+            }
+
+            if (isMatch) filteredItems.push(place);
+        }
+        return filteredItems
+    }
+
+    var formSearch = document.getElementById('formPlace')
+    let recom = document.getElementById("result-recom")
+    formSearch.addEventListener('submit', function(event) {
+        event.preventDefault();
+        var keyword = document.getElementById("search").value;
+        var terfilter = keyword ? filter(keyword) : null;
+
+        if (terfilter) {
+            printItems(terfilter)
+            recom.style.display = "none";
+        } else {
+            "Data tidak ditemukan"
+        }
+
+        reviewModal()
+    })
+
+    reviewModal()
+
+
+    function reviewModal() {
+        // modal
+        let btn = document.querySelectorAll(".modaltrigger");
+        console.log(btn)
+        // When the user clicks the button, open the modal
+        for (let i = 0; i < btn.length; i++) {
+            let span = document.getElementsByClassName("close")[i];
+            let dataId = btn[i].getAttribute("data-id");
+            let modal = document.getElementById(`place-modal-${dataId}`);
+
+            // when the user clicks the button, open the modal
+            btn[i].onclick = function(e) {
+                e.preventDefault();
+                modal.style.display = "block";
+            }
+
+            // close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // close the modal when click out of modal
+            window.addEventListener("click", function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            });
+        }
+
+        // modalreview
+
+        let bbtn = document.querySelectorAll(".comment");
+        // When the user clicks the button, open the modal
+        for (let i = 0; i < bbtn.length; i++) {
+            let spanreview = document.getElementsByClassName("tutup")[i];
+            let dataIdReview = bbtn[i].getAttribute("data-review");
+            let modalreview = document.getElementById(`review-modal-${dataIdReview}`);
+            // when the user clicks the button, open the modal
+            bbtn[i].onclick = function(e) {
+                e.preventDefault();
+                modalreview.style.display = "block";
+            }
+            // close the modal
+            spanreview.onclick = function() {
+                modalreview.style.display = "none";
+            }
+
+            // close the modal when click out of modal
+            window.addEventListener("click", function(event) {
+                if (event.target == modalreview) {
+                    modalreview.style.display = "none";
+                }
+            });
+        }
+    }
+
+
+    // rating
+    $(document).ready(function() {
+        $("form#ratingForm").submit(function(e) {
+            e.preventDefault();
+            if ($("#ratingForm :radio:checked").length == 0) {
+                $('#status').html("nothing checked");
+                return false;
+            } else {
+                $('#status').html('You picked ' + $('input:radio[name=rating]:checked').val());
+            }
+        });
+    });
 </script>
+
 <?= $this->endSection() ?>

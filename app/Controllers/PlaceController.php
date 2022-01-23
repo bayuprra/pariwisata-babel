@@ -65,6 +65,7 @@ class PlaceController extends BaseController
             'user_id'   => $userId
         ];
 
+
         if ($this->reviewModel->save($data)) {
             return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');;
         }

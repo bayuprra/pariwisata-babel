@@ -43,7 +43,7 @@
                 <p>Rekomendasi</p>
             </div>
             <div class="recom-container">
-                <?php foreach ($places as $item) : ?>
+                <?php foreach ($recommend as $item) : ?>
                     <div class="recomendation">
                         <a href="#" class="modaltrigger" data-id="<?= $item->id ?>"><?= $item->name ?></a>
                         <p><?= $item->district ?></p>
@@ -247,8 +247,6 @@
         if (terfilter) {
             printItems(terfilter)
             recom.style.display = "none";
-        } else {
-            "Data tidak ditemukan"
         }
 
         reviewModal()

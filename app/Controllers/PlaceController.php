@@ -49,6 +49,7 @@ class PlaceController extends BaseController
         $data = [
             'title'     => 'Place | All',
             'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
+            'recommend' => $this->recommendation()
         ];
 
         return view('users/home1', $data);
@@ -245,5 +246,20 @@ class PlaceController extends BaseController
         }
 
         return redirect()->back()->withInput()->with('errors', $this->placeModel->errors());
+    }
+
+    public function recommendation()
+    {
+        $places = $this->placeModel->findAll();
+
+        foreach ($places as $place) {
+            $place->ratingInTotal = array_sum(array_column($place->placeReviews(), 'rating'));
+        }
+
+        $rate = array_column($places, 'ratingInTotal');
+        array_multisort($rate, SORT_DESC, $places);
+        array_splice($places, 3);
+
+        return $places;
     }
 }

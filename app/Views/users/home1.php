@@ -165,11 +165,11 @@
                             <div id="status"></div>
                             <form action="<?= base_url('placecontroller/rate') ?>" method="POST" id="ratingForm" enctype="multipart/form-data">
                                 <fieldset class="rating">
-                                    <input type="radio" id="star5" name="rating" value="5" /><label for="star5">5 stars</label>
-                                    <input type="radio" id="star4" name="rating" value="4" /><label for="star4">4 stars</label>
-                                    <input type="radio" id="star3" name="rating" value="3" /><label for="star3">3 stars</label>
-                                    <input type="radio" id="star2" name="rating" value="2" /><label for="star2">2 stars</label>
-                                    <input type="radio" id="star1" name="rating" value="1" /><label for="star1">1 star</label>
+                                    <input type="radio" id="star5-<?= $item->id ?>" name="rating" value="5" /><label for="star5-<?= $item->id ?>">5 stars</label>
+                                    <input type="radio" id="star4-<?= $item->id ?>" name="rating" value="4" /><label for="star4-<?= $item->id ?>">4 stars</label>
+                                    <input type="radio" id="star3-<?= $item->id ?>" name="rating" value="3" /><label for="star3-<?= $item->id ?>">3 stars</label>
+                                    <input type="radio" id="star2-<?= $item->id ?>" name="rating" value="2" /><label for="star2-<?= $item->id ?>">2 stars</label>
+                                    <input type="radio" id="star1-<?= $item->id ?>" name="rating" value="1" /><label for="star1-<?= $item->id ?>">1 star</label>
                                 </fieldset>
                                 <div class="textarea">
                                     <textarea cols="30" name="comment" placeholder="Masukkan Komentar dan Pendapatmu...." required></textarea>
@@ -296,7 +296,6 @@
         }
 
         // modal
-
         let bbtn = document.querySelectorAll(".comment");
         // When the user clicks the button, open the modal
         for (let i = 0; i < bbtn.length; i++) {

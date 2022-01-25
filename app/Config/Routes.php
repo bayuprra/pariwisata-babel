@@ -81,6 +81,7 @@ $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
     $routes->get('edit/(:num)', 'PlaceController::edit/$1');
     $routes->post('(:num)', 'PlaceController::update/$1');
     $routes->delete('(:num)', 'PlaceController::destroy/$1');
+    $routes->post('rate', 'PlaceController::rate');
 });
 
 /*

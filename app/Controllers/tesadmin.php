@@ -6,7 +6,7 @@ class tesadmin extends BaseController
 {
     public function index()
     {
-        // return view('admin/create_news');
+        return view('users/chatting');
         // return view('layout/master_layout', $data);
     }
 

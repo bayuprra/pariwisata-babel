@@ -31,8 +31,10 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+// $routes->get('/', 'PlaceController::index');
 $routes->get('/', 'PlaceController::index');
 $routes->get('/login', 'Users::signUp');
+$routes->get('/message', 'Chatting::index');
 $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
 $routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);

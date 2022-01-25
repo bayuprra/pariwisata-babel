@@ -33,9 +33,10 @@
             <ul>
                 <?php if (session()->get('isLoggedIn')) : ?>
                     <li><a href="<?= base_url('/edit-profile') ?>">Edit Profil</a></li>
-                    <li><a href="<?= base_url('/logout') ?>">Logout</a></li>
+                    <li><a href="<?= base_url('/message') ?>">Transaksi</a>
+                    <li><a href="<?= base_url('/logout') ?>">Keluar</a></li>
                 <?php else : ?>
-                    <li><a href="<?= base_url('/login') ?>">Login</a></li>
+                    <li><a href="<?= base_url('/login') ?>">Masuk / Daftar</a></li>
                 <?php endif; ?>
             </ul>
         </div>

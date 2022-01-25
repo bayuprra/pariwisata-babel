@@ -38,16 +38,28 @@
 
         <!-- recommendation -->
         <div class="result-recom" id="result-recom">
+
             <div class="det">
                 <a href="#" class="fa fa-star" aria-hidden="true"></a>
                 <p>Rekomendasi</p>
             </div>
             <div class="recom-container">
                 <?php foreach ($recommend as $item) : ?>
+
                     <div class="recomendation">
-                        <a href="#" class="modaltrigger" data-id="<?= $item->id ?>"><?= $item->name ?></a>
-                        <p><?= $item->district ?></p>
+                        <div class="image">
+                            <img src="<?= $item->getPicture() ?>" alt="">
+                        </div>
+                        <div class="desc">
+                            <a href="#" class="modaltrigger" data-id="<?= $item->id ?>"><?= $item->name ?></a>
+                            <p><?= $item->district ?></p>
+                        </div>
                         <div class="like">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -60,6 +72,28 @@
             </div>
 
         </div>
+
+    </div>
+    <div class="doc">
+        <div class="docu">
+            <img src="/image/z.jpg" alt="">
+            <div class="des">
+                <h1>Profil Singkat</h1>
+                <br>
+                <p>Bangka Belitung Merupakan Provinsi yang terdiri dari 2 pulau utama yaitu pulau bangka dan pulau belitung serta 470 pulau lainnya. memiliki luas daratan lebih kurang 16.424,06 km2 dan luas laut kurang lebih 65.301 km2, memiliki
+                    karakteristik kepulauan karang sehingga
+                    memiliki pasir seputih gading dengan hamparan
+                    bebatuan granit di pesisirnya. tidak hanya pantai dengan pasir putihnya, juga terdapat jenis pariwisata lain yang dapat dikunjungi di provinsi kepulauan bangka belitung ini.</p>
+            </div>
+        </div>
+    </div>
+    <div class="kuliner">
+
+    </div>
+    <div class="kuliner">
+
+    </div>
+    <div class="kuliner">
 
     </div>
 
@@ -197,9 +231,17 @@
                 var place = array[i]
                 tampung += `
                 <div class="recomendation">
+                <div class="image">
+                            <img src="${place.identity_picture}" alt="">
+                        </div>
                     <a href="#" class="modaltrigger" data-id="${place.id}">${place.name}</a>
                     <p>${place.district}</p>
                     <div class="like">
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
+                            <i class="fa fa-star" aria-hidden="true"></i>
                     </div>
                 </div>`
             }

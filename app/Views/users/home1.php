@@ -74,7 +74,7 @@
         </div>
 
     </div>
-    <div class="doc">
+    <!-- <div class="doc">
         <div class="docu">
             <img src="/image/z.jpg" alt="">
             <div class="des">
@@ -95,7 +95,7 @@
     </div>
     <div class="kuliner">
 
-    </div>
+    </div> -->
 
     <!-- modal -->
     <?php foreach ($places as $item) : ?>
@@ -232,7 +232,7 @@
                 tampung += `
                 <div class="recomendation">
                 <div class="image">
-                            <img src="${place.identity_picture}" alt="">
+                            <img src="${place.picture}" alt="">
                         </div>
                     <a href="#" class="modaltrigger" data-id="${place.id}">${place.name}</a>
                     <p>${place.district}</p>

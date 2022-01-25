@@ -18,7 +18,7 @@
   background: #fff;
   border-radius: 0.5rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  width: 90rem;
+  width: 90%;
   padding: 2rem;
 }
 
@@ -125,7 +125,7 @@
 .home .result-search .recom-container .recomendation {
   background: #fff;
   width: 32%;
-  height: 250px;
+  height: 45vh;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -1152,6 +1152,11 @@ button {
 
   .home .result-recom .det {
     font-size: 10px;
+  }
+
+  .home .result-recom .recom-container .recomendation,
+  .home .result-search .recom-container .recomendation {
+    height: 40vh;
   }
   .home .result-recom .recom-container .recomendation a {
     font-size: 2rem;

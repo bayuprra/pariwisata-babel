@@ -74,9 +74,9 @@
         </div>
 
     </div>
-    <!-- <div class="doc">
+    <div class="doc">
         <div class="docu">
-            <img src="/image/z.jpg" alt="">
+            <img src="/images/z.jpg" alt="">
             <div class="des">
                 <h1>Profil Singkat</h1>
                 <br>
@@ -95,7 +95,7 @@
     </div>
     <div class="kuliner">
 
-    </div> -->
+    </div>
 
     <!-- modal -->
     <?php foreach ($places as $item) : ?>

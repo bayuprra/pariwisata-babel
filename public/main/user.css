@@ -55,7 +55,7 @@
 .home .doc {
   background: #fff;
   border-radius: 0.5rem;
-  width: 90rem;
+  width: 90%;
   max-height: 30rem;
   padding: 0 0 2rem 0;
 }
@@ -99,7 +99,7 @@
   background: #fff;
   border-radius: 0.5rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
-  width: 90rem;
+  width: 90%;
   padding: 2rem;
 }
 

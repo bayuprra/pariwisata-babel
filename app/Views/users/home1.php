@@ -232,7 +232,7 @@
                 tampung += `
                 <div class="recomendation">
                 <div class="image">
-                            <img src="${place.identity_picture}" alt="">
+                            <img src="${place.picture}" alt="">
                         </div>
                     <a href="#" class="modaltrigger" data-id="${place.id}">${place.name}</a>
                     <p>${place.district}</p>

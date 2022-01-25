@@ -74,10 +74,7 @@ class PlaceController extends BaseController
             'user_id'   => $userId
         ];
 
-        $this->validation->setRules([
-            'place_id'  => 'required',
-            'user_id'   => 'required'
-        ]);
+        $this->validation->setRules(['place_id'  => 'required']);
 
         if ($this->validation->withRequest($this->request)->run()) {
             
@@ -256,13 +253,10 @@ class PlaceController extends BaseController
     public function recommendation()
     {
         $places = $this->placeModel->findAll();
+        usort($places, function ($item1, $item2) {
+            return $item2->score() <=> $item1->score();
+        });
 
-        foreach ($places as $place) {
-            $place->ratingInTotal = array_sum(array_column($place->placeReviews(), 'rating'));
-        }
-
-        $rate = array_column($places, 'ratingInTotal');
-        array_multisort($rate, SORT_DESC, $places);
         array_splice($places, 3);
 
         return $places;

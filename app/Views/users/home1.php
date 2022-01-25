@@ -32,7 +32,7 @@
             <input type="submit" value="Cari lokasi" class="btn">
         </form>
         <br>
-        <a href="<?= base_url('formforuser/place') ?>" class="addplace">
+        <a href="<?= base_url('place/create') ?>" class="addplace">
             <h5>Tempat yang anda cari tidak ada? tambahkan data</h5>
         </a>
 

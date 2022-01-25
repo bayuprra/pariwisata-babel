@@ -24,7 +24,7 @@
                 <li><a class="link_name" href="#">Tempat Wisata</a></li>
                 <li><a href="<?= base_url('/admin/place') ?>">Data Masuk</a></li>
                 <li><a href="<?= base_url('/admin/vplace') ?>">Data Terverifikasi</a></li>
-                <li><a href="<?= base_url('/place/create') ?>">Buat Tempat Wisata</a></li>
+                <li><a href="<?= base_url('/admin/place/create') ?>">Buat Tempat Wisata</a></li>
             </ul>
         </li>
         <li>

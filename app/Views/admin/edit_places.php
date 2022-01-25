@@ -16,6 +16,19 @@
         <form action="<?= base_url('place/' . $places->id) ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
+                    <label for="category">Kategori</label>
+                </div>
+                <div class="input">
+                    <select id="category" name="category" required>
+                        <option value="<?= $places->category ?>" selected disabled><?= $places->category ?></option>
+                        <option value="tempat wisata">Tempat Wisata</option>
+                        <option value="kuliner">Kuliner</option>
+                        <option value="hotel dan penginapan">Hotel dan Penginapan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="print">
                     <label for="name">Nama Tempat Wisata</label>
                 </div>
                 <div class="input">
@@ -63,13 +76,20 @@
                     </select>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="print">
+                    <label for="description">Deskripsi</label>
+                </div>
+                <div class="input">
+                    <textarea type="text" id="description" name="description" required><?= $places->description ?></textarea>
+                </div>
+            </div>
             <div class="row">
                 <div class="print">
                     <label for="fee">Biaya Masuk</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="fee" name="fee" value="<?= $places->fee ?>" required>
+                    <input type="number" id="fee" name="fee" value="<?= $places->fee ?>" required>
                 </div>
             </div>
             <div class="row">
@@ -91,7 +111,7 @@
             </div>
             <div class="row">
                 <input type="submit" value="Update">
-                <input type="reset" value="Batal">
+                <input type="reset" value="Kembali">
             </div>
 
         </form>

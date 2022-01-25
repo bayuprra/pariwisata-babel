@@ -180,20 +180,11 @@
 
 .home .result-recom .recom-container .recomendation .like,
 .home .result-search .recom-container .recomendation .like {
+  color: #ea0;
   display: flex;
   gap: 0.1rem;
   justify-content: center;
-}
-
-.home .result-recom .recom-container .recomendation .like .fa-thumbs-up,
-.home .result-search .recom-container .recomendation .like .fa-thumbs-up {
-  font-size: 20px;
-}
-
-.home .result-recom .recom-container .recomendation .like p,
-.home .result-search .recom-container .recomendation .like p {
-  font-size: 0.5vw;
-  margin-top: 1rem;
+  font-size: 15px;
 }
 
 /* place modal */
@@ -258,6 +249,13 @@
   box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
   overflow: hidden;
 }
+
+.home .place-modal .modal-content .description p {
+  position: absolute;
+  z-index: 2;
+  background-color: red;
+}
+
 .home .place-modal .modal-content .detail {
   text-align: justify;
   display: flex;
@@ -274,7 +272,7 @@
 .home .place-modal .modal-content .detail .nama h3 {
   text-decoration: none;
   font-weight: bold;
-  font-size: 30px;
+  font-size: 2vw;
 }
 .home .place-modal .modal-content .detail .det tr,
 .home .place-modal .modal-content .detail .det td {

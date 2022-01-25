@@ -10,16 +10,18 @@ use CodeIgniter\Entity\Entity;
 class Place extends Entity
 {
     protected $attributes = [
-        'name' => null,
-        'district' => null,
-        'sub_district' => null,
-        'village' => null,
-        'fee' => null,
-        'street' => null,
-        'maps' => null,
-        'picture' => null,
-        'user_id' => null,
-        'is_approve' => null,
+        'name'          => null,
+        'district'      => null,
+        'sub_district'  => null,
+        'village'       => null,
+        'fee'           => null,
+        'street'        => null,
+        'maps'          => null,
+        'picture'       => null,
+        'user_id'       => null,
+        'is_approve'    => null,
+        'category'      => null,
+        'description'   => null
     ];
 
     public function getPicture()
@@ -57,7 +59,7 @@ class Place extends Entity
         $score = 0;
 
         foreach ($temp as $key => $value) {
-            $score += $key*$value;
+            $score += $key * $value;
         }
 
         $result = $response !== 0 ? $score / $response : $response;

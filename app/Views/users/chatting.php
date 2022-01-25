@@ -20,16 +20,16 @@
             <h1>kirim pesan dengan user1</h1>
             <div class="message">
                 <div class="user">
-                    <img src="/image/z.jpg" alt="">
+                    <img src="/images/z.jpg" alt="">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia, minus eveniet? In ducimus eligendi consequatur nihil eos doloremque debitis! Reprehenderit exercitationem fugit veritatis minus placeat neque et, in corrupti officiis.</p>
                 </div>
                 <div class="guide">
-                    <img src="/image/z.jpg" alt="">
+                    <img src="/images/z.jpg" alt="">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia, minus eveniet? In ducimus eligendi consequatur nihil eos doloremque debitis! Reprehenderit exercitationem fugit veritatis minus placeat neque et, in corrupti officiis.</p>
 
                 </div>
                 <div class="guide">
-                    <img src="/image/z.jpg" alt="">
+                    <img src="/images/z.jpg" alt="">
                     <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Mollitia, minus eveniet? In ducimus eligendi consequatur nihil eos doloremque debitis! Reprehenderit exercitationem fugit veritatis minus placeat neque et, in corrupti officiis.</p>
                 </div>
             </div>

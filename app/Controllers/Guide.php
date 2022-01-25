@@ -96,7 +96,9 @@ class Guide extends BaseController
 
     public function create(): string
     {
-        return view('users/guidesform');
+        $data = ['title' => 'Tambahkan Data | '];
+
+        return view('users/guidesform', $data);
     }
 
     /**

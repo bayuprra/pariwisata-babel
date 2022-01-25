@@ -15,6 +15,7 @@
         <div class="headline-box">
 
             <div class="image-container">
+            <?php if ($headlines) : ?>
                 <a href="<?= base_url('news/show/' . $headlines->id) ?>">
                     <img src="<?= $headlines->newsImage()->original ?>" alt="headline news">
                     <div class="judul">
@@ -24,6 +25,11 @@
                         <p><?= \CodeIgniter\I18n\Time::parse($headlines->created_at)->humanize() ?></p>
                     </div>
                 </a>
+            <?php else: ?>
+                <div>
+                    <h1>Empty News</h1>
+                </div>
+            <?php endif ?>
             </div>
         </div>
 
@@ -37,6 +43,7 @@
             <p>terbaru</p>
             <hr>
         </div>
+        <?php if (count($news)) : ?>
         <?php foreach ($news as $item) : ?>
             <div class="news-box">
                 <a href="<?= base_url('news/show/' . $item->id) ?>">
@@ -51,6 +58,7 @@
             </div>
             <hr>
         <?php endforeach ?>
+        <?php endif ?>
         <?= $pager->links('news', 'pagination'); ?>
     </div>
 </section>

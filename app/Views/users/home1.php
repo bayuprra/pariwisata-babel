@@ -32,7 +32,7 @@
             <input type="submit" value="Cari lokasi" class="btn">
         </form>
         <br>
-        <a href="<?= base_url('formforuser/place') ?>" class="addplace">
+        <a href="<?= base_url('place/create') ?>" class="addplace">
             <h5>Tempat yang anda cari tidak ada? tambahkan data</h5>
         </a>
 
@@ -187,7 +187,7 @@
                     <div class="container-form">
                         <div class="star-widget">
                             <div id="status"></div>
-                            <form action="<?= base_url('placecontroller/rate') ?>" method="POST" id="ratingForm" enctype="multipart/form-data">
+                            <form action="<?= base_url('place/rate') ?>" method="POST" id="ratingForm" enctype="multipart/form-data">
                                 <fieldset class="rating">
                                     <input type="radio" id="star5-<?= $item->id ?>" name="rating" value="5" /><label for="star5-<?= $item->id ?>">5 stars</label>
                                     <input type="radio" id="star4-<?= $item->id ?>" name="rating" value="4" /><label for="star4-<?= $item->id ?>">4 stars</label>

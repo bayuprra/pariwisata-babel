@@ -16,15 +16,14 @@
     <div class="content1">
         <div class="content11">
             <h3>Tertarik menjadi tour guide ?</h3>
-            <a href="<?= base_url('formforuser/guide') ?>">
+            <a href="<?= base_url('guide/create') ?>">
                 <input type="submit" value="daftar sekarang" class="btn">
             </a>
         </div>
         <br>
         <div class="content12">
             <?php
-            $session = session()->get('isAdmin');
-            if ($session) : ?>
+            if (session()->get('isAdmin')) : ?>
                 <a href="<?= base_url('admin/guide') ?>"><button type="button" class="btn btn-warning btn-sm" data-tooltip="tooltip" data-placement="top" title="Dashboard">DASHBOARD</button></a>
             <?php endif; ?>
         </div>
@@ -38,7 +37,7 @@
                 <div class="box">
                     <a href="mailto:<?= $item->email ?>"><button class="fas fa-envelope"></button></a>
                     <a href="https://wa.me/<?= $item->phone ?>"><button class="fas fa-phone"></button></a>
-                    <img src="<?= $item->getIdentityPicture() ?>" alt="guide image">
+                    <img src="<?= $item->identity_picture ?>" alt="guide image">
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
@@ -57,7 +56,7 @@
                     <span class="close">&times;</span>
                     <div class="box">
                         <div class="image">
-                            <img src="<?= $item->getIdentityPicture() ?>" alt="">
+                            <img src="<?= $item->identity_picture ?>" alt="">
                         </div>
                         <div class="line"></div>
                         <div class="bio-medsos">

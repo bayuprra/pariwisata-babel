@@ -67,7 +67,14 @@
                     </select>
                 </div>
             </div>
-
+            <div class="row">
+                <div class="print">
+                    <label for="description">Deskripsi</label>
+                </div>
+                <div class="input">
+                    <textarea type="text" id="description" name="description" placeholder="description" required></textarea>
+                </div>
+            </div>
             <div class="row">
                 <div class="print">
                     <label for="fee">Biaya Masuk</label>

@@ -33,6 +33,8 @@
                     <th>No.</th>
                     <th>User ID</th>
                     <th>Nama</th>
+                    <th>Include</th>
+                    <th>Description</th>
                     <th>Umur</th>
                     <th>Nomor Telepon</th>
                     <th>Jenis Kelamin</th>
@@ -59,6 +61,8 @@
                         <td><?= $no++ ?></td>
                         <td><?= $item->user_id ?></td>
                         <td><?= $item->name ?></td>
+                        <td><?= $item->include ?></td>
+                        <td><?= $item->description ?></td>
                         <td><?= $item->age ?></td>
                         <td><?= $item->phone ?></td>
                         <td><?= $item->gender ?></td>

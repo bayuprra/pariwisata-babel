@@ -1,24 +1,68 @@
 .chatting {
   margin-top: 7rem;
+  padding: 1.5rem 0.5rem 0.5rem 0.5rem;
 }
 
 .chatting .content {
-  margin-right: -10rem;
   background: #fff;
   border-radius: 0.5rem;
   box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
   border: 0.1rem solid rgba(0, 0, 0, 0.2);
   width: 100%;
-  height: auto;
+  height: 70vh;
+  position: absolute;
+  display: flex;
 }
 
+.chatting .content .name {
+  max-width: 25%;
+  min-width: 25%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.chatting .content .name .user {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  gap: 2rem;
+  border-bottom: 2px solid;
+  align-items: center;
+}
+
+.chatting .content .name a {
+  text-decoration: none;
+  color: black;
+}
+.chatting .content .name a .user:hover {
+  background-color: var(--light-green);
+  opacity: 0.8;
+}
+.chatting .content .name .user img {
+  min-width: 60px;
+  min-height: 60px;
+  max-width: 60px;
+  max-height: 60px;
+  border-radius: 35px;
+}
+.chatting .content .name .user p {
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.chatting .content .res {
+  display: flex;
+  width: 100%;
+}
 .chatting .content .chatbox {
   width: 40%;
-  height: 70vh;
+  height: 1005;
   border-style: solid;
   padding: 1.5rem;
   background-color: var(--green);
-  /* float: right; */
+  position: relative;
 }
 
 .chatting .content .chatbox h1 {
@@ -53,13 +97,11 @@
 }
 
 .chatting .content .chatbox .message .user {
-  /* max-width: 50px; */
   display: flex;
   align-items: center;
 }
 
 .chatting .content .chatbox .message .guide {
-  /* max-width: 50px; */
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
@@ -72,17 +114,6 @@
   border-radius: 25px;
 }
 
-/* .chatting .content .chatbox .message .user input[type="text"] {
-  max-width: 100%;
-  height: au;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-} */
-
 .chatting .content .chatbox .message .user p,
 .chatting .content .chatbox .message .guide p {
   max-width: 100%;
@@ -91,5 +122,105 @@
   margin: 3px;
   font-size: 13px;
   border: 1px solid;
+  border-radius: 9px;
   text-align: justify;
+  background-color: lightslategray;
+}
+
+.chatting .detail {
+  width: 60%;
+  overflow: auto;
+  max-height: 100%;
+}
+
+.chatting .detail h1 {
+  align-items: center;
+  text-align: center;
+}
+
+.chatting .detail .tablesdet tbody tr th {
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .chatting .content {
+    height: 50vh;
+  }
+  .chatting .content .name .user img {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 30px;
+    max-height: 30px;
+  }
+  .chatting .content .name .user p {
+    font-size: 15px;
+    margin-top: 10px;
+  }
+  .chatting .content .chatbox h1 {
+    font-size: 15px;
+  }
+  .chatting .content .chatbox .message .user img,
+  .chatting .content .chatbox .message .guide img {
+    width: 30px;
+    height: 30px;
+  }
+  .chatting .content .chatbox .message .user p,
+  .chatting .content .chatbox .message .guide p {
+    font-size: 9px;
+  }
+  .chatting .content .chatbox form .fa-paper-plane {
+    font-size: 20px;
+  }
+  .chatting .content .chatbox form textarea {
+    font-size: 13px;
+  }
+  .chatting .detail h1 {
+    font-size: 15px;
+  }
+  .chatting .detail .tablesdet tbody tr th button {
+    width: 220px;
+    font-size: 8px;
+  }
+}
+
+@media (max-width: 576px) {
+  .chatting {
+    margin-top: 10rem;
+  }
+  .chatting .content {
+    height: 70vh;
+  }
+  .chatting .content .res {
+    display: flex;
+    flex-direction: column;
+  }
+  .chatting .content .chatbox {
+    width: 100%;
+    height: 60%;
+  }
+  .chatting .detail {
+    width: 100%;
+  }
+  .chatting .content .name .user img {
+    min-width: 30px;
+    min-height: 30px;
+  }
+  .chatting .content .name .user p {
+    font-size: 12px;
+  }
+  .chatting .content .chatbox h1 {
+    font-size: 14px;
+  }
+  .chatting .content .chatbox .message {
+    height: 80%;
+  }
+  .chatting .content .chatbox form {
+    height: 13%;
+  }
+  .chatting .content .chatbox form textarea {
+    font-size: 12px;
+  }
+  .chatting .content .chatbox form .fa-paper-plane {
+    font-size: 18px;
+  }
 }

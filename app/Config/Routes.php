@@ -63,6 +63,7 @@ $routes->group('event', ['filter' => 'adminGuard'], function ($routes) {
 });
 
 // Guide
+$routes->get('/guide/detail', 'Guide::detail');
 $routes->get('/admin/guide', 'Guide::admin', ['filter' => 'adminGuard']);
 $routes->get('/admin/vguide', 'Guide::adminv', ['filter' => 'adminGuard']);
 $routes->group('guide', ['filter' => 'authGuard'], function ($routes) {

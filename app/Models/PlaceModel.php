@@ -22,7 +22,9 @@ class PlaceModel extends Model
         'maps',
         'picture',
         'user_id',
-        'is_approve'
+        'is_approve',
+        'category',
+        'description'
     ];
 
     protected $validationRules = [
@@ -33,7 +35,9 @@ class PlaceModel extends Model
         'fee'          => 'required|numeric',
         'street'       => 'required',
         'maps'         => 'required|valid_url',
-        'picture'      => 'required'
+        'picture'      => 'required',
+        'category'     => 'required',
+        'description'  => 'required'
     ];
 
     public function search($keyword)

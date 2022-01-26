@@ -28,6 +28,9 @@ class GuideModel extends Model
         'twitter',
         'user_id',
         'is_approve',
+        'include',
+        'package',
+        'description'
     ];
 
     protected $validationRules = [
@@ -45,7 +48,9 @@ class GuideModel extends Model
         'email'             => 'required',
         'facebook'          => 'required',
         'instagram'         => 'required',
-        'twitter'           => 'required'
+        'twitter'           => 'required',
+        'package'           => 'permit_empty',
+        'description'       => 'permit_empty'
     ];
 
     public function search($keyword)

@@ -1,6 +1,7 @@
 /* start css page create_places dan cereate news*/
 
 input[type="text"],
+input[type="number"],
 select,
 textarea {
   width: 100%;
@@ -88,6 +89,27 @@ input[type="reset"]:hover {
   float: left;
   width: 85%;
   margin-top: 6px;
+}
+
+.place .content tr td {
+  max-height: 170px;
+  max-width: 200px;
+  text-align: justify;
+}
+
+.place .content td:nth-child(3) {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.place .content td:nth-child(10),
+.place .content td:nth-child(11) {
+  overflow: hidden;
+}
+.place .content td:nth-child(9),
+.place .content tr:nth-child(9) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* Clear floats after the columns */

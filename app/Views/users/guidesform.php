@@ -117,7 +117,22 @@
                     <input type="text" id="twitter" name="twitter" value="<?= !empty(session()->getFlashdata('errors')) ? old('twitter') : '' ?>">
                 </div>
             </div>
-
+            <div class="row">
+                <div class="print">
+                    <label for="include">Include</label>
+                </div>
+                <div class="input">
+                    <textarea name="include" class="include"><?= $guide->include ?></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="print">
+                    <label for="description">Description</label>
+                </div>
+                <div class="input">
+                    <textarea name="description" class="description"><?= $guide->description ?></textarea>
+                </div>
+            </div>
             <div class="row">
                 <div class="print">
                     <label for="identity_picture">Foto Diri</label>
@@ -154,5 +169,11 @@
 <script>
     let gender = document.getElementById('gender').getAttribute("data-gender")
     document.getElementById('gender').value = gender;
+</script>
+<script type="text/javascript" src="<?php echo base_url('ckeditor/ckeditor.js'); ?>"></script>
+<!-- setup selector -->
+<script>
+    CKEDITOR.replace("include");
+    CKEDITOR.replace("description");
 </script>
 <?= $this->endSection() ?>

@@ -14,6 +14,20 @@
         <?= view('shared/flash_message') ?>
 
         <form action="<?= base_url('place') ?>" method="POST" enctype="multipart/form-data">
+
+            <div class="row">
+                <div class="print">
+                    <label for="category">Kategori</label>
+                </div>
+                <div class="input">
+                    <select id="category" name="category" required>
+                        <option selected disabled>Plih</option>
+                        <option value="tempat wisata">Tempat Wisata</option>
+                        <option value="kuliner">Kuliner</option>
+                        <option value="hotel dan penginapan">Hotel dan Penginapan</option>
+                    </select>
+                </div>
+            </div>
             <div class="row">
                 <div class="print">
                     <label for="name">Nama Tempat Wisata</label>
@@ -66,10 +80,18 @@
 
             <div class="row">
                 <div class="print">
+                    <label for="description">Deskripsi</label>
+                </div>
+                <div class="input">
+                    <textarea type="text" id="description" name="description" placeholder="description" required></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <div class="print">
                     <label for="fee">Biaya Masuk</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="fee" name="fee" placeholder="Fee" required>
+                    <input type="number" id="fee" name="fee" placeholder="Fee" required>
                 </div>
             </div>
             <div class="row">
@@ -92,7 +114,9 @@
             <div class="row">
                 <input type="submit" value="Submit">
 
-                <input type="reset" value="Reset">
+                <a href="<?= base_url('/admin/vplace') ?>">
+                    <input type="reset" value="Kembali">
+                </a>
             </div>
 
         </form>

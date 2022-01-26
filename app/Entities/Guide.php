@@ -23,6 +23,8 @@ class Guide extends Entity
         'twitter'     => 'null',
         'user_id'     => 'null',
         'is_approve'  => 'null',
+        'package'     => 'null',
+        'description' => 'null'
     ];
 
     public function getIdentityPicture()

@@ -119,7 +119,9 @@ class Guide extends BaseController
             'facebook'    => $this->request->getVar('facebook'),
             'instagram'   => $this->request->getVar('instagram'),
             'twitter'     => $this->request->getVar('twitter'),
-            'user_id'     => session()->get('id')
+            'user_id'     => session()->get('id'),
+            'include'     => $this->request->getVar('include'),
+            'description' => $this->request->getVar('description')
         ];
 
         $this->validation->setRules([
@@ -204,6 +206,8 @@ class Guide extends BaseController
             'facebook'    => $this->request->getVar('facebook'),
             'instagram'   => $this->request->getVar('instagram'),
             'twitter'     => $this->request->getVar('twitter'),
+            'include'     => $this->request->getVar('include'),
+            'description' => $this->request->getVar('description')
         ];
 
 

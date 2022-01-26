@@ -77,7 +77,7 @@ class PlaceController extends BaseController
         $this->validation->setRules(['place_id'  => 'required']);
 
         if ($this->validation->withRequest($this->request)->run()) {
-            
+
             if ($this->reviewModel->save($data)) {
                 return redirect()->to('/')->withInput()->with('success', 'Komentar Anda Telah Direkam');
             }
@@ -86,7 +86,6 @@ class PlaceController extends BaseController
         }
 
         return redirect()->back()->withInput()->with('errors', $this->validation->getErrors());
-
     }
 
     public function admin(): string
@@ -178,7 +177,9 @@ class PlaceController extends BaseController
             'street'        => $this->request->getVar('street'),
             'maps'          => $this->request->getVar('maps'),
             'user_id'       => $userId,
-            'is_approve'    => $approve
+            'is_approve'    => $approve,
+            'category'      => $this->request->getVar('category'),
+            'description'   => $this->request->getVar('description')
         ];
 
         $this->validation->setRules([
@@ -233,6 +234,8 @@ class PlaceController extends BaseController
             'fee'           => $this->request->getVar('fee'),
             'street'        => $this->request->getVar('street'),
             'maps'          => $this->request->getVar('maps'),
+            'category'      => $this->request->getVar('category'),
+            'description'   => $this->request->getVar('description')
         ];
 
         if (file_exists($this->request->getFile('picture'))) {

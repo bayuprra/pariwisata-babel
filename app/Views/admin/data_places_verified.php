@@ -33,11 +33,13 @@
                 <tr>
                     <th>No.</th>
                     <th>Nama</th>
+                    <th>Kategori</th>
                     <th>Jalan</th>
                     <th>Desa/kelurahan</th>
                     <th>Kecamatan</th>
                     <th>Kabupaten/Kota</th>
                     <th>Fee</th>
+                    <th>Deskripsi</th>
                     <th>Maps</th>
                     <th>Gambar</th>
                     <th>Action</th>
@@ -51,11 +53,13 @@
                     <tr>
                         <td><?= $no++ ?></td>
                         <td><?= $item->name ?></td>
+                        <td><?= $item->category ?></td>
                         <td><?= $item->street ?></td>
                         <td><?= $item->village ?></td>
                         <td><?= $item->sub_district ?></td>
                         <td><?= $item->district ?></td>
                         <td><?= $item->fee ?></td>
+                        <td><?= $item->description ?></td>
                         <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
                         <td><a href="<?= $item->getPicture() ?>"><?= $item->getPicture() ?></a></td>
                         <td>

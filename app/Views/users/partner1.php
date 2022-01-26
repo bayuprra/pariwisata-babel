@@ -41,7 +41,9 @@
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
-                    <a href="<?= base_url('guide/detail') ?>" <span>tour guide</span></a>
+
+                    <button type="button" class="btn-success btn-lg">Sewa</button>
+                    <button type="button" class="btn-info btn-lg">Info</button>
                     <div class="share">
                         <a href="https://m.facebook.com/<?= $item->facebook ?>"><button class="fab fa-facebook-f"></button></a>
                         <a href="https://www.twitter.com/<?= $item->twitter ?>"><button class="fab fa-twitter"></button></a>

@@ -1311,6 +1311,10 @@ button {
     width: 20rem;
     height: 20rem;
   }
+  .partner .content2 .box-container .box button .btn-success .btn-lg {
+    background-color: var(--green);
+  }
+
   .partner .content2 .box-container .box .fa-envelope,
   .partner .content2 .box-container .box .fa-phone {
     position: absolute;

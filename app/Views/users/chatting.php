@@ -15,51 +15,33 @@
 
     <div class="content">
         <?= view('shared/flash_message') ?>
+
         <div class="name">
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
+        <?php foreach ($chatRoom as $room) : ?>
+
+        <?php $name = $room->guide()->name;?>
+
+        <?php if ($room->user_id !== session()->get('id')): ?>
+            <?php $name = $room->user()->name ?>
+        <?php endif; ?>
+
+        <a href="">
+            <div class="user selected-room" data-selected-roomid="<?= $room->id ?>" data-receiver="<?= $name ?>">
+                <img src="/images/z.jpg" alt="">
+                <p><?= $name ?></p>
+            </div>
+        </a>
+        <?php endforeach ?>
         </div>
         <div class="res">
             <div class="chatbox">
-                <?php $guide = session()->get('dataGuide') ?>
-                <?php if ($guide): ?>
-                    <h1>kirim pesan dengan <?= $chatRoom->user()->name ?></h1>
-                <?php else: ?>
-                    <h1>kirim pesan dengan <?= $chatRoom->guide()->name ?></h1>
-                <?php endif; ?>
+                <?php $receiver = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
+                <h1 id="receiver-name"><?= $receiver ?></h1>
 
                 <div class="message" id="chatbox">
                 </div>
                     <form action="">
-                        <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $chatRoom->id ?>">
+                        <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= session()->get('chat_room')->id ?>">
 
                         </textarea>
                         <a id="submitMsg" class="fa fa-paper-plane"></a>
@@ -144,6 +126,18 @@
 <?= $this->section('script') ?>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+    let rooms = document.querySelectorAll('.selected-room');
+    let subject = document.getElementById('subject');
+    let receiver = document.getElementById('receiver-name');
+
+    for (let i = 0; i < rooms.length; i++) {
+        rooms[i].onclick = function(e) {
+            e.preventDefault();
+            subject.setAttribute("data-roomid", rooms[i].getAttribute('data-selected-roomid'));
+            receiver.innerHTML = rooms[i].getAttribute("data-receiver");
+        }
+    }
+
     // jQuery Document
     $(document).ready(function () {
         $('body').on('click', '#submitMsg', function (event) {
@@ -171,7 +165,7 @@
 
         function loadLog() {
             var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
-            var roomId = $("#subject").data('roomid')
+            var roomId = document.getElementById('subject').getAttribute('data-roomid')
             var userId = $("#subject").data('userid')
 
             $.ajax({

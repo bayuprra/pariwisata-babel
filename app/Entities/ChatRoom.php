@@ -2,6 +2,8 @@
 
 namespace App\Entities;
 
+use App\Models\GuideModel;
+use App\Models\UserModel;
 use CodeIgniter\Entity\Entity;
 use App\Models\ChatModel;
 
@@ -13,10 +15,24 @@ class ChatRoom extends Entity
         'guide_id' => 'null'
     ];
 
-    public function chats()
+    public function user()
+    {
+        $user = new UserModel();
+
+        return $user->where(['id' => $this->attributes['user_id']])->first();
+    }
+
+    public function guide()
+    {
+        $guide = new GuideModel();
+
+        return $guide->where(['id' => $this->attributes['guide_id']])->first();
+    }
+
+    public function chats(): array
     {
         $chats = new ChatModel();
 
-        return $reviews->where(['chat_rooms_id' => $this->attributes['id']])->findAll();
+        return $chats->where(['chat_room_id' => $this->attributes['id']])->findAll();
     }
 }

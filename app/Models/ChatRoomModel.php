@@ -2,41 +2,23 @@
 
 namespace App\Models;
 
+use App\Entities\ChatRoom;
 use CodeIgniter\Model;
 
 class ChatRoomModel extends Model
 {
-    protected $DBGroup          = 'default';
-    protected $table            = 'chatrooms';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $insertID         = 0;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
-
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
+    protected $table = 'chat_rooms';
+    protected $returnType = ChatRoom::class;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $useTimestamps = true;
+    protected $allowedFields = [
+        'user_id',
+        'guide_id',
+    ];
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    protected $validationRules = [
+        'user_id'  => 'required|is_not_unique[users.id,id,{user_id}]',
+        'guide_id' => 'required|is_not_unique[guides.id,id,{guide_id}]'
+    ];
 }

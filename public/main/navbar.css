@@ -68,7 +68,7 @@ header {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--light-green);
+  background: var(--green);
   padding: 1.5rem 9%;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -94,7 +94,7 @@ header .navbar a {
 }
 
 header .navbar a:hover {
-  color: var(--green);
+  color: var(--light-green);
 }
 header .icons {
   display: flex;
@@ -203,7 +203,11 @@ header .icons .menu.togle.active .kontainer {
   .navbar {
     position: absolute;
     top: 50px;
+    left: 0;
     width: 100%;
     background-color: var(--light-green);
+  }
+  header .navbar a:hover {
+    color: var(--green);
   }
 }

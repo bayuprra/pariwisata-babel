@@ -29,7 +29,7 @@
             <div class="inputBox">
                 <input type="search" name="search" placeholder="cari" id="search" autocomplete="off">
             </div>
-            <input type="submit" value="Cari lokasi" class="btn">
+            <input type="submit" value="Cari Tempat" class="btn">
         </form>
         <br>
         <a href="<?= base_url('place/create') ?>" class="addplace">

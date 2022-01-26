@@ -122,7 +122,7 @@
                     <label for="include">Include</label>
                 </div>
                 <div class="input">
-                    <textarea name="include" class="include"><?= $guide->include ?></textarea>
+                    <textarea name="include" class="include"></textarea>
                 </div>
             </div>
             <div class="row">
@@ -130,7 +130,7 @@
                     <label for="description">Description</label>
                 </div>
                 <div class="input">
-                    <textarea name="description" class="description"><?= $guide->description ?></textarea>
+                    <textarea name="description" class="description"></textarea>
                 </div>
             </div>
             <div class="row">

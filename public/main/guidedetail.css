@@ -1,0 +1,13 @@
+.guidedetail {
+  margin-top: 7rem;
+}
+
+.guidedetail .content {
+  margin-right: -10rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
+  border: 0.1rem solid rgba(0, 0, 0, 0.2);
+  width: 100%;
+  height: auto;
+}

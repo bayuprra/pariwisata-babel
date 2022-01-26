@@ -34,7 +34,6 @@ $routes->setAutoRoute(true);
 // $routes->get('/', 'PlaceController::index');
 $routes->get('/', 'PlaceController::index');
 $routes->get('/login', 'Users::signUp');
-$routes->get('/message', 'Chatting::index');
 $routes->post('/register', 'Users::store');
 $routes->post('/authenticate', 'Users::authenticate');
 $routes->get('/logout', 'Users::logout', ['filter' => 'authGuard']);
@@ -84,6 +83,14 @@ $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
     $routes->post('(:num)', 'PlaceController::update/$1');
     $routes->delete('(:num)', 'PlaceController::destroy/$1');
     $routes->post('rate', 'PlaceController::rate');
+});
+
+// ChatRoom
+$routes->group('direct-message', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('/', 'ChatRoom::index');
+    $routes->post('room/create', 'ChatRoom::store');
+    $routes->post('send', 'ChatRoom::sendMessage');
+    $routes->get('chats/(:num)', 'ChatRoom::triggerMessage/$1');
 });
 
 /*

@@ -13,8 +13,8 @@ class ChatModel extends Model
     protected $updatedField  = 'updated_at';
     protected $useTimestamps = true;
     protected $allowedFields = [
+        'chat_room_id',
         'user_id',
-        'guide_id',
         'message'
     ];
 }

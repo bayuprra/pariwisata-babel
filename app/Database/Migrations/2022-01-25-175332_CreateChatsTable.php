@@ -20,6 +20,11 @@ class CreateChatsTable extends Migration
                 'constraint'     => 5,
                 'unsigned'       => true,
             ],
+            'user_id'          => [
+                'type'           => 'INT',
+                'constraint'     => 5,
+                'unsigned'       => true,
+            ],
             'message'          => [
                 'type'           => 'TEXT',
             ],
@@ -34,6 +39,7 @@ class CreateChatsTable extends Migration
         ]);
         $this->forge->addKey('id', true);
         $this->forge->addForeignKey('chat_room_id', 'chat_rooms', 'id', 'CASCADE', 'CASCADE');
+        $this->forge->addForeignKey('user_id', 'users', 'id', 'CASCADE', 'CASCADE');
         $this->forge->createTable('chats');
     }
 

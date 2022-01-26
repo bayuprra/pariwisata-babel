@@ -52,6 +52,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
         <?php foreach ($guide as $item) : ?>
             <div class="partner-modal" id="partner-modal-<?= $item->id ?>">
                 <div class="modal-content">

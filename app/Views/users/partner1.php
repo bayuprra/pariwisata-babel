@@ -41,7 +41,9 @@
                     <a href="#" data-id="<?= $item->id ?>" class="name">
                         <h3><?= $item->name ?></h3>
                     </a>
-                    <span>tour guide</span>
+
+                    <button type="button" class="btn-success btn-lg">Sewa</button>
+                    <button type="button" class="btn-info btn-lg">Info</button>
                     <div class="share">
                         <a href="https://m.facebook.com/<?= $item->facebook ?>"><button class="fab fa-facebook-f"></button></a>
                         <a href="https://www.twitter.com/<?= $item->twitter ?>"><button class="fab fa-twitter"></button></a>
@@ -50,6 +52,7 @@
                 </div>
             <?php endforeach; ?>
         </div>
+
         <?php foreach ($guide as $item) : ?>
             <div class="partner-modal" id="partner-modal-<?= $item->id ?>">
                 <div class="modal-content">

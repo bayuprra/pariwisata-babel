@@ -15,23 +15,126 @@
 
     <div class="content">
         <?= view('shared/flash_message') ?>
-        <!------ Include the above in your HEAD tag ---------->
-        <div class="chatbox">
-        <?php $guide = session()->get('dataGuide') ?>
-        <?php if ($guide): ?>
-            <h1>kirim pesan dengan <?= $chatRoom->user()->name ?></h1>
-        <?php else: ?>
-            <h1>kirim pesan dengan <?= $chatRoom->guide()->name ?></h1>
-        <?php endif; ?>
-
-        <div class="message" id="chatbox">
+        <div class="name">
+            <a href="">
+                <div class="user">
+                    <img src="/images/z.jpg" alt="">
+                    <p>Nama Saya</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="user">
+                    <img src="/images/z.jpg" alt="">
+                    <p>Nama Saya</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="user">
+                    <img src="/images/z.jpg" alt="">
+                    <p>Nama Saya</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="user">
+                    <img src="/images/z.jpg" alt="">
+                    <p>Nama Saya</p>
+                </div>
+            </a>
+            <a href="">
+                <div class="user">
+                    <img src="/images/z.jpg" alt="">
+                    <p>Nama Saya</p>
+                </div>
+            </a>
         </div>
-            <form action="">
-                <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $chatRoom->id ?>">
+        <div class="res">
+            <div class="chatbox">
+                <?php $guide = session()->get('dataGuide') ?>
+                <?php if ($guide): ?>
+                    <h1>kirim pesan dengan <?= $chatRoom->user()->name ?></h1>
+                <?php else: ?>
+                    <h1>kirim pesan dengan <?= $chatRoom->guide()->name ?></h1>
+                <?php endif; ?>
 
-                </textarea>
-                <a id="submitMsg" class="fa fa-paper-plane"></a>
-            </form>
+                <div class="message" id="chatbox">
+                </div>
+                    <form action="">
+                        <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $chatRoom->id ?>">
+
+                        </textarea>
+                        <a id="submitMsg" class="fa fa-paper-plane"></a>
+                    </form>
+                </div>
+            </div>
+
+            <div class="detail ">
+                <h1>Detail Pemesanan</h1>
+                <div class="tablesdet">
+                    <table class="table table-dark">
+                        <tbody>
+                            <tr>
+                                <th scope="col" class="col-1">2</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="............">
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">3</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">First</th>
+                                <th scope="col">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">Status</th>
+                                <th scope="col">
+                                    <input class="form-control" type="text" placeholder="Pending" readonly>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="col" class="col-1">4</th>
+                                <th scope="col" class="col-3">Action</th>
+                                <th scope="col" class="action">
+                                    <button type="button" class="btn-success col-2 btn-lg">Deal</button>
+                                    <button type="button" class="btn-info col-2 btn-lg">Nego</button>
+                                    <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
+                                    <button type="button" class="btn-secondary col-2 btn-lg">Pending</button>
+                                </th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </section>

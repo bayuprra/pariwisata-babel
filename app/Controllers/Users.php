@@ -65,7 +65,7 @@ class Users extends BaseController
     }
 
 
-        public function editUser(): string
+    public function editUser(): string
     {
         return view('users/edit_user');
     }
@@ -113,6 +113,8 @@ class Users extends BaseController
 
         if ($data) {
             $isAdmin = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 1)->get()->getResult()) !== 0;
+            $isGuide = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 2)->get()->getResult()) !== 0;
+            $isVisitor = count($this->roleUser->table('role_users')->where('user_id', $data->id)->where('role_id', 3)->get()->getResult()) !== 0;
             $dataGuide = $this->guideModel->where('user_id', $data->id)->first();
             $authenticatePassword = password_verify($password, $data->password);
 
@@ -123,6 +125,8 @@ class Users extends BaseController
                     'email'      => $data->email_address,
                     'isLoggedIn' => true,
                     'isAdmin'    => $isAdmin,
+                    'isVisitor'  => $isVisitor,
+                    'isGuide'    => $isGuide,
                     'dataGuide'  => $dataGuide
                 ];
 

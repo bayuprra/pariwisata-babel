@@ -51,12 +51,13 @@
   margin-top: 2rem;
   border-radius: 15px;
   font-weight: bolder;
+  background-color: var(--green);
+  color: white;
 }
 .home .doc {
   background: #fff;
   border-radius: 0.5rem;
   width: 90%;
-  max-height: 30rem;
   padding: 0 0 2rem 0;
 }
 
@@ -124,7 +125,7 @@
 .home .result-recom .recom-container .recomendation,
 .home .result-search .recom-container .recomendation {
   background: #fff;
-  width: 32%;
+  width: 32.8%;
   height: 45vh;
   border-radius: 1rem;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
@@ -1154,10 +1155,25 @@ button {
 
   .home .result-recom .recom-container .recomendation,
   .home .result-search .recom-container .recomendation {
-    height: 40vh;
+    height: 35vh;
+    width: 32.7%;
+  }
+  .home .result-recom .recom-container .recomendation .desc,
+  .home .result-search .recom-container .recomendation .desc {
+    max-height: 80px;
+    min-height: 80px;
+  }
+  .home .result-recom .recom-container .recomendation .image img,
+  .home .result-search .recom-container .recomendation .image img {
+    max-height: 110px;
+    min-height: 110px;
   }
   .home .result-recom .recom-container .recomendation a {
-    font-size: 2rem;
+    font-size: 1.7rem;
+  }
+  .home .doc .docu .des p {
+    font-size: 1.9vw;
+    text-indent: 30px;
   }
   .home .result-recom .recom-container .recomendation p {
     font-size: 1.4rem;
@@ -1295,6 +1311,10 @@ button {
     width: 20rem;
     height: 20rem;
   }
+  .partner .content2 .box-container .box button .btn-success .btn-lg {
+    background-color: var(--green);
+  }
+
   .partner .content2 .box-container .box .fa-envelope,
   .partner .content2 .box-container .box .fa-phone {
     position: absolute;

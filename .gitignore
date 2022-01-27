@@ -126,6 +126,4 @@ nb-configuration.xml
 /.phpunit.*.cache
 
 .env
-composer.lock
-
 public/image/*

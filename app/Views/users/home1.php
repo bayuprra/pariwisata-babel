@@ -104,7 +104,7 @@
                 <span class="close" id="place-modal-close-<?= $item->id ?>">&times;</span>
                 <img src="<?= $item->getPicture() ?>" alt="tempat wisata">
                 <div class="description">
-                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum perferendis commodi velit et pariatur molestias accusantium incidunt, quos ab exercitationem culpa doloremque, nobis fuga? Neque enim dolorum aut libero qui?</p>
+                    <!-- <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatum perferendis commodi velit et pariatur molestias accusantium incidunt, quos ab exercitationem culpa doloremque, nobis fuga? Neque enim dolorum aut libero qui?</p> -->
                 </div>
                 <div class="detail">
                     <div class="nama">

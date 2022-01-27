@@ -61,65 +61,79 @@
                 <div class="tablesdet">
                     <table class="table table-dark">
                         <tbody>
-                            <tr>
-                                <th scope="col" class="col-1">2</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="............">
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">3</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">First</th>
-                                <th scope="col">
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">Status</th>
-                                <th scope="col">
-                                    <input class="form-control" type="text" placeholder="Pending" readonly>
-                                </th>
-                            </tr>
-                            <tr>
-                                <th scope="col" class="col-1">4</th>
-                                <th scope="col" class="col-3">Action</th>
-                                <th scope="col" class="action">
-                                    <button type="button" class="btn-success col-2 btn-lg">Deal</button>
-                                    <button type="button" class="btn-info col-2 btn-lg">Nego</button>
-                                    <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
-                                    <button type="button" class="btn-secondary col-2 btn-lg">Pending</button>
-                                </th>
-                            </tr>
+                            <form action="<?= base_url('direct-message/nego') ?>" method="POST" enctype="multipart/form-data">
+                                <tr>
+                                    <th scope="col" class="col-3">Status</th>
+                                    <th scope="col">
+                                        <input class="form-control-lg" type="text" placeholder="Pending" readonly>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Nomor Telepon</th>
+                                    <th scope="col">
+                                        <input type="number" class="form-control-lg" id="phone" name="phone" value="<?= $transaction->phone ?>">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Tanggal Sewa</th>
+                                    <th scope="col">
+                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="date_start">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Tanggal Selesai</th>
+                                    <th scope="col">
+                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="date_finish">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Tempat Tujuan</th>
+                                    <th scope="col">
+                                        <textarea class="form-control" id="destination" name="destination" rows="3">Tempat Tujuan</textarea>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Kendaraan</th>
+                                    <th scope="col">
+                                        <select class="form-control-lg" id="transport" name="transport">
+                                            <option value="Dari Guide (mobil)">Dari Guide (mobil)</option>
+                                            <option value="Dari Guide (motor)">Dari Guide (motor)</option>
+                                            <option value="Dari pemesan (mobil)">Dari pemesan (mobil)</option>
+                                            <option value="Dari pemesan (motor)">Dari pemesan (motor)</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Tipe Pembayaran</th>
+                                    <th scope="col">
+                                        <select class="form-control-lg">
+                                            <option>Transfer</option>
+                                            <option>Di Tempat</option>
+                                        </select>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Lokasi Penjemputan</th>
+                                    <th scope="col">
+                                        <input type="text" class="form-control-lg" id="exampleFormControlInput1" placeholder="............">
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Catatan</th>
+                                    <th scope="col">
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th scope="col" class="col-3">Action</th>
+                                    <th scope="col" class="action">
+                                        <button type="button" class="btn-success col-2 btn-lg">Deal</button>
+                                        <button type="button" class="btn-info col-2 btn-lg">Nego</button>
+                                        <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
+                                        <button type="submit" class="btn-secondary col-2 btn-lg">Simpan</button>
+                                    </th>
+                                </tr>
+                            </form>
                         </tbody>
                     </table>
                 </div>

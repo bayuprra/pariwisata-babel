@@ -41,7 +41,7 @@ class Transaction extends BaseController
     }
 
 
-    public function store(): RedirectResponse
+    public function nego(): RedirectResponse
     {
         $data = [
             'chat_room_id'     => $this->request->getVar('chat_room_id'),

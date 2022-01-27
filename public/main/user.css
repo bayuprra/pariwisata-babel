@@ -337,6 +337,7 @@
   height: 70vh;
   position: absolute;
   z-index: 99999999;
+  top: 100px;
 }
 
 .home .review .container {
@@ -1391,5 +1392,145 @@ button {
   }
   .event .content-box .box .konten p {
     font-size: 10px;
+  }
+}
+
+/* media queries  */
+@media (max-width: 414px) {
+  .home .content h3 {
+    font-size: 1.5rem;
+  }
+  .home .content .inputBox {
+    height: 10px;
+    margin-bottom: 2rem;
+  }
+  .home .content .inputBox input,
+  .home .content .inputBox select {
+    font-size: 1.3rem;
+  }
+  .home .content .btn {
+    height: 33px;
+    font-size: 10px;
+  }
+  .home .content .addplace h5 {
+    font-size: 1rem;
+  }
+  .home .result-recom .det {
+    font-size: 7px;
+  }
+  .home .result-recom .recom-container .recomendation,
+  .home .result-search .recom-container .recomendation {
+    height: 18vh;
+    width: 32%;
+  }
+  .home .result-recom .recom-container .recomendation .image img,
+  .home .result-search .recom-container .recomendation .image img {
+    max-height: 80px;
+    min-height: 80px;
+  }
+  .home .result-recom .recom-container .recomendation .desc,
+  .home .result-search .recom-container .recomendation .desc {
+    max-height: 50px;
+    min-height: 50px;
+  }
+  .home .result-recom .recom-container .recomendation a {
+    font-size: 1.3rem;
+  }
+  .home .result-recom .recom-container .recomendation p {
+    font-size: 1rem;
+  }
+
+  .home .result-recom .recom-container .recomendation .like,
+  .home .result-search .recom-container .recomendation .like {
+    font-size: 10px;
+    margin-top: 15px;
+  }
+  .home .place-modal {
+    padding-top: 80px;
+  }
+  .home .place-modal .modal-content .close {
+    width: 30px;
+    height: 30px;
+  }
+  .home .place-modal .modal-content .close {
+    top: -25px;
+    right: -22px;
+    font-size: 3.5rem;
+  }
+  .home .place-modal .modal-content img {
+    width: 50%;
+    height: 50%;
+    left: 15px;
+  }
+  .home .place-modal .modal-content .detail {
+    width: 40%;
+    height: 50%;
+  }
+  .home .place-modal .modal-content .detail .nama {
+    width: 100%;
+  }
+  .home .place-modal .modal-content .detail .nama h3 {
+    font-size: 15px;
+  }
+  .home .place-modal .modal-content .detail .det {
+    height: 100%;
+  }
+  .home .place-modal .modal-content .detail .det tr,
+  .home .place-modal .modal-content .detail .det td {
+    font-size: 1.3vh;
+  }
+  .home .place-modal .modal-content .detail .det tr td:nth-child(1),
+  .home .place-modal .modal-content .detail .det tr td:nth-child(3) {
+    font-size: 1vh;
+  }
+  .home .place-modal .modal-content .more {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  .home .place-modal .modal-content .more .like,
+  .home .place-modal .modal-content .more .coment,
+  .home .place-modal .modal-content .more .map {
+    margin: 20px;
+    height: 80%;
+    width: 15%;
+  }
+  .home .place-modal .modal-content .more a {
+    font-size: 2vw;
+  }
+  .home .review {
+    width: 90%;
+    height: 50vh;
+  }
+  .home .review .container {
+    overflow: scroll;
+    height: 87%;
+  }
+  .reviews-members .media .mr-3 {
+    width: 36px;
+    height: 36px;
+  }
+  .home .review .media .mb-1 .text-black {
+    font-size: 15px;
+  }
+  .home .reviews-members-body p {
+    font-size: 10px;
+  }
+  .home .total-like {
+    height: 22px;
+    line-height: 23px;
+  }
+  .home .rating {
+    float: left;
+    font-size: 13px;
+  }
+  .home .review .container .rate form .textarea {
+    height: 150px;
+  }
+  .home .review .container .rate form .textarea textarea {
+    font-size: 15px;
+  }
+  .home .review .container .rate form button {
+    height: 40px;
+    font-size: 15px;
   }
 }

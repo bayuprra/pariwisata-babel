@@ -35,13 +35,20 @@
         </div>
         <div class="res">
             <div class="chatbox">
-                <?php $receiver = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
-                <h1 id="receiver-name"><?= $receiver ?></h1>
+                <?php $receiver = ''; ?>
+                <?php if (session()->get('chat_room')) : ?>
+                    <?php $receiver = session()->get('chat_room')->id ?>
+                    <?php $receiver_name = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
+                    <h1 id="receiver-name"><?= $receiver_name ?></h1>
+                <?php else : ?>
+                    <h1 id="receiver-name"></h1>
+                <?php endif; ?>
+
 
                 <div class="message" id="chatbox">
                 </div>
                 <form action="">
-                    <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= session()->get('chat_room')->id ?>">
+                    <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
 
                         </textarea>
                     <a id="submitMsg" class="fa fa-paper-plane"></a>
@@ -168,6 +175,8 @@
             var roomId = document.getElementById('subject').getAttribute('data-roomid')
             var userId = $("#subject").data('userid')
 
+
+            console.log(roomId);
             $.ajax({
                 url: `/direct-message/chats/${roomId}`,
                 cache: false,
@@ -204,31 +213,5 @@
         setInterval(loadLog, 1000);
     });
 </script>
-<script>
-    let btn = document.querySelectorAll(".modaltrigger");
-    // When the user clicks the button, open the modal
-    for (let i = 0; i < btn.length; i++) {
-        let dataId = btn[i].getAttribute("data-id");
-        let span = document.getElementById(`place-modal-close-${dataId}`);
-        let modal = document.getElementById(`place-modal-${dataId}`);
 
-        // when the user clicks the button, open the modal
-        btn[i].onclick = function(e) {
-            e.preventDefault();
-            modal.style.display = "block";
-        }
-
-        // close the modal
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        // close the modal when click out of modal
-        window.addEventListener("click", function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        });
-    }
-</script>
 <?= $this->endSection() ?>

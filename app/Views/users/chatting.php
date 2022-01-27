@@ -16,31 +16,7 @@
     <div class="content">
         <?= view('shared/flash_message') ?>
         <div class="name">
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
-                <div class="user">
-                    <img src="/images/z.jpg" alt="">
-                    <p>Nama Saya</p>
-                </div>
-            </a>
-            <a href="">
+            <a href="" data-id="">
                 <div class="user">
                     <img src="/images/z.jpg" alt="">
                     <p>Nama Saya</p>
@@ -50,22 +26,22 @@
         <div class="res">
             <div class="chatbox">
                 <?php $guide = session()->get('dataGuide') ?>
-                <?php if ($guide): ?>
+                <?php if ($guide) : ?>
                     <h1>kirim pesan dengan <?= $chatRoom->user()->name ?></h1>
-                <?php else: ?>
+                <?php else : ?>
                     <h1>kirim pesan dengan <?= $chatRoom->guide()->name ?></h1>
                 <?php endif; ?>
 
                 <div class="message" id="chatbox">
                 </div>
-                    <form action="">
-                        <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $chatRoom->id ?>">
+                <form action="">
+                    <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $chatRoom->id ?>">
 
                         </textarea>
-                        <a id="submitMsg" class="fa fa-paper-plane"></a>
-                    </form>
-                </div>
+                    <a id="submitMsg" class="fa fa-paper-plane"></a>
+                </form>
             </div>
+
 
             <div class="detail ">
                 <h1>Detail Pemesanan</h1>
@@ -145,8 +121,8 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
     // jQuery Document
-    $(document).ready(function () {
-        $('body').on('click', '#submitMsg', function (event) {
+    $(document).ready(function() {
+        $('body').on('click', '#submitMsg', function(event) {
             event.preventDefault();
 
             var clientMsg = $("#subject").val()
@@ -177,7 +153,7 @@
             $.ajax({
                 url: `/direct-message/chats/${roomId}`,
                 cache: false,
-                success: function (html) {
+                success: function(html) {
                     let message = ''
 
                     for (var i = 0; i < html.length; i++) {
@@ -198,14 +174,43 @@
 
                     //Auto-scroll
                     var newScrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request
-                    if(newScrollHeight > oldScrollHeight){
-                        $("#chatbox").animate({ scrollTop: newScrollHeight }, 'normal'); //Autoscroll to bottom of div
+                    if (newScrollHeight > oldScrollHeight) {
+                        $("#chatbox").animate({
+                            scrollTop: newScrollHeight
+                        }, 'normal'); //Autoscroll to bottom of div
                     }
                 }
             });
         }
 
-        setInterval (loadLog, 1000);
+        setInterval(loadLog, 1000);
     });
+</script>
+<script>
+    let btn = document.querySelectorAll(".modaltrigger");
+    // When the user clicks the button, open the modal
+    for (let i = 0; i < btn.length; i++) {
+        let dataId = btn[i].getAttribute("data-id");
+        let span = document.getElementById(`place-modal-close-${dataId}`);
+        let modal = document.getElementById(`place-modal-${dataId}`);
+
+        // when the user clicks the button, open the modal
+        btn[i].onclick = function(e) {
+            e.preventDefault();
+            modal.style.display = "block";
+        }
+
+        // close the modal
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        // close the modal when click out of modal
+        window.addEventListener("click", function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
 </script>
 <?= $this->endSection() ?>

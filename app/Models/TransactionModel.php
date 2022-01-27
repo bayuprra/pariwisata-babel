@@ -38,4 +38,11 @@ class TransactionModel extends Model
         'note'          => 'required',
         'meetpoint'     => 'required'
     ];
+
+    public function transaction()
+    {
+        $transaction = new TransactionModel();
+
+        return $transaction->table('transactions')->join('chat_rooms', 'transactions.chat_room_id=chat_rooms.id')->findAll();
+    }
 }

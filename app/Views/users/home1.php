@@ -299,7 +299,6 @@
     function reviewModal() {
         // modal
         let btn = document.querySelectorAll(".modaltrigger");
-        console.log(btn)
         // When the user clicks the button, open the modal
         for (let i = 0; i < btn.length; i++) {
             let dataId = btn[i].getAttribute("data-id");

@@ -6,7 +6,7 @@ class tesadmin extends BaseController
 {
     public function index()
     {
-        return view('users/chatting');
+        return view('users/chatting2');
         // return view('layout/master_layout', $data);
     }
 

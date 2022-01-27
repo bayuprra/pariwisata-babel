@@ -3,6 +3,8 @@
 namespace App\Entities;
 
 use CodeIgniter\Entity\Entity;
+use App\Models\ChatModel;
+use App\Models\TransactionModel;
 
 class Transaction extends Entity
 {

@@ -21,9 +21,9 @@ class User extends Entity
         $roleUser   = Database::connect();
 
         return $roleUser->table('role_users')
-                        ->join('roles', 'role_users.role_id=roles.id')
-                        ->where("user_id", $this->attributes['id'])
-                        ->get()
-                        ->getResult();
+            ->join('roles', 'role_users.role_id=roles.id')
+            ->where("user_id", $this->attributes['id'])
+            ->get()
+            ->getResult();
     }
 }

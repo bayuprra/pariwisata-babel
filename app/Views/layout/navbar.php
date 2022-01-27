@@ -21,7 +21,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <?php if (session()->get('isLoggedIn')) : ?>
                 <li><a class="dropdown-item" href="<?= base_url('/edit-profile') ?>">Edit Profil</a></li>
-                <li><a class="dropdown-item" href="<?= base_url('/message') ?>">Transaksi</a>
+                <li><a class="dropdown-item" href="<?= base_url('/direct-message') ?>">Transaksi</a>
                 <li><a class="dropdown-item" href="<?= base_url('/logout') ?>">Keluar</a></li>
             <?php else : ?>
                 <li><a href="<?= base_url('/login') ?>">Masuk / Daftar</a></li>

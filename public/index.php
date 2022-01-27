@@ -27,6 +27,8 @@ $paths = new Config\Paths();
 $bootstrap = rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstrap.php';
 $app       = require realpath($bootstrap) ?: $bootstrap;
 
+
+ini_set('display_errors', 1);
 /*
  *---------------------------------------------------------------
  * LAUNCH THE APPLICATION

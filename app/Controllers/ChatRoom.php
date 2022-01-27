@@ -34,26 +34,35 @@ class ChatRoom extends BaseController
 
     public function index(): string
     {
+        $rooms = $this->chatRoomModel->where('user_id', session()->get('id'))->findAll();
+
+        if (session()->get('dataGuide')) {
+            $rooms = $this->chatRoomModel->where('guide_id', session()->get('dataGuide')->id)->findAll();
+        }
+
         $data = [
             'title'    => 'Direct Message | ',
-            'chatRoom' => $this->chatRoomModel->first()
+            'chatRoom' => $rooms
         ];
 
         return view('users/chatting', $data);
     }
 
 
-    public function store(): RedirectResponse
+    public function store(int $guideId): RedirectResponse
     {
         $data = [
-            'user_id'  => $this->request->getVar('user_id'),
-            'guide_id' => $this->request->getVar('guide_id')
+            'user_id'  => session()->get('id'),
+            'guide_id' => $guideId
         ];
 
         $chatRoom = $this->chatRoomModel->where('user_id', $data['user_id'])->where('guide_id', $data['guide_id'])->first();
 
         if ($chatRoom) {
-            return redirect()->to('/direct-message')->with('chat_room_id', $chatRoom->id);
+
+            session()->set('chat_room', $chatRoom);
+
+            return redirect()->to('/direct-message');
         }
 
         if ($this->chatRoomModel->save($data)) {

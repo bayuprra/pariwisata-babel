@@ -42,7 +42,9 @@
                         <h3><?= $item->name ?></h3>
                     </a>
 
-                    <button type="button" class="btn-success btn-lg">Sewa</button>
+                <?php if (!session()->get('dataGuide')): ?>
+                    <a href="<?= base_url('direct-message/room/create/'.$item->id) ?>"><button type="button" class="btn-success btn-lg">Sewa</button></a>
+                <?php endif; ?>
                     <button type="button" class="btn-info btn-lg">Info</button>
                     <div class="share">
                         <a href="https://m.facebook.com/<?= $item->facebook ?>"><button class="fab fa-facebook-f"></button></a>

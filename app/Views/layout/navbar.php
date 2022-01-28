@@ -3,7 +3,7 @@
     <a href="#" class="logo"><span>SI pariwisata</span>Bangka Belitung</a>
 
     <nav class="navbar">
-        <a href="<?= base_url('placecontroller/index') ?>">home</a>
+        <a href="<?= base_url('/') ?>">home</a>
         <a href="<?= base_url('news/index') ?>">News</a>
         <a href="<?= base_url('guide/index') ?>">Guide</a>
         <a href="<?= base_url('event/index') ?>">event</a>

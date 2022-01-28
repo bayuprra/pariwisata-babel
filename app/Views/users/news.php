@@ -58,8 +58,8 @@
                 </div>
                 <hr>
             <?php endforeach ?>
-        <?php endif ?>
         <?= $pager->links('news', 'pagination'); ?>
+        <?php endif ?>
     </div>
 </section>
 <?= $this->endSection() ?>

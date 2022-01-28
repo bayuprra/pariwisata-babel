@@ -51,7 +51,7 @@ class Users extends BaseController
     {
         $data = [
             'title'  => 'Home | ',
-            'places' => $this->placeModel->where('is_approve', 1)->findAll()
+            'places' => $this->placeModel->where('is_approve', true)->findAll()
         ];
 
         return view('users/home1', $data);

@@ -4,8 +4,10 @@ namespace App\Controllers;
 
 use App\Models\TransactionModel;
 use App\Models\ChatRoomModel;
+use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\Response;
 use CodeIgniter\Validation\Validation;
 use Config\Services;
 use Config\Database;
@@ -13,6 +15,8 @@ use ReflectionException;
 
 class Transaction extends BaseController
 {
+    use ResponseTrait;
+
     /** @var TransactionModel */
     private $transactionModel;
 
@@ -35,7 +39,6 @@ class Transaction extends BaseController
             'title'         => 'Guide | ',
             'transaction'   =>  $this->transactionModel->transaction()
         ];
-        dump($data);
 
         return view('users/chatting', $data);
     }
@@ -69,5 +72,13 @@ class Transaction extends BaseController
         }
 
         return redirect()->back()->withInput()->with('errors', $this->transactionModel->errors());
+    }
+
+
+    public function transaction(int $id): Response
+    {
+        $transaction = $this->transactionModel->where('id', $id)->first();
+
+        return $this->respond($transaction, 200);
     }
 }

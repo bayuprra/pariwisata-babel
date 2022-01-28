@@ -86,13 +86,19 @@ $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
     $routes->post('rate', 'PlaceController::rate');
 });
 
+
 // ChatRoom
 $routes->group('direct-message', ['filter' => 'authGuard'], function ($routes) {
-    $routes->post('transaction', 'ChatRoom::transaction');
     $routes->post('send', 'ChatRoom::sendMessage');
     $routes->get('/', 'ChatRoom::index');
     $routes->get('room/create/(:num)', 'ChatRoom::store/$1');
     $routes->get('chats/(:num)', 'ChatRoom::triggerMessage/$1');
+});
+
+//Transaction
+$routes->group('transaction', ['filter' => 'authGuard'], function ($routes) {
+    $routes->get('/(:num)', 'Transaction::transaction/$1');
+    $routes->post('negotiate', 'Transaction::nego');
 });
 
 /*

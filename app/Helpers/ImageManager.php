@@ -7,6 +7,7 @@ namespace App\Helpers;
 use App\Models\NewsImageModel;
 use App\Models\EventModel;
 use App\Models\GuideModel;
+use Aws\S3\S3Client;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
 use ReflectionException;
@@ -30,6 +31,15 @@ class ImageManager
         $this->newsImage = new NewsImageModel();
         $this->event = new EventModel();
         $this->guide = new GuideModel();
+
+//        $s3Client = new S3Client([
+//            'version' => 'latest',
+//            'region'  => 'YOUR_AWS_REGION',
+//            'credentials' => [
+//                'key'    => 'ACCESS_KEY_ID',
+//                'secret' => 'SECRET_ACCESS_KEY'
+//            ]
+//        ]);
     }
 
     /**

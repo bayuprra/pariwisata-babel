@@ -63,9 +63,8 @@
                         <tbody>
                             <form action="<?= base_url('direct-message/nego') ?>" method="POST" enctype="multipart/form-data">
 
-                                <?php $roomId = 1; ?>
-                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="<?= $roomId ?>">
-                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="<?= $roomId ?>">
+                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="">
+                                <input type="hidden" id="id" name="id" value="">
 
                                 <tr>
                                     <th scope="col" class="col-3">Status</th>
@@ -76,32 +75,32 @@
                                 <tr>
                                     <th scope="col" class="col-3">Nomor Telepon</th>
                                     <th scope="col">
-                                        <input type="number" class="form-control-lg" id="phone" name="phone" value="<?= $transaction->phone ?>">
+                                        <input type="number" class="form-control-lg" id="phone" name="phone" value="">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Sewa</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="<?= $transaction->date_start ?>">
+                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Selesai</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="<?= $transaction->date_finish ?>">
+                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tempat Tujuan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="destination" name="destination" rows="3"><?= $transaction->destination ?></textarea>
+                                        <textarea class="form-control" id="destination" name="destination" rows="3"></textarea>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Kendaraan</th>
                                     <th scope="col">
                                         <select class="form-control-lg" id="transport" name="transport">
-                                            <option value="<?= $transaction->transport ?>" disabled><?= $transaction->transport ?></option>
+                                            <option value=""></option>
                                             <option value="Dari Guide (mobil)">Dari Guide (mobil)</option>
                                             <option value="Dari Guide (motor)">Dari Guide (motor)</option>
                                             <option value="Dari pemesan (mobil)">Dari pemesan (mobil)</option>
@@ -113,7 +112,7 @@
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
                                         <select class="form-control-lg">
-                                            <option disabled><?= $transaction->payment ?></option>
+                                            <option></option>
                                             <option value="Transfer">Transfer</option>
                                             <option value="DI Tempat">Di Tempat</option>
                                         </select>
@@ -122,13 +121,13 @@
                                 <tr>
                                     <th scope="col" class="col-3">Lokasi Penjemputan</th>
                                     <th scope="col">
-                                        <input type="text" class="form-control-lg" id="meetpoint" name="meetpoint" value="<?= $transaction->meetpoint ?>">
+                                        <input type="text" class="form-control-lg" id="meetpoint" name="meetpoint" value="">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Catatan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="note" name="note" rows="3"><?= $transaction->note ?></textarea>
+                                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
                                     </th>
                                 </tr>
                                 <tr>
@@ -164,6 +163,15 @@
             e.preventDefault();
             subject.setAttribute("data-roomid", rooms[i].getAttribute('data-selected-roomid'));
             receiver.innerHTML = rooms[i].getAttribute("data-receiver");
+            console.log(rooms[i].getAttribute('data-selected-roomid'))
+
+            $.ajax({
+                url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
+                cache: false,
+                success: function (data) {
+                    console.log(data);
+                }
+            })
         }
     }
 
@@ -197,8 +205,6 @@
             var roomId = document.getElementById('subject').getAttribute('data-roomid')
             var userId = $("#subject").data('userid')
 
-
-            console.log(roomId);
             $.ajax({
                 url: `/direct-message/chats/${roomId}`,
                 cache: false,

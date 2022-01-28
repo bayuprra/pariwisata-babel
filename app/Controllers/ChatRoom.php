@@ -8,6 +8,7 @@ use App\Models\TransactionModel;
 use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\API\ResponseTrait;
 use CodeIgniter\HTTP\RedirectResponse;
+use CodeIgniter\HTTP\Response;
 use CodeIgniter\Validation\Validation;
 use Config\Services;
 
@@ -48,7 +49,6 @@ class ChatRoom extends BaseController
         $data = [
             'title'    => 'Direct Message | ',
             'chatRoom' => $rooms,
-            'detail'   => $this->nego(),
             'transaction' => $this->transactionModel->where('chat_room_id', 1)->first()
         ];
 
@@ -108,44 +108,10 @@ class ChatRoom extends BaseController
         return $this->fail($this->validation->getErrors(), 500);
     }
 
-    public function triggerMessage(int $roomId)
+    public function triggerMessage(int $roomId): Response
     {
         $chats = $this->chatRoomModel->where('id', $roomId)->first();
 
         return $this->respond($chats->chats(), 200);
-    }
-
-    public function nego()
-    {
-        $data = [
-            'chat_room_id'     => $this->request->getVar('chat_room_id'),
-            'phone'            => $this->request->getVar('phone'),
-            'price'            => $this->request->getVar('price'),
-            'date_start'       => $this->request->getVar('date_start'),
-            'date_finish'      => $this->request->getVar('date_finish'),
-            'destination'      => $this->request->getVar('destination'),
-            'transport'        => $this->request->getVar('transport'),
-            'payment'          => $this->request->getVar('payment'),
-            'status'           => $this->request->getVar('status'),
-            'note'             => $this->request->getVar('note'),
-            'meetpoint'        => $this->request->getVar('meetpoint'),
-        ];
-
-        if ($this->transactionModel->save($data)) {
-            $transactionId = $this->transactionModel->getInsertID();
-
-            if (!$transactionId) {
-                throw ModelException::forNoPrimaryKey(Transaction::class);
-            }
-
-            return redirect()->back()->withInput()->with('success', 'Data Transaksi Telah Disimpan');
-        }
-    }
-
-    public function transaction(int $id)
-    {
-        $transaction = $this->transactionModel->where('id', $id)->first();
-
-        return $this->respond($transaction, 200);
     }
 }

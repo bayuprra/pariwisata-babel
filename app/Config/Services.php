@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use Aws\Sdk;
 use CodeIgniter\Config\BaseService;
 
 /**
@@ -29,4 +30,22 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+
+    public static function aws($getShared = true)
+    {
+        if ($getShared) {
+            return static::getSharedInstance('aws');
+        }
+
+        $config = config('AWS');
+
+        $credentials = new \Aws\Credentials\Credentials($config->accessKey, $config->secretKey);
+
+        $sdk = new Sdk([
+            'credentials' => $credentials,
+            'region'      => $config->region,
+        ]);
+
+        return $sdk;
+    }
 }

@@ -37,8 +37,8 @@ class Guide extends BaseController
     {
         $data = [
             'title' => 'Guide | ',
-            'guide' => $this->guideModel->where('is_approve', 1)->findAll(),
-            'guide2' => $this->guideModel->where('is_approve', 1)->findAll()
+            'guide' => $this->guideModel->where('is_approve', true)->findAll(),
+            'guide2' => $this->guideModel->where('is_approve', true)->findAll()
 
         ];
 
@@ -58,9 +58,9 @@ class Guide extends BaseController
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $guide = $this->guideModel->search($keyword)->where('is_approve', 0);
+            $guide = $this->guideModel->search($keyword)->where('is_approve', false);
         } else {
-            $guide = $this->guideModel->where('is_approve', 0);
+            $guide = $this->guideModel->where('is_approve', false);
         }
 
         $data = [
@@ -80,9 +80,9 @@ class Guide extends BaseController
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $guide = $this->guideModel->search($keyword)->where('is_approve', 1);
+            $guide = $this->guideModel->search($keyword)->where('is_approve', true);
         } else {
-            $guide = $this->guideModel->where('is_approve', 1);
+            $guide = $this->guideModel->where('is_approve', true);
         }
         $data = [
             'title' => 'Guide | ',
@@ -159,7 +159,7 @@ class Guide extends BaseController
         // $role = $this->roleUser->table('role_users')->select('role_id')->first();
 
         $data = [
-            'is_approve' => 1,
+            'is_approve' => true,
         ];
 
         $userId = $this->roleUser->table('role_users')->where('user_id', $guide->user_id)->get();

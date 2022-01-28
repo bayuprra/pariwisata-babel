@@ -94,9 +94,9 @@ class PlaceController extends BaseController
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $place = $this->placeModel->search($keyword)->where('is_approve', 0);
+            $place = $this->placeModel->search($keyword)->where('is_approve', false);
         } else {
-            $place = $this->placeModel->where('is_approve', 0);
+            $place = $this->placeModel->where('is_approve', false);
         }
 
         $data = [
@@ -116,9 +116,9 @@ class PlaceController extends BaseController
 
         $keyword = $this->request->getVar('keyword');
         if ($keyword) {
-            $place = $this->placeModel->search($keyword)->where('is_approve', 1);
+            $place = $this->placeModel->search($keyword)->where('is_approve', true);
         } else {
-            $place = $this->placeModel->where('is_approve', 1);
+            $place = $this->placeModel->where('is_approve', true);
         }
 
         $data = [
@@ -135,7 +135,7 @@ class PlaceController extends BaseController
     public function approve($id): RedirectResponse
     {
         $data = [
-            'is_approve' => 1,
+            'is_approve' => true,
         ];
 
         $this->placeModel->update($id, $data);

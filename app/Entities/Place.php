@@ -26,7 +26,7 @@ class Place extends Entity
 
     public function getPicture()
     {
-        return base_url() . '/image/' . $this->attributes['picture'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
     }
 
     public function placeReviews()

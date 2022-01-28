@@ -180,8 +180,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink(strstr($guide->identity_picture, 'image'));
-        unlink(strstr($guide->video, 'image'));
+        unlink(strstr($guide->identity_picture, getenv('image_folder')));
+        unlink(strstr($guide->video, getenv('image_folder')));
 
         $this->guideModel->delete($guide->id);
 
@@ -212,7 +212,7 @@ class Guide extends BaseController
 
 
         if (file_exists($this->request->getFile('identity_picture'))) {
-            unlink(strstr($guide->identity_picture, 'image'));
+            unlink(strstr($guide->identity_picture, getenv('image_folder')));
             $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
         } else {
             $data['identity_picture'] = strstr($guide->identity_picture, 'guide');

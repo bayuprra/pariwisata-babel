@@ -8,7 +8,6 @@ use App\Models\PlaceReviewModel;
 use App\Models\UserModel;
 use App\Models\RoleModel;
 use CodeIgniter\HTTP\RedirectResponse;
-use CodeIgniter\HTTP\Header;
 use CodeIgniter\Validation\Validation;
 use Config\Services;
 use CodeIgniter\Exceptions\ModelException;
@@ -211,7 +210,7 @@ class PlaceController extends BaseController
             throw ModelException::forNoPrimaryKey(PlaceModel::class);
         }
 
-        unlink(strstr($place->picture, 'image'));
+        unlink(strstr($place->picture, getenv('image_folder')));
         $this->placeModel->delete($place->id);
 
         return redirect()->back()->with('success', 'Data Telah Dihapus');
@@ -240,7 +239,7 @@ class PlaceController extends BaseController
 
         if (file_exists($this->request->getFile('picture'))) {
 
-            unlink(strstr($place->picture, 'image'));
+            unlink(strstr($place->picture, getenv('image_folder')));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'place');
         } else {
             $data['picture'] = strstr($place->picture, 'place');

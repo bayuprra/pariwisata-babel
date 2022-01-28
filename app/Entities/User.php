@@ -16,6 +16,11 @@ class User extends Entity
         'picture' => null
     ];
 
+    public function getPicture()
+    {
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
+    }
+
     public function roles()
     {
         $roleUser   = Database::connect();

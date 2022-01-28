@@ -125,7 +125,7 @@ class Event extends BaseController
         ];
 
         if (file_exists($this->request->getFile('picture'))) {
-            unlink(strstr($event->picture, 'image'));
+            unlink(strstr($event->picture, getenv('image_folder')));
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'event');
         } else {
             $data['picture'] = strstr($event->picture, 'event');
@@ -146,7 +146,7 @@ class Event extends BaseController
             throw ModelException::forNoPrimaryKey(EventModel::class);
         }
 
-        unlink(strstr($event->picture, 'image'));
+        unlink(strstr($event->picture, getenv('image_folder')));
         $this->eventModel->delete($event->id);
 
         return redirect()->to('/admin/event ');

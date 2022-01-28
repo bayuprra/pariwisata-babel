@@ -45,7 +45,7 @@ class ImageManager
         $fileName = $image->getRandomName();
         $folderName = 'news';
 
-        $image->move(FCPATH . 'image/' . $folderName, $fileName);
+        $image->move(FCPATH . getenv('image_folder') . '/' . $folderName, $fileName);
         $path = $folderName . '/' . $image->getName();
 
         $images = $this->generateImages($path, $fileName, $this->newsImage, $folderName);
@@ -68,7 +68,7 @@ class ImageManager
     private function generateImages($originalPath, $fileName, $imageModel, $folderName): array
     {
         $imageLib = Services::image();
-        $uploadDir = FCPATH . 'image/';
+        $uploadDir = FCPATH . getenv('image_folder') . '/';
 
         list($name, $extension) = explode('.', $fileName);
 
@@ -87,16 +87,16 @@ class ImageManager
 
     public function delete($imageModel): void
     {
-        unlink(strstr($imageModel->original, 'image'));
-        unlink(strstr($imageModel->large, 'image'));
-        unlink(strstr($imageModel->medium, 'image'));
-        unlink(strstr($imageModel->small, 'image'));
+        unlink(strstr($imageModel->original, getenv('image_folder')));
+        unlink(strstr($imageModel->large, getenv('image_folder')));
+        unlink(strstr($imageModel->medium, getenv('image_folder')));
+        unlink(strstr($imageModel->small, getenv('image_folder')));
     }
 
     public function imageProcessor(UploadedFile $image, string $folderName): string
     {
         $fileName = $image->getRandomName();
-        $image->move('image/' . $folderName, $fileName);
+        $image->move(getenv('image_folder') . '/' . $folderName, $fileName);
 
         return $folderName . '/' . $image->getName();
     }

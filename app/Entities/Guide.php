@@ -23,17 +23,15 @@ class Guide extends Entity
         'twitter'     => 'null',
         'user_id'     => 'null',
         'is_approve'  => 'null',
-        'package'     => 'null',
-        'description' => 'null'
     ];
 
     public function getIdentityPicture()
     {
-        return base_url() . '/image/' . $this->attributes['identity_picture'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['identity_picture']);
     }
 
     public function getVideo()
     {
-        return base_url() . '/image/' . $this->attributes['video'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['video']);
     }
 }

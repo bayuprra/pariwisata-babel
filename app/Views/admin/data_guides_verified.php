@@ -74,8 +74,8 @@
                         <td><?= $item->facebook ?></td>
                         <td><?= $item->instagram ?></td>
                         <td><?= $item->twitter ?></td>
-                        <td> <a href="<?= $item->getIdentityPicture() ?>"> <?= $item->getIdentityPicture() ?></a></td>
-                        <td><a href="/image/<?= $item->getVideo() ?>"><?= $item->getVideo() ?></a></td>
+                        <td> <a href="<?= $item->identity_picture ?>"> <?= $item->identity_picture ?></a></td>
+                        <td><a href="<?= $item->video ?>"><?= $item->video ?></a></td>
                         <td>terverifikasi</td>
                         <td><a href="<?= base_url('/guide/edit/' . $item->id) ?>">
                                 <button class="button-edit">Edit</button>

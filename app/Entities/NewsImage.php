@@ -10,21 +10,21 @@ class NewsImage extends Entity
 
     public function getSmall()
     {
-        return base_url() . '/image/' . $this->attributes['small'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['small']);
     }
 
     public function getMedium()
     {
-        return base_url() . '/image/' . $this->attributes['medium'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['medium']);
     }
 
     public function getLarge()
     {
-        return base_url() . '/image/' . $this->attributes['large'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['large']);
     }
 
     public function getOriginal()
     {
-        return base_url() . '/image/' . $this->attributes['original'];
+        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['original']);
     }
 }

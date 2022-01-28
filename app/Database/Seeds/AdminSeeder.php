@@ -16,8 +16,6 @@ class AdminSeeder extends Seeder
             'password' => password_hash('R4h4si4!', PASSWORD_DEFAULT)
         ]);
 
-        $result = $this->db->table('role_users')->insert(['user_id' => $userModel->getInsertID(), 'role_id' => 1]);
-
-        dump($result);
+        $this->db->table('role_users')->insert(['user_id' => $userModel->getInsertID(), 'role_id' => 1]);
     }
 }

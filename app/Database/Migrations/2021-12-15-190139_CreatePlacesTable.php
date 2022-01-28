@@ -54,7 +54,7 @@ class CreatePlacesTable extends Migration
             ],
             'is_approve'    => [
                 'type'          => 'BOOLEAN',
-                'default'       => 0,
+                'default'       => false,
             ],
         ]);
         $this->forge->addKey('id', true);

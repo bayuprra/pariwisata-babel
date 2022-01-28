@@ -67,13 +67,13 @@
                             </td>
                         </tr>
                     <?php endforeach ?>
+                    <?= $pager->links('news', 'pagination'); ?>
                 <?php else : ?>
                     <tr>Data tidak Ditemukan</tr>
                 <?php endif; ?>
 
             </tbody>
         </table>
-        <?= $pager->links('news', 'pagination'); ?>
     </div>
 
 </section>

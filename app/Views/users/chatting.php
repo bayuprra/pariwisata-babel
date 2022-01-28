@@ -61,7 +61,7 @@
                 <div class="tablesdet">
                     <table class="table table-dark">
                         <tbody>
-                            <form action="<?= base_url('/transaction/negotiate') ?>" method="POST" enctype="multipart/form-data">
+                            <form action="<?= base_url('transaction/negotiate') ?>" method="POST" enctype="multipart/form-data">
 
                                 <input type="hidden" id="chat_room_id" name="chat_room_id" data-roomId="<?= $receiver ?>" value="">
                                 <input type="hidden" id="id" name="id" value="">
@@ -163,13 +163,14 @@
             e.preventDefault();
             subject.setAttribute("data-roomid", rooms[i].getAttribute('data-selected-roomid'));
             receiver.innerHTML = rooms[i].getAttribute("data-receiver");
-            console.log(rooms[i].getAttribute('data-selected-roomid'))
 
             $.ajax({
                 url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
                 cache: false,
                 success: function(data) {
+                    document.getElementById("mytext").value = "My value";
                     console.log(data);
+
                 }
             })
             // trying3
@@ -214,12 +215,12 @@
                 url: '/direct-message/send',
                 type: "POST",
                 data: {
-                    user_id: userId,
+                    user_id: userId, // key sesuaikan dengan nama request pada controller
                     chat_room_id: roomId,
                     message: clientMsg,
                     '_token': csrf_token
                 },
-                success: loadLog()
+                success: loadLog() // kelola data / meneruskan proses apabila url berhasil dijalankan
             });
             $("#subject").val("");
             return false;

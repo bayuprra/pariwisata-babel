@@ -44,7 +44,7 @@ class Transaction extends BaseController
     }
 
 
-    public function nego(): RedirectResponse
+    public function nego(): Response
     {
         $data = [
             'chat_room_id'     => $this->request->getVar('chat_room_id'),
@@ -68,10 +68,9 @@ class Transaction extends BaseController
                 throw ModelException::forNoPrimaryKey(Transaction::class);
             }
 
-            return redirect()->back()->withInput()->with('success', 'Data Transaksi Telah Disimpan');
+            return $this->respond('success', 200);
         }
-
-        return redirect()->back()->withInput()->with('errors', $this->transactionModel->errors());
+        return $this->fail($this->transactionModel->errors(), 500);
     }
 
 

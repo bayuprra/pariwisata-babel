@@ -61,9 +61,9 @@
                 <div class="tablesdet">
                     <table class="table table-dark">
                         <tbody>
-                            <form action="<?= base_url('direct-message/nego') ?>" method="POST" enctype="multipart/form-data">
+                            <form action="<?= base_url('/transaction/negotiate') ?>" method="POST" enctype="multipart/form-data">
 
-                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="">
+                                <input type="hidden" id="chat_room_id" name="chat_room_id" data-roomId="<?= $receiver ?>" value="">
                                 <input type="hidden" id="id" name="id" value="">
 
                                 <tr>
@@ -100,7 +100,7 @@
                                     <th scope="col" class="col-3">Kendaraan</th>
                                     <th scope="col">
                                         <select class="form-control-lg" id="transport" name="transport">
-                                            <option value=""></option>
+                                            <option value="" disabled>-Pilih-</option>
                                             <option value="Dari Guide (mobil)">Dari Guide (mobil)</option>
                                             <option value="Dari Guide (motor)">Dari Guide (motor)</option>
                                             <option value="Dari pemesan (mobil)">Dari pemesan (mobil)</option>
@@ -112,7 +112,7 @@
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
                                         <select class="form-control-lg">
-                                            <option></option>
+                                            <option disabled>-Pilih-</option>
                                             <option value="Transfer">Transfer</option>
                                             <option value="DI Tempat">Di Tempat</option>
                                         </select>
@@ -168,12 +168,37 @@
             $.ajax({
                 url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
                 cache: false,
-                success: function (data) {
+                success: function(data) {
                     console.log(data);
                 }
             })
+            // trying3
+
+
         }
     }
+
+    // trying 4
+    // for (let i = 0; i < rooms.length; i++) {
+    //     rooms[i].onclick = function(e) {
+    //         e.preventDefault();
+    //         var roomId = $("#chat_room_id").data('roomid')
+    //         var csrf_token = $('meta[name="csrf-token"]').attr('content');
+
+    //         $.ajax({
+    //             url: '/transaction/negotiate',
+    //             type: "POST",
+    //             data: {
+    //                 chat_room_id: roomId,
+    //                 '_token': csrf_token
+    //             },
+    //             success: function(data) {
+    //                 console.log(data);
+    //             }
+    //         });
+    //     }
+    // }
+
 
     // jQuery Document
     $(document).ready(function() {
@@ -240,6 +265,11 @@
 
         setInterval(loadLog, 1000);
     });
+
+
+    // trying 
+
+    // triyng
 </script>
 
 <?= $this->endSection() ?>

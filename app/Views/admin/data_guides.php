@@ -56,44 +56,47 @@
             $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
-
-                <?php foreach ($guide as $item) : ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= $item->user_id ?></td>
-                        <td><?= $item->name ?></td>
-                        <td><?= $item->include ?></td>
-                        <td><?= $item->description ?></td>
-                        <td><?= $item->age ?></td>
-                        <td><?= $item->phone ?></td>
-                        <td><?= $item->gender ?></td>
-                        <td><?= $item->religion ?></td>
-                        <td><?= $item->address ?></td>
-                        <td><?= $item->study ?></td>
-                        <td><?= $item->experience ?></td>
-                        <td><?= $item->email ?></td>
-                        <td><?= $item->facebook ?></td>
-                        <td><?= $item->instagram ?></td>
-                        <td><?= $item->twitter ?></td>
-                        <td><a href="<?= $item->getIdentityPicture() ?>"> <?= $item->getIdentityPicture() ?></a></td>
-                        <td><a href="<?= $item->getVideo() ?>"><?= $item->getVideo() ?></a></td>
-                        <td>
-                            <a href="#">
-                                <form action="<?= base_url('guide/approve/' . $item->id) ?>" method="POST">
-                                    <button type="submit" class="button-edit">Ya</button>
+                <?php if (count($guide)) : ?>
+                    <?php foreach ($guide as $item) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $item->user_id ?></td>
+                            <td><?= $item->name ?></td>
+                            <td><?= $item->include ?></td>
+                            <td><?= $item->description ?></td>
+                            <td><?= $item->age ?></td>
+                            <td><?= $item->phone ?></td>
+                            <td><?= $item->gender ?></td>
+                            <td><?= $item->religion ?></td>
+                            <td><?= $item->address ?></td>
+                            <td><?= $item->study ?></td>
+                            <td><?= $item->experience ?></td>
+                            <td><?= $item->email ?></td>
+                            <td><?= $item->facebook ?></td>
+                            <td><?= $item->instagram ?></td>
+                            <td><?= $item->twitter ?></td>
+                            <td><a href="<?= $item->getIdentityPicture() ?>"> <?= $item->getIdentityPicture() ?></a></td>
+                            <td><a href="<?= $item->getVideo() ?>"><?= $item->getVideo() ?></a></td>
+                            <td>
+                                <a href="#">
+                                    <form action="<?= base_url('guide/approve/' . $item->id) ?>" method="POST">
+                                        <button type="submit" class="button-edit">Ya</button>
+                                    </form>
+                                </a>
+                                <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="button-delete" type="submit">Hapus</button>
                                 </form>
-                            </a>
-                            <form action="<?= base_url('guide/' . $item->id) ?>" method="post" enctype="multipart/form-data">
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="button-delete" type="submit">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?= $pager->links('guide', 'pagination'); ?>
+                <?php else : ?>
+                    <tr>Data Tidak DItemukan</tr>
+                <?php endif; ?>
             </tbody>
 
         </table>
-        <?= $pager->links('guide', 'pagination'); ?>
     </div>
 
 </section>

@@ -87,8 +87,8 @@ $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
 });
 
 // ChatRoom
-$routes->post('direct-message/nego', 'ChatRoom::nego');
 $routes->group('direct-message', ['filter' => 'authGuard'], function ($routes) {
+    $routes->post('transaction', 'ChatRoom::transaction');
     $routes->post('send', 'ChatRoom::sendMessage');
     $routes->get('/', 'ChatRoom::index');
     $routes->get('room/create/(:num)', 'ChatRoom::store/$1');

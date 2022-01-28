@@ -49,36 +49,40 @@
             $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
-                <?php foreach ($places as $item) : ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= $item->name ?></td>
-                        <td><?= $item->category ?></td>
-                        <td><?= $item->street ?></td>
-                        <td><?= $item->village ?></td>
-                        <td><?= $item->sub_district ?></td>
-                        <td><?= $item->district ?></td>
-                        <td><?= $item->fee ?></td>
-                        <td><?= $item->description ?></td>
-                        <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
-                        <td><a href="<?= $item->getPicture() ?>"><?= $item->getPicture() ?></a></td>
-                        <td>
-                            <a href="#">
-                                <form action="<?= base_url('placecontroller/approve/' . $item->id) ?>" method="POST">
-                                    <button type="submit" class="button-edit">Ya</button>
+                <?php if (count($places)) : ?>
+                    <?php foreach ($places as $item) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $item->name ?></td>
+                            <td><?= $item->category ?></td>
+                            <td><?= $item->street ?></td>
+                            <td><?= $item->village ?></td>
+                            <td><?= $item->sub_district ?></td>
+                            <td><?= $item->district ?></td>
+                            <td><?= $item->fee ?></td>
+                            <td><?= $item->description ?></td>
+                            <td> <a href="<?= $item->maps ?>"><?= $item->maps ?></a></td>
+                            <td><a href="<?= $item->getPicture() ?>"><?= $item->getPicture() ?></a></td>
+                            <td>
+                                <a href="#">
+                                    <form action="<?= base_url('placecontroller/approve/' . $item->id) ?>" method="POST">
+                                        <button type="submit" class="button-edit">Ya</button>
+                                    </form>
+                                </a>
+                                <form action="<?= base_url('place/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="button-delete" type="submit">Hapus</button>
                                 </form>
-                            </a>
-                            <form action="<?= base_url('place/' . $item->id) ?>" method="post" enctype="multipart/form-data">
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="button-delete" type="submit">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach ?>
+                            </td>
+                        </tr>
+                    <?php endforeach ?>
+                    <?= $pager->links('places', 'pagination'); ?>
+                <?php else : ?>
+                    <tr>Data Tidak DItemukan</tr>
+                <?php endif; ?>
             </tbody>
         </table>
 
-        <?= $pager->links('places', 'pagination'); ?>
     </div>
 
 </section>

@@ -45,28 +45,32 @@
             $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
-                <?php foreach ($event as $item) : ?>
-                    <tr>
-                        <td><?= $no++ ?></td>
-                        <td><?= $item->name ?></td>
-                        <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
-                        <td><?= \CodeIgniter\I18n\Time::parse($item->date)->toLocalizedString('dd MMMM yyyy') ?></td>
-                        <td><?= $item->content ?></td>
-                        <td> <a href="<?= $item->picture ?>"> <?= $item->picture ?></a></td>
-                        <td>
-                            <a href="<?= base_url('/event/edit/' . $item->id) ?>">
-                                <button class="button-edit">Edit</button>
-                            </a>
-                            <form action="<?= base_url('event/' . $item->id) ?>" method="post" enctype="multipart/form-data">
-                                <input name="_method" type="hidden" value="DELETE">
-                                <button class="button-delete" type="submit">Hapus</button>
-                            </form>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+                <?php if (count($event)) : ?>
+                    <?php foreach ($event as $item) : ?>
+                        <tr>
+                            <td><?= $no++ ?></td>
+                            <td><?= $item->name ?></td>
+                            <td><?= $item->village ?>,<?= $item->sub_district ?>,<?= $item->district ?></td>
+                            <td><?= \CodeIgniter\I18n\Time::parse($item->date)->toLocalizedString('dd MMMM yyyy') ?></td>
+                            <td><?= $item->content ?></td>
+                            <td> <a href="<?= $item->picture ?>"> <?= $item->picture ?></a></td>
+                            <td>
+                                <a href="<?= base_url('/event/edit/' . $item->id) ?>">
+                                    <button class="button-edit">Edit</button>
+                                </a>
+                                <form action="<?= base_url('event/' . $item->id) ?>" method="post" enctype="multipart/form-data">
+                                    <input name="_method" type="hidden" value="DELETE">
+                                    <button class="button-delete" type="submit">Hapus</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                    <?= $pager->links('event', 'pagination'); ?>
+                <?php else : ?>
+                    <tr>Data Tidak DItemukan</tr>
+                <?php endif; ?>
             </tbody>
         </table>
-        <?= $pager->links('event', 'pagination'); ?>
     </div>
 
 </section>

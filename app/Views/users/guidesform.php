@@ -58,7 +58,7 @@
                     <label for="age">Umur</label>
                 </div>
                 <div class="input">
-                    <input type="text" id="age" name="age" value="<?= !empty(session()->getFlashdata('errors')) ? old('age') : '' ?>">
+                    <input type="number" id="age" name="age" value="<?= !empty(session()->getFlashdata('errors')) ? old('age') : '' ?>">
                 </div>
             </div>
             <div class="row">

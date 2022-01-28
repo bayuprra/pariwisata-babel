@@ -68,7 +68,10 @@
                         </tr>
                     <?php endforeach ?>
                     <?= $pager->links('news', 'pagination'); ?>
+                <?php else : ?>
+                    <tr>Data Tidak DItemukan</tr>
                 <?php endif; ?>
+
 
             </tbody>
         </table>

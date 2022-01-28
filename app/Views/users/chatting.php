@@ -62,6 +62,10 @@
                     <table class="table table-dark">
                         <tbody>
                             <form action="<?= base_url('direct-message/nego') ?>" method="POST" enctype="multipart/form-data">
+
+                                <?php $roomId = 1; ?>
+                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="<?= $roomId ?>">
+
                                 <tr>
                                     <th scope="col" class="col-3">Status</th>
                                     <th scope="col">
@@ -77,25 +81,26 @@
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Sewa</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="date_start">
+                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="<?= $transaction->date_start ?>">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Selesai</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="date_finish">
+                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="<?= $transaction->date_finish ?>">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tempat Tujuan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="destination" name="destination" rows="3">Tempat Tujuan</textarea>
+                                        <textarea class="form-control" id="destination" name="destination" rows="3"><?= $transaction->destination ?></textarea>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Kendaraan</th>
                                     <th scope="col">
                                         <select class="form-control-lg" id="transport" name="transport">
+                                            <option value="<?= $transaction->transport ?>" disabled><?= $transaction->transport ?></option>
                                             <option value="Dari Guide (mobil)">Dari Guide (mobil)</option>
                                             <option value="Dari Guide (motor)">Dari Guide (motor)</option>
                                             <option value="Dari pemesan (mobil)">Dari pemesan (mobil)</option>
@@ -107,21 +112,22 @@
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
                                         <select class="form-control-lg">
-                                            <option>Transfer</option>
-                                            <option>Di Tempat</option>
+                                            <option disabled><?= $transaction->payment ?></option>
+                                            <option value="Transfer">Transfer</option>
+                                            <option value="DI Tempat">Di Tempat</option>
                                         </select>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Lokasi Penjemputan</th>
                                     <th scope="col">
-                                        <input type="text" class="form-control-lg" id="exampleFormControlInput1" placeholder="............">
+                                        <input type="text" class="form-control-lg" id="meetpoint" name="meetpoint" value="<?= $transaction->meetpoint ?>">
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Catatan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                        <textarea class="form-control" id="note" name="note" rows="3"><?= $transaction->note ?></textarea>
                                     </th>
                                 </tr>
                                 <tr>
@@ -131,6 +137,7 @@
                                         <button type="button" class="btn-info col-2 btn-lg">Nego</button>
                                         <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
                                         <button type="submit" class="btn-secondary col-2 btn-lg">Simpan</button>
+                                        <button type="submit" class="btn-primary col-2 btn-lg">Buat</button>
                                     </th>
                                 </tr>
                             </form>

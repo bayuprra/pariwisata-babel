@@ -1,5 +1,6 @@
 <?= $this->extend('admin/admin_layout') ?>
 
+
 <?= $this->section('style') ?>
 <!-- recomendation's style -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css">
@@ -45,7 +46,6 @@
             $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
-                <?php $news = array($news); ?>
                 <?php if (count($news) > 0) : ?>
 
                     <?php foreach ($news as $item) : ?>

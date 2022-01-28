@@ -141,4 +141,11 @@ class ChatRoom extends BaseController
             return redirect()->back()->withInput()->with('success', 'Data Transaksi Telah Disimpan');
         }
     }
+
+    public function transaction(int $id)
+    {
+        $transaction = $this->transactionModel->where('id', $id)->first();
+
+        return $this->respond($transaction, 200);
+    }
 }

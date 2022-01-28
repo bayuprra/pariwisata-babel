@@ -45,6 +45,7 @@
             $no = 1 + (5 * ($currentPage - 1));
             ?>
             <tbody>
+                <?php $news = array($news); ?>
                 <?php if (count($news) > 0) : ?>
 
                     <?php foreach ($news as $item) : ?>

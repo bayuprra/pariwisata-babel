@@ -48,7 +48,7 @@ class PlaceController extends BaseController
     {
         $data = [
             'title'     => 'Place | All',
-            'places'    => $this->placeModel->where('is_approve', 1)->findAll(),
+            'places'    => $this->placeModel->where('is_approve', true)->findAll(),
             'recommend' => $this->recommendation()
         ];
 

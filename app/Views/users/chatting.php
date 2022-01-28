@@ -65,6 +65,7 @@
 
                                 <?php $roomId = 1; ?>
                                 <input type="hidden" id="chat_room_id" name="chat_room_id" value="<?= $roomId ?>">
+                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="<?= $roomId ?>">
 
                                 <tr>
                                     <th scope="col" class="col-3">Status</th>

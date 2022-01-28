@@ -168,7 +168,7 @@
                 url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
                 cache: false,
                 success: function(data) {
-                    document.getElementById("mytext").value = "My value";
+                    // document.getElementById("mytext").value = "My value";
                     console.log(data);
 
                 }
@@ -209,6 +209,7 @@
             var clientMsg = $("#subject").val()
             var userId = $("#subject").data('userid')
             var roomId = $("#subject").data('roomid')
+            var room = $("#chat_room_id").data('roomId')
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
@@ -222,9 +223,24 @@
                 },
                 success: loadLog() // kelola data / meneruskan proses apabila url berhasil dijalankan
             });
+            console.log(room);
+
+            $.ajax({
+                url: 'transaction/negotiate',
+                type: "POST",
+                data: {
+                    chat_room_id: room,
+                    '_token': csrf_token
+                },
+                success: function(data) {
+                    console.log(data);
+                }
+            });
             $("#subject").val("");
             return false;
         });
+
+
 
         function loadLog() {
             var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request

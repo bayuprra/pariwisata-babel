@@ -41,18 +41,19 @@
                     <?php $receiver_name = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
                     <h1 id="receiver-name"><?= $receiver_name ?></h1>
                 <?php else : ?>
-                    <h1 id="receiver-name"></h1>
-                <?php endif; ?>
+                    <h1 id="receiver-name">
+                        <-- Klik Salah Satu Nama</h1>
+                        <?php endif; ?>
 
 
-                <div class="message" id="chatbox">
-                </div>
-                <form action="">
-                    <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
+                        <div class="message" id="chatbox">
+                        </div>
+                        <form action="">
+                            <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
 
                         </textarea>
-                    <a id="submitMsg" class="fa fa-paper-plane"></a>
-                </form>
+                            <a id="submitMsg" class="fa fa-paper-plane"></a>
+                        </form>
             </div>
 
 
@@ -63,7 +64,7 @@
                         <tbody>
                             <form action="<?= base_url('transaction/negotiate') ?>" method="POST" enctype="multipart/form-data">
 
-                                <input type="hidden" id="chat_room_id" name="chat_room_id" data-roomId="<?= $receiver ?>" value="">
+                                <input type="hidden" id="chat_room_id" name="chat_room_id" value="">
                                 <input type="hidden" id="id" name="id" value="">
 
                                 <tr>
@@ -111,7 +112,7 @@
                                 <tr>
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
-                                        <select class="form-control-lg">
+                                        <select class="form-control-lg" id="payment">
                                             <option disabled>-Pilih-</option>
                                             <option value="Transfer">Transfer</option>
                                             <option value="DI Tempat">Di Tempat</option>
@@ -133,11 +134,14 @@
                                 <tr>
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
-                                        <button type="button" class="btn-success col-2 btn-lg">Deal</button>
-                                        <button type="button" class="btn-info col-2 btn-lg">Nego</button>
-                                        <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
-                                        <button type="submit" class="btn-secondary col-2 btn-lg">Simpan</button>
-                                        <button type="submit" class="btn-primary col-2 btn-lg">Buat</button>
+                                        <?php if ($transaction->id) : ?>
+                                            <button type="button" class="btn-success col-2 btn-lg">Deal</button>
+                                            <button type="button" class="btn-info col-2 btn-lg">Nego</button>
+                                            <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
+                                            <button type="submit" class="btn-secondary col-2 btn-lg">Simpan</button>
+                                        <?php else : ?>
+                                            <button type="submit" class="btn-primary col-2 btn-lg">Buat</button>
+                                        <?php endif; ?>
                                     </th>
                                 </tr>
                             </form>
@@ -163,6 +167,8 @@
             e.preventDefault();
             subject.setAttribute("data-roomid", rooms[i].getAttribute('data-selected-roomid'));
             receiver.innerHTML = rooms[i].getAttribute("data-receiver");
+            var roomId = $("#chat_room_id").data('roomid');
+            var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
                 url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
@@ -172,9 +178,31 @@
                     console.log(data);
 
                 }
-            })
-            // trying3
+            });
 
+            $.ajax({
+                url: 'transaction/negotiate',
+                type: "POST",
+                data: {
+                    chat_room_id: roomId,
+                    '_token': csrf_token
+                },
+                success: detail()
+
+            });
+            // trying3
+        }
+
+        function detail() {
+            document.getElementById("chat_room_id").value = "My value";
+            document.getElementById("phone").value = "My value";
+            document.getElementById("date_start").value = "My value";
+            document.getElementById("date_finish").value = "My value";
+            document.getElementById("destination").value = "My value";
+            document.getElementById("transport").value = "My value";
+            document.getElementById("payment").value = "My value";
+            document.getElementById("meetpoint").value = "My value";
+            document.getElementById("note").value = "My value";
 
         }
     }
@@ -223,19 +251,7 @@
                 },
                 success: loadLog() // kelola data / meneruskan proses apabila url berhasil dijalankan
             });
-            console.log(room);
 
-            $.ajax({
-                url: 'transaction/negotiate',
-                type: "POST",
-                data: {
-                    chat_room_id: room,
-                    '_token': csrf_token
-                },
-                success: function(data) {
-                    console.log(data);
-                }
-            });
             $("#subject").val("");
             return false;
         });

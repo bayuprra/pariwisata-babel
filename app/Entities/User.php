@@ -10,14 +10,18 @@ use Config\Database;
 class User extends Entity
 {
     protected $attributes = [
-        'name' => null,
-        'password' => null,
+        'name'          => null,
+        'password'      => null,
         'email_address' => null,
-        'picture' => null
+        'picture'       => null
     ];
 
     public function getPicture()
     {
+        if (getenv('CI_ENVIRONMENT') === 'production') {
+            return $this->attributes['picture'];
+        }
+
         return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
     }
 

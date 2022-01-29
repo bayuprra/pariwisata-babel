@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Helpers;
 
+use App\Entities\NewsImage;
 use App\Models\NewsImageModel;
 use App\Models\EventModel;
 use App\Models\GuideModel;
+use Aws\S3\Exception\S3Exception;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
 use ReflectionException;
@@ -33,7 +35,7 @@ class ImageManager
         $this->newsImage = new NewsImageModel();
         $this->event = new EventModel();
         $this->guide = new GuideModel();
-//        $this->aws = service('aws')->createClient('s3',['version' => 'latest', 'region'  => 'ap-southeast-1']);
+        $this->aws = service('aws')->createClient('s3',['version' => 'latest', 'region'  => 'ap-southeast-1']);
     }
 
     /**
@@ -59,12 +61,30 @@ class ImageManager
             'original' => $path,
         ]);
 
+        if (getenv('CI_ENVIRONMENT') === 'production') {
+            $file = FCPATH . getenv('image_folder') . '/' . $path;
+            $name = explode('/', $file);
+            $original = $this->aws->upload(getenv('bucketName'), $name[count($name) - 1], fopen($file, 'rb'), 'public-read');
+            $params = [
+                'news_id' => $newsId,
+                'original' => $original->get('ObjectURL')
+            ];
+
+            foreach ($images as $key => $value) {
+                $uploadDir = FCPATH . getenv('image_folder') . '/' . $value;
+                $name = explode('/', $uploadDir);
+                $result = $this->aws->upload(getenv('bucketName'), $name[count($name) - 1], fopen($uploadDir, 'rb'), 'public-read');
+                $params[$key] = $result->get('ObjectURL');
+            }
+        }
+
         if ($isExist) {
             $newsImage = $this->newsImage->where(['news_id' => $newsId])->first();
             $this->delete($newsImage);
 
             return $this->newsImage->update($newsImage->id, $params);
         }
+
 
         return $this->newsImage->save($params);
     }
@@ -89,35 +109,49 @@ class ImageManager
         return $images;
     }
 
-    public function delete($imageModel): void
+    public function delete($image): void
     {
-        unlink(strstr($imageModel->original, getenv('image_folder')));
-        unlink(strstr($imageModel->large, getenv('image_folder')));
-        unlink(strstr($imageModel->medium, getenv('image_folder')));
-        unlink(strstr($imageModel->small, getenv('image_folder')));
+        if ($image instanceof NewsImage) {
+            $allowedKeys = ['original', 'large', 'medium', 'small'];
+
+            foreach ($allowedKeys as $key) {
+                if (getenv('CI_ENVIRONMENT') !== 'production') {
+                    unlink(strstr($image->{$key}, getenv('image_folder')));
+                } else {
+                    $file = explode('/', $image->{$key});
+
+                    $this->aws->deleteObject([
+                        'Bucket' => getenv('bucketName'),
+                        'Key' => $file[count($file) - 1],
+                    ]);
+                }
+            }
+        } else {
+            if (getenv('CI_ENVIRONMENT') !== 'production') {
+                unlink(strstr($image, getenv('image_folder')));
+            } else {
+                $image = explode('/', $image);
+
+                $this->aws->deleteObject([
+                    'Bucket' => getenv('bucketName'),
+                    'Key' => $image[count($image) - 1],
+                ]);
+            }
+        }
     }
 
     public function imageProcessor(UploadedFile $image, string $folderName): string
     {
         $fileName = $image->getRandomName();
 
-//        if (getenv('CI_ENVIRONMENT') !== 'production') {
-//            $image->move(getenv('image_folder') . '/' . $folderName, $fileName);
-//
-//            return $folderName . '/' . $image->getName();
-//        }
+        if (getenv('CI_ENVIRONMENT') !== 'production') {
+            $image->move(getenv('image_folder') . '/' . $folderName, $fileName);
 
-//        $result = $this->aws->putObject([
-//            'SourceFile' => $image,
-//            'Bucket'     => getenv('bucketName'),
-//            'Key'        => $fileName,
-//            'ACL'        => 'public-read'
-//        ]);
-//
-//        return $result['ObjectURL'] . PHP_EOL;
+            return $folderName . '/' . $image->getName();
+        }
 
-//        $result = $this->aws->upload(getenv('bucketName'), $fileName, $image);
-//
-//        return $result['ObjectURL'] . PHP_EOL;
+        $result = $this->aws->upload(getenv('bucketName'), $fileName, fopen($image->getTempName(), 'rb'), 'public-read');
+
+        return $result->get('ObjectURL');
     }
 }

@@ -210,7 +210,7 @@ class PlaceController extends BaseController
             throw ModelException::forNoPrimaryKey(PlaceModel::class);
         }
 
-        unlink(strstr($place->picture, getenv('image_folder')));
+        $this->imageManager->delete($place->picture);
         $this->placeModel->delete($place->id);
 
         return redirect()->back()->with('success', 'Data Telah Dihapus');
@@ -239,7 +239,7 @@ class PlaceController extends BaseController
 
         if (file_exists($this->request->getFile('picture'))) {
 
-            unlink(strstr($place->picture, getenv('image_folder')));
+            $this->imageManager->delete($place->picture);
             $data['picture'] = $this->imageManager->imageProcessor($this->request->getFile('picture'), 'place');
         } else {
             $data['picture'] = strstr($place->picture, 'place');

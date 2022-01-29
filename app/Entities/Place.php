@@ -26,6 +26,10 @@ class Place extends Entity
 
     public function getPicture()
     {
+        if (getenv('CI_ENVIRONMENT') === 'production') {
+            return $this->attributes['picture'];
+        }
+
         return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
     }
 
@@ -62,8 +66,6 @@ class Place extends Entity
             $score += $key * $value;
         }
 
-        $result = $response !== 0 ? $score / $response : $response;
-
-        return $result;
+        return $response !== 0 ? $score / $response : $response;
     }
 }

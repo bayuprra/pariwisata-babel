@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Helpers\ImageManager;
 use App\Models\GuideModel;
+use CodeIgniter\Database\BaseConnection;
 use CodeIgniter\Exceptions\ModelException;
 use CodeIgniter\HTTP\RedirectResponse;
 use CodeIgniter\Validation\Validation;
@@ -180,9 +181,8 @@ class Guide extends BaseController
             throw ModelException::forNoPrimaryKey(GuideModel::class);
         }
 
-        unlink(strstr($guide->identity_picture, getenv('image_folder')));
-        unlink(strstr($guide->video, getenv('image_folder')));
-
+        $this->imageManager->delete($guide->identity_picture);
+        $this->imageManager->delete($guide->video);
         $this->guideModel->delete($guide->id);
 
 
@@ -212,7 +212,7 @@ class Guide extends BaseController
 
 
         if (file_exists($this->request->getFile('identity_picture'))) {
-            unlink(strstr($guide->identity_picture, getenv('image_folder')));
+            $this->imageManager->delete($guide->identity_picture);
             $data['identity_picture'] = $this->imageManager->imageProcessor($this->request->getFile('identity_picture'), 'guide');
         } else {
             $data['identity_picture'] = strstr($guide->identity_picture, 'guide');

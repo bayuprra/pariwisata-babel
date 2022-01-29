@@ -40,7 +40,7 @@ class Services extends BaseService
 
         $config = config('AWS');
 
-        $credentials = new Credentials($config->secretKey, $config->accessKey);
+        $credentials = new Credentials($config->accessKey, $config->secretKey);
 
         return new Sdk([
             'credentials' => $credentials,

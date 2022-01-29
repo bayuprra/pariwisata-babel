@@ -27,11 +27,19 @@ class Guide extends Entity
 
     public function getIdentityPicture()
     {
+        if (getenv('CI_ENVIRONMENT') === 'production') {
+            return $this->attributes['identity_picture'];
+        }
+
         return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['identity_picture']);
     }
 
     public function getVideo()
     {
+        if (getenv('CI_ENVIRONMENT') === 'production') {
+            return $this->attributes['video'];
+        }
+
         return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['video']);
     }
 }

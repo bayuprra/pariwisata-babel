@@ -19,6 +19,10 @@ class Event extends Entity
 
     public function getPicture()
     {
-        return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
+        if (getenv('CI_ENVIRONMENT') !== 'production') {
+            return sprintf('%s/%s/%s', base_url(), getenv('image_folder'), $this->attributes['picture']);
+        }
+
+        return $this->attributes['picture'];
     }
 }

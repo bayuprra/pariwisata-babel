@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Config;
+namespace Config;
 
 
 use CodeIgniter\Config\BaseConfig;

@@ -2,6 +2,7 @@
 
 namespace Config;
 
+use Aws\Credentials\Credentials;
 use Aws\Sdk;
 use CodeIgniter\Config\BaseService;
 
@@ -31,7 +32,7 @@ class Services extends BaseService
      * }
      */
 
-    public static function aws($getShared = true)
+    public static function aws($getShared = true): Sdk
     {
         if ($getShared) {
             return static::getSharedInstance('aws');
@@ -39,13 +40,11 @@ class Services extends BaseService
 
         $config = config('AWS');
 
-        $credentials = new \Aws\Credentials\Credentials($config->accessKey, $config->secretKey);
+        $credentials = new Credentials($config->secretKey, $config->accessKey);
 
-        $sdk = new Sdk([
+        return new Sdk([
             'credentials' => $credentials,
             'region'      => $config->region,
         ]);
-
-        return $sdk;
     }
 }

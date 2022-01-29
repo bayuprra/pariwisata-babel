@@ -7,7 +7,6 @@ namespace App\Helpers;
 use App\Models\NewsImageModel;
 use App\Models\EventModel;
 use App\Models\GuideModel;
-use Aws\S3\S3Client;
 use CodeIgniter\HTTP\Files\UploadedFile;
 use Config\Services;
 use ReflectionException;
@@ -23,6 +22,9 @@ class ImageManager
     /** @var GuideModel */
     private $guide;
 
+    /** AWS Configuration. */
+    private $aws;
+
     /**
      * ImageManager constructor.
      */
@@ -31,15 +33,7 @@ class ImageManager
         $this->newsImage = new NewsImageModel();
         $this->event = new EventModel();
         $this->guide = new GuideModel();
-
-//        $s3Client = new S3Client([
-//            'version' => 'latest',
-//            'region'  => 'YOUR_AWS_REGION',
-//            'credentials' => [
-//                'key'    => 'ACCESS_KEY_ID',
-//                'secret' => 'SECRET_ACCESS_KEY'
-//            ]
-//        ]);
+        $this->aws = service('aws')->createClient('s3',['version' => 'latest', 'region'  => 'ap-southeast-1']);
     }
 
     /**
@@ -106,8 +100,24 @@ class ImageManager
     public function imageProcessor(UploadedFile $image, string $folderName): string
     {
         $fileName = $image->getRandomName();
-        $image->move(getenv('image_folder') . '/' . $folderName, $fileName);
 
-        return $folderName . '/' . $image->getName();
+//        if (getenv('CI_ENVIRONMENT') !== 'production') {
+//            $image->move(getenv('image_folder') . '/' . $folderName, $fileName);
+//
+//            return $folderName . '/' . $image->getName();
+//        }
+
+        $result = $this->aws->putObject([
+            'SourceFile' => $image,
+            'Bucket'     => getenv('bucketName'),
+            'Key'        => $fileName,
+            'ACL'        => 'public-read'
+        ]);
+
+        return $result['ObjectURL'] . PHP_EOL;
+
+//        $result = $this->aws->upload(getenv('bucketName'), $fileName, $image);
+//
+//        return $result['ObjectURL'] . PHP_EOL;
     }
 }

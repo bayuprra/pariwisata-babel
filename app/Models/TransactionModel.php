@@ -26,15 +26,15 @@ class TransactionModel extends Model
     ];
 
     protected $validationRules = [
-        'chat_room_id'  => 'required|is_unique[transactions.chat_room_id,id,{id}]',
-        'phone'         => 'permit_empty|numeric',
-        'price'         => 'permit_empty|numeric',
-        'date_start'    => 'permit_empty|valid_date',
-        'date_finish'   => 'permit_empty|valid_date',
-        'destination'   => 'permit_empty',
-        'transport'     => 'permit_empty',
-        'payment'       => 'permit_empty',
-        'status'        => 'permit_empty',
+        'chat_room_id'  => 'required',
+        'phone'         => 'required',
+        'price'         => 'required|numeric',
+        'date_start'    => 'required|valid_date',
+        'date_finish'   => 'required|valid_date',
+        'destination'   => 'required',
+        'transport'     => 'required',
+        'payment'       => 'required',
+        'status'        => 'required',
         'note'          => 'permit_empty',
         'meetpoint'     => 'permit_empty'
     ];

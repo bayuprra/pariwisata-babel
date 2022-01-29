@@ -46,6 +46,8 @@ class Transaction extends BaseController
 
     public function nego(): Response
     {
+        $transactionId = $this->request->getVar('transaction_id');
+
         $data = [
             'chat_room_id'     => $this->request->getVar('chat_room_id'),
             'phone'            => $this->request->getVar('phone'),
@@ -60,6 +62,13 @@ class Transaction extends BaseController
             'meetpoint'        => $this->request->getVar('meetpoint'),
         ];
 
+        if ($transactionId) {
+            if ($this->transactionModel->update($transactionId, $data)) {
+                return $this->respond('success', 200);
+            }
+
+            return $this->fail($this->transactionModel->errors(), 500);
+        }
 
         if ($this->transactionModel->save($data)) {
             $transactionId = $this->transactionModel->getInsertID();
@@ -76,7 +85,7 @@ class Transaction extends BaseController
 
     public function transaction(int $id): Response
     {
-        $transaction = $this->transactionModel->where('id', $id)->first();
+        $transaction = $this->transactionModel->where('chat_room_id', $id)->first();
 
         return $this->respond($transaction, 200);
     }

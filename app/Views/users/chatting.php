@@ -62,15 +62,15 @@
                 <div class="tablesdet">
                     <table class="table table-dark">
                         <tbody>
-                            <form action="<?= base_url('transaction/negotiate') ?>" method="POST" enctype="multipart/form-data">
+                            <form>
 
                                 <input type="hidden" id="chat_room_id" name="chat_room_id" value="">
-                                <input type="hidden" id="id" name="id" value="">
+                                <input type="hidden" id="transaction_id" name="transaction_id" value="">
 
                                 <tr>
                                     <th scope="col" class="col-3">Status</th>
                                     <th scope="col">
-                                        <input class="form-control-lg" type="text" placeholder="Pending" readonly>
+                                        <input class="form-control-lg" type="text" placeholder="Pending" name="status" id="status" value="" readonly>
                                     </th>
                                 </tr>
                                 <tr>
@@ -110,9 +110,15 @@
                                     </th>
                                 </tr>
                                 <tr>
+                                    <th scope="col" class="col-3">Biaya</th>
+                                    <th scope="col">
+                                        <input type="number" class="form-control-lg" id="price" name="price" value="">
+                                    </th>
+                                </tr>
+                                <tr>
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
-                                        <select class="form-control-lg" id="payment">
+                                        <select class="form-control-lg" id="payment" name="payment">
                                             <option disabled>-Pilih-</option>
                                             <option value="Transfer">Transfer</option>
                                             <option value="DI Tempat">Di Tempat</option>
@@ -134,14 +140,11 @@
                                 <tr>
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
-                                        <?php if ($transaction->id) : ?>
-                                            <button type="button" class="btn-success col-2 btn-lg">Deal</button>
-                                            <button type="button" class="btn-info col-2 btn-lg">Nego</button>
-                                            <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
-                                            <button type="submit" class="btn-secondary col-2 btn-lg">Simpan</button>
-                                        <?php else : ?>
-                                            <button type="submit" class="btn-primary col-2 btn-lg">Buat</button>
-                                        <?php endif; ?>
+                                        <button type="button" class="btn-success col-2 btn-lg">Deal</button>
+                                        <button type="button" class="btn-info col-2 btn-lg">Nego</button>
+                                        <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
+                                        <button type="submit" class="nego btn-secondary col-2 btn-lg">Simpan</button>
+                                        <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
                                     </th>
                                 </tr>
                             </form>
@@ -167,67 +170,43 @@
             e.preventDefault();
             subject.setAttribute("data-roomid", rooms[i].getAttribute('data-selected-roomid'));
             receiver.innerHTML = rooms[i].getAttribute("data-receiver");
-            var roomId = $("#chat_room_id").data('roomid');
-            var csrf_token = $('meta[name="csrf-token"]').attr('content');
+            var selectedRoom = rooms[i].getAttribute('data-selected-roomid')
 
             $.ajax({
-                url: `/transaction/${rooms[i].getAttribute('data-selected-roomid')}`,
+                url: `/transaction/${selectedRoom}`,
                 cache: false,
                 success: function(data) {
-                    // document.getElementById("mytext").value = "My value";
-                    console.log(data);
-
+                    console.log(data)
+                    let buat = document.getElementById('buat');
+                    if (data === '') {
+                        buat.style.display = "block";
+                    } else {
+                        buat.style.display = "none";
+                    }
+                    detail(data, selectedRoom)
+                },
+                error: function(data) {
+                    console.log(data)
                 }
             });
 
-            $.ajax({
-                url: 'transaction/negotiate',
-                type: "POST",
-                data: {
-                    chat_room_id: roomId,
-                    '_token': csrf_token
-                },
-                success: detail()
-
-            });
-            // trying3
         }
 
-        function detail() {
-            document.getElementById("chat_room_id").value = "My value";
-            document.getElementById("phone").value = "My value";
-            document.getElementById("date_start").value = "My value";
-            document.getElementById("date_finish").value = "My value";
-            document.getElementById("destination").value = "My value";
-            document.getElementById("transport").value = "My value";
-            document.getElementById("payment").value = "My value";
-            document.getElementById("meetpoint").value = "My value";
-            document.getElementById("note").value = "My value";
-
+        function detail(params, chat_room) {
+            document.getElementById("chat_room_id").value = chat_room;
+            document.getElementById("transaction_id").value = params.id !== undefined ? params.id : '';
+            document.getElementById("phone").value = params.phone !== undefined ? params.phone : '';
+            document.getElementById("date_start").value = params.date_start !== undefined ? params.date_start : '';
+            document.getElementById("date_finish").value = params.date_finish !== undefined ? params.date_finish : '';
+            document.getElementById("destination").value = params.destination !== undefined ? params.destination : '';
+            document.getElementById("transport").value = params.transport !== undefined ? params.transport : '';
+            document.getElementById("payment").value = params.payment !== undefined ? params.payment : '';
+            document.getElementById("meetpoint").value = params.meetpoint !== undefined ? params.meetpoint : '';
+            document.getElementById("note").value = params.note !== undefined ? params.note : '';
+            document.getElementById("price").value = params.price !== undefined ? params.price : '';
+            document.getElementById("status").value = params.status !== undefined ? params.status : 'Pending';
         }
     }
-
-    // trying 4
-    // for (let i = 0; i < rooms.length; i++) {
-    //     rooms[i].onclick = function(e) {
-    //         e.preventDefault();
-    //         var roomId = $("#chat_room_id").data('roomid')
-    //         var csrf_token = $('meta[name="csrf-token"]').attr('content');
-
-    //         $.ajax({
-    //             url: '/transaction/negotiate',
-    //             type: "POST",
-    //             data: {
-    //                 chat_room_id: roomId,
-    //                 '_token': csrf_token
-    //             },
-    //             success: function(data) {
-    //                 console.log(data);
-    //             }
-    //         });
-    //     }
-    // }
-
 
     // jQuery Document
     $(document).ready(function() {
@@ -237,7 +216,6 @@
             var clientMsg = $("#subject").val()
             var userId = $("#subject").data('userid')
             var roomId = $("#subject").data('roomid')
-            var room = $("#chat_room_id").data('roomId')
             var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
             $.ajax({
@@ -252,12 +230,59 @@
                 success: loadLog() // kelola data / meneruskan proses apabila url berhasil dijalankan
             });
 
-            $("#subject").val("");
+
+                $("#subject").val("");
             return false;
         });
 
+        $('body').on('click', '.nego', function(event) {
+            event.preventDefault();
 
+            var transaction_id = $("#transaction_id").val()
+            var roomId = $("#subject").data('roomid')
+            var phone = $("#phone").val()
+            var date_start = $("#date_start").val()
+            var date_finish = $("#date_finish").val()
+            var destination = $("#destination").val()
+            var transport = $("#transport").val()
+            var payment = $("#payment").val()
+            var meetpoint = $("#meetpoint").val()
+            var note = $("#note").val()
+            var status = $("#status").val()
+            var price = $("#price").val()
+            var csrf_token = $('meta[name="csrf-token"]').attr('content');
 
+            $.ajax({
+                url: 'transaction/negotiate',
+                type: "POST",
+                data: {
+                    transaction_id: transaction_id,
+                    chat_room_id: roomId,
+                    phone: phone,
+                    date_start: date_start,
+                    date_finish: date_finish,
+                    destination: destination,
+                    transport: transport,
+                    payment: payment,
+                    meetpoint: meetpoint,
+                    note: note,
+                    status: status,
+                    price: price,
+                    '_token': csrf_token
+                },
+                success: function (data) {
+                    let buat = document.getElementById('buat');
+                    if (data === 'success') {
+                        buat.style.display = "none";
+                        alert('Transaksi berhasil disimpan')
+                    }
+                },
+                error: function (data) {
+                    console.log(data)
+                }
+
+            });
+        });
         function loadLog() {
             var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
             var roomId = document.getElementById('subject').getAttribute('data-roomid')

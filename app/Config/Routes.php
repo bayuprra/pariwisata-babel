@@ -97,7 +97,7 @@ $routes->group('direct-message', ['filter' => 'authGuard'], function ($routes) {
 
 //Transaction
 $routes->group('transaction', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('/(:num)', 'Transaction::transaction/$1');
+    $routes->get('(:num)', 'Transaction::transaction/$1');
     $routes->post('negotiate', 'Transaction::nego');
 });
 

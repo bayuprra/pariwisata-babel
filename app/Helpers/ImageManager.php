@@ -33,7 +33,7 @@ class ImageManager
         $this->newsImage = new NewsImageModel();
         $this->event = new EventModel();
         $this->guide = new GuideModel();
-        $this->aws = service('aws')->createClient('s3',['version' => 'latest', 'region'  => 'ap-southeast-1']);
+//        $this->aws = service('aws')->createClient('s3',['version' => 'latest', 'region'  => 'ap-southeast-1']);
     }
 
     /**
@@ -107,14 +107,14 @@ class ImageManager
 //            return $folderName . '/' . $image->getName();
 //        }
 
-        $result = $this->aws->putObject([
-            'SourceFile' => $image,
-            'Bucket'     => getenv('bucketName'),
-            'Key'        => $fileName,
-            'ACL'        => 'public-read'
-        ]);
-
-        return $result['ObjectURL'] . PHP_EOL;
+//        $result = $this->aws->putObject([
+//            'SourceFile' => $image,
+//            'Bucket'     => getenv('bucketName'),
+//            'Key'        => $fileName,
+//            'ACL'        => 'public-read'
+//        ]);
+//
+//        return $result['ObjectURL'] . PHP_EOL;
 
 //        $result = $this->aws->upload(getenv('bucketName'), $fileName, $image);
 //

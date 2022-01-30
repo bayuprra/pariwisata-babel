@@ -23,6 +23,10 @@
   overflow: auto;
 }
 
+.form-control-lg {
+  width: 100%;
+}
+
 .chatting .content .name .user {
   display: flex;
   flex-direction: row;

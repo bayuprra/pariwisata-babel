@@ -143,10 +143,15 @@
                                 <tr>
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
-                                        <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
-                                        <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
-                                        <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
-                                        <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
+                                        <?php if (session()->get('isGuide')) : ?>
+                                            <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
+                                            <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
+                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
+                                        <?php else : ?>
+                                            <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
+                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
+                                            <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
+                                        <?php endif; ?>
                                     </th>
                                 </tr>
                             </form>
@@ -182,21 +187,6 @@
                     let simpan = document.getElementById('simpan');
                     let deal = document.getElementById('deal');
                     let tolak = document.getElementById('tolak');
-
-                    if (data === '') {
-
-                        buat.style.display = "block";
-                        simpan.style.display = "none";
-                        deal.style.display = "none";
-                        tolak.style.display = "none";
-                    } else {
-                        buat.style.display = "none";
-                        simpan.style.display = "inline";
-                        deal.style.display = "inline";
-                        tolak.style.display = "inline";
-                    }
-
-                    detail(data, selectedRoom)
 
 
 
@@ -234,6 +224,26 @@
                     }
 
 
+
+                    if (data === '') {
+
+                        buat.style.display = "block";
+                        simpan.style.display = "none";
+                        deal.style.display = "none";
+                        tolak.style.display = "none";
+                    } else {
+                        buat.style.display = "none";
+                        simpan.style.display = "inline";
+                        deal.style.display = "inline";
+                        tolak.style.display = "inline";
+                    }
+
+                    detail(data, selectedRoom)
+
+
+
+
+
                 },
                 error: function(data) {
                     alert(data);
@@ -265,13 +275,6 @@
     function stat(value) {
         document.getElementById("status").value = value;
     }
-
-    $(document).ready(function() {
-        $('body').on('click', '#submitMsg', function(event) {
-            event.preventDefault();
-
-        });
-    });
 
     // jQuery Document
     $(document).ready(function() {

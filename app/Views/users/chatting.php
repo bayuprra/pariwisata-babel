@@ -27,7 +27,7 @@
 
                 <a href="">
                     <div class="user selected-room" data-selected-roomid="<?= $room->id ?>" data-receiver="<?= $name ?>">
-                        <img src="/images/z.jpg" alt="">
+                        <img src="/images/y.jpg" alt="">
                         <p><?= $name ?></p>
                     </div>
                 </a>
@@ -39,6 +39,7 @@
                 <?php if (session()->get('chat_room')) : ?>
                     <?php $receiver = session()->get('chat_room')->id ?>
                     <?php $receiver_name = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
+                    <?php $receiver_picture = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->picture : session()->get('chat_room')->user()->picture ?>
                     <h1 id="receiver-name"><?= $receiver_name ?></h1>
                 <?php else : ?>
                     <h1 id="receiver-name">
@@ -72,35 +73,37 @@
                                     <th scope="col">
                                         <input class="form-control-lg" type="text" placeholder="Pending" name="status" id="status" value="" readonly>
                                     </th>
+
+                                    </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Nomor Telepon</th>
                                     <th scope="col">
-                                        <input type="number" class="form-control-lg" id="phone" name="phone" value="">
+                                        <input type="number" class="form-control-lg" id="phone" name="phone" value="" required>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Sewa</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="">
+                                        <input type="date" class="form-control-lg" id="date_start" name="date_start" value="" required>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tanggal Selesai</th>
                                     <th scope="col">
-                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="">
+                                        <input type="date" class="form-control-lg" id="date_finish" name="date_finish" value="" required>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tempat Tujuan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="destination" name="destination" rows="3"></textarea>
+                                        <textarea class="form-control" id="destination" name="destination" rows="3" required></textarea>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Kendaraan</th>
                                     <th scope="col">
-                                        <select class="form-control-lg" id="transport" name="transport">
+                                        <select class="form-control-lg" id="transport" name="transport" required>
                                             <option value="" disabled>-Pilih-</option>
                                             <option value="Dari Guide (mobil)">Dari Guide (mobil)</option>
                                             <option value="Dari Guide (motor)">Dari Guide (motor)</option>
@@ -112,13 +115,13 @@
                                 <tr>
                                     <th scope="col" class="col-3">Biaya</th>
                                     <th scope="col">
-                                        <input type="number" class="form-control-lg" id="price" name="price" value="">
+                                        <input type="number" class="form-control-lg" id="price" name="price" value="" required>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Tipe Pembayaran</th>
                                     <th scope="col">
-                                        <select class="form-control-lg" id="payment" name="payment">
+                                        <select class="form-control-lg" id="payment" name="payment" required>
                                             <option disabled>-Pilih-</option>
                                             <option value="Transfer">Transfer</option>
                                             <option value="DI Tempat">Di Tempat</option>
@@ -128,22 +131,21 @@
                                 <tr>
                                     <th scope="col" class="col-3">Lokasi Penjemputan</th>
                                     <th scope="col">
-                                        <input type="text" class="form-control-lg" id="meetpoint" name="meetpoint" value="">
+                                        <input type="text" class="form-control-lg" id="meetpoint" name="meetpoint" value="" required>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Catatan</th>
                                     <th scope="col">
-                                        <textarea class="form-control" id="note" name="note" rows="3"></textarea>
+                                        <textarea class="form-control" id="note" name="note" rows="3" required></textarea>
                                     </th>
                                 </tr>
                                 <tr>
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
-                                        <button type="button" class="btn-success col-2 btn-lg">Deal</button>
-                                        <button type="button" class="btn-info col-2 btn-lg">Nego</button>
-                                        <button type="button" class="btn-danger col-2 btn-lg">Tolak</button>
-                                        <button type="submit" class="nego btn-secondary col-2 btn-lg">Simpan</button>
+                                        <button type="button" id="deal" onclick="stat('Deal')" class="btn-success col-2 btn-lg">Deal</button>
+                                        <button type="button" id="tolak" onclick="stat('Tolak')" class="btn-danger col-2 btn-lg">Tolak</button>
+                                        <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                         <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
                                     </th>
                                 </tr>
@@ -176,14 +178,32 @@
                 url: `/transaction/${selectedRoom}`,
                 cache: false,
                 success: function(data) {
-                    console.log(data)
                     let buat = document.getElementById('buat');
+                    let simpan = document.getElementById('simpan');
+                    let deal = document.getElementById('deal');
+                    let tolak = document.getElementById('tolak');
+
                     if (data === '') {
+
                         buat.style.display = "block";
+                        simpan.style.display = "none";
+                        deal.style.display = "none";
+                        tolak.style.display = "none";
                     } else {
                         buat.style.display = "none";
+                        simpan.style.display = "block";
+                        deal.style.display = "block";
+                        tolak.style.display = "block";
                     }
+
                     detail(data, selectedRoom)
+
+                    function stat(value) {
+                        document.getElementById("status").value = value;
+                    }
+
+
+
                 },
                 error: function(data) {
                     console.log(data)
@@ -205,8 +225,13 @@
             document.getElementById("note").value = params.note !== undefined ? params.note : '';
             document.getElementById("price").value = params.price !== undefined ? params.price : '';
             document.getElementById("status").value = params.status !== undefined ? params.status : 'Pending';
+
         }
+
+
     }
+
+
 
     // jQuery Document
     $(document).ready(function() {
@@ -231,7 +256,7 @@
             });
 
 
-                $("#subject").val("");
+            $("#subject").val("");
             return false;
         });
 
@@ -270,19 +295,20 @@
                     price: price,
                     '_token': csrf_token
                 },
-                success: function (data) {
+                success: function(data) {
                     let buat = document.getElementById('buat');
                     if (data === 'success') {
                         buat.style.display = "none";
                         alert('Transaksi berhasil disimpan')
                     }
                 },
-                error: function (data) {
+                error: function(data) {
                     console.log(data)
                 }
 
             });
         });
+
         function loadLog() {
             var oldScrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
             var roomId = document.getElementById('subject').getAttribute('data-roomid')
@@ -297,12 +323,12 @@
                     for (var i = 0; i < html.length; i++) {
                         if (html[i].user_id == userId) {
                             message += `<div class="guide">
-                                            <img src="/images/z.jpg" alt="">
+                                            <img src="/images/y.jpg" alt="">
                                             <p>${html[i].message}</p>
                                         </div>`
                         } else {
                             message += `<div class="user">
-                                            <img src="/images/z.jpg" alt="">
+                                            <img src="/images/y.jpg" alt="">
                                             <p>${html[i].message}</p>
                                         </div>`
                         }

@@ -87,7 +87,7 @@
             </div>
         </div>
     </div>
-    <div class="kuliner">
+    <!-- <div class="kuliner">
 
     </div>
     <div class="kuliner">
@@ -95,7 +95,7 @@
     </div>
     <div class="kuliner">
 
-    </div>
+    </div> -->
 
     <!-- modal -->
     <?php foreach ($places as $item) : ?>

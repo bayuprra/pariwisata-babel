@@ -20,6 +20,19 @@
         <form action="<?= base_url('place') ?>" method="POST" enctype="multipart/form-data">
             <div class="row">
                 <div class="print">
+                    <label for="category">Kategori</label>
+                </div>
+                <div class="input">
+                    <select id="category" name="category" required>
+                        <option selected disabled>Plih</option>
+                        <option value="tempat wisata">Tempat Wisata</option>
+                        <option value="kuliner">Kuliner</option>
+                        <option value="hotel dan penginapan">Hotel dan Penginapan</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="print">
                     <label for="name">Nama Tempat Wisata</label>
                 </div>
                 <div class="input">

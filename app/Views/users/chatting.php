@@ -52,7 +52,7 @@
                         <form action="">
                             <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
 
-                        </textarea>
+                    </textarea>
                             <a id="submitMsg" class="fa fa-paper-plane"></a>
                         </form>
             </div>
@@ -124,7 +124,7 @@
                                         <select class="form-control-lg" id="payment" name="payment" required>
                                             <option disabled>-Pilih-</option>
                                             <option value="Transfer">Transfer</option>
-                                            <option value="DI Tempat">Di Tempat</option>
+                                            <option value="Di Tempat">Di Tempat</option>
                                         </select>
                                     </th>
                                 </tr>
@@ -145,11 +145,12 @@
                                     <th scope="col" class="action">
                                         <?php if (session()->get('isGuide')) : ?>
                                             <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
-                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                             <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
+                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                         <?php else : ?>
                                             <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
                                             <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
+                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                         <?php endif; ?>
                                     </th>
                                 </tr>
@@ -188,8 +189,7 @@
                     let tolak = document.getElementById('tolak');
 
 
-
-                    if (document.getElementById("status").value == 'Deal' || document.getElementById("status").value == 'Tolak') {
+                    if (data.status == 'Deal' || data.status == 'Tolak') {
                         //    readonly
                         document.getElementById("phone").readOnly = true;
                         document.getElementById("date_start").readOnly = true;
@@ -201,9 +201,10 @@
                         document.getElementById("note").readOnly = true;
                         document.getElementById("price").readOnly = true;
                         // button
-                        buat.style.display = "none";
+
+                        if (buat) buat.style.display = "none";
                         simpan.style.display = "none";
-                        deal.style.display = "none";
+                        if (deal) deal.style.display = "none";
                         tolak.style.display = "none";
                     } else if (document.getElementById("status").value == 'Pending') {
                         document.getElementById("phone").readOnly = false;
@@ -216,9 +217,9 @@
                         document.getElementById("note").readOnly = false;
                         document.getElementById("price").readOnly = false;
                         // button
-                        buat.style.display = "none";
+                        if (buat) buat.style.display = "none";
                         simpan.style.display = "inline";
-                        deal.style.display = "inline";
+                        if (deal) deal.style.display = "inline";
                         tolak.style.display = "inline";
                     } else {
                         buat.style.display = "inline";
@@ -227,26 +228,20 @@
                         tolak.style.display = "none";
                     }
 
-
-
                     if (data === '') {
 
-                        buat.style.display = "block";
+                        if (buat) buat.style.display = "block";
                         simpan.style.display = "none";
-                        deal.style.display = "none";
+                        if (deal) deal.style.display = "none";
                         tolak.style.display = "none";
                     } else {
-                        buat.style.display = "none";
+                        if (buat) buat.style.display = "none";
                         simpan.style.display = "inline";
-                        deal.style.display = "inline";
+                        if (deal) deal.style.display = "inline";
                         tolak.style.display = "inline";
                     }
 
                     detail(data, selectedRoom)
-
-
-
-
 
                 },
                 error: function(data) {

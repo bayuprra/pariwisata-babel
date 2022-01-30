@@ -32,7 +32,7 @@ class GuideModel extends Model
 
     protected $validationRules = [
         'name'              => 'required',
-        'phone'             => 'required|numeric',
+        'phone'             => 'required',
         'identity_picture'  => 'required',
         'experience'        => 'required',
         'study'             => 'required',

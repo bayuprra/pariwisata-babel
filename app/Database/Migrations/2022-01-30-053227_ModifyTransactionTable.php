@@ -9,12 +9,6 @@ class ModifyTransactionTable extends Migration
     public function up()
     {
         $data = [
-            // 'note'          => [
-            //     'unsigned'  => true,
-            // ],
-            // 'meetpoint'     => [
-            //     'unsigned'  => true,
-            // ],
             'date_start'    => [
                 'type'      => 'DATE'
             ],

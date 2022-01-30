@@ -36,7 +36,7 @@
                         <input type="password" name="password" placeholder="Kata Sandi" required>
                     </div>
                     <div class="pass-link">
-                        <a href="#">Lupa Kata Sandi?</a>
+                        <!-- <a href="#">Lupa Kata Sandi?</a> -->
                     </div>
                     <div class="field btn">
                         <div class="btn-layer"></div>

@@ -119,22 +119,6 @@
             </div>
             <div class="row">
                 <div class="print">
-                    <label for="include">Include</label>
-                </div>
-                <div class="input">
-                    <textarea name="include" class="include"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="print">
-                    <label for="description">Description</label>
-                </div>
-                <div class="input">
-                    <textarea name="description" class="description"></textarea>
-                </div>
-            </div>
-            <div class="row">
-                <div class="print">
                     <label for="identity_picture">Foto Diri</label>
                 </div>
                 <div class="input">

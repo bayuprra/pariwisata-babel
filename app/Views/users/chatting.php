@@ -344,9 +344,12 @@
                     }
                 },
                 error: function(data) {
-                    console.log(data.responseJSON)
-
-                    alert('error', data.responseJSON['message'])
+                    data = data.responseJSON['messages']
+                    let messages = ''
+                    for (let i in data) {
+                        messages += data[i] + '\n'
+                    }
+                    alert(messages)
                     return false;
                 }
 

@@ -78,7 +78,7 @@ $routes->get('/admin/place', 'PlaceController::admin', ['filter' => 'adminGuard'
 $routes->get('/admin/vplace', 'PlaceController::adminv', ['filter' => 'adminGuard']);
 $routes->get('/admin/place/create', 'PlaceController::create', ['filter' => 'adminGuard']);
 $routes->group('place', ['filter' => 'authGuard'], function ($routes) {
-    $routes->get('create', 'formforuser::place');
+    $routes->get('create', 'FormforUser::place');
     $routes->post('/', 'PlaceController::store');
     $routes->get('edit/(:num)', 'PlaceController::edit/$1');
     $routes->post('(:num)', 'PlaceController::update/$1');

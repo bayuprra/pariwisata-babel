@@ -89,4 +89,21 @@ class Transaction extends BaseController
 
         return $this->respond($transaction, 200);
     }
+
+    public function deal()
+    {
+        $transactionId = $this->request->getVar('transaction_id');
+
+        $data = [
+            'status'           => $this->request->getVar('status'),
+        ];
+
+        if ($transactionId) {
+            if ($this->transactionModel->update($transactionId, $data)) {
+                return $this->respond('success', 200);
+            }
+
+            return $this->fail($this->transactionModel->errors(), 500);
+        }
+    }
 }

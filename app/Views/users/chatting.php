@@ -143,8 +143,8 @@
                                 <tr>
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
-                                        <button type="button" id="deal" onclick="stat('Deal')" class="btn-success col-2 btn-lg">Deal</button>
-                                        <button type="button" id="tolak" onclick="stat('Tolak')" class="btn-danger col-2 btn-lg">Tolak</button>
+                                        <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
+                                        <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
                                         <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                         <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
                                     </th>
@@ -191,22 +191,53 @@
                         tolak.style.display = "none";
                     } else {
                         buat.style.display = "none";
-                        simpan.style.display = "block";
-                        deal.style.display = "block";
-                        tolak.style.display = "block";
+                        simpan.style.display = "inline";
+                        deal.style.display = "inline";
+                        tolak.style.display = "inline";
                     }
 
                     detail(data, selectedRoom)
 
-                    function stat(value) {
-                        document.getElementById("status").value = value;
-                    }
 
+
+                    if (document.getElementById("status").value == 'Deal' || document.getElementById("status").value == 'Tolak') {
+                        //    readonly
+                        document.getElementById("phone").readOnly = true;
+                        document.getElementById("date_start").readOnly = true;
+                        document.getElementById("date_finish").readOnly = true;
+                        document.getElementById("destination").readOnly = true;
+                        document.getElementById("transport").disabled = true;
+                        document.getElementById("payment").disabled = true;
+                        document.getElementById("meetpoint").readOnly = true;
+                        document.getElementById("note").readOnly = true;
+                        document.getElementById("price").readOnly = true;
+                        // button
+                        buat.style.display = "none";
+                        simpan.style.display = "none";
+                        deal.style.display = "none";
+                        tolak.style.display = "none";
+                    } else {
+                        document.getElementById("phone").readOnly = false;
+                        document.getElementById("date_start").readOnly = false;
+                        document.getElementById("date_finish").readOnly = false;
+                        document.getElementById("destination").readOnly = false;
+                        document.getElementById("transport").disabled = false;
+                        document.getElementById("payment").disabled = false;
+                        document.getElementById("meetpoint").readOnly = false;
+                        document.getElementById("note").readOnly = false;
+                        document.getElementById("price").readOnly = false;
+                        // button
+                        buat.style.display = "none";
+                        simpan.style.display = "inline";
+                        deal.style.display = "inline";
+                        tolak.style.display = "inline";
+                    }
 
 
                 },
                 error: function(data) {
-                    console.log(data)
+                    alert(data);
+                    return false;
                 }
             });
 
@@ -231,7 +262,16 @@
 
     }
 
+    function stat(value) {
+        document.getElementById("status").value = value;
+    }
 
+    $(document).ready(function() {
+        $('body').on('click', '#submitMsg', function(event) {
+            event.preventDefault();
+
+        });
+    });
 
     // jQuery Document
     $(document).ready(function() {
@@ -262,6 +302,7 @@
 
         $('body').on('click', '.nego', function(event) {
             event.preventDefault();
+
 
             var transaction_id = $("#transaction_id").val()
             var roomId = $("#subject").data('roomid')
@@ -303,7 +344,10 @@
                     }
                 },
                 error: function(data) {
-                    console.log(data)
+                    console.log(data.responseJSON)
+
+                    alert('error', data.responseJSON['message'])
+                    return false;
                 }
 
             });

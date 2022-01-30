@@ -144,13 +144,12 @@
                                     <th scope="col" class="col-3">Action</th>
                                     <th scope="col" class="action">
                                         <?php if (session()->get('isGuide')) : ?>
-                                            <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
-                                            <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
-                                            <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
-                                        <?php else : ?>
                                             <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
                                             <button type="submit" id="simpan" class="nego btn-secondary col-2 btn-lg">Simpan</button>
                                             <button type="submit" id="buat" class="nego btn-primary col-2 btn-lg">Buat</button>
+                                        <?php else : ?>
+                                            <button type="button" id="deal" onclick="stat('Deal')" class="nego btn-success col-2 btn-lg">Deal</button>
+                                            <button type="button" id="tolak" onclick="stat('Tolak')" class="nego btn-danger col-2 btn-lg">Tolak</button>
                                         <?php endif; ?>
                                     </th>
                                 </tr>
@@ -206,7 +205,7 @@
                         simpan.style.display = "none";
                         deal.style.display = "none";
                         tolak.style.display = "none";
-                    } else {
+                    } else if (document.getElementById("status").value == 'Pending') {
                         document.getElementById("phone").readOnly = false;
                         document.getElementById("date_start").readOnly = false;
                         document.getElementById("date_finish").readOnly = false;
@@ -221,6 +220,11 @@
                         simpan.style.display = "inline";
                         deal.style.display = "inline";
                         tolak.style.display = "inline";
+                    } else {
+                        buat.style.display = "inline";
+                        simpan.style.display = "none";
+                        deal.style.display = "none";
+                        tolak.style.display = "none";
                     }
 
 

@@ -32,7 +32,7 @@ class PlaceModel extends Model
         'district'     => 'required',
         'sub_district' => 'required',
         'village'      => 'required',
-        'fee'          => 'required|numeric',
+        'fee'          => 'required',
         'street'       => 'required',
         'maps'         => 'required|valid_url',
         'picture'      => 'required',

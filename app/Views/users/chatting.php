@@ -35,26 +35,25 @@
         </div>
         <div class="res">
             <div class="chatbox">
-                <?php $receiver = ''; ?>
-                <?php if (session()->get('chat_room')) : ?>
-                    <?php $receiver = session()->get('chat_room')->id ?>
-                    <?php $receiver_name = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
-                    <?php $receiver_picture = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->picture : session()->get('chat_room')->user()->picture ?>
-                    <h1 id="receiver-name"><?= $receiver_name ?></h1>
-                <?php else : ?>
-                    <h1 id="receiver-name">
-                        <-- Klik Salah Satu Nama</h1>
-                        <?php endif; ?>
+            <?php $receiver = ''; ?>
+            <?php if (session()->get('chat_room')) : ?>
+                <?php $receiver = session()->get('chat_room')->id ?>
+                <?php $receiver_name = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->name : session()->get('chat_room')->user()->name ?>
+                <?php $receiver_picture = session()->get('chat_room')->user_id === session()->get('id') ? session()->get('chat_room')->guide()->picture : session()->get('chat_room')->user()->picture ?>
+                <h1 id="receiver-name"><?= $receiver_name ?></h1>
+            <?php else : ?>
+                <h1 id="receiver-name"><-- Klik Salah Satu Nama</h1>
+            <?php endif; ?>
 
 
-                        <div class="message" id="chatbox">
-                        </div>
-                        <form action="">
-                            <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
+                <div class="message" id="chatbox">
+                </div>
+                <form action="">
+                    <textarea name="subject" id="subject" placeholder="tuliskan" data-userid="<?= session()->get('id') ?>" data-roomid="<?= $receiver ?>">
 
-                        </textarea>
-                            <a id="submitMsg" class="fa fa-paper-plane"></a>
-                        </form>
+                    </textarea>
+                    <a id="submitMsg" class="fa fa-paper-plane"></a>
+                </form>
             </div>
 
 
@@ -223,8 +222,6 @@
                         tolak.style.display = "inline";
                     }
 
-
-
                     if (data === '') {
 
                         buat.style.display = "block";
@@ -239,10 +236,6 @@
                     }
 
                     detail(data, selectedRoom)
-
-
-
-
 
                 },
                 error: function(data) {
